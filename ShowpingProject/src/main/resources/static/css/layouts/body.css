@@ -1,0 +1,175 @@
+ul li {
+    list-style-type: none;
+    text-decoration: none; /* 링크의 밑줄 제거 */
+}
+
+a,
+a:active,
+a:focus,
+a:hover {
+    -webkit-text-decoration: none;
+    text-decoration: none;
+    color: inherit; /* 링크의 색상 제거 */
+}
+
+body{
+    width: auto;
+    height: auto;
+}
+
+.carousel-inner {
+    margin: auto;
+    display: block;
+    width: 1600px;
+    height: 400px;
+}
+
+.carousel-control-prev {
+    width: 30%;
+}
+
+.carousel-control-next {
+    right: 10%;
+}
+
+.category {
+    margin-top: 30px;
+    justify-content: center; /* 항목을 수평 가운데 정렬합니다. */
+    align-items: center; /* 항목을 수직 가운데 정렬합니다. */
+    position: relative;
+    font-weight: 400;
+    font-size: 0;
+    display: flex;
+    padding: 0;
+    /* border-bottom-width: 1200px;
+    border-bottom: 2px solid rgb(177, 169, 169); */
+
+}
+
+.line {
+    align-items: center;
+    justify-content: center;
+    width: 1400px;
+    border-bottom: 2px solid #000000;
+    margin: 10px auto;
+}
+
+.category .item {
+    font-size: 25px;
+    display: inline-block;
+    position: relative;
+    padding: 0 20px;
+    top: 5px;
+    /* cursor: pointer; */
+    z-index: 5;
+    min-width: 300px; /* 필요에 따라 최소 너비를 조정하세요. */
+    height: 60px;
+    line-height: 60px; /* 텍스트를 수직 가운데로 정렬합니다. */
+    text-align: center;
+}
+
+#dropdown {
+    display: none;
+}
+
+
+.dropdown {
+    width: 700px;
+    height: 200px;
+    /* margin: auto 0; */
+    bottom: 10px;
+    /* display: grid; */
+    left: 70px;
+    justify-content: center;
+    flex-direction: row; /* 세로 방향으로 정렬 */
+    gap: 13%; /* 필요한 간격 설정 */
+}
+
+.dropdown > div {
+    /* transform: translate(0, -100%); */
+    /* width: auto; */
+    transition: 0.5s 0.1s;
+    position: relative;
+    display: inline-block;
+    justify-content: start;
+    /* align-items: stretch; */
+}
+
+.dropdown a {
+    font-size: 16px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    display: block;
+    padding: 0;
+    width: 120px;
+    height: 40px;
+    line-height: 40px;
+    /* background-color: aquamarine; */
+    margin-right: 10px;
+}
+
+.dropdown a:hover {
+    /* background-color: #8FB8CA; */
+    background-color: #b1e2f5;
+}
+
+.top{
+    left: 290px;
+    bottom: 40px;
+}
+
+.bottom{
+    left: 460px;
+}
+
+.outer {
+    left: 620px;
+}
+
+.shoes{
+    left: 790px;
+    bottom: 40px;
+}
+
+.cards {
+    display: flex;
+    max-width: 1400px; /* 최대 너비를 1400px로 설정 */
+    width: 100%; /* 최대 너비를 넘어가지 않도록 100%로 설정 */
+
+    align-items: center;
+    justify-content: space-evenly; /* 가로 방향 가운데 정렬 */
+    margin: 0 auto; /* 좌우 여백을 자동으로 설정하여 화면 중앙으로 정렬 */
+    margin-top: 90px;
+}
+
+.cards2{
+    display: none;
+}
+
+.cards3{
+    display: none;
+}
+
+
+.btn {
+    margin-top: 50px;
+    display: flex;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn2 {
+    width: 100px;
+    justify-content: center;
+    align-items: center;
+}
+
+/* CSS 파일 또는 <style> 태그 안에서 */
+.button-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 47%; /* 적절한 간격 설정 */
+}
