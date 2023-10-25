@@ -1,0 +1,43 @@
+<head>
+    <link rel="stylesheet" type="text/css" href="/static/css/product/prodList.css">
+</head>
+<body>
+<header>
+    {{>layouts/header}}
+</header>
+<nav>
+    <div class="detail-category-form">
+        <div class="head-category"><h3></h3></div>
+        <hr class="hr">
+        <div class="detail-category1"><p></p></div>
+        <div class="detail-category2"><p></p></div>
+        <div class="detail-category3"><p></p></div>
+        <div class="detail-category4"><p></p></div>
+        <div class="detail-category5"><p></p></div>
+    </div>
+</nav>
+<section>
+    <div class="category-form">
+        <div class="category1"><h3 onclick="handleCategoryClick()">상의</h3></div>
+        <div class="category2"><h3 onclick="handleCategoryClick()">하의</h3></div>
+        <div class="category3"><h3 onclick="handleCategoryClick()">아우터</h3></div>
+        <div class="category4"><h3 onclick="handleCategoryClick()">신발</h3></div>
+    </div>
+</section>
+<main>
+    <div class="prod-list1-form">
+        <div class="prod-list1-text"><img src="/static/images/Product/prod-image.webp" class="prod-list1"><br><h3>상의 긴팔</h3></div>
+        <div class="prod-list1-text"><img src="/static/images/Product/prod-image.webp" class="prod-list1"><br><h3>상의 긴팔</h3></div>
+        <div class="prod-list1-text"><img src="/static/images/Product/prod-image.webp" class="prod-list1"><br><h3>상의 긴팔</h3></div>
+        <div class="prod-list1-text"><img src="/static/images/Product/prod-image.webp" class="prod-list1"><br><h3>상의 긴팔</h3></div>
+    </div>
+    <div class="prod-list2-form">
+        <div class="prod-list2-text"><img src="/static/images/Product/prod-image.webp" class="prod-list2"><br><h3>상의 긴팔</h3></div>
+        <div class="prod-list2-text"><img src="/static/images/Product/prod-image.webp" class="prod-list2"><br><h3>상의 긴팔</h3></div>
+        <div class="prod-list2-text"><img src="/static/images/Product/prod-image.webp" class="prod-list2"><br><h3>상의 긴팔</h3></div>
+        <div class="prod-list2-text"><img src="/static/images/Product/prod-image.webp" class="prod-list2"><br><h3>상의 긴팔</h3></div>
+    </div>
+</main>
+<script src="/static/js/Product/prodlist.js"></script>
+</body>
+{{>layouts/footer}}
