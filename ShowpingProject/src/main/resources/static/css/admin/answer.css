@@ -1,0 +1,141 @@
+header {
+    width: 100%;
+    height: 50px;
+
+
+}
+
+nav {
+    margin-top: 20px;
+    width: 231px;
+    height: 1500px;
+    border-right: 1px solid black;
+    float: left;
+
+}
+
+main {
+    margin-left: 231px;
+    width: 1230px;
+    height: 1500px;
+
+
+}
+
+.header-content {
+    text-align: center;
+    width: 100%;
+    height: 50px;
+}
+
+.nav-content {
+    margin-left: 35px;
+    margin-top: 150px;
+}
+
+.home{
+    width: 150px;
+    height: 80px;
+}
+
+.produp-button {
+    margin-top: 50px;
+    width: 150px;
+    height: 80px;
+}
+
+.questionbutton{
+    margin-top: 50px;
+    width: 150px;
+    height: 80px;
+}
+
+.answer-info{
+    margin-top: 100px;
+    margin-left: 150px;
+}
+
+.answer-prod{
+    margin-left: 150px;
+
+}
+
+.answer-prod-image{
+    width: 250px;
+    height: 150px;
+
+}
+
+.prod-info{
+    display: flex;
+}
+
+.prod-info-text{
+    margin-left: 20px;
+}
+
+.question-type{
+    margin-top: 30px;
+    margin-left: 150px;
+}
+
+.question-image{
+    margin-top: 30px;
+    margin-left: 150px;
+}
+
+.question-prod-image{
+    width: 250px;
+    height: 150px;
+}
+
+.question-title{
+    margin-top: 30px;
+    margin-left: 150px;
+}
+
+.title-text{
+    width: 900px;
+    height: 30px;
+}
+
+.question-content{
+    margin-top: 30px;
+    margin-left: 150px;
+}
+
+.content-text{
+    width: 900px;
+    height: 200px;
+}
+
+.answer-content{
+    margin-top: 30px;
+    margin-left: 150px;
+
+}
+
+.answer-text{
+    width: 900px;
+    height: 200px;
+
+}
+
+.in-form{
+    display: flex;
+    margin-top: 100px;
+    margin-left: 400px;
+}
+
+.answer-in{
+    width: 180px;
+    height: 50px;
+
+}
+
+.answer-return{
+    margin-left: 100px;
+    width: 180px;
+    height: 50px;
+
+}

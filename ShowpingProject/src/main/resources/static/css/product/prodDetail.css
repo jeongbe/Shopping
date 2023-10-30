@@ -1,0 +1,175 @@
+header{
+    width: 100%;
+    height: 150px;
+}
+
+nav{
+   text-align:center;
+    width: 600px;
+    height: 600px;
+    float: left;
+    }
+
+section{
+    text-align:center;
+    height: 450px;
+}
+
+main{
+    width: 100%;
+    height: 5000px;
+}
+
+.prod-image{
+    margin-top: 30px;
+    width: 100%;
+    height: 500px;
+
+}
+
+.prod-info{
+    margin-top: 140px;
+    margin-left: 50px;
+}
+
+.prod-score{
+    display: flex;
+}
+
+.like{
+    margin-left: 50px;
+}
+
+.prod-score-text{
+
+    margin-left: 130px;
+}
+
+.prod-name{
+    display: flex;
+    margin-top: 20px;
+}
+
+.prod-name-text{
+    margin-left: 100px;
+}
+
+.prod-price{
+    display: flex;
+    margin-top: 20px;
+}
+
+.prod-price-text{
+    margin-left: 100px;
+}
+
+.prod-discount-price{
+    display: flex;
+    margin-top: 20px;
+
+}
+
+.prod-discount-text{
+    margin-left: 100px;
+}
+
+.prod-diliver-price{
+    display: flex;
+    margin-top: 20px;
+
+}
+
+.prod-diliver-text{
+    margin-left: 100px;
+}
+
+.prod-size{
+    display: flex;
+    margin-top: 20px;
+
+}
+
+.prod-size-text{
+    margin-left: 100px;
+}
+
+.size-option{
+    width: 150px;
+}
+
+.prod-buy-button{
+    display: flex;
+    margin-top: 30px;
+
+}
+
+.basket-button{
+    width: 150px;
+    height: 50px;
+
+}
+
+.buy-button{
+    width: 150px;
+    height: 50px;
+    margin-left: 50px;
+
+}
+
+.prod-detail-image-title{
+    text-align: center;
+}
+
+.prod-detail-image-form{
+    margin-top: 50px;
+    text-align: center;
+
+}
+
+.detail-image{
+    width: 900px;
+    height: 750px;
+
+}
+
+.prod-detail-info{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 300px;
+
+
+}
+
+.prod-info-text{
+    margin-left: 12px;
+}
+
+.review-title{
+    text-align: center;
+}
+
+.review-form{
+    display: flex;
+    border: 1px solid black;
+}
+
+.review-date{
+    border-right: 1px solid black;
+}
+
+.review-image-form{
+    border-right: 1px solid black;
+
+}
+
+
+.review-image{
+    width: 120px;
+    height: 120px;
+}
+
+.review-content{
+    margin-left: 20px;
+    width: 1000px;
+
+}

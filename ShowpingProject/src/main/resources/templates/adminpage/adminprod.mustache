@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMJ Store</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/admin/adminprod.css"> <!-- 외부 CSS 파일 연결 -->
+</head>
+<body>
+<header>
+    <div class="header-content">
+        <h1>SMJ store</h1>
+        <hr>
+    </div>
+</header>
+<nav>
+    <div class="nav-content">
+        <button class="home">홈</button>
+        <button class="produp-button">상품 등록</button>
+        <button class="questionbutton">1:1문의 목록</button>
+    </div>
+</nav>
+<main>
+    <div class="section">
+        <h3>카테고리</h3>
+    </div>
+    <div class="category-form">
+        <div class="category-select">
+            <select id="categorySelect">
+                <option value="0">카테고리</option>
+                <option value="1">상의</option>
+                <option value="2">하의</option>
+                <option value="3">아우터</option>
+                <option value="4">신발</option>
+            </select>
+        </div>
+        <div class="subcategory-select">
+            <select id="subcategorySelect">
+                <option>세부 카테고리</option>
+            </select>
+        </div>
+    </div>
+    <hr>
+    <div class="section">
+        <h3>상품 이름</h3>
+    </div>
+    <div class="product-name-form">
+        <div class="product-name-input">
+            <label>상품명 : </label><input type="text" placeholder="상품명" style="width: 700px; height: 30px;">
+        </div>
+    </div>
+    <div class="section">
+        <h3>판매 가격</h3>
+    </div>
+    <div class="sell-price-form">
+        <div class="product-sellprice-input">
+            <label>판매 가격 : </label><input type="text" placeholder="판매가" style="width: 300px; height: 30px;">원
+        </div>
+        <div class="product-discount-input">
+            <label>할인 유무 : </label><input type="checkbox">
+        </div>
+        <div class="product-discountprice-input">
+            <input type="text" placeholder="할인율(%)" style="width: 300px; height: 30px;">
+        </div>
+        <div class="product-sellprice-input">
+            <label>실제 가격 : </label><input type="text" placeholder="실제 판매 가격" readonly
+                                          style="width: 300px; height: 30px;">원
+        </div>
+        <div class="price-apply">
+            <input type="button" onclick="apply()" style="width: 100px;height: 40px; background-color: #b1e2f5;"
+                   value="적용하기">
+        </div>
+    </div>
+    <hr>
+    <div class="section">
+        <h3>상품 사진</h3>
+    </div>
+    <div class="imageupload-form">
+        <div class="upload-form">
+            <div calss="main-image">
+                <label>대표 이미지 :</label>
+                <input type="file">
+            </div>
+
+            <div class="sub-image">
+                <label>추가 이미지 :</label>
+                <input type="file">
+                <input type="file">
+                <input type="file">
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="section">
+        <h3>상세 이미지(최대8개)</h3>
+    </div>
+    <div class="detailed-page">
+        <div class="detailed-page-input">
+            <div class="add-form">
+                <button onclick="addimage()">이미지 추가</button><br>
+            </div>
+            <div class="default-image-form">
+                <input type="file" class="default-image">
+            </div>
+            <input type="file" class="add-image1" style="display: none;"><br>
+            <input type="file" class="add-image2" style="display: none;"><br>
+            <input type="file" class="add-image3" style="display: none;"><br>
+            <input type="file" class="add-image4" style="display: none;"><br>
+            <input type="file" class="add-image5" style="display: none;"><br>
+            <input type="file" class="add-image6" style="display: none;"><br>
+            <input type="file" class="add-image7" style="display: none;"><br>
+            <input type="file" class="add-image8" style="display: none;"><br>
+
+        </div>
+    </div>
+    <hr>
+    <div class="section">
+        <h3>상품 옵션</h3>
+    </div>
+    <div class="product-option">
+        <div class="product-option-input">
+            <input type="checkbox" style="width:40px; height: 40px;">XS
+            <input type="checkbox" style="width:40px; height: 40px;">S
+            <input type="checkbox" style="width:40px; height: 40px;">M
+            <input type="checkbox" style="width:40px; height: 40px;">L
+            <input type="checkbox" style="width:40px; height: 40px;">XL
+        </div>
+    </div>
+    <hr>
+    <div class="section">
+        <h3>주요 정보</h3>
+    </div>
+    <div class="product-info">
+        <div class="product-info-input">
+            <div class="product-info-text">
+                상품상태:<input type="text" style="width: 200px; height: 20px;">
+            </div>
+            <div class="product-info-text">
+                원산지:<input type="text" style="width: 200px; height: 20px;">
+
+            </div>
+            <div class="product-info-text">
+                출고지:<input type="text" style="width: 200px; height: 20px;">
+
+            </div>
+            <div class="product-info-text">
+                판매형태:<input type="text" style="width: 200px; height: 20px;">
+            </div>
+
+        </div>
+    </div>
+    <hr>
+    <div class="section">
+        <h3>상품 고시정보</h3>
+    </div>
+    <div class="product-noti-info">
+        <div class="product-noti-input">
+            <div>
+                상세설명 참조 <input type="checkbox" id="notice">
+            </div>
+            <div class="product-noti-text">
+                제품소재:<input type="text" style="width: 200px; height: 20px;" class="materialInput">
+            </div>
+            <div class="product-info-text">
+                색상:<input type="text" style="width: 200px; height: 20px;" class="materialInput">
+            </div>
+            <div class="product-info-text">
+                치수:<input type="text" style="width: 200px; height: 20px;" class="materialInput">
+            </div>
+            <div class="product-info-text">
+                제조자:<input type="text" style="width: 200px; height: 20px;" class="materialInput">
+            </div>
+            <div class="product-info-text">
+                제조국:<input type="text" style="width: 200px; height: 20px;" class="materialInput">
+            </div>
+            <div class="product-info-text">
+                세탁방법:<input type="text" style="width: 200px; height: 20px;" class="materialInput">
+            </div>
+            <div class="product-info-text">
+                제조연월:<input type="text" style="width: 200px; height: 20px;" class="materialInput">
+            </div>
+            <div class="product-info-text">
+                품질보증기준:<input type="text" style="width: 200px; height: 20px;" class="materialInput">
+            </div>
+            <div class="product-info-text">
+                as책임자:<input type="text" style="width: 200px; height: 20px;" class="materialInput">
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="section">
+        <h3>배송비</h3>
+    </div>
+    <div class="product-deliver">
+        <div class="product-deliver-input">
+            <select style="width: 200px; height: 30px;">
+                <option>무료</option>
+                <option>3000</option>
+                <option>3500</option>
+                <option>4000</option>
+            </select>
+        </div>
+    </div>
+    <hr>
+    <div class="product-submit">
+        <button type="submit" style="width: 200px; height: 50px; background-color: #b1e2f5;">등록하기</button>
+        <button type="reset" style="width: 200px; height: 50px; margin-left: 100px;">취소</button>
+    </div>
+</main>
+<script src="/static/js/admin/adminprod.js"></script>
+
+</body>
+
+</html>

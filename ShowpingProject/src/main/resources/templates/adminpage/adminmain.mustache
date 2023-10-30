@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/admin/adminmain.css">
+</head>
+<body>
+<header>
+    <div class="header-content">
+        <h1>SMJ store</h1>
+        <hr>
+    </div>
+</header>
+<nav>
+    <div class="nav-content">
+        <button class="home">홈</button>
+        <button class="produp-button">상품 등록</button>
+        <button class="questionbutton">1:1문의 목록</button>
+    </div>
+</nav>
+<main>
+    <div class="seller-info">
+        <h3><b>매출 정보</b></h3>
+        <hr>
+        <div class="seller-date-form">
+            <button class="seller-date-button">최근 1년</button>
+            <button class="seller-date-button">3개월</button>
+            <button class="seller-date-button">1개월</button>
+            <button class="seller-date-button">1주일</button>
+            <input type="date" class="seller-start"> ~ <input type="date" class="seller-end">
+            <button class="in-button">조회하기</button>
+        </div>
+    </div>
+    <div class="seller-result">
+        매출 : <input type="text" class="seller-result-text" readonly>
+    </div>
+    <hr>
+    <div class="cate-info">
+        <button class="cate-button">카터고리별 매출 정보보기</button>
+    </div>
+    <div class="cate-info-form">
+        <div class="cate-info-text">
+            <h3>상의</h3>
+            긴팔 : <input type="text" readonly><br>
+            반팔 : <input type="text" readonly><br>
+            후드 : <input type="text" readonly><br>
+            맨투 : <input type="text" readonly><br>
+            니트 : <input type="text" readonly>
+        </div>
+        <div class="cate-info-text">
+            <h3>하의</h3>
+            데님팬 : <input type="text" readonly><br>
+            코튼팬 : <input type="text" readonly><br>
+            카고팬 : <input type="text" readonly><br>
+            조거팬 : <input type="text" readonly><br>
+            슬렉스 : <input type="text" readonly>
+        </div>
+        <div class="cate-info-text">
+            <h3>아우터</h3>
+            후드 : <input type="text" readonly><br>
+            가디 : <input type="text" readonly><br>
+            무스 : <input type="text" readonly><br>
+            패딩 : <input type="text" readonly><br>
+            코트 : <input type="text" readonly>
+        </div>
+        <div class="cate-info-text">
+            <h3>신발</h3>
+            운동 : <input type="text" readonly><br>
+            구두 : <input type="text" readonly><br>
+            로퍼 : <input type="text" readonly><br>
+            샌들 : <input type="text" readonly>
+        </div>
+
+    </div>
+
+
+    <div class="seller-result">
+    </div>
+</main>
+</body>
+</html>

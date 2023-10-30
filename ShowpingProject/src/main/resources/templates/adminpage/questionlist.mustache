@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/admin/questionlist.css">
+</head>
+<body>
+<header>
+    <div class="header-content">
+        <h1>SMJ store</h1>
+        <hr>
+    </div>
+</header>
+<nav>
+    <div class="nav-content">
+        <button class="home">홈</button>
+        <button class="produp-button">상품 등록</button>
+        <button class="questionbutton">1:1문의 목록</button>
+    </div>
+</nav>
+<main>
+    <div class="seller-info">
+        <h3><b>조회할 기간</b></h3>
+        <hr>
+        <div class="seller-date-form">
+            <button class="seller-date-button">최근 1년</button>
+            <button class="seller-date-button">3개월</button>
+            <button class="seller-date-button">1개월</button>
+            <button class="seller-date-button">1주일</button>
+            <input type="date" class="seller-start"> ~ <input type="date" class="seller-end">
+            <select class="question-type">
+                <option>전체</option>
+                <option>배송</option>
+                <option>주문/결제</option>
+                <option>환불</option>
+                <option>상품</option>
+            </select>
+            <select class="question-state">
+                <option value="0">전체</option>
+                <option value="1">답변 완료</option>
+                <option value="2">답변 미완료</option>
+            </select>
+            <button class="in-button">조회하기</button>
+        </div>
+    </div>
+    <div class="content-name">
+        <h2>1:1 문의 목록</h2>
+    </div>
+    <hr>
+    <div class="questionlist-form">
+        <div class="question-collum-form">
+            <div class="question-collum">주문NUM</div>
+            <div class="question-collum">고객ID</div>
+            <div class="question-collum">상품NAME</div>
+            <div class="question-collum">문의TITLE</div>
+            <div class="question-collum">문의TYPE</div>
+            <div class="question-collum">문의DATE</div>
+            <div class="question-collum">답변STATE</div>
+        </div>
+        <hr>
+        <div class="question-list-form">
+            <div class="question-list-collum1">1212251</div>
+            <div class="question-list-collum2">SSW0921</div>
+            <div class="question-list-collum3">반팔니트</div>
+            <div class="question-list-collum4">사이즈가 잘못왔어요</div>
+            <div class="question-list-collum5">상품</div>
+            <div class="question-list-collum6">2018-08-26</div>
+            <div class="question-list-collum7">완료</div>
+        </div>
+
+        <div class="question-list-form">
+            <div class="question-list-collum1">1212351</div>
+            <div class="question-list-collum2">JJB0921</div>
+            <div class="question-list-collum3">가디건</div>
+            <div class="question-list-collum4">배송이 안와요</div>
+            <div class="question-list-collum5">배송</div>
+            <div class="question-list-collum6">2018-11-26</div>
+            <div class="question-list-collum7">미완료</div>
+        </div>
+
+        <div class="question-list-form">
+            <div class="question-list-collum1">1212451</div>
+            <div class="question-list-collum2">MSW0921</div>
+            <div class="question-list-collum3">후드집업</div>
+            <div class="question-list-collum4">실밥이 터져서 왔어요</div>
+            <div class="question-list-collum5">상품</div>
+            <div class="question-list-collum6">2018-12-26</div>
+            <div class="question-list-collum7">미완료</div>
+        </div>
+    </div>
+</main>
+<script src="/static/js/admin/questionlist.js"></script>
+</body>
+</html>

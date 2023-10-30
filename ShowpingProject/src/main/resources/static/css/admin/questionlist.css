@@ -1,0 +1,170 @@
+header {
+    width: 100%;
+    height: 50px;
+
+
+}
+
+nav {
+    margin-top: 20px;
+    width: 231px;
+    height: 710px;
+    border-right: 1px solid black;
+    float: left;
+
+}
+
+main {
+    margin-left: 231px;
+    width: 1230px;
+    height: 710px;
+
+
+}
+
+.header-content {
+    text-align: center;
+    width: 100%;
+    height: 50px;
+}
+
+.nav-content {
+    margin-left: 35px;
+    margin-top: 150px;
+}
+
+.home{
+    width: 150px;
+    height: 80px;
+}
+
+.produp-button {
+    margin-top: 50px;
+    width: 150px;
+    height: 80px;
+}
+
+.questionbutton{
+    margin-top: 50px;
+    width: 150px;
+    height: 80px;
+}
+
+.content-name{
+    text-align: center;
+    margin-top: 80px;
+}
+.seller-info {
+    text-align: center;
+    margin-top: 50px;
+
+ }
+
+ .seller-date-form{
+     display: flex;
+     margin-left: 30px;
+     margin-top: 20px;
+ }
+
+ .seller-date-button{
+     width: 100px;
+     height: 30px;
+     margin-left: 20px;
+ }
+
+ .seller-start{
+     margin-left: 20px;
+     margin-right: 5px;
+ }
+
+ .seller-end{
+     margin-left: 5px;
+ }
+
+ .in-button{
+    margin-left: 30px;
+    width: 120px;
+}
+
+
+.return{
+    margin-top: 50px;
+    margin-left: 30px;
+}
+
+.return-button{
+    width: 80px;
+    height: 30px;
+}
+
+.questionlist-form{
+    margin-top: 50px;
+
+
+}
+
+.question-type{
+    margin-left: 10px;
+}
+
+.question-state{
+    margin-left: 10px;
+}
+
+.question-collum-form{
+      display: flex;
+
+}
+
+.question-collum{
+    margin-right: 130px;
+}
+
+.question-list-form{
+    display: flex;
+
+}
+
+.question-list-collum1{
+    width: 168px;
+    height: 30px;
+    border-right: 1px solid black;
+    text-align: center;
+}
+.question-list-collum2{
+    width: 165px;
+    height: 30px;
+    border-right: 1px solid black;
+    text-align: center;
+}
+.question-list-collum3{
+    width: 180px;
+    height: 30px;
+    border-right: 1px solid black;
+    text-align: center;
+}
+.question-list-collum4{
+    width: 180px;
+    height: 30px;
+    border-right: 1px solid black;
+    text-align: center;
+}
+.question-list-collum5{
+    width: 173px;
+    height: 30px;
+    border-right: 1px solid black;
+    text-align: center;
+}
+.question-list-collum6{
+    width: 178px;
+    height: 30px;
+    border-right: 1px solid black;
+    text-align: center;
+}
+
+.question-list-collum7{
+    width: 184px;
+    height: 30px;
+    text-align: center;
+}
+
