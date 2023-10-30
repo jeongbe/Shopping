@@ -21,21 +21,22 @@
     </div>
 </nav>
 <main>
+    <form method="post" action="/shopping/create/product">
     <div class="section">
         <h3>카테고리</h3>
     </div>
     <div class="category-form">
         <div class="category-select">
-            <select id="categorySelect">
+            <select id="categorySelect" name="prod_cate">
                 <option value="0">카테고리</option>
                 <option value="1">상의</option>
                 <option value="2">하의</option>
-                <option value="3">아우터</option>
+                <option value="3" >아우터</option>
                 <option value="4">신발</option>
             </select>
         </div>
         <div class="subcategory-select">
-            <select id="subcategorySelect">
+            <select id="subcategorySelect" name="prod_decate">
                 <option>세부 카테고리</option>
             </select>
         </div>
@@ -46,7 +47,7 @@
     </div>
     <div class="product-name-form">
         <div class="product-name-input">
-            <label>상품명 : </label><input type="text" placeholder="상품명" style="width: 700px; height: 30px;">
+            <label>상품명 : </label><input type="text" placeholder="상품명" style="width: 700px; height: 30px;" name="prod_name">
         </div>
     </div>
     <div class="section">
@@ -54,17 +55,17 @@
     </div>
     <div class="sell-price-form">
         <div class="product-sellprice-input">
-            <label>판매 가격 : </label><input type="text" placeholder="판매가" style="width: 300px; height: 30px;">원
+            <label>판매 가격 : </label><input type="text" placeholder="판매가" style="width: 300px; height: 30px;" name="prod_price">원
         </div>
         <div class="product-discount-input">
             <label>할인 유무 : </label><input type="checkbox">
         </div>
         <div class="product-discountprice-input">
-            <input type="text" placeholder="할인율(%)" style="width: 300px; height: 30px;">
+            <input type="text" placeholder="할인율(%)" style="width: 300px; height: 30px;" name="prod_discount_ratio">
         </div>
         <div class="product-sellprice-input">
             <label>실제 가격 : </label><input type="text" placeholder="실제 판매 가격" readonly
-                                          style="width: 300px; height: 30px;">원
+                                          style="width: 300px; height: 30px;" name="prod_discount_price">원
         </div>
         <div class="price-apply">
             <input type="button" onclick="apply()" style="width: 100px;height: 40px; background-color: #b1e2f5;"
@@ -119,11 +120,11 @@
     </div>
     <div class="product-option">
         <div class="product-option-input">
-            <input type="checkbox" style="width:40px; height: 40px;">XS
-            <input type="checkbox" style="width:40px; height: 40px;">S
-            <input type="checkbox" style="width:40px; height: 40px;">M
-            <input type="checkbox" style="width:40px; height: 40px;">L
-            <input type="checkbox" style="width:40px; height: 40px;">XL
+            <input type="checkbox" style="width:40px; height: 40px;" name="prod_XS">XS
+            <input type="checkbox" style="width:40px; height: 40px;" name="prod_S">S
+            <input type="checkbox" style="width:40px; height: 40px;" name="prod_M">M
+            <input type="checkbox" style="width:40px; height: 40px;" name="prod_L">L
+            <input type="checkbox" style="width:40px; height: 40px;" name="prod_XL">XL
         </div>
     </div>
     <hr>
@@ -193,11 +194,11 @@
     </div>
     <div class="product-deliver">
         <div class="product-deliver-input">
-            <select style="width: 200px; height: 30px;">
-                <option>무료</option>
-                <option>3000</option>
-                <option>3500</option>
-                <option>4000</option>
+            <select style="width: 200px; height: 30px;" name="diliver_price">
+                <option >0</option>
+                <option >3000</option>
+                <option >3500</option>
+                <option >4000</option>
             </select>
         </div>
     </div>
@@ -206,6 +207,7 @@
         <button type="submit" style="width: 200px; height: 50px; background-color: #b1e2f5;">등록하기</button>
         <button type="reset" style="width: 200px; height: 50px; margin-left: 100px;">취소</button>
     </div>
+    </form>
 </main>
 <script src="/static/js/admin/adminprod.js"></script>
 
