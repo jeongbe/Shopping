@@ -8,7 +8,7 @@ public class PageController {
 
     //각 페이지 GETMapping 하는 컨트롤러
     @GetMapping("/shopping/main")
-    public String main() {
+    public String shoppingmain() {
 
         return "main";
     }

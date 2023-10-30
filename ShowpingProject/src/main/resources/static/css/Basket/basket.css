@@ -1,0 +1,123 @@
+.body {
+    width: auto;
+    height: auto;
+}
+
+.main_title {
+    display: flex;
+    width: 100%;
+}
+
+.backIcon {
+    margin-top: 70px;
+    margin-left: 300px;
+    width: 40px;
+    height: 40px;
+    left: 200px;
+    cursor: pointer;
+}
+
+.title {
+    margin-left: 30%;
+    margin-top: 4%;
+    font-size: 40px;
+}
+
+.body_content {
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+    margin-top: 70px;
+    font-size: 25px;
+}
+
+.Allclick {
+    margin-left: 19%;
+}
+
+.clickdelete {
+    margin-left: 50%;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.Alldelete {
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+input[type='checkbox'] {
+    position: relative;
+    width: 30px; /*Desired width*/
+
+    height: 30px; /*Desired height*/
+    top: 5px;
+    cursor: pointer;
+}
+
+.line2 {
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    width: 1300px;
+    border-bottom: 1px solid #000000;
+    margin-left: 19%;
+    margin-top: 15px;
+}
+
+.produces_image {
+    width: 160px;
+    height: 160px;
+    margin-left: 40px;
+}
+
+.products {
+    margin-left: 20%;
+    margin-top: 20px;
+    display: block;
+}
+
+.product{
+    display: flex;
+    margin-bottom: 40px;
+}
+
+.product_info {
+    margin-left: 40px;
+    margin-top: 30px;
+}
+
+.product_name {
+    font-weight: bolder;
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+.product_size {
+    margin-bottom: 5px;
+}
+
+.pagination {
+    margin-bottom: 10px;
+}
+
+.Ximg {
+    width: 30px;
+    height: 30px;
+    margin-left: 50%;
+    cursor: pointer;
+}
+
+.btn__{
+    margin-top : 120px;
+}
+
+.btn_{
+    display: block;
+    margin: 0 auto;
+    margin-top: 70px;
+    margin-bottom: 200px;
+    width: 200px;
+    height: 60px;
+    font-size: 20px
+}
