@@ -50,4 +50,11 @@ public class PageController {
     public String answer(){
     return "adminpage/answer";
    }
+
+
+   //장바구니
+   @GetMapping("/shopping/basket")
+    public String basket(){
+        return "Basket/basket";
+   }
 }
