@@ -5,10 +5,9 @@
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
 </head>
 <body>
-{{#product}}
 <header>
     <div class="cate-info">
-        {{prod_cate}} >> {{prod_decate}}
+        상의 >> 긴팔
     </div>
     <hr>
 </header>
@@ -52,36 +51,36 @@
         <div class="prod-name">
             <h3>상품명</h3>
             <div class="prod-name-text">
-                <p>{{prod_name}}</p>
+                <p>남자 회색 맨투맨</p>
             </div>
         </div>
         <div class="prod-price">
             <h3>판매가</h3>
             <div class="prod-price-text">
-                <p>{{prod_price}}</p>
+                <p>25,900원</p>
             </div>
         </div>
         <div class="prod-discount-price">
             <h3>할인가</h3>
             <div class="prod-discount-text">
-                <p>{{prod_discount_price}}</p>
+                <p>25,900원</p>
             </div>
         </div>
         <div class="prod-diliver-price">
             <h3>배송비</h3>
             <div class="prod-diliver-text">
-                <p>{{diliver_price}}</p>
+                <p>배송비 무료</p>
             </div>
         </div>
         <div class="prod-size">
             <h3>사이즈</h3>
             <div class="prod-size-text">
                 <select class="size-option">
-                    <option>{{prod_XS}}</option>
-                    <option>{{prod_S}}</option>
-                    <option>{{prod_M}}</option>
-                    <option>{{prod_L}}</option>
-                    <option>{{prod_XL}}</option>
+                    <option>XS</option>
+                    <option>S</option>
+                    <option>M</option>
+                    <option>L</option>
+                    <option>XL</option>
                 </select>
             </div>
         </div>
@@ -119,7 +118,6 @@
         <div class="prod-info-text">출고지 : <input type="text" placeholder="서울" readonly></div><br>
         <div>판매형태 :<input type="text" placeholder="도매" readonly></div>
     </div>
-   {{/product}}
     <hr>
     <div class="review-title">
         <h2>리뷰</h2>

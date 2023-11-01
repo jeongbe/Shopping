@@ -28,7 +28,7 @@ public class product {
     String prod_discount_ratio;
     @Column
     //상품 할인가격
-    String Prod_discount_price;
+    String prod_discount_price;
     @Column
     //배달비
     String diliver_price;
@@ -48,6 +48,9 @@ public class product {
     //사이즈
     String prod_XL;
 
+
+
+
     public product() {
     }
 
@@ -58,7 +61,7 @@ public class product {
         this.prod_decate = prod_decate;
         this.prod_price = prod_price;
         this.prod_discount_ratio = prod_discount_ratio;
-        Prod_discount_price = prod_discount_price;
+        this.prod_discount_price = prod_discount_price;
         this.diliver_price = diliver_price;
         this.prod_XS = prod_XS;
         this.prod_S = prod_S;
@@ -76,7 +79,7 @@ public class product {
                 ", prod_decate='" + prod_decate + '\'' +
                 ", prod_price='" + prod_price + '\'' +
                 ", prod_discount_ratio='" + prod_discount_ratio + '\'' +
-                ", Prod_discount_price='" + Prod_discount_price + '\'' +
+                ", Prod_discount_price='" + prod_discount_price + '\'' +
                 ", diliver_price='" + diliver_price + '\'' +
                 ", prod_XS='" + prod_XS + '\'' +
                 ", prod_S='" + prod_S + '\'' +

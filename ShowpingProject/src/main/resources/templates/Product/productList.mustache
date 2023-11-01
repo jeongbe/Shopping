@@ -10,33 +10,39 @@
     <div class="detail-category-form">
         <div class="head-category"><h3></h3></div>
         <hr class="hr">
-        <div class="detail-category1"><p class="cusor"></p></div>
-        <div class="detail-category2"><p class="cusor"></p></div>
-        <div class="detail-category3"><p class="cusor"></p></div>
-        <div class="detail-category4"><p class="cusor"></p></div>
-        <div class="detail-category5"><p class="cusor"></p></div>
+        <div class="detail-category1"><p class="cusor1" onclick="decateclick1()"></p></div>
+        <div class="detail-category2"><p class="cusor2" onclick="decateclick2()"></p></div>
+        <div class="detail-category3"><p class="cusor3" onclick="decateclick3()"></p></div>
+        <div class="detail-category4"><p class="cusor4" onclick="decateclick4()"></p></div>
+        <div class="detail-category5"><p class="cusor5" onclick="decateclick5()"></p></div>
     </div>
 </nav>
 <section>
     <div class="category-form">
-        <div class="category1"><h3 onclick="handleCategoryClick()" class="cusor">상의</h3></div>
-        <div class="category2"><h3 onclick="handleCategoryClick()" class="cusor">하의</h3></div>
-        <div class="category3"><h3 onclick="handleCategoryClick()" class="cusor">아우터</h3></div>
-        <div class="category4"><h3 onclick="handleCategoryClick()" class="cusor">신발</h3></div>
+        <div class="category1"><h3 onclick="handleCategoryClick(event)" class="cusor">상의</h3></div>
+        <div class="category2"><h3 onclick="handleCategoryClick(event)" class="cusor">하의</h3></div>
+        <div class="category3"><h3 onclick="handleCategoryClick(event)" class="cusor">아우터</h3></div>
+        <div class="category4"><h3 onclick="handleCategoryClick(event)" class="cusor">신발</h3></div>
     </div>
 </section>
 <main>
+
     <div class="prod-list1-form">
-        <div class="prod-list1-text"><img src="/image/test-image.webp" class="prod-list1"><br><p class="cusor">상의 긴팔</p></div>
-        <div class="prod-list1-text"><img src="/image/test-image.webp" class="prod-list1"><br><p class="cusor">상의 긴팔</p></div>
-        <div class="prod-list1-text"><img src="/image/test-image.webp" class="prod-list1"><br><p class="cusor">상의 긴팔</p></div>
-        <div class="prod-list1-text"><img src="/image/test-image.webp" class="prod-list1"><br><p class="cusor">상의 긴팔</p></div>
+        {{#productlist}}
+        <div class="prod-list1-text">
+            <!--상품리스트가 들어갈 테그-->
+            <p style="display: none;">{{prod_code}}</p>
+            <p style="" class="prod_decate">{{prod_decate}}</p>
+            <a href="/shopping/read/product/{{prod_code}}">
+                <img src="/image/test-image.webp" class="prod-list1"><br>
+                <p class="cusor">
+                 {{prod_name}}<br>
+                    {{prod_price}}</P>
+            </a>
+        </div>
+        {{/productlist}}
     </div>
     <div class="prod-list2-form">
-        <div class="prod-list2-text"><img src="/image/test-image.webp" class="prod-list2"><br><p class="cusor">상의 긴팔</p></div>
-        <div class="prod-list2-text"><img src="/image/test-image.webp" class="prod-list2"><br><p class="cusor">상의 긴팔</p></div>
-        <div class="prod-list2-text"><img src="/image/test-image.webp" class="prod-list2"><br><p class="cusor">상의 긴팔</p></div>
-        <div class="prod-list2-text"><img src="/image/test-image.webp" class="prod-list2"><br><p class="cusor">상의 긴팔</p></div>
     </div>
 </main>
 <script src="/static/js/Product/prodlist.js"></script>

@@ -15,9 +15,9 @@
 </header>
 <nav>
     <div class="nav-content">
-        <button class="home">홈</button>
-        <button class="produp-button">상품 등록</button>
-        <button class="questionbutton">1:1문의 목록</button>
+        <a href="/shopping/adminmain"><button class="home">홈</button></a>
+        <a href="/shopping/adminprod"><button class="produp-button">상품 등록</button></a>
+        <a href="/shopping/questionlist"><button class="questionbutton">1:1문의 목록</button></a>
     </div>
 </nav>
 <main>
@@ -31,7 +31,7 @@
                 <option value="0">카테고리</option>
                 <option value="1">상의</option>
                 <option value="2">하의</option>
-                <option value="3" >아우터</option>
+                <option value="3">아우터</option>
                 <option value="4">신발</option>
             </select>
         </div>
@@ -47,15 +47,16 @@
     </div>
     <div class="product-name-form">
         <div class="product-name-input">
-            <label>상품명 : </label><input type="text" placeholder="상품명" style="width: 700px; height: 30px;" name="prod_name">
+            <label>상품명 : </label><input type="text" placeholder="상품명" style="width: 700px; height: 30px;" name="prod_name" required>
         </div>
     </div>
     <div class="section">
         <h3>판매 가격</h3>
     </div>
+
     <div class="sell-price-form">
         <div class="product-sellprice-input">
-            <label>판매 가격 : </label><input type="text" placeholder="판매가" style="width: 300px; height: 30px;" name="prod_price">원
+            <label>판매 가격 : </label><input type="text" placeholder="판매가" style="width: 300px; height: 30px;" name="prod_price" required>원
         </div>
         <div class="product-discount-input">
             <label>할인 유무 : </label><input type="checkbox">
@@ -98,7 +99,7 @@
     <div class="detailed-page">
         <div class="detailed-page-input">
             <div class="add-form">
-                <button onclick="addimage()">이미지 추가</button><br>
+                <button type="button" onclick="addimage()">이미지 추가</button><br>
             </div>
             <div class="default-image-form">
                 <input type="file" class="default-image">
@@ -120,11 +121,11 @@
     </div>
     <div class="product-option">
         <div class="product-option-input">
-            <input type="checkbox" style="width:40px; height: 40px;" name="prod_XS">XS
-            <input type="checkbox" style="width:40px; height: 40px;" name="prod_S">S
-            <input type="checkbox" style="width:40px; height: 40px;" name="prod_M">M
-            <input type="checkbox" style="width:40px; height: 40px;" name="prod_L">L
-            <input type="checkbox" style="width:40px; height: 40px;" name="prod_XL">XL
+            <input type="checkbox" style="width:40px; height: 40px;" name="prod_XS" value="XS">XS
+            <input type="checkbox" style="width:40px; height: 40px;" name="prod_S" value="S">S
+            <input type="checkbox" style="width:40px; height: 40px;" name="prod_M" value="M">M
+            <input type="checkbox" style="width:40px; height: 40px;" name="prod_L" value="L">L
+            <input type="checkbox" style="width:40px; height: 40px;" name="prod_XL" value="XL">XL
         </div>
     </div>
     <hr>

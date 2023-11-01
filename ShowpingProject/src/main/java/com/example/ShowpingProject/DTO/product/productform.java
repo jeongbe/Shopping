@@ -17,10 +17,9 @@ public class productform {
     //상품 할인비율
     String prod_discount_ratio;
     //상품 할인가격
-    String Prod_discount_price;
+    String prod_discount_price;
     //배달비
     String diliver_price;
-
     //사이즈
     String prod_XS;
     //사이즈
@@ -42,7 +41,7 @@ public class productform {
         this.prod_decate = prod_decate;
         this.prod_price = prod_price;
         this.prod_discount_ratio = prod_discount_ratio;
-        Prod_discount_price = prod_discount_price;
+        this.prod_discount_price = prod_discount_price;
         this.diliver_price = diliver_price;
         this.prod_XS = prod_XS;
         this.prod_S = prod_S;
@@ -61,7 +60,7 @@ public class productform {
                 ", prod_decate='" + prod_decate + '\'' +
                 ", prod_price='" + prod_price + '\'' +
                 ", prod_discount_ratio='" + prod_discount_ratio + '\'' +
-                ", Prod_discount_price='" + Prod_discount_price + '\'' +
+                ", Prod_discount_price='" + prod_discount_price + '\'' +
                 ", diliver_price='" + diliver_price + '\'' +
                 ", prod_XS='" + prod_XS + '\'' +
                 ", prod_S='" + prod_S + '\'' +
@@ -72,8 +71,35 @@ public class productform {
     }
 
     public product toEntity(){
-        return new product(null,prod_name,prod_cate,prod_decate,prod_price,prod_discount_ratio,Prod_discount_price, diliver_price,prod_XS,prod_S,prod_M,prod_L,prod_XL);
+        if(prod_XS == null){
+            prod_XS ="품절";
+        }
+        if(prod_S == null){
+            prod_S = "품절";
+        }
+        if (prod_M == null){
+            prod_M = "품절";
+        }
+        if (prod_L == null){
+            prod_L = "품절";
+        }
+        if (prod_XL == null){
+            prod_XL = "품절";
+        }
+
+        switch (prod_cate){
+            case "1" : prod_cate="상의"; break;
+            case "2" : prod_cate="하의"; break;
+            case "3" : prod_cate="아우터";break;
+            case "4" : prod_cate="신발"; break;
+        }
+
+        return new product(null,prod_name,prod_cate,prod_decate,prod_price,prod_discount_ratio,prod_discount_price, diliver_price,prod_XS,prod_S,prod_M,prod_L,prod_XL);
     }
+
+
+
+
 
 }
 

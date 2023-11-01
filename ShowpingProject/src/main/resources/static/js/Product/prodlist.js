@@ -53,3 +53,83 @@
          }
 
      }
+
+     // JavaScript 코드는 DOM 요소를 다루기 위한 코드입니다.
+     // 해당 DOM 요소들을 가져오기 위해선 적절한 선택자를 사용하실 필요가 있습니다.
+     // 아래 코드는 가상의 상황을 가정하고 작성한 예제입니다.
+
+     // 세부 카테고리를 클릭했을 때 실행할 함수
+     function decateclick1() {
+         // 모든 상품 요소를 숨깁니다.
+         hideAllProducts();
+           //세부디테일 요소 전부 가져오기
+           var decate1 = document.querySelector('.cusor1');
+            //세부 디테일의 세부정보 가져오기
+           var decateinfo1 = decate1.textContent;
+            // 클릭한 세부 카테고리에 해당하는 상품 요소를 보여줍니다.
+          showProductsForCategory(decateinfo1);
+           }
+           function decateclick2() {
+                    // 모든 상품 요소를 숨깁니다.
+                    hideAllProducts();
+                      //세부디테일 요소 전부 가져오기
+                      var decate2 = document.querySelector('.cusor2');
+                       //세부 디테일의 세부정보 가져오기
+                      var decateinfo2 = decate2.textContent;
+                       // 클릭한 세부 카테고리에 해당하는 상품 요소를 보여줍니다.
+                     showProductsForCategory(decateinfo2);
+                      }
+                      function decateclick3() {
+                               // 모든 상품 요소를 숨깁니다.
+                               hideAllProducts();
+                                 //세부디테일 요소 전부 가져오기
+                                 var decate3 = document.querySelector('.cusor3');
+                                  //세부 디테일의 세부정보 가져오기
+                                 var decateinfo3 = decate3.textContent;
+                                  // 클릭한 세부 카테고리에 해당하는 상품 요소를 보여줍니다.
+                                showProductsForCategory(decateinfo3);
+                                 }
+                                 function decateclick4() {
+                                          // 모든 상품 요소를 숨깁니다.
+                                          hideAllProducts();
+                                            //세부디테일 요소 전부 가져오기
+                                            var decate4 = document.querySelector('.cusor4');
+                                             //세부 디테일의 세부정보 가져오기
+                                            var decateinfo4 = decate4.textContent;
+                                             // 클릭한 세부 카테고리에 해당하는 상품 요소를 보여줍니다.
+                                           showProductsForCategory(decateinfo4);
+                                            }
+                                            function decateclick5() {
+                                                     // 모든 상품 요소를 숨깁니다.
+                                                     hideAllProducts();
+                                                       //세부디테일 요소 전부 가져오기
+                                                       var decate5 = document.querySelector('.cusor5');
+                                                        //세부 디테일의 세부정보 가져오기
+                                                       var decateinfo5 = decate5.textContent;
+                                                        // 클릭한 세부 카테고리에 해당하는 상품 요소를 보여줍니다.
+                                                      showProductsForCategory(decateinfo5);
+                                                       }
+
+
+     // 모든 상품을 숨기는 함수
+     function hideAllProducts() {
+         var productElements = document.querySelectorAll('.prod-list1-text');
+         for (var i = 0; i < productElements.length; i++) {
+             productElements[i].style.display = 'none';
+         }
+     }
+
+     // 특정 카테고리의 상품을 보여주는 함수
+     function showProductsForCategory(categoryClassName) {
+         var productElements = document.querySelectorAll('.prod_decate');
+         for (var i = 0; i < productElements.length; i++) {
+             var productCategory = productElements[i].textContent.trim();
+             if (productCategory.trim() === categoryClassName.trim()) {
+                 var productElement = productElements[i].parentNode;
+                 productElement.style.display = 'block';
+             }
+         }
+     }
+
+
+

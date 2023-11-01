@@ -82,12 +82,14 @@ margin-top: 10px;
 
 .prod-list1-text{
     text-align: center;
+
 }
 
 .prod-list1{
     width: 220px;
     height: 260px;
     margin-left: 80px;
+    display: flex;
 }
 
 .prod-list2-form{

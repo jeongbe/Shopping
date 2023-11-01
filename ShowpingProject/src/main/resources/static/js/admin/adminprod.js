@@ -100,7 +100,10 @@
                     }
                 });
 
-                 //정보가져오기
+
+
+
+                         //정보가져오기
                         var deimage = document.querySelector(".default-image");
                         var addimage1 = document.querySelector(".add-image1");
                         var addimage2 = document.querySelector(".add-image2");
