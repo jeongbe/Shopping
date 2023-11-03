@@ -1,0 +1,195 @@
+body {
+    background-color: #e9ecef;
+}
+
+.order {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    margin-top: 70px;
+    margin-bottom: 40px;
+}
+
+p {
+    padding-top: 5px;
+}
+
+.title > p {
+    font-size: 25px;
+}
+
+input[type='text'] {
+    width: 100px;
+    height: 30px;
+    /* margin-left: 20px0; */
+    /* margin-bottom: 20px; */
+}
+
+.mar {
+    position: relative;
+    margin-left: 80px;
+    bottom: 8px;
+    margin-right: 60px;
+    /* margin-bottom: 100px; */
+}
+
+.mar_2 {
+    /* background-color: red; */
+    position: relative;
+    bottom: 3px;
+}
+
+select {
+    width: 150px;
+    height: 30px;
+}
+
+.sel {
+    width: 300px;
+}
+
+.border_ {
+    width: 800px;
+    height: 45px;
+    border: 1px solid black;
+    display: flex;
+    font-size: 17px;
+    padding-top: 10px;
+    padding-left: 10px;
+    background-color: white;
+}
+
+.count {
+    position: relative;
+    left: 140px;
+    /* margin-right: 400px; */
+}
+
+.pri {
+    position: relative;
+    left: 80px;
+}
+
+.border_ p:nth-child(2) {
+    width: 200px;
+    text-align: center;
+}
+
+.dis {
+    display: flex;
+}
+
+.v1 {
+    margin-right: 130px;
+}
+
+.v2 {
+    margin-right: 205px;
+}
+
+.v3 {
+    margin-right: 70px;
+}
+
+.prod_info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 70px;
+}
+
+.prod_img {
+    width: 100px;
+    height: 100px;
+}
+
+.border2_ {
+    width: 800px;
+    height: 120px;
+    border: 1px solid black;
+    display: flex;
+    font-size: 17px;
+    padding-top: 10px;
+    padding-left: 10px;
+    background-color: white;
+}
+
+.pord_infos p:nth-child(1) {
+    margin-right: 250px;
+}
+
+.pord_infos > p {
+    margin-right: 60px;
+}
+
+.prod_info2 {
+    width: 330px;
+    margin-left: 20px;
+    margin-top: 10px;
+    /* padding-right: 23px; */
+}
+
+.prod_info2 p:first-child {
+    margin-bottom: 10px;
+}
+
+.prod_info3 {
+    position: relative;
+    left: 40px;
+}
+
+.prod_info3 > p {
+    /* width: 115px; */
+    margin-right: 90px;
+    margin-top: 40px;
+}
+
+.prod_info3 p:first-child {
+    margin-left: 55px;
+}
+
+.border3_ {
+    width: 800px;
+    height: 45px;
+    border: 1px solid black;
+    display: flex;
+    font-size: 17px;
+    padding-top: 10px;
+    padding-left: 10px;
+    background-color: white;
+}
+
+.coupon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 70px;
+}
+
+.backC {
+    background-color: #b1e2f5;
+    font-weight: 600;
+}
+
+.mar_3 {
+    margin-left: 10px;
+}
+
+.mar_4 {
+    margin-left: 30px;
+}
+
+.check_btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+.btn {
+    width: 190px;
+}

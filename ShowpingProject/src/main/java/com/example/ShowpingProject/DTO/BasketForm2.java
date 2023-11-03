@@ -1,19 +1,15 @@
 package com.example.ShowpingProject.DTO;
 
 import com.example.ShowpingProject.entity.Baskets;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
+
 @Data
-@Getter
-public class BasketForm {
+
+public class BasketForm2 {
+
     Long id;
 
     Long usercode;   //유저 코드
@@ -27,8 +23,7 @@ public class BasketForm {
 
     int prodprice;  //상품 총 가격
 
-    public BasketForm(Long id, Long usercode, Long prodcode, String prodname, String prodsize, String prodcnt, int prodprice) {
-
+    public BasketForm2(Long id, Long usercode, Long prodcode, String prodname, String prodsize, String prodcnt, int prodprice) {
         this.id = id;
         this.usercode = usercode;
         this.prodcode = prodcode;

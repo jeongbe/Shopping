@@ -53,8 +53,12 @@ public class PageController {
 
 
    //장바구니
-   @GetMapping("/shopping/basket")
+    @GetMapping("/shopping/basket")
     public String basket(){
-        return "Basket/basket";
+        return "basket/basket";
    }
+
+   //주문 페이지
+    @GetMapping("/shopping/order")
+    public String order(){return "/order/order";};
 }

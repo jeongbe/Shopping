@@ -1,113 +1,248 @@
 <head>
-    <link rel="stylesheet" type="text/css"  href="/static/css/Basket/basket.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/basket/basket.css">
 </head>
 <body>
 <header>
     {{>layouts/header}}
 </header>
-
+{{#msg}}
+    <div class="alert alert-success alert-dismissible d-flex align-items-center" role="alert">
+        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:">
+            <use xlink:href="#check-circle-fill"/>
+        </svg>
+        <div>
+            장바구니 전체 상품 삭제 완료
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+{{/msg}}
+{{#Errormsg}}
+    <div class="alert alert-danger d-flex align-items-center" role="alert">
+        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+            <use xlink:href="#exclamation-triangle-fill"/>
+        </svg>
+        <div>
+            장바구니 안 상품이 없습니다
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+{{/Errormsg}}
 <div class="main_title">
-    <img src="/Pro1/image/chevron-left-solid.svg" class="backIcon" alt="" />
+    <img src="/static/images/chevron-left-solid.svg" class="backIcon" alt=""/>
     <h1 class="title">장바구니</h1>
 </div>
 <div class="body_content">
-    <div class="Allclick"><input type="checkbox" id="Allc" />
-        전체선택<span class="checkbox-count">(0/3)</span>
+    <div class="Allclick">
+        상품<span class="checkbox-count">(0/3)</span>
     </div>
-    <p class="clickdelete">선택삭제/</p>
-    <p class="Alldelete">전체삭제</p>
+    <form id="deleteForm" method="get">
+        <button class="clickdelete">선택삭제/</button>
+    </form>
+    <form id="deleteAllForm" method="get">
+        <p style="display: none" class="userCode">{{user_code}}</p>
+        <button type="submit" class="Alldelete">전체삭제</button>
+    </form>
 </div>
 <div class="line2"></div>
 <!--아이템 들어오는 부분-->
-<form action="/shopping/cartbox/{id}" method="get">
-    {{#basketList}}
-<div class="products">
-    <div class="product" onclick="find(this); return false;">
-        <input type="checkbox" class="chk" />
-        <img src="/Pro1/image/willow-warbler-8071472_1280.jpg" class="img-thumbnail produces_image" alt="..." />
-        <div class="product_info">
-            <p id="cart_code" hidden>{{prod_code}}</p>
-            <p  class="product_name" >{{prod_name}}</p>
-            <p  class="product_size">사이즈: {{prod_size}}</p>
-            <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    <li class="page-item minusBtn">
-                        <a class="page-link" href="#" >-</a>
-                    </li>
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true" ><p class="prodCount">{{prod_cnt}}</p></a>
-                    </li>
-                    <li class="page-item plusBtn">
-                        <a class="page-link" href="#" >+</a>
-                    </li>
-                </ul>
-            </nav>
-            <p class="product_pirce" name="prod_price">{{prod_price}}원</p>
+{{#basketList}}
+    <form action="/shopping/cartbox/{{id}}" method="get">
+        <!--        style="display:none;"-->
+        <div class="products">
+            <div class="product">
+                <!--                상품 체크 박스-->
+                <input type="checkbox" class="chk" id="chekcBox" name="prodbox"/>
+                <img src="" class="img-thumbnail produces_image" alt="상품 이미지"/>
+                <div class="product_info" onclick="find(this); return false;">
+                    <p class="prodfindID" >{{id}}</p>
 
+
+                    <p id="cart_code" hidden>{{prod_code}}</p>
+                    <p class="product_name">{{prod_name}}</p>
+                    <input type="hidden" name="prod_name" value="{{prod_name}}">
+                    <p class="product_size">사이즈: {{prod_size}}</p>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item minusBtn">
+                                <a class="page-link" href="#">-</a>
+                            </li>
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true"><p
+                                        class="prodCount">{{prod_cnt}}</p></a>
+                            </li>
+                            <li class="page-item plusBtn">
+                                <a class="page-link" href="#">+</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <p class="product_pirce" name="prod_price">{{prod_price}}원</p>
+                    <p class="prod_total" style="display: none;">{{prod_price}}원</p>
+
+
+                    <form id="changeValueForm" action="/shopping/cartbox/produpdate" method="post">
+                        <input type="hidden" id="prodPriceInput" name="prodprice" value="{{prod_price}}">
+                        <input type="hidden" name="prodname" value="{{prod_name}}">
+                        <input type="hidden" name="prodcnt" value="{{prod_cnt}}">
+                        <input type="hidden" name="prodcode" value="{{prod_code}}">
+                        <input type="hidden" name="prodsize" value="{{prod_size}}">
+                        <input type="hidden" name="usercode" value="{{user_code}}">
+                        <button type="submit" class="change_Btn">변경확인</button>
+                        <!--                    onclick="location.href='/shopping/cartbox/produpdate/'"-->
+                    </form>
+                    <!--                        "-->
+                </div>
+                <!--                삭제 이미지-->
+
+                <a href="/shopping/cartbox/{{user_code}}/delete/{{id}}">
+                    <p style="display: none" class="prodID">{{id}}</p>
+                    <p style="display: none" class="userCode">{{user_code}}</p>
+                    <img src="/static/images/xmark-solid.svg" class="Ximg" alt="" srcset=""/>
+                </a>
+            </div>
         </div>
-        <img src="/Pro1/image/xmark-solid.svg" class="Ximg" alt="" srcset="" />
-    </div>
-</div>
-    {{/basketList}}
-<div class="btn__">
-    <button type="submit" class="btn_ btn-info">결제하기</button>
-</div>
-
+{{/basketList}}
 </form>
+
+<!--        <input type="hidden" name="prod_price" " " />-->
+<!--        <input type="hidden" name="prod_cnt"  " />-->
+<div class="btn__">
+    <button type="submit" class="btn_ btn-info payBtn">결제하기</button>
+</div>
 <!-- <script src="/static/js/Basket/basket.js"></script>-->
 <script>
-    //let prod_count = document.getElementById("prodCount").textContent;
-       let minusBtn = document.querySelector(".minusBtn");
-       // let plusBtn = document.querySelector(".plusBtn");
-
-       // 장바구니에 있는 모든 상품의 ID를 배열로 저장
-       let cartItemIds = Array.from(document.querySelectorAll("#cart_code")).map(item => item.textContent);
-       console.log("장바구니 item 코드: " + cartItemIds);
-       console.log("장바구니 item 코드: " + cartItemIds[0]);
-
-       //각 상품 코드가 다를때 밑에 2개 함수가 실행되어야한다.
 
 
-       //decrementQuantity();
-       //incrementQuantity();
+    // 장바구니에 있는 모든 상품의 ID를 배열로 저장
+    let cartItemIds = Array.from(document.querySelectorAll("#cart_code")).map(item => item.textContent);
+    console.log("장바구니 item 코드: " + cartItemIds);
+    console.log("장바구니 item 코드: " + cartItemIds[0]);
 
-       function decrementQuantity() {
-           // 해당 상품의 수량을 감소시키는 로직 구현
-           minusBtn.addEventListener("click", () => {
-               if (prod_count > 1) {
-                   prod_count--;
-                   document.getElementById("prodCount").textContent = prod_count;
-               } else {
-                   prod_count = 1;
-                   document.getElementById("prodCount").textContent = prod_count;
-               }
-               console.log(prod_count);
-           })
-       }
 
-       function find(prod) {
-           let targetElement = prod.querySelector('.prodCount');
-           let targetText = "";
-           if (targetElement) {
-               targetText = parseInt(targetElement.textContent);
-               console.log(targetText);
-           } else {
-<!--               console.log('.prodCount 요소를 찾을 수 없습니다.');-->
-           }
+            //장바구니 전체 삭제
 
-           let plusBtn = prod.querySelector('.plusBtn'); // 현재 상품 내에서 plusBtn을 찾음
+            let deleteAllForm = document.getElementById('deleteAllForm');
+            var userCodeEl = document.querySelector(".userCode");
+            deleteAllForm.addEventListener('submit', function(event){
+                var userCodeEl = document.querySelector(".userCode");
+        <!--        기본 제출동작 막는다고 함-->
+                event.preventDefault();
 
-           if (plusBtn) {
-               plusBtn.addEventListener("click", () => {
-                   if (targetText < 11) {
-                       targetText++;
-                       targetElement.textContent = targetText; // .prodCount 값을 업데이트
-                   }
-                   console.log(targetText);
-               });
-           }
-       }
+                userCode = parseInt(userCodeEl.textContent);
+                console.log(userCode);
+                deleteAllForm.action = `/shopping/cartbox/${userCode}/deleteAll`;
+
+                deleteAllForm.submit();
+
+            });
+
+
+
+<!--        각 상품 객체를 가져온다.-->
+    function find(prod) {
+
+    let change_Btn = prod.querySelector(".change_Btn");
+
+<!--    var findIDvalue = prod(findID.textContent);-->
+
+
+<!--    var changeValueForm = prod.getElementById('changeValueForm');-->
+
+    //상품 가격
+    let prodPriceInput = prod.querySelector('#prodPriceInput');
+    //상품 개수
+<!--    let prodCntInput = prod.querySelector('#prodCntInput');-->
+
+
+
+        let targetElement = prod.querySelector('.prodCount');
+        let targetText = "";
+
+        if (targetElement) {
+            targetText = parseInt(targetElement.textContent);
+            // console.log(targetText);
+        } else {
+            console.log('.prodCount 요소를 찾을 수 없습니다.');
+        }
+
+        //각 상품 가격 가져오기
+        let prod_price = prod.querySelector('.product_pirce');
+        let price_text = parseInt(prod_price.textContent);
+
+        let prod_total = prod.querySelector('.prod_total');
+        let prod_total2 = parseInt(prod_total.textContent);
+
+
+        let plusBtn = prod.querySelector('.plusBtn'); // 현재 상품 내에서 plusBtn을 찾음
+        let minusBtn = prod.querySelector(".minusBtn");  //현재 상품에서 minusBtn 찾음
+
+        //플러스 버튼 클릭했을때
+        plusBtn.onclick = () => {
+            if (targetText < 10) {
+                targetText++;
+                targetElement.textContent = targetText; // .prodCount 값을 업데이트
+
+                //토탈에 값을 다 더해줘서 마지막에 가격(보이는)에 넣어준다.
+                prod_price.textContent= prod_total2 * targetText;
+                console.log(" 상품가격" + prod_total.textContent);
+                console.log( "토탈 상품가격"+ prod_price.textContent);
+
+                prodPriceInput.value = prod_price.textContent;
+<!--                prodCntInput.value = targetText;-->
+
+            }
+        }
+
+        minusBtn.onclick = () => {
+            if (targetText != 1) {
+                targetText--;
+                targetElement.textContent = targetText; // .prodCount 값을 업데이트
+
+                // console.log("상품 토탈" + prod_total2);
+                prod_price.textContent = price_text - prod_total2;
+                console.log(" 상품가격" + prod_total.textContent);
+                console.log( "토탈 상품가격"+ prod_price.textContent);
+
+
+                prodPriceInput.value = prod_price.textContent;
+<!--                prodCntInput.value = targetText;-->
+            }
+        }
+
+
+
+        change_Btn.onclick = () => {
+            var idElement = prod.querySelector('.prodfindID');
+        var id = parseInt(idElement.textContent);;
+        console.log("상" +idElement.textContent );
+
+
+
+            console.log("상" + prod_price.textContent);
+            console.log("상" +idElement.textContent );
+            var ajaxUrl = "/shopping/cartbox/"+ id + "/test/ajax";
+            console.log("dsfsd" + id);
+            alert("수량변경완료");
+
+<!--+ "&id=" idElement.textContent-->
+                   // 데이터를 문자열로 묶어 전송
+            let dataToSend = `prodprice=${prod_price.textContent}&prodcnt=${targetElement.textContent}&id=${idElement.textContent}`;
+
+            $.ajax({
+                url: ajaxUrl,
+                data: dataToSend,
+                type: "POST",
+                success: function (data) {
+                    alert("성공");
+                },
+                error: function () {
+                    alert("에러");
+                }
+            });
+
+            }
+        }
+
+
 </script>
-</body>
-
 {{>layouts/footer}}
+</body>

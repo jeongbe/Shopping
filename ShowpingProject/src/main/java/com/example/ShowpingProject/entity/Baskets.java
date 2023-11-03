@@ -12,6 +12,7 @@ import java.util.ArrayList;
 @NoArgsConstructor
 @Table(name = "basket")
 @Entity
+
 public class Baskets {
 
     @Id
@@ -21,11 +22,11 @@ public class Baskets {
 
     @JoinColumn(name = "user_code")
     @Column
-    private int user_code;
+    private Long user_code;
 
     @JoinColumn(name = "prod_code")
     @Column
-    private String prod_code;
+    private Long prod_code;
 
     @Column(name = "prod_name")
     private String prod_name;
@@ -36,6 +37,6 @@ public class Baskets {
     @Column
     private String prod_cnt;
 
-    @Column(name = "price")
-    private int prod_price;
+    @Column(name = "prod_discount_price")
+    private int  prod_price;
 }
