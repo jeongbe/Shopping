@@ -1,16 +1,23 @@
 package com.example.ShowpingProject.entity.product;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "product")
 public class product {
     //상품코드 key값 a.i기능
+
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="prod_code")
     Long prod_code;
+
+    @OneToOne(mappedBy = "product")
+    productimage productimage;
+
+    @OneToOne(mappedBy = "product")
+    productdeimage productdeimage;
+
     @Column
     //상품 이름
     String prod_name;

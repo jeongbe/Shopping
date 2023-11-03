@@ -19,27 +19,29 @@
 </nav>
 <section>
     <div class="category-form">
-        <div class="category1"><h3 onclick="handleCategoryClick(event)" class="cusor">상의</h3></div>
-        <div class="category2"><h3 onclick="handleCategoryClick(event)" class="cusor">하의</h3></div>
-        <div class="category3"><h3 onclick="handleCategoryClick(event)" class="cusor">아우터</h3></div>
-        <div class="category4"><h3 onclick="handleCategoryClick(event)" class="cusor">신발</h3></div>
+        <div class="category1"><h3 onclick="handleCategoryClick(event)" class="Mcusor">상의</h3></div>
+        <div class="category2"><h3 onclick="handleCategoryClick(event)" class="Mcusor">하의</h3></div>
+        <div class="category3"><h3 onclick="handleCategoryClick(event)" class="Mcusor">아우터</h3></div>
+        <div class="category4"><h3 onclick="handleCategoryClick(event)" class="Mcusor">신발</h3></div>
     </div>
 </section>
 <main>
 
     <div class="prod-list1-form">
         {{#productlist}}
+            {{#productimage}}
         <div class="prod-list1-text">
             <!--상품리스트가 들어갈 테그-->
             <p style="display: none;">{{prod_code}}</p>
-            <p style="" class="prod_decate">{{prod_decate}}</p>
+            <p style="display: none;" class="prod_decate">{{prod_decate}}</p>
             <a href="/shopping/read/product/{{prod_code}}">
-                <img src="/image/test-image.webp" class="prod-list1"><br>
+                <img src="/static/images/Product/{{image_link}}" class="prod-list1"><br>
                 <p class="cusor">
                  {{prod_name}}<br>
                     {{prod_price}}</P>
             </a>
         </div>
+            {{/productimage}}
         {{/productlist}}
     </div>
     <div class="prod-list2-form">

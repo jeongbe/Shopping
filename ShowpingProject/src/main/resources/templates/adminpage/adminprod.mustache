@@ -81,20 +81,20 @@
         <div class="upload-form">
             <div calss="main-image">
                 <label>대표 이미지 :</label>
-                <input type="file">
+                <input type="file" name="image_link">
             </div>
 
             <div class="sub-image">
                 <label>추가 이미지 :</label>
-                <input type="file">
-                <input type="file">
-                <input type="file">
+                <input type="file" name="image_link2">
+                <input type="file" name="image_link3">
+                <input type="file" name="image_link4">
             </div>
         </div>
     </div>
     <hr>
     <div class="section">
-        <h3>상세 이미지(최대8개)</h3>
+        <h3>상세 이미지(최대5개)</h3>
     </div>
     <div class="detailed-page">
         <div class="detailed-page-input">
@@ -102,17 +102,12 @@
                 <button type="button" onclick="addimage()">이미지 추가</button><br>
             </div>
             <div class="default-image-form">
-                <input type="file" class="default-image">
+                <input type="file" class="default-image" name="deimage_link">
             </div>
-            <input type="file" class="add-image1" style="display: none;"><br>
-            <input type="file" class="add-image2" style="display: none;"><br>
-            <input type="file" class="add-image3" style="display: none;"><br>
-            <input type="file" class="add-image4" style="display: none;"><br>
-            <input type="file" class="add-image5" style="display: none;"><br>
-            <input type="file" class="add-image6" style="display: none;"><br>
-            <input type="file" class="add-image7" style="display: none;"><br>
-            <input type="file" class="add-image8" style="display: none;"><br>
-
+            <input type="file" class="add-image1" style="display: none;" name="deimage_link2"><br>
+            <input type="file" class="add-image2" style="display: none;" name="deimage_link3"><br>
+            <input type="file" class="add-image3" style="display: none;" name="deimage_link4"><br>
+            <input type="file" class="add-image4" style="display: none;" name="deimage_link5"><br>
         </div>
     </div>
     <hr>
@@ -152,47 +147,9 @@
         </div>
     </div>
     <hr>
-    <div class="section">
-        <h3>상품 고시정보</h3>
-    </div>
-    <div class="product-noti-info">
-        <div class="product-noti-input">
-            <div>
-                상세설명 참조 <input type="checkbox" id="notice">
-            </div>
-            <div class="product-noti-text">
-                제품소재:<input type="text" style="width: 200px; height: 20px;" class="materialInput">
-            </div>
-            <div class="product-info-text">
-                색상:<input type="text" style="width: 200px; height: 20px;" class="materialInput">
-            </div>
-            <div class="product-info-text">
-                치수:<input type="text" style="width: 200px; height: 20px;" class="materialInput">
-            </div>
-            <div class="product-info-text">
-                제조자:<input type="text" style="width: 200px; height: 20px;" class="materialInput">
-            </div>
-            <div class="product-info-text">
-                제조국:<input type="text" style="width: 200px; height: 20px;" class="materialInput">
-            </div>
-            <div class="product-info-text">
-                세탁방법:<input type="text" style="width: 200px; height: 20px;" class="materialInput">
-            </div>
-            <div class="product-info-text">
-                제조연월:<input type="text" style="width: 200px; height: 20px;" class="materialInput">
-            </div>
-            <div class="product-info-text">
-                품질보증기준:<input type="text" style="width: 200px; height: 20px;" class="materialInput">
-            </div>
-            <div class="product-info-text">
-                as책임자:<input type="text" style="width: 200px; height: 20px;" class="materialInput">
-            </div>
-        </div>
-    </div>
-    <hr>
-    <div class="section">
+        <div class="section">
         <h3>배송비</h3>
-    </div>
+        </div>
     <div class="product-deliver">
         <div class="product-deliver-input">
             <select style="width: 200px; height: 30px;" name="diliver_price">

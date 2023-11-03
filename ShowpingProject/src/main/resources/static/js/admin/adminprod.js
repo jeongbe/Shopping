@@ -1,5 +1,5 @@
  // 카테고리와 세부 카테고리 배열 정의
-        var scate1 = ["긴팔", "반팔", "후드", "니트"];
+        var scate1 = ["긴팔", "반팔", "후드","맨투맨", "니트"];
         var scate2 = ["데님팬츠", "코튼팬츠", "카고팬츠", "조거팬츠", "슬렉스"];
         var scate3 = ["후드집업", "가디건", "무스탕", "패딩", "코트"];
         var scate4 = ["운동화", "구두", "로퍼", "샌들"];
@@ -39,7 +39,7 @@
             });
         });
 
-        // 할인율 입력란과 체크박스 요소 가져오기
+         // 할인율 입력란과 체크박스 요소 가져오기
                 var discountInput = document.querySelector(".product-discountprice-input input[type='text']");
                 var discountCheckbox = document.querySelector(".product-discount-input input[type='checkbox']");
                 var sellPriceInput = document.querySelector(".product-sellprice-input input[type='text']");
@@ -81,24 +81,7 @@
                 // 페이지 로드 시 할인율 입력란 초기 가시성 설정
                 toggleDiscountRateInput();
 
-                //HTML 요소 가져오기
-                var notice = document.getElementById("notice");
-                var materialInput = document.querySelectorAll(".materialInput")
-                //notice 체크박스 모니터링
-                notice.addEventListener("change", function(){
-                    //체크가 된다면 상품상세 참조
-                    if(notice.checked){
-                        materialInput.forEach((input) =>{
-                            input.value="상품상세 참조";
-                        })
-                    }
-                    //체크가 안되면 초기값 복구
-                    else{
-                        materialInput.forEach((input) =>{
-                            input.value="";
-                        })
-                    }
-                });
+
 
 
 

@@ -114,7 +114,27 @@ margin-top: 10px;
 
 }
 
-.cusor{
+.Mcusor{
+    cursor:pointer;
+}
+
+.cusor1{
+    cursor:pointer;
+}
+
+.cusor2{
+    cursor:pointer;
+}
+
+.cusor3{
+    cursor:pointer;
+}
+
+.cusor4{
+    cursor:pointer;
+}
+
+.cusor5{
     cursor:pointer;
 }
 
