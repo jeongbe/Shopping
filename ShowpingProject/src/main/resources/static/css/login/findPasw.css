@@ -1,0 +1,87 @@
+.form_content {
+    margin-top: 10%;
+    /* width: 1745px; */
+    width: auto;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    display: grid;
+    place-items: center;
+    height: 350px;
+}
+
+.line {
+    align-items: center;
+    justify-content: center;
+    width: 340px;
+    border-bottom: 2px solid #d2cece;
+    margin: 10px auto;
+}
+
+input[type='text'] {
+    width: 250px;
+    height: 40px;
+}
+
+.title {
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.info {
+    margin-right: 120px;
+    height: 150px;
+    justify-content: center;
+    align-items: center;
+}
+
+.info > p {
+    text-align: center;
+    margin-left: 130px;
+    margin-bottom: 20px;
+}
+
+.change_pasw,
+.check_pasw {
+    display: flex;
+}
+
+.change_pasw {
+    margin-left: 28px;
+    margin-bottom: 20px;
+}
+
+.change_pasw > p {
+    padding-right: 10px;
+    margin-top: 10px;
+}
+
+.check_pasw {
+    position: relative;
+    right: 9px;
+}
+
+.check_pasw > p {
+    padding-right: 10px;
+    margin-top: 10px;
+}
+
+.btn_div {
+    text-align: center;
+    margin-left: 10px;
+    margin-top: 30px;
+}
+
+.btn_ {
+    width: 220px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #b1e2f5;
+    border: none;
+    cursor: pointer;
+}

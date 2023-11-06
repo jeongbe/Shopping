@@ -1,0 +1,76 @@
+.form_content {
+    margin-top: 10%;
+    /* width: 1745px; */
+    width: auto;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    display: grid;
+    place-items: center;
+    height: 350px;
+}
+
+.line_ {
+    align-items: center;
+    justify-content: center;
+    width: 340px;
+    border-bottom: 2px solid #d2cece;
+    margin: 10px auto;
+}
+
+.title {
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.info_ {
+    margin-right: 50px;
+    height: 150px;
+    justify-content: center;
+    align-items: center;
+}
+
+.info_ > p {
+    text-align: center;
+    margin-left: 50px;
+}
+
+.name_box > p {
+    width: 70px;
+    text-align: center;
+}
+
+.find_id {
+    border: 1px solid black;
+    margin-left: 50px;
+    height: 40px;
+    margin-top: 30px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.find_id > p {
+    display: inline-block;
+    text-align: center;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.btn_div {
+    text-align: center;
+    margin-left: 10px;
+}
+
+.btn_ {
+    width: 220px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #b1e2f5;
+    border: none;
+    cursor: pointer;
+}

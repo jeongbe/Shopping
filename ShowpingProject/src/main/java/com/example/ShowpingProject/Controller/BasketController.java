@@ -28,7 +28,7 @@ public class BasketController {
     BasketRepository basketRepository;
 
     //장바구니 안에 있는 상품 불러오기
-    @GetMapping("/shopping/cartbox/{user_code}")
+    @GetMapping(" ")
     public String showcart(@PathVariable("user_code")  int userCode, BasketForm form , Model model) {
 //        log.info(form.toString());
         List<Baskets> basketList = basketRepository.findByIDUsercart(userCode);
@@ -55,7 +55,7 @@ public class BasketController {
 
         return "redirect:/shopping/cartbox/" + userCode;
     }
-
+    
     //장바구니 낱개 상품 삭제하기
     @GetMapping("/shopping/cartbox/{user_code}/delete/{id}")
     public String deleteProduct(@PathVariable("user_code") int userCode,@PathVariable("id") Long id) {

@@ -1,0 +1,38 @@
+<head>
+    <link rel="stylesheet" type="text/css" href="/static/css/layouts/style.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/login/login.css">
+</head>
+
+<body>
+<header>
+    {{>layouts/header}}
+</header>
+<div class="form_content">
+    <form action="" method="" class="form">
+        <div>
+            <div class="title">
+                <p>로그인</p>
+            </div>
+            <div class="id">
+                <input class="id" type="text" name="" id="id" placeholder="아이디">
+                <p hidden class="warning" id="Wid">아이디를 입력해주세요</p>
+            </div>
+            <div class="pasw">
+                <input type="password" name="" id="pasw" placeholder="비밀번호">
+                <img src="/Pro1/image/eye-solid.svg" alt="">
+                <p hidden class="warning" id="Wpasw">비밀번호를 입력해주세요</p>
+                <p hidden class="warning" id="WidPasw">아이디 또는 비빌번호를 확인하세요</p>
+            </div>
+            <div class="btn_div">
+                <button class="btn_" type="submit">로그인</button>
+            </div>
+        </div>
+    </form>
+    <div class="list">
+        <p>아이디 찾기</p>
+        <p>비밀번호 찾기</p>
+        <p>회원가입</p>
+    </div>
+</div>
+<script src="/static/js/login/login.js"></script>
+</body>

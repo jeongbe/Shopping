@@ -60,5 +60,47 @@ public class PageController {
 
    //주문 페이지
     @GetMapping("/shopping/order")
-    public String order(){return "/order/order";};
+    public String order(){return "/order/order";}
+
+    //로그인 페이지
+    @GetMapping("/shopping/login")
+    public String login(){
+        return "/login/login";
+    }
+
+    //회원가입 동의 페이지
+    @GetMapping("/shopping/joinAgree")
+    public String joinAgree(){
+        return "/login/joinAgree";
+    }
+
+    //회원가입 페이지
+    @GetMapping("/shopping/joinAgree/join")
+    public String join(){
+        return "/login/join";
+    }
+
+    //아이디 찾기(결과)
+    @GetMapping("/shopping/login/findID")
+    public String findID(){
+        return "/login/findID";
+    }
+
+    //비밀번호 찾기(변경)
+    @GetMapping("/shopping/login/findpasw")
+    public String findpasw(){
+        return "/login/findPasw";
+    }
+
+    //아이디 찾기
+    @GetMapping("/shopping/login/searchID")
+    public String searchID(){
+        return "/login/searchID";
+    }
+
+    //비밀번호 찾기
+    @GetMapping("/shopping/login/searchpasw")
+    public String searchpasw(){
+        return "/login/searchpasw";
+    }
 }

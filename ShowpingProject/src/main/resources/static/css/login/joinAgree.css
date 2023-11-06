@@ -1,0 +1,366 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+button,
+input,
+select,
+textarea {
+    border-radius: 0;
+    border: none;
+    background: 0 0;
+    appearance: none;
+    outline: 0;
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-text-size-adjust: none;
+}
+
+ul,
+ol {
+    list-style-type: none;
+}
+
+.container {
+    margin-top: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 1;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.logo > img {
+    width: 150px;
+    height: 100px;
+}
+
+div {
+    display: block;
+}
+
+.header {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: 100%;
+}
+
+.link {
+    display: inline-block;
+    vertical-align: top;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.blind {
+    position: absolute;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+}
+
+.join-f {
+    padding-bottom: 92px;
+}
+
+form {
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    height: 100%;
+}
+
+.form-content {
+    flex: 1 1 auto;
+}
+
+.form-section {
+    padding: 0 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.form-check {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding-left: 32px;
+}
+
+.check-icon {
+    flex: 1 1 auto;
+}
+
+.check-icon > label {
+    display: inline-block;
+    position: relative;
+    margin-left: -32px;
+    padding: 4px 0 4px 32px;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+.check-icon > label::before {
+    background-image: url(https://ssl.pstatic.net/static/nid/join/m_sp_06_realname_4c092b41.png);
+    background-size: 340px 326px;
+    background-position: -310px 0px;
+    background-repeat: no-repeat;
+    position: absolute;
+
+    pointer-events: none;
+    width: 30px;
+    height: 30px;
+    top: 3px;
+    left: 0;
+    content: '';
+}
+
+label {
+    cursor: pointer;
+}
+
+.form-check .check-all-text {
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.form-check .text {
+    line-height: 22px;
+    letter-spacing: -0.8px;
+    color: #222;
+    vertical-align: middle;
+}
+
+.terms_desc {
+    margin: 9px 0 0 32px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+    color: #929294;
+}
+
+.desc-list {
+    margin-top: 30px;
+}
+
+.desc-item {
+    margin-top: 30px;
+}
+
+.check-desc {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding-left: 32px;
+}
+
+.check-wap {
+    flex: 1 1 auto;
+}
+.check-desc label {
+    display: inline-block;
+    position: relative;
+    margin-left: -32px;
+    padding: 4px 0 4px 32px;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+.check-desc label::before {
+    background-image: url(https://ssl.pstatic.net/static/nid/join/m_sp_06_realname_4c092b41.png);
+    background-size: 340px 326px;
+    background-position: -310px 0px;
+    background-repeat: no-repeat;
+    position: absolute;
+
+    pointer-events: none;
+    width: 30px;
+    height: 30px;
+    top: 3px;
+    left: 0;
+    content: '';
+}
+
+.check-desc .option.point {
+    color: blue;
+}
+
+.check-desc .option {
+    display: inline-block;
+    margin-right: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: -0.6px;
+    text-decoration: none;
+}
+
+.check-desc .desc-text {
+    display: inline-block;
+    vertical-align: middbole;
+}
+
+.desc-text span {
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: -0.8px;
+    color: #222;
+    vertical-align: middle;
+}
+
+.check-desc .link {
+    display: inline-block;
+    margin-top: 1px;
+    padding: 2px;
+    vertical-align: middle;
+}
+
+.text-box {
+    overflow: auto;
+    box-sizing: border-box;
+    max-height: 100px;
+    margin: 9px 0 0 32px;
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid #d6d6d6;
+}
+
+.text-box::-webkit-scrollbar {
+    width: 20px;
+}
+
+.text-box::-webkit-scrollbar-thumb {
+    height: 25px;
+    background: #999;
+    border-radius: 10px;
+    border: 6px solid #fff;
+}
+
+.text-box::-webkit-scrollbar-track {
+    border-radius: 0 6px 6px 0;
+    background-color: transparent;
+}
+
+.article:first-child {
+    margin-top: 0;
+}
+
+.article {
+    font-size: 13px;
+    line-height: 18px;
+    letter-spacing: -0.43px;
+    counter-reset: #767678;
+}
+
+.article-title {
+    letter-spacing: -0.38px; /*문장 안 글자 간격*/
+    color: #303038;
+}
+
+.article-text {
+    margin-top: 5px;
+}
+
+.Btn {
+    width: 100%;
+    margin: 0 auto;
+
+    /* position: fixed;
+    right: 0px;
+    bottom: 0;
+    left: 300px; */
+    z-index: 100;
+    background: #fff;
+
+    flex: none;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+.btn-submit:disabled {
+    background: #8990a0;
+    cursor: default;
+}
+
+.btn-submit {
+    width: 500px;
+    padding: 14px 0;
+    border-radius: 6px;
+    background-color: #b1e2f5;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 22px;
+    color: #fff;
+}
+
+.check-desc .link::before {
+    background-image: url(https://ssl.pstatic.net/static/nid/join/m_sp_06_realname_4c092b41.png);
+    background-size: 340px 326px;
+    background-position: -85px -226px;
+    background-repeat: no-repeat;
+
+    pointer-events: none;
+    width: 17px;
+    height: 16px;
+    display: block;
+    content: '';
+}
+
+.check-desc2 label::before {
+    background-image: url(/static/images/checked.svg);
+    background-size: 30px 25px; /* 이미지 크기를 조절합니다 */
+    background-position: -1px 3px;
+    background-repeat: no-repeat;
+    width: 30px; /* 이미지 요소의 크기를 조절합니다 */
+    height: 30px; /* 이미지 요소의 크기를 조절합니다 */
+}
+
+.check-desc3 label::before {
+    background-image: url(/static/images/checked.svg);
+    background-size: 30px 25px; /* 이미지 크기를 조절합니다 */
+    background-position: -1px 3px;
+    background-repeat: no-repeat;
+    width: 30px; /* 이미지 요소의 크기를 조절합니다 */
+    height: 30px; /* 이미지 요소의 크기를 조절합니다 */
+}
+
+.check-desc4 label::before {
+    background-image: url(/static/images/checked.svg);
+    background-size: 30px 25px; /* 이미지 크기를 조절합니다 */
+    background-position: -1px 3px;
+    background-repeat: no-repeat;
+    width: 30px; /* 이미지 요소의 크기를 조절합니다 */
+    height: 30px; /* 이미지 요소의 크기를 조절합니다 */
+}
+
+.check-desc5 label::before {
+    background-image: url(/static/images/checked.svg);
+    background-size: 30px 25px; /* 이미지 크기를 조절합니다 */
+    background-position: -1px 3px;
+    background-repeat: no-repeat;
+    width: 30px; /* 이미지 요소의 크기를 조절합니다 */
+    height: 30px; /* 이미지 요소의 크기를 조절합니다 */
+}
+
+.item2 {
+    right: 6px;
+}

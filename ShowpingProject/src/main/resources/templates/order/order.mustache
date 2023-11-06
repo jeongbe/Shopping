@@ -1,0 +1,116 @@
+<head>
+    <link rel="stylesheet" type="text/css" href="/static/css/order/order.css">
+</head>
+
+<body>
+<header>
+    {{>layouts/header}}
+</header>
+<div class="order">
+    <div>
+        <div class="title">
+            <p>주문하기</p>
+        </div>
+        <div class="border_ backC">
+            <p>Order</p>
+        </div>
+        <div class="border_ dis">
+            <p>배송지</p>
+            <p class="mar">
+                <input type="radio" name="address" id="" />
+                <select name="" id="">
+                    <option value="">배송지1</option>
+                    <option value="">배송지2</option>
+                    <option value="">배송지3</option>
+                </select>
+            </p>
+
+            <div></div>
+            <div class="mar_2">
+                <input type="radio" name="address" id="" />직접 입력
+                <input type="text" placeholder="주소" />
+                <input type="text" placeholder="상세주소" />
+            </div>
+        </div>
+        <div class="border_ dis">
+            <p class="v1">이름 / 연락처 :</p>
+            <p class="v1">신성우</p>
+            <p>010-1234-5678</p>
+        </div>
+        <div class="border_ dis">
+            <p class="v2">주소:</p>
+            <p class="">서울시</p>
+        </div>
+        <div class="border_ dis">
+            <p class="v3">배송요청사항</p>
+            <div class="mar_2">
+                <select class="sel" name="" id="">
+                    <option value="">직접입력</option>
+                    <option value="">빠른 배송 부탁드립니다.</option>
+                    <option value="">배송 전 연락주세요</option>
+                    <option value="">
+                        부재 시 휴대폰으로 연락주세요
+                    </option>
+                    <option value="">선택 안함</option>
+                </select>
+                <input class="hides" hidden type="text" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="prod_info">
+    <div>
+        <div class="border_ backC">
+            <p>상품 정보</p>
+        </div>
+
+        <div class="border_ pord_infos">
+            <p>상품정보</p>
+            <p class="count">수량</p>
+            <p class="pri">상품금액</p>
+        </div>
+        <div class="border2_">
+            <div>
+                <img
+                        class="prod_img"
+                        src="/Pro1/image/willow-warbler-8071472_1280.jpg"
+                        alt=""
+                />
+            </div>
+            <div class="prod_info2">
+                <p>상품 안녕하세요바지신발상의ㄴㅇㄹㄴㅇㄹ</p>
+                <p>상품 정보sdfsdf</p>
+            </div>
+            <div class="dis prod_info3">
+                <p>1개</p>
+                <p>53,000원</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="coupon">
+    <div>
+        <div class="border3_ backC">
+            <p>결제 예정 금액</p>
+        </div>
+        <div class="border3_">
+            <p>상품 금액:</p>
+            <p class="mar_3">10,000원</p>
+        </div>
+        <div class="border3_">
+            <p>배송비:</p>
+            <p class="mar_3">10,000원</p>
+        </div>
+        <div class="border3_">
+            <p>최종 결제 금액:</p>
+            <p class="mar_3">10,000원</p>
+        </div>
+    </div>
+</div>
+
+<div class="check_btn">
+    <button type="button" class="btn btn-info">확인</button>
+</div>
+<script src="/Pro1/order.js"></script>
+</body>
