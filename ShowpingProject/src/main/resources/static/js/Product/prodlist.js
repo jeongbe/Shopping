@@ -14,6 +14,7 @@
 
      // 카테고리를 클릭할 때 실행할 함수를 정의합니다.
      function handleCategoryClick(event) {
+       decateclick1();
          // 클릭한 카테고리의 텍스트를 가져옵니다.
          var selectedCategory = event.target.textContent;
           // "nav" 내의 h3 요소 업데이트
