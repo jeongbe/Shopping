@@ -28,7 +28,7 @@ public class BasketController {
     BasketRepository basketRepository;
 
     //장바구니 안에 있는 상품 불러오기
-    @GetMapping(" ")
+    @GetMapping("/shopping/cartbox/{user_code}")
     public String showcart(@PathVariable("user_code")  int userCode, BasketForm form , Model model) {
 //        log.info(form.toString());
         List<Baskets> basketList = basketRepository.findByIDUsercart(userCode);
