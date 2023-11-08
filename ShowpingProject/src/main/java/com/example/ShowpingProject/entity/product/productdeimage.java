@@ -3,6 +3,9 @@ package com.example.ShowpingProject.entity.product;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name="productdeimage")
+
+
 public class productdeimage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

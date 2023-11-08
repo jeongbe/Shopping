@@ -4,12 +4,16 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "product")
+
+//@SequenceGenerator(
+//        name = "prod_code",
+//        initialValue = 0
+//)
+
 public class product {
     //상품코드 key값 a.i기능
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="prod_code")
+   @Id
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long prod_code;
 
     @OneToOne(mappedBy = "product")

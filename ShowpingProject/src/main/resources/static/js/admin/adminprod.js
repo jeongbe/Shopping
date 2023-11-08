@@ -57,13 +57,13 @@
 
                 // 판매 가격 및 할인 여부를 기반으로 실제 가격 업데이트
                 function updateActualPrice() {
-                    var sellPrice = parseFloat(sellPriceInput.value);
-                    var discountRate = parseFloat(discountInput.value);
+                    var sellPrice = parseInt(sellPriceInput.value);
+                    var discountRate = parseInt(discountInput.value);
                     var isDiscounted = discountCheckbox.checked;
 
                     if (isDiscounted && !isNaN(sellPrice) && !isNaN(discountRate)) {
                         var actualPrice = sellPrice - (sellPrice * (discountRate / 100));
-                        actualPriceInput.value = actualPrice.toFixed(2) + "원";
+                        actualPriceInput.value = Math.round(actualPrice);
                     } else {
                         // 할인 체크박스가 체크되지 않았거나 판매 가격이나 할인율이 유효하지 않은 경우
                         // 판매 가격 그대로 표시

@@ -13,8 +13,6 @@ public interface ProddeimageRepository extends CrudRepository<productdeimage, Lo
             "INNER JOIN product" +
             "ON productdeimage.prod_code = product.prod_code" +
             "WHERE  productdeimage.prod_code = :prod_code",nativeQuery = true)
-    List<productdeimage> findbyprodcode(long prod_code);
-
-
+     List<productdeimage> findbyprodcode(long prod_code);
 
 }

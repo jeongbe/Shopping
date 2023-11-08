@@ -6,6 +6,8 @@ import lombok.Data;
 @Data
 //상품 정보를 가져오는 dto
 public class productform {
+
+
     //상품 이름
     String prod_name;
     //상품 카테고리
@@ -49,8 +51,6 @@ public class productform {
         this.prod_L = prod_L;
         this.prod_XL = prod_XL;
     }
-
-
 
     @Override
     public String toString() {

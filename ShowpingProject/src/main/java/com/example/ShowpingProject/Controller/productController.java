@@ -10,6 +10,7 @@ import com.example.ShowpingProject.entity.product.productimage;
 import com.example.ShowpingProject.repository.productRepository.ProddeimageRepository;
 import com.example.ShowpingProject.repository.productRepository.ProdimageRepository;
 import com.example.ShowpingProject.repository.productRepository.ProductRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,10 +18,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.ArrayList;
+import java.util.List;
 
 //상품 등록을 위한 컨트롤러
 @Controller
+@Slf4j
 public class productController {
     @Autowired
     ProductRepository productRepository;
@@ -31,12 +33,16 @@ public class productController {
 
 
     //관리자에서 상품등록하면 db에 상품정보 저장
+    //이미지 링크에 관한 정보는 다른 dto,entity를통해 별도의db에 저장됨
     @PostMapping("/shopping/create/product")
     public String createproduct(productform form, productimageform imageform, productdeimageform deimageform){
+        //상품 정보에대한 내용을 디비에 저장하는 매서드
         product product = form.toEntity();
         product saved = productRepository.save(product);
+        //상품의 이미지를 저장하는 매서드
         productimage productimage = imageform.toEntity(product);
         productimage imagesaved = prodimageRepository.save(productimage);
+        //상품의 상세이미지를 저장하는 메서드
         productdeimage productdeimage = deimageform.toEntity(product);
         productdeimage deimagesaved = proddeimageRepository.save(productdeimage);
         return "adminpage/adminmain";
@@ -45,10 +51,13 @@ public class productController {
     //등록된 상품을 db에서 가져와 상품상세페이지에 뿌려줌
     @GetMapping("/shopping/read/product/{id}")
     public String readproduct(@PathVariable long id,Model model){
+        //상품 정보를 가져와서 상품코드에 맞는 정보를 뿌려줌
         product productentity = productRepository.findById(id).orElse(null);
         model.addAttribute("product",productentity);
+        //해당 상품코드에 해당하는 이미지 정보를 뿌려줌
         productimage productimageentity = prodimageRepository.findById(id).orElse(null);
         model.addAttribute("productimage", productimageentity);
+        //해당 상품코드에 해당하는 상세이미지 정보를 뿌려줌
         productdeimage productdeimageentity = proddeimageRepository.findById(id).orElse(null);
         model.addAttribute("productdeimage",productdeimageentity);
         return "Product/prodDetail";
@@ -58,7 +67,7 @@ public class productController {
     //상품리스트에 리스트로 등록
     @GetMapping("/shopping/productlist")
     public String productlist(Model model){
-        ArrayList<product>productEntitylist  =  productRepository.findAll();
+        List<product> productEntitylist  =  productRepository.findAll();
         model.addAttribute("productlist", productEntitylist);
         return "Product/productList";
     }
