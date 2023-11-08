@@ -5,30 +5,27 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "basket")
+@Table(name = "orderdetail")
 @Entity
-
-public class Baskets {
+public class OrderDetail {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
-    @JoinColumn(name = "user_code")
-    @Column
-    private Long user_code;
-
     @JoinColumn(name = "prod_code")
-    @Column
     private Long prod_code;
 
-    @Column(name = "prod_name")
+    @JoinColumn(name = "user_code")
+    private Long user_code;
+
+    @JoinColumn(name = "order_id")
+    private Long order_id;
+
+    @Column
     private String prod_name;
 
     @Column
@@ -37,9 +34,6 @@ public class Baskets {
     @Column
     private String prod_cnt;
 
-    @Column(name = "prod_discount_price")
-    private int  prod_price;
-
     @Column
-    private String total_price;
+    private String prod_price;
 }

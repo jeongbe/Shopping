@@ -27,18 +27,20 @@ public class BasketForm {
 
     int prodprice;  //상품 총 가격
 
-    public BasketForm(Long id, Long usercode, Long prodcode, String prodname, String prodsize, String prodcnt, int prodprice) {
+    String totalPrice;
 
-        this.id = id;
-        this.usercode = usercode;
-        this.prodcode = prodcode;
-        this.prodname = prodname;
-        this.prodsize = prodsize;
-        this.prodcnt = prodcnt;
-        this.prodprice = prodprice;
-    }
+//    public BasketForm(Long id, Long usercode, Long prodcode, String prodname, String prodsize, String prodcnt, int prodprice) {
+//
+//        this.id = id;
+//        this.usercode = usercode;
+//        this.prodcode = prodcode;
+//        this.prodname = prodname;
+//        this.prodsize = prodsize;
+//        this.prodcnt = prodcnt;
+//        this.prodprice = prodprice;
+//    }
 
     public Baskets toEntity(){
-        return new Baskets(id,usercode,prodcode,prodname,prodsize,prodcnt,prodprice);
+        return new Baskets(id,usercode,prodcode,prodname,prodsize,prodcnt,prodprice,totalPrice);
     }
 }

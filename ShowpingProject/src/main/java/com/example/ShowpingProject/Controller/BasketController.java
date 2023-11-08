@@ -2,7 +2,6 @@ package com.example.ShowpingProject.Controller;
 
 
 import com.example.ShowpingProject.DTO.BasketForm;
-import com.example.ShowpingProject.DTO.BasketForm2;
 import com.example.ShowpingProject.entity.Baskets;
 import com.example.ShowpingProject.repository.BasketRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -30,7 +29,7 @@ public class BasketController {
     //장바구니 안에 있는 상품 불러오기
     @GetMapping("/shopping/cartbox/{user_code}")
     public String showcart(@PathVariable("user_code")  int userCode, BasketForm form , Model model) {
-//        log.info(form.toString());
+        log.info(form.toString());
         List<Baskets> basketList = basketRepository.findByIDUsercart(userCode);
         if (basketList != null) {
             model.addAttribute("basketList", basketList);
@@ -79,7 +78,7 @@ public class BasketController {
     //정보 업데이트해서 db에 저장해주기
     @PostMapping("/shopping/cartbox/{id}/test/ajax")
     @ResponseBody
-    public String testAjax(BasketForm2 form, @PathVariable("id") Long id){
+    public String testAjax(BasketForm form, @PathVariable("id") Long id){
 
         log.info(form.toString());
 
@@ -89,14 +88,6 @@ public class BasketController {
 
         int a =  basketRepository.updateprod(basketEntity.getId(),basketEntity.getProd_cnt(),basketEntity.getProd_price());
 
-//        Baskets target = basketRepository.findById(basketEntity.getId()).orElse(null);
-//        log.info();
-//
-//        log.info(String.valueOf(target));
-////
-//        if(target != null){
-//            basketRepository.save(basketEntity);
-//        }
         return "redirect:/shopping/cartbox/" + basketEntity.getUser_code();
     }
 }

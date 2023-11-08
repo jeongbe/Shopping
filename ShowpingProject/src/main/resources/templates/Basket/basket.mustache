@@ -78,7 +78,6 @@
                     <p class="product_pirce" name="prod_price">{{prod_price}}원</p>
                     <p class="prod_total" style="display: none;">{{prod_price}}원</p>
 
-
                     <form id="changeValueForm" action="/shopping/cartbox/produpdate" method="post">
                         <input type="hidden" id="prodPriceInput" name="prodprice" value="{{prod_price}}">
                         <input type="hidden" name="prodname" value="{{prod_name}}">
@@ -101,39 +100,58 @@
             </div>
         </div>
 {{/basketList}}
+    <p style="display:none;" class="total_price_" name="totalPrice"></p>
+
+    <div class="btn__">
+        <button type="submit" class="btn_ btn-info payBtn">주문하기</button>
+    </div>
 </form>
 
 <!--        <input type="hidden" name="prod_price" " " />-->
 <!--        <input type="hidden" name="prod_cnt"  " />-->
-<div class="btn__">
-    <button type="submit" class="btn_ btn-info payBtn">결제하기</button>
-</div>
+
+
+
 <!-- <script src="/static/js/Basket/basket.js"></script>-->
 <script>
 
 
-    // 장바구니에 있는 모든 상품의 ID를 배열로 저장
-    let cartItemIds = Array.from(document.querySelectorAll("#cart_code")).map(item => item.textContent);
-    console.log("장바구니 item 코드: " + cartItemIds);
-    console.log("장바구니 item 코드: " + cartItemIds[0]);
+    // 장바구니에 있는 모든 상품의 ID와 초기 가격을 배열로 저장
+let cartItems = Array.from(document.querySelectorAll(".products")).map(item => {
+    let id = item.querySelector('.prodfindID').textContent;
+    let price = parseInt(item.querySelector('.product_pirce').textContent);
+    return { id: id, price: price };
+});
+
+    var count = 0;
+
+    if(count === 0){
+        // 초기 totalPrice 계산
+        var totalPrice = cartItems.reduce((total, item) => total + item.price, 0);
+        console.log("초기 총 가격: " + totalPrice);
+        count++;
+    }
+
 
 
             //장바구니 전체 삭제
 
             let deleteAllForm = document.getElementById('deleteAllForm');
             var userCodeEl = document.querySelector(".userCode");
+            userCode = parseInt(userCodeEl.textContent);
+
             deleteAllForm.addEventListener('submit', function(event){
-                var userCodeEl = document.querySelector(".userCode");
-        <!--        기본 제출동작 막는다고 함-->
-                event.preventDefault();
 
-                userCode = parseInt(userCodeEl.textContent);
-                console.log(userCode);
-                deleteAllForm.action = `/shopping/cartbox/${userCode}/deleteAll`;
+            <!--        기본 제출동작 막는다고 함-->
+                    event.preventDefault();
 
-                deleteAllForm.submit();
+                    console.log(userCode);
+                    deleteAllForm.action = `/shopping/cartbox/${userCode}/deleteAll`;
+
+                    deleteAllForm.submit();
 
             });
+
 
 
 
@@ -155,7 +173,7 @@
 
 
         let targetElement = prod.querySelector('.prodCount');
-        let targetText = "";
+        let targetText = 1;
 
         if (targetElement) {
             targetText = parseInt(targetElement.textContent);
@@ -167,6 +185,7 @@
         //각 상품 가격 가져오기
         let prod_price = prod.querySelector('.product_pirce');
         let price_text = parseInt(prod_price.textContent);
+
 
         let prod_total = prod.querySelector('.prod_total');
         let prod_total2 = parseInt(prod_total.textContent);
@@ -186,9 +205,8 @@
                 console.log(" 상품가격" + prod_total.textContent);
                 console.log( "토탈 상품가격"+ prod_price.textContent);
 
-                prodPriceInput.value = prod_price.textContent;
-<!--                prodCntInput.value = targetText;-->
-
+                totalPrice += price_text;
+                console.log("총 토탈 가격"+totalPrice);
             }
         }
 
@@ -197,23 +215,27 @@
                 targetText--;
                 targetElement.textContent = targetText; // .prodCount 값을 업데이트
 
-                // console.log("상품 토탈" + prod_total2);
+                console.log("마이너스 총 토탈 가격1  "+totalPrice);
+
                 prod_price.textContent = price_text - prod_total2;
                 console.log(" 상품가격" + prod_total.textContent);
                 console.log( "토탈 상품가격"+ prod_price.textContent);
 
 
-                prodPriceInput.value = prod_price.textContent;
-<!--                prodCntInput.value = targetText;-->
+<!--                prodPriceInput.value = prod_price.textContent;-->
+
+                totalPrice = totalPrice - prod_total2;
+                console.log("마이너스 총 토탈 가격2  "+ totalPrice);
             }
         }
 
 
 
+
         change_Btn.onclick = () => {
             var idElement = prod.querySelector('.prodfindID');
-        var id = parseInt(idElement.textContent);;
-        console.log("상" +idElement.textContent );
+            var id = parseInt(idElement.textContent);;
+            console.log("상" +idElement.textContent );
 
 
 
@@ -223,7 +245,7 @@
             console.log("dsfsd" + id);
             alert("수량변경완료");
 
-<!--+ "&id=" idElement.textContent-->
+
                    // 데이터를 문자열로 묶어 전송
             let dataToSend = `prodprice=${prod_price.textContent}&prodcnt=${targetElement.textContent}&id=${idElement.textContent}`;
 
@@ -241,6 +263,37 @@
 
             }
         }
+
+        var orderBtn = document.querySelector(".payBtn");
+
+
+
+        orderBtn.onclick = () => {
+<!--            alert(userCode);-->
+                location.href = "/order/Payment/" + userCode;
+
+<!--            var ajaxUrl2 = "/order/" + userCode;-->
+            let dataToSend2 = `totalPrice=${totalPrice}&userCode=${userCode}`;
+
+            //보낼데이터는 상품 총 가격 , user_code
+            $.ajax({
+                url: "/order/" + userCode,
+                data: dataToSend2,
+                type: "POST",
+                success: function (data) {
+                    alert("성공");
+
+                },
+                error: function () {
+                    alert("에러");
+                }
+            });
+        }
+
+<!--            var T_P = document.querySelector('.total_price_');-->
+<!--            T_P2 = parseInt(T_P.textContent);-->
+<!--            T_P2 = totalPrice;-->
+<!--            console.log("dsfffffffffffffffffffffffff",T_P2);-->
 
 
 </script>
