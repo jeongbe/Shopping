@@ -1,0 +1,78 @@
+<head>
+    <link rel="stylesheet" type="text/css" href="/static/css/layouts/style.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/order/orderComp.css">
+</head>
+
+<header>
+    {{>layouts/header}}
+</header>
+
+<body>
+<div class="payment_content">
+    <div>
+        <div class="title">
+            <p>결제 완료</p>
+        </div>
+
+        <p class="border_ back_C">결제 정보</p>
+        <div class="border_">
+            <p>이름/연락처</p>
+            <p class="v1">신성우</p>
+            <p class="v1">010-1234-5678</p>
+        </div>
+        <div class="border_">
+            <p>배송 주소</p>
+            <p class="v2">부산시 수영구</p>
+        </div>
+        <div class="border_">
+            <p>배송요청사항</p>
+            <p class="v3">부재시 집앞</p>
+        </div>
+    </div>
+</div>
+
+<div class="payment_prod">
+    <div>
+        <p class="border_ back_C">결제 상품 정보</p>
+        <div class="border2_">
+            <div>
+                <img src="/Pro1/image/cat-8197577_1280.jpg" class="produces_image" alt="" srcset="">
+            </div>
+            <div class="prod_info">
+                <p>리자드 데님팬츠</p>
+                <div class="dis">
+                    <p>옵션 : </p>
+                    <p> M </p>
+                </div>
+                <div class="dis">
+                    <p>가격 : </p>
+                    <p> 35,750</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="last_info">
+    <div>
+        <p class="border_ back_C">할인 / 쿠폰 / 최종 결제 금액</p>
+        <div class="border_3">
+            <div class="dis">
+                <p>할인 / 쿠폰: </p>
+                <p>쿠폰명</p>
+            </div>
+            <div class="dis">
+                <p>최종 결제 금액: </p>
+                <p>40,000</p>
+                <p>원</p>
+            </div>
+        </div>
+    </div>
+</div>
+<p class="last_check">정보가 맞는지 확인해 주세요!</p>
+<div class="check_btn">
+    <button type="button" class="btn btn-info ">확인</button>
+</div>
+</body>
+
+{{>layouts/footer}}

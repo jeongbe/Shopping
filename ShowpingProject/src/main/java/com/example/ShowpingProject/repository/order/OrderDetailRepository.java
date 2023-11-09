@@ -9,12 +9,10 @@ import java.util.List;
 
 public interface OrderDetailRepository extends CrudRepository<OrderDetail, Long> {
 
-    @Query(value = "SELECT id,prod_cnt, basket.prod_code,prod_size, users.user_code, product.prod_name, product.prod_cate, product.prod_decate, product.prod_price, product.prod_discount_ratio, product.prod_discount_price, product.diliver_price, users.user_ID, users.user_name\n" +
-            "FROM basket\n" +
-            "JOIN product\n" +
-            "ON basket.prod_code = product.prod_code\n" +
-            "join users\n" +
-            "on basket.user_code = users.user_code\n" +
-            "WHERE basket.user_code = :userCode", nativeQuery = true)
-    List<OrderDetail> orderDetailcartboxList(int userCode);
+    @Query(value = "select a.order_id, a.order_date, a.order_date_time, a.total_price, b.user_code, b.user_name, b.user_addr,b.user_addr2,b.user_addr3,b.user_detail_addr,b.user_detail_addr2,b.user_detail_addr3\n" +
+            "from orderheader a\n" +
+            "join users b\n" +
+            "on a.user_code = b.user_code\n" +
+            "where a.order_id = :order_id", nativeQuery = true)
+    List<OrderDetail> orderDetailcartboxList(int order_id);
 }

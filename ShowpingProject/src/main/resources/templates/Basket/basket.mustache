@@ -1,4 +1,5 @@
 <head>
+    <link rel="stylesheet" type="text/css" href="/static/css/layouts/style.css">
     <link rel="stylesheet" type="text/css" href="/static/css/basket/basket.css">
 </head>
 <body>
@@ -271,29 +272,9 @@ let cartItems = Array.from(document.querySelectorAll(".products")).map(item => {
         orderBtn.onclick = () => {
 <!--            alert(userCode);-->
                 location.href = "/order/Payment/" + userCode;
-
-<!--            var ajaxUrl2 = "/order/" + userCode;-->
-            let dataToSend2 = `totalPrice=${totalPrice}&userCode=${userCode}`;
-
-            //보낼데이터는 상품 총 가격 , user_code
-            $.ajax({
-                url: "/order/" + userCode,
-                data: dataToSend2,
-                type: "POST",
-                success: function (data) {
-                    alert("성공");
-
-                },
-                error: function () {
-                    alert("에러");
-                }
-            });
         }
 
-<!--            var T_P = document.querySelector('.total_price_');-->
-<!--            T_P2 = parseInt(T_P.textContent);-->
-<!--            T_P2 = totalPrice;-->
-<!--            console.log("dsfffffffffffffffffffffffff",T_P2);-->
+
 
 
 </script>

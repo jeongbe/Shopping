@@ -32,8 +32,10 @@ public interface BasketRepository extends CrudRepository<Baskets, Long> {
             "WHERE id = :id", nativeQuery = true)
     int updateprod(Long id, String prodCnt, int price);
 
+    ArrayList<Baskets> findAllById(int userCode);
 
 
+//    Object findAllById(int userCode);
 }
 
 

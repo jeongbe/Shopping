@@ -8,6 +8,7 @@
 </header>
 <form method="get" action="/order/Payment/{{user_code}}">
     <div onclick="find(this); return false;">
+        <p style="display:none;" class="userCode">{{user_code}}</p>
         <div class="order">
             <div >
                 <div class="title">
@@ -37,7 +38,7 @@
                 </div>
                 <div class="border_ dis">
                     <p class="v1">이름 / 연락처 :</p>
-                    <p class="v1">{{user_name}}</p>
+                    <p class="v1 userName" >{{user_name}}</p>
                     <p>{{user_phone}}</p>
                 </div>
         <!--        <div class="border_ dis">-->
@@ -122,3 +123,4 @@
 <!--<script src="/Pro1/order.js"></script>-->
 <script src="/static/js/Basket/order.js"></script>
 </body>
+{{>layouts/footer}}

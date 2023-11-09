@@ -20,24 +20,22 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Table(name = "orderheader")
 @Entity
-@SequenceGenerator(
-        name = "ORDER_HEADER",
-        initialValue = 100
-)
 public class OrderHeader {
 
     //상품 주문 번호
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "ORDER_HEADER")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @SequenceGenerator(name = "ORDER_HEADER", initialValue = 100)
     private Long order_id;
+//    , generator = "ORDER_HEADER"
 
     //유저 코드 조인
     @JoinColumn(name = "user_code")
     @Column
-    private Long user_code;
+    private Long userCode;
 
     //주문 날짜
-    @Column
+    @Column(name = "order_date")
     LocalDate order_date;
     @PrePersist
     public void setOrderdate(){
@@ -75,17 +73,6 @@ public class OrderHeader {
     @Column(name = "user_addr3", nullable = true)
     String user_addr3;
 
-//    @Column(name = "user_id")
-//    String user_id;
-//
-//    @Column(name = "user_email")
-//    String user_email;
-//
-//    @Column(name = "user_password")
-//    String user_password;
-
-    @Column(name = "user_phone")
-    String user_phone;
 
 
 }

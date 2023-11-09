@@ -103,4 +103,10 @@ public class PageController {
     public String searchpasw(){
         return "/login/searchpasw";
     }
+
+    //주문완료 페이지(결제완료)
+    @GetMapping("/shoppng/order/orderComp")
+    public String orderComp(){
+        return "/order/orderComp";
+    }
 }

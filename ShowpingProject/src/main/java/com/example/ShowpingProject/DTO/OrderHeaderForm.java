@@ -4,6 +4,7 @@ import com.example.ShowpingProject.entity.OrderHeader;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -11,6 +12,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Data
 @Getter
+@Setter
 public class OrderHeaderForm {
 
     Long order_id;
@@ -39,9 +41,9 @@ public class OrderHeaderForm {
 //
 //    String userPasw;
 
-    String userPhone;
+//    String userPhone;
 
     public OrderHeader toEntity(){
-        return new OrderHeader(null,userCode,null,null, totalPrice,userName,userDetailAddr,userDetailAddr2,userDetailAddr3,userAddr,userAddr2,userAddr3,userPhone);
+        return new OrderHeader(null,userCode,null,null, totalPrice,userName,userDetailAddr,userDetailAddr2,userDetailAddr3,userAddr,userAddr2,userAddr3);
     }
 }
