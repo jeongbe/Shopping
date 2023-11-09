@@ -8,17 +8,17 @@
     {{>layouts/header}}
 </header>
 <div class="form_content">
-    <form action="" method="" class="form">
+    <form action="/logincheck" method="post" class="form">
         <div>
             <div class="title">
                 <p>로그인</p>
             </div>
             <div class="id">
-                <input class="id" type="text" name="" id="id" placeholder="아이디">
+                <input class="id" type="text" name="login_ID" id="id" placeholder="아이디">
                 <p hidden class="warning" id="Wid">아이디를 입력해주세요</p>
             </div>
             <div class="pasw">
-                <input type="password" name="" id="pasw" placeholder="비밀번호">
+                <input type="password" name="login_password" id="pasw" placeholder="비밀번호">
                 <img src="/Pro1/image/eye-solid.svg" alt="">
                 <p hidden class="warning" id="Wpasw">비밀번호를 입력해주세요</p>
                 <p hidden class="warning" id="WidPasw">아이디 또는 비빌번호를 확인하세요</p>

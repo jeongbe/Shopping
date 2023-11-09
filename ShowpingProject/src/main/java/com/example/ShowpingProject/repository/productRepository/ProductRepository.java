@@ -8,8 +8,6 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 public interface ProductRepository extends CrudRepository<product, Long> {
-
-@Override
+    @Override
 ArrayList<product> findAll();
-
 }

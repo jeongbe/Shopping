@@ -7,6 +7,8 @@ import com.example.ShowpingProject.DTO.product.productimageform;
 import com.example.ShowpingProject.entity.product.product;
 import com.example.ShowpingProject.entity.product.productdeimage;
 import com.example.ShowpingProject.entity.product.productimage;
+import com.example.ShowpingProject.entity.review.Review;
+import com.example.ShowpingProject.repository.ReviewRepository;
 import com.example.ShowpingProject.repository.productRepository.ProddeimageRepository;
 import com.example.ShowpingProject.repository.productRepository.ProdimageRepository;
 import com.example.ShowpingProject.repository.productRepository.ProductRepository;
@@ -18,6 +20,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 //상품 등록을 위한 컨트롤러
@@ -30,6 +34,8 @@ public class productController {
     ProdimageRepository prodimageRepository;
     @Autowired
     ProddeimageRepository proddeimageRepository;
+    @Autowired
+    ReviewRepository reviewRepository;
 
 
     //관리자에서 상품등록하면 db에 상품정보 저장
@@ -60,6 +66,9 @@ public class productController {
         //해당 상품코드에 해당하는 상세이미지 정보를 뿌려줌
         productdeimage productdeimageentity = proddeimageRepository.findById(id).orElse(null);
         model.addAttribute("productdeimage",productdeimageentity);
+        //해당 상품에대한 리뷰정보를 뿌려줌
+        ArrayList<Review> review = reviewRepository.review(id);
+        model.addAttribute("productreview", review);
         return "Product/prodDetail";
     }
 
@@ -71,5 +80,7 @@ public class productController {
         model.addAttribute("productlist", productEntitylist);
         return "Product/productList";
     }
+
+
 
 }

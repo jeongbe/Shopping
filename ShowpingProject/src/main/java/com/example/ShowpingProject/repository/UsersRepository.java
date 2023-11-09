@@ -1,5 +1,6 @@
 package com.example.ShowpingProject.repository;
 
+import com.example.ShowpingProject.DTO.Login.Loginform;
 import com.example.ShowpingProject.entity.Users;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -12,4 +13,14 @@ public interface UsersRepository extends CrudRepository<Users , Long> {
             "ON users.user_code = basket.user_code\n" +
             "WHERE users.user_code = :userCode", nativeQuery = true)
     Users userInfo(int userCode);
+
+
+    @Query(value = "SELECT * " +
+            "FROM users " +
+            "WHERE user_ID = :login_ID " +
+            "And user_password = :login_password ", nativeQuery = true)
+    Users login(String login_ID, String login_password);
+
+
 }
+

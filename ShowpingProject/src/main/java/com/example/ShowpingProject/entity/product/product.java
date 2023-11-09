@@ -60,8 +60,6 @@ public class product {
     String prod_XL;
 
 
-
-
     public product() {
     }
 
@@ -80,6 +78,8 @@ public class product {
         this.prod_L = prod_L;
         this.prod_XL = prod_XL;
     }
+
+
 
     @Override
     public String toString() {
