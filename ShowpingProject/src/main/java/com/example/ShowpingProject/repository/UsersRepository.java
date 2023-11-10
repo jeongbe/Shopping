@@ -22,7 +22,10 @@ public interface UsersRepository extends CrudRepository<Users , Long> {
     Users login(String login_ID, String login_password);
 
 
-
+    @Query(value = "select *\n" +
+            "from users u\n" +
+            "where u.user_code = :userCode" , nativeQuery = true)
+    Users oneUserInfo(int userCode);
 
 }
 

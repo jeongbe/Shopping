@@ -31,8 +31,8 @@ public class LoginController {
 
         if(users != null){
             HttpSession session = request.getSession();
-            session.setAttribute("loginUser", users);
-            session.getAttribute("loginUser");
+           session.setAttribute("loginUser", users);
+           session.getAttribute("loginUser");
 
             Users loginUser = (Users) session.getAttribute("loginUser");
             model.addAttribute("loginUser", loginUser);

@@ -1,6 +1,7 @@
 package com.example.ShowpingProject.repository;
 
 import com.example.ShowpingProject.entity.Baskets;
+import com.example.ShowpingProject.entity.product.product;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -14,23 +15,28 @@ import java.util.List;
 public interface BasketRepository extends CrudRepository<Baskets, Long> {
 
 
-    @Query(value = "SELECT id,prod_cnt, total_price, basket.prod_code,prod_size, users.user_code, product.prod_name, product.prod_cate, product.prod_decate, product.prod_price, product.prod_discount_ratio, product.prod_discount_price, product.diliver_price, users.user_ID, users.user_name\n" +
-            "FROM basket\n" +
-            "JOIN product\n" +
-            "ON basket.prod_code = product.prod_code\n" +
-            "join users\n" +
-            "on basket.user_code = users.user_code\n" +
-            "WHERE basket.user_code = :userCode", nativeQuery = true)
+    @Query(value = "SELECT b.id, b.prod_cnt, b.prod_code, b.prod_size, u.user_code, p.prod_name, p.prod_cate, p.prod_decate, p.prod_price, p.prod_discount_ratio, b.prod_discount_price, p.diliver_price, u.user_ID, u.user_name, u.user_email, u.user_phone,u.user_addr,u.user_addr2,u.user_addr3,u.user_detail_addr,\n" +
+            "u.user_detail_addr2,u.user_detail_addr3, b.total_price \n" +
+            "FROM basket b\n" +
+            "JOIN product p\n" +
+            "ON b.prod_code = p.prod_code\n" +
+            "join users u\n" +
+            "on b.user_code = u.user_code\n" +
+            "WHERE b.user_code = :userCode", nativeQuery = true)
     List<Baskets> findByIDUsercart(int userCode);
+
+//
+
+
 
     //update문 delete문 할때 써줘야함 @Modifying @Transactional
     @Modifying
     @Transactional
     @Query(value = "UPDATE basket \n" +
             "SET prod_cnt = :prodCnt," +
-            "prod_discount_price = :price \n" +
+            "total_price = :price \n" +
             "WHERE id = :id", nativeQuery = true)
-    int updateprod(Long id, String prodCnt, int price);
+    void updateprod(Long id, String prodCnt, int price);
 
     ArrayList<Baskets> findAllById(int userCode);
 

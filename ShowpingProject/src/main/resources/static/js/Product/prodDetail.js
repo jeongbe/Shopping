@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let UserCodeE = document.querySelector('.UserCode');
     console.log(UserCodeE);
 
-    let UserCode = "";
+    var UserCode = "";
     if (UserCodeE) {
         UserCode = UserCodeE.textContent;
         console.log(UserCode);
@@ -54,8 +54,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 alert("에러")
             }
         })
+    }
 
-//        location.href="/shopping/cartbox/" + UserCode;
+    let payBtn = document.querySelector('.buy-button');
+
+    payBtn.onclick = () => {
+        console.log("바로결제");
+        console.log(UserCode);
+
+        location.href = "/order/auickly/payment/" + UserCode + "/" + prodCode;
     }
 
 });

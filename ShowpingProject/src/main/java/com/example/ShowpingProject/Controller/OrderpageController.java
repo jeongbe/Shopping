@@ -4,10 +4,13 @@ import com.example.ShowpingProject.DTO.BasketForm;
 import com.example.ShowpingProject.DTO.OrderDetailForm;
 import com.example.ShowpingProject.DTO.OrderHeaderForm;
 import com.example.ShowpingProject.entity.*;
+import com.example.ShowpingProject.entity.product.product;
 import com.example.ShowpingProject.repository.BasketRepository;
+import com.example.ShowpingProject.repository.PaymentRepository;
 import com.example.ShowpingProject.repository.UsersRepository;
 import com.example.ShowpingProject.repository.order.OrderDetailRepository;
 import com.example.ShowpingProject.repository.order.OrderHeaderRepository;
+import com.example.ShowpingProject.repository.productRepository.ProductRepository;
 import com.example.ShowpingProject.service.OrderService;
 import com.example.ShowpingProject.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
@@ -42,6 +45,9 @@ public class OrderpageController  {
 
     @Autowired
     PaymentService paymentService;
+
+    @Autowired
+    ProductRepository productRepository;
 
     //이거를 결제하기 눌렀을때 헤어 테이블에 저장해야함
     //장바구니에서 가져온 정보를 주문 헤더 테이블에 저장한다.
@@ -104,5 +110,25 @@ public class OrderpageController  {
         return "order/orderComp";
     }
 
+    //상품 디테일페이지에서 바로 상품 주문하기 클릭했을때
+    @GetMapping("/order/auickly/payment/{user_code}/{prod_code}")
+    public String AucklyPayment(Model model, @PathVariable("user_code")  int userCode,@PathVariable("prod_code")  String prodcode){
 
+        Users oneuserInfo = usersRepository.oneUserInfo(userCode);
+        log.info(oneuserInfo.toString());
+
+        if (oneuserInfo != null){
+            model.addAttribute("oneUserInfo",oneuserInfo);
+            log.info(String.valueOf(oneuserInfo));
+        }
+
+        product oneProduct = productRepository.oneproduct(prodcode);
+        log.info(oneProduct.toString());
+
+        if(oneProduct != null){
+            model.addAttribute("oneProduct", oneProduct);
+        }
+
+        return "order/oneorder";
+    }
 }

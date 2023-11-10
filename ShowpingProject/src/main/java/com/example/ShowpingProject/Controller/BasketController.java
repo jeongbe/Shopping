@@ -31,6 +31,7 @@ public class BasketController {
     @Autowired
     ProductRepository productRepository;
 
+    // 상품 디테일 페이지에서 장바구니 클릭시 해당상품이 해당 유저 장바구니에 상품이 담김
     @PostMapping("/shopping/insertcartbox/{user_code}/{prod_code}")
     public String insertCartbox(@PathVariable("user_code")  int userCode,@PathVariable("prod_code") String prodCode,BasketForm form){
 
@@ -62,10 +63,7 @@ public class BasketController {
             model.addAttribute("basketList", basketList);
         } else {
         }
-
-        //insert할때 사용할것
-//        insertData(prodcode, cnt , product_price, product_price * cnt)
-
+        
         log.info(basketList.toString());
 
 
