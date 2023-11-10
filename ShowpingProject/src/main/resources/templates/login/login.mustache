@@ -1,14 +1,20 @@
 <head>
     <link rel="stylesheet" type="text/css" href="/static/css/layouts/style.css">
     <link rel="stylesheet" type="text/css" href="/static/css/login/login.css">
+
 </head>
 
 <body>
 <header>
     {{>layouts/header}}
 </header>
+
+</div>
 <div class="form_content">
     <form action="/logincheck" method="post" class="form">
+        {{#loginfail}}
+            <h1 style="color: red;"><b>아이디 또는 비밀번호를 확인하세요</b></h1>
+        {{/loginfail}}
         <div>
             <div class="title">
                 <p>로그인</p>

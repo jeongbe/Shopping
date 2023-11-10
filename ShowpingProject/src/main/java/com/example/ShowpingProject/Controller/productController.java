@@ -81,6 +81,15 @@ public class productController {
         return "Product/productList";
     }
 
+    //상품리스트에 리스트로 등록 로그인버전
+    @GetMapping("/shopping/productlist/login")
+    public String productlistlogin(Model model){
+        List<product> productEntitylist  =  productRepository.findAll();
+        model.addAttribute("productlist", productEntitylist);
+        return "Product/productListlogin";
+    }
+
+
 
 
 }

@@ -3,6 +3,7 @@ package com.example.ShowpingProject.entity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Data
@@ -12,6 +13,7 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Users {
 
+    @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long user_code;
@@ -48,5 +50,7 @@ public class Users {
 
     @Column
     String user_detail_addr3;
+
+
 
 }

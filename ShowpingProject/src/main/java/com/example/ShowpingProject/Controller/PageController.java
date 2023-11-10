@@ -13,6 +13,14 @@ public class PageController {
         return "main";
     }
 
+    //로그인 완료후 이동하는 페이지
+    @GetMapping("/shopping/mainlogin")
+    public String shoppingmainlogin(){
+        return "mainlogin";
+    }
+
+
+
     //상품리스트 getmapping
     @GetMapping("/shopping/prodlist")
     public String prodlist() {
