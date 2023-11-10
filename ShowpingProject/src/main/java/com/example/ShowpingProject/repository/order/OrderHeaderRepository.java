@@ -1,12 +1,13 @@
 package com.example.ShowpingProject.repository.order;
 
 import com.example.ShowpingProject.entity.OrderHeader;
-import jakarta.persistence.criteria.Order;
+import com.example.ShowpingProject.entity.Users;
+import lombok.Data;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
 
-import java.util.List;
+import java.time.LocalDate;
+import java.util.Date;
 
 
 public interface OrderHeaderRepository extends CrudRepository<OrderHeader, Long> {
@@ -27,5 +28,12 @@ public interface OrderHeaderRepository extends CrudRepository<OrderHeader, Long>
             "on a.user_code = b.user_code\n" +
             "where a.order_id = :orderID ", nativeQuery = true)
     OrderHeader OrderHeaer(int orderID);
+
+
+    @Query(value = "SELECT Sum(total_price) As total_price \n" +
+            "FROM orderheader\n" +
+            "WHERE order_date >= :DateStart\n" +
+            "AND order_date <= :DateEnd\n", nativeQuery = true)
+    int sellinfo(Date DateStart, Date DateEnd);
 
 }

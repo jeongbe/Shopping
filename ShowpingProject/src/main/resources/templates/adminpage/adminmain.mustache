@@ -21,7 +21,8 @@
     </div>
 </nav>
 <main>
-    <div class="seller-info">
+
+        <div class="seller-info">
         <h3><b>매출 정보</b></h3>
         <hr>
         <div class="seller-date-form">
@@ -29,13 +30,19 @@
             <button class="seller-date-button">3개월</button>
             <button class="seller-date-button">1개월</button>
             <button class="seller-date-button">1주일</button>
-            <input type="date" class="seller-start"> ~ <input type="date" class="seller-end">
-            <button class="in-button">조회하기</button>
+            <form action="/sellinfo" method="get">
+            <input type="date" class="seller-start" name="DateStart"> ~ <input type="date" class="seller-end" name="DateEnd">
+            <button class="in-button" type="submit">조회하기</button>
+            </form>
         </div>
     </div>
+        {{#sellinfo}}
     <div class="seller-result">
-        매출 : <input type="text" class="seller-result-text" readonly>
+        매출 : <input type="text" class="seller-result-text" placeholder="{{sellinfo}}" readonly>
     </div>
+        {{/sellinfo}}
+
+
     <hr>
     <div class="cate-info">
         <button class="cate-button">카터고리별 매출 정보보기</button>
@@ -77,5 +84,7 @@
     <div class="seller-result">
     </div>
 </main>
+
+<script src="/static/js/admin/adminmain.js"></script>
 </body>
 </html>

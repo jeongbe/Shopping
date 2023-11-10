@@ -37,11 +37,11 @@ public class Baskets {
     @Column
     private String prod_cnt;
 
-    //»óÇ° ³¹°³ °¡°İ
+    //ìƒí’ˆ ë‚±ê°œ ê°€ê²©
     @Column(name = "prod_discount_price")
     private String  prod_price;
 
-    //ÀüÃ¼ °¡°İ
+    //ì „ì²´ ê°€ê²©
     @Column
     private String total_price;
 }
