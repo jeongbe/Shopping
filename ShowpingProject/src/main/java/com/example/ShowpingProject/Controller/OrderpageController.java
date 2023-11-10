@@ -3,15 +3,13 @@ package com.example.ShowpingProject.Controller;
 import com.example.ShowpingProject.DTO.BasketForm;
 import com.example.ShowpingProject.DTO.OrderDetailForm;
 import com.example.ShowpingProject.DTO.OrderHeaderForm;
-import com.example.ShowpingProject.entity.Baskets;
-import com.example.ShowpingProject.entity.OrderDetail;
-import com.example.ShowpingProject.entity.OrderHeader;
-import com.example.ShowpingProject.entity.Users;
+import com.example.ShowpingProject.entity.*;
 import com.example.ShowpingProject.repository.BasketRepository;
 import com.example.ShowpingProject.repository.UsersRepository;
 import com.example.ShowpingProject.repository.order.OrderDetailRepository;
 import com.example.ShowpingProject.repository.order.OrderHeaderRepository;
 import com.example.ShowpingProject.service.OrderService;
+import com.example.ShowpingProject.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,18 +35,20 @@ public class OrderpageController  {
     BasketRepository basketRepository;
 
     @Autowired
-    OrderDetailRepository orderDetailRepository;
-
-    @Autowired
     UsersRepository usersRepository;
 
     @Autowired
     OrderService orderService;
 
+    @Autowired
+    PaymentService paymentService;
+
     //이거를 결제하기 눌렀을때 헤어 테이블에 저장해야함
     //장바구니에서 가져온 정보를 주문 헤더 테이블에 저장한다.
     @PostMapping("/order/{user_code}")
     public String order(@PathVariable("user_code")  int userCode,@ModelAttribute OrderHeaderForm HForm, OrderHeader orderHeader,Baskets baskets){
+
+        //결제하기 눌렀을때 결제페이블에도 값들을 저장해줄꺼임
 
 
         //주분 헤더 DTO를 엔티티로 바꿈
@@ -63,7 +63,11 @@ public class OrderpageController  {
         // 매개변수로 유저 코드랑 주문 번호를 넘겨줘서 최종 주문디테일 테이블에 저장하게 한다.
         orderService.saveOrderDetail(userCode,orderID);
 
-        return "";
+        String totalPrice = saved.getTotal_price();
+
+        paymentService.insertPayment(userCode,orderID,totalPrice);
+
+        return "main";
     }
 
 

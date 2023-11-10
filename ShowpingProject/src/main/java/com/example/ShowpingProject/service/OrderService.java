@@ -30,8 +30,6 @@ public class OrderService {
         List<Baskets> basketList = basketRepository.findByIDUsercart(userCode);
         log.info(basketList.toString());
 
-
-
         for(Baskets baskets : basketList){
             OrderDetail orderDetail = new OrderDetail();
 
@@ -41,7 +39,7 @@ public class OrderService {
             orderDetail.setOrder_id(orderID);
             orderDetail.setProd_size(baskets.getProd_size());
             orderDetail.setProd_cnt(baskets.getProd_cnt());
-            orderDetail.setProd_price(String.valueOf(baskets.getProd_price()));
+            orderDetail.setProd_price(baskets.getProd_price());
 
             orderDetailRepository.save(orderDetail);
             log.info(orderDetail.toString());
@@ -49,4 +47,5 @@ public class OrderService {
 
 
     }
+
 }

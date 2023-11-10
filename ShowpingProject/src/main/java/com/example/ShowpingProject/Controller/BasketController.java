@@ -3,7 +3,9 @@ package com.example.ShowpingProject.Controller;
 
 import com.example.ShowpingProject.DTO.BasketForm;
 import com.example.ShowpingProject.entity.Baskets;
+import com.example.ShowpingProject.entity.product.product;
 import com.example.ShowpingProject.repository.BasketRepository;
+import com.example.ShowpingProject.repository.productRepository.ProductRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,15 +28,47 @@ public class BasketController {
 //    BasketService basketService;
     BasketRepository basketRepository;
 
-    //장바구니 안에 있는 상품 불러오기
-    @GetMapping("/shopping/cartbox/{user_code}")
-    public String showcart(@PathVariable("user_code")  int userCode, BasketForm form , Model model) {
+    @Autowired
+    ProductRepository productRepository;
+
+    @PostMapping("/shopping/insertcartbox/{user_code}/{prod_code}")
+    public String insertCartbox(@PathVariable("user_code")  int userCode,@PathVariable("prod_code") String prodCode,BasketForm form){
+
+        log.info(String.valueOf(userCode));
+        log.info(prodCode);
         log.info(form.toString());
+
+        Baskets baskets = form.toEntity();
+        baskets.setTotal_price(form.getProdprice());
+        log.info(baskets.toString());
+
+        Baskets baskets1 = basketRepository.save(baskets);
+        log.info(baskets1.toString());
+
+        return "redirect:/shopping/read/product/" + prodCode;
+    }
+
+    //장바구니 안에 있는 상품 불러오기 , 유저 코드 기준으로 해당 유저 장바구니 불러옴
+    @GetMapping("/shopping/cartbox/{user_code}")
+    public String showcart(@PathVariable("user_code")  int userCode, BasketForm form , Model model,Baskets baskets) {
+        log.info(form.toString());
+
+        form.setTotalPrice(String.valueOf(0));
+
+        //장바구니 테이블 안에 있는 상품들을 불러온다.
         List<Baskets> basketList = basketRepository.findByIDUsercart(userCode);
         if (basketList != null) {
+            //불러온 상품을 장바구니 페이지에서 보여주기 위해서 model basketList에 값들을 넣어준다.
             model.addAttribute("basketList", basketList);
         } else {
         }
+
+        //insert할때 사용할것
+//        insertData(prodcode, cnt , product_price, product_price * cnt)
+
+        log.info(basketList.toString());
+
+
         return "basket/basket";
     }
 
@@ -44,11 +78,15 @@ public class BasketController {
         log.info("삭제요청");
         log.info(String.valueOf(userCode));
 
+        //장바구니 안에 있는 상품 불러온다.
         List<Baskets> basketList = basketRepository.findByIDUsercart(userCode);
         if (basketList != null) {
+            //해당 유저 장바구니 테이블 안 데이터 전부 삭제한다.
             basketRepository.deleteAll(basketList);
+            //삭제 잘 되었을때 해당 메세지를 띄어준다.
             rttr.addFlashAttribute("msg"," 장바구니 상품이 삭제되었습니다");
         } else {
+            //상품이 없는데 삭제하려고 할때 메세지를 띄어준다.
             rttr.addFlashAttribute("Errormsg"," 장바구니 안 상품이 없습니다.");
         }
 
@@ -58,19 +96,16 @@ public class BasketController {
     //장바구니 낱개 상품 삭제하기
     @GetMapping("/shopping/cartbox/{user_code}/delete/{id}")
     public String deleteProduct(@PathVariable("user_code") int userCode,@PathVariable("id") Long id) {
-        log.info("444444444444444444444");
-//        log.info(String.valueOf(userCode));
-//        log.info(String.valueOf(id));
 
+        //장바구니 테이블에서 id 기준으로 해당 상품을 target으로 잡는다.
         Baskets target = basketRepository.findById(id).orElse(null);
         log.info(target.toString());
 
+        //타겟이 있을때 해당 상품을 삭제한다.
         if(target != null){
             basketRepository.delete(target);
         }
 
-        // 삭제가 성공했을 때 메시지를 반환합니다.
-//        return "redirect:/shopping/cartbox/" + userCode;
         return "redirect:/shopping/cartbox/" + userCode;
     }
 
@@ -78,15 +113,18 @@ public class BasketController {
     //정보 업데이트해서 db에 저장해주기
     @PostMapping("/shopping/cartbox/{id}/test/ajax")
     @ResponseBody
-    public String testAjax(BasketForm form, @PathVariable("id") Long id){
+    public String testAjax(BasketForm form, @PathVariable("id") Long id, product productE){
 
         log.info(form.toString());
 
+        //장바구니 DTO를 entity로 바꿔주는 과정
         Baskets basketEntity = form.toEntity();
 
         log.info(basketEntity.toString());
 
-        int a =  basketRepository.updateprod(basketEntity.getId(),basketEntity.getProd_cnt(),basketEntity.getProd_price());
+        basketRepository.updateprod(basketEntity.getId(),basketEntity.getProd_cnt(), Integer.parseInt((basketEntity.getTotal_price())));
+
+//        String price = productRepository.fristPrice(prodCode);
 
         return "redirect:/shopping/cartbox/" + basketEntity.getUser_code();
     }

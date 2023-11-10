@@ -43,6 +43,7 @@ var userCodeE = document.querySelector(".userCode");
 var userCode = parseInt(userCodeE.textContent);
 console.log(userCode);
 
+//유저 이름 가져옴
 var userName = document.querySelector(".userName").textContent;
 console.log(userName);
 
@@ -50,6 +51,7 @@ let PayMentBtn = document.querySelector(".paymentBtn");
 
 PayMentBtn.onclick = () => {
     alert("주문완료");
+    //데이터를 총가격,유저코드,유저이름을 보내준다.
     let dataToSend2 = `totalPrice=${totalPrice}&userCode=${userCode}&userName=${userName}`;
     console.log(userCode);
     //보낼데이터는 상품 총 가격 , user_code
@@ -58,7 +60,7 @@ PayMentBtn.onclick = () => {
         data: dataToSend2,
         type: "POST",
         success: function (data) {
-            alert("성공");
+//            alert("성공");
 
         },
         error: function () {

@@ -34,11 +34,11 @@
 </div>
 <div class="body_content">
     <div class="Allclick">
-        상품<span class="checkbox-count">(0/3)</span>
+        상품<span class="checkbox-count">(0/<p class="prodCartboxCount"></p>)</span>
     </div>
-    <form id="deleteForm" method="get">
-        <button class="clickdelete">선택삭제/</button>
-    </form>
+<!--    <form id="deleteForm" method="get">-->
+<!--        <button class="clickdelete">선택삭제/</button>-->
+<!--    </form>-->
     <form id="deleteAllForm" method="get">
         <p style="display: none" class="userCode">{{user_code}}</p>
         <button type="submit" class="Alldelete">전체삭제</button>
@@ -52,7 +52,7 @@
         <div class="products">
             <div class="product">
                 <!--                상품 체크 박스-->
-                <input type="checkbox" class="chk" id="chekcBox" name="prodbox"/>
+<!--                <input type="checkbox" class="chk" id="chekcBox" name="prodbox"/>-->
                 <img src="" class="img-thumbnail produces_image" alt="상품 이미지"/>
                 <div class="product_info" onclick="find(this); return false;">
                     <p class="prodfindID" >{{id}}</p>
@@ -76,8 +76,9 @@
                             </li>
                         </ul>
                     </nav>
-                    <p class="product_pirce" name="prod_price">{{prod_price}}원</p>
+                    <p class="product_pirce" style="display:none;" name="prod_price">{{prod_price}}원</p>
                     <p class="prod_total" style="display: none;">{{prod_price}}원</p>
+                    <p class="TOTALPRICE" >{{total_price}}</p>
 
                     <form id="changeValueForm" action="/shopping/cartbox/produpdate" method="post">
                         <input type="hidden" id="prodPriceInput" name="prodprice" value="{{prod_price}}">
@@ -107,13 +108,6 @@
         <button type="submit" class="btn_ btn-info payBtn">주문하기</button>
     </div>
 </form>
-
-<!--        <input type="hidden" name="prod_price" " " />-->
-<!--        <input type="hidden" name="prod_cnt"  " />-->
-
-
-
-<!-- <script src="/static/js/Basket/basket.js"></script>-->
 <script>
 
 
@@ -124,19 +118,22 @@ let cartItems = Array.from(document.querySelectorAll(".products")).map(item => {
     return { id: id, price: price };
 });
 
+    console.log(cartItems);
+
     var count = 0;
 
+    //초기 한번만 계산해주기 위해서 count 0일때만 계산 if문 끝나고 count++하기때문에 처음 한번만함
     if(count === 0){
         // 초기 totalPrice 계산
         var totalPrice = cartItems.reduce((total, item) => total + item.price, 0);
         console.log("초기 총 가격: " + totalPrice);
+<!--        console.log(cartItems.length);-->
         count++;
     }
 
 
 
-            //장바구니 전체 삭제
-
+            //장바구니 상품 전체 삭제
             let deleteAllForm = document.getElementById('deleteAllForm');
             var userCodeEl = document.querySelector(".userCode");
             userCode = parseInt(userCodeEl.textContent);
@@ -147,6 +144,7 @@ let cartItems = Array.from(document.querySelectorAll(".products")).map(item => {
                     event.preventDefault();
 
                     console.log(userCode);
+                    // submit버튼 눌러졌을때 해당 action으로 이동함
                     deleteAllForm.action = `/shopping/cartbox/${userCode}/deleteAll`;
 
                     deleteAllForm.submit();
@@ -159,19 +157,11 @@ let cartItems = Array.from(document.querySelectorAll(".products")).map(item => {
 <!--        각 상품 객체를 가져온다.-->
     function find(prod) {
 
-    let change_Btn = prod.querySelector(".change_Btn");
+        //변경확인 버튼
+        let change_Btn = prod.querySelector(".change_Btn");
 
-<!--    var findIDvalue = prod(findID.textContent);-->
-
-
-<!--    var changeValueForm = prod.getElementById('changeValueForm');-->
-
-    //상품 가격
-    let prodPriceInput = prod.querySelector('#prodPriceInput');
-    //상품 개수
-<!--    let prodCntInput = prod.querySelector('#prodCntInput');-->
-
-
+        //상품 가격
+        let prodPriceInput = prod.querySelector('#prodPriceInput');
 
         let targetElement = prod.querySelector('.prodCount');
         let targetText = 1;
@@ -195,6 +185,12 @@ let cartItems = Array.from(document.querySelectorAll(".products")).map(item => {
         let plusBtn = prod.querySelector('.plusBtn'); // 현재 상품 내에서 plusBtn을 찾음
         let minusBtn = prod.querySelector(".minusBtn");  //현재 상품에서 minusBtn 찾음
 
+        let TP = prod.querySelector('.TOTALPRICE');
+
+        let TPtext = parseInt(TP.textContent);
+<!--        console.log(TPtext);-->
+
+
         //플러스 버튼 클릭했을때
         plusBtn.onclick = () => {
             if (targetText < 10) {
@@ -203,11 +199,13 @@ let cartItems = Array.from(document.querySelectorAll(".products")).map(item => {
 
                 //토탈에 값을 다 더해줘서 마지막에 가격(보이는)에 넣어준다.
                 prod_price.textContent= prod_total2 * targetText;
-                console.log(" 상품가격" + prod_total.textContent);
-                console.log( "토탈 상품가격"+ prod_price.textContent);
 
                 totalPrice += price_text;
+
                 console.log("총 토탈 가격"+totalPrice);
+                console.log(TPtext);
+                TP.textContent = totalPrice
+                console.log(TPtext);
             }
         }
 
@@ -218,15 +216,22 @@ let cartItems = Array.from(document.querySelectorAll(".products")).map(item => {
 
                 console.log("마이너스 총 토탈 가격1  "+totalPrice);
 
-                prod_price.textContent = price_text - prod_total2;
-                console.log(" 상품가격" + prod_total.textContent);
-                console.log( "토탈 상품가격"+ prod_price.textContent);
+<!--                prod_price.textContent = price_text - prod_total2;-->
+<!--                console.log(" prod_total.textContent: " + prod_total.textContent);-->
+<!--                console.log( "prod_price.textContent: "+ prod_price.textContent);-->
 
+                    console.log("TP.textContent " + TP.textContent);
+                    console.log("price_text " + price_text);
+
+                    TPtext -= price_text;
+                    console.log(TPtext);
+
+                    TP.textContent = TPtext;
 
 <!--                prodPriceInput.value = prod_price.textContent;-->
 
-                totalPrice = totalPrice - prod_total2;
-                console.log("마이너스 총 토탈 가격2  "+ totalPrice);
+<!--                totalPrice = totalPrice - prod_total2;-->
+<!--                console.log("마이너스 총 토탈 가격2  "+ totalPrice);-->
             }
         }
 
@@ -236,26 +241,45 @@ let cartItems = Array.from(document.querySelectorAll(".products")).map(item => {
         change_Btn.onclick = () => {
             var idElement = prod.querySelector('.prodfindID');
             var id = parseInt(idElement.textContent);;
-            console.log("상" +idElement.textContent );
+<!--            console.log("상" +idElement.textContent );-->
+
+            TPtext = totalPrice;
+            console.log(TPtext);
+
+            prod_price.textContent = TPtext
 
 
 
-            console.log("상" + prod_price.textContent);
-            console.log("상" +idElement.textContent );
+            console.log("TPtext " + TPtext);
+            console.log(" prod_price.textContent " + prod_price.textContent)
+
+
+<!--            console.log("상" + prod_price.textContent);-->
+<!--            console.log("상" +idElement.textContent );-->
             var ajaxUrl = "/shopping/cartbox/"+ id + "/test/ajax";
-            console.log("dsfsd" + id);
-            alert("수량변경완료");
+<!--            console.log("dsfsd" + id);-->
+
+            var StringTP = TP.textContent;
+            console.log("StringTP " + StringTP);
 
 
                    // 데이터를 문자열로 묶어 전송
-            let dataToSend = `prodprice=${prod_price.textContent}&prodcnt=${targetElement.textContent}&id=${idElement.textContent}`;
-
+            let dataToSend = `totalPrice=${StringTP}&prodcnt=${targetElement.textContent}&id=${idElement.textContent}`;
+            console.log(dataToSend);
             $.ajax({
                 url: ajaxUrl,
                 data: dataToSend,
                 type: "POST",
                 success: function (data) {
-                    alert("성공");
+<!--                    alert("성공");-->
+<!--                    // 서버에서 업데이트된 가격을 응답으로 받은 것으로 가정-->
+<!--                    var updatedPrice = data.updatedPrice;-->
+<!--                    console.log(updatedPrice);-->
+<!--                    // DOM에서 업데이트된 가격을 표시합니다-->
+<!--                    prod_price.textContent = updatedPrice;-->
+<!--                    console.log(prod_price.textContent);-->
+
+                    alert("수량변경완료");
                 },
                 error: function () {
                     alert("에러");
@@ -268,13 +292,15 @@ let cartItems = Array.from(document.querySelectorAll(".products")).map(item => {
         var orderBtn = document.querySelector(".payBtn");
 
 
-
+        //주문하기버튼을 클릭하면 주문페이지로 넘어간다.
         orderBtn.onclick = () => {
-<!--            alert(userCode);-->
                 location.href = "/order/Payment/" + userCode;
         }
 
-
+        let prodCartboxCountE = document.querySelector(".prodCartboxCount");
+        let prodCartboxCount = prodCartboxCountE.textContent;
+        console.log(prodCartboxCount);
+        prodCartboxCountE.textContent = cartItems.length;
 
 
 </script>

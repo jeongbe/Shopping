@@ -21,6 +21,7 @@ public class PageController {
     public String shoppingmainlogin(HttpSession session, Model model){
         Users loginUser = (Users) session.getAttribute("loginUser");
         model.addAttribute("loginUser", loginUser);
+
         return "mainlogin";
     }
 

@@ -37,9 +37,11 @@ public class Baskets {
     @Column
     private String prod_cnt;
 
+    //상품 낱개 가격
     @Column(name = "prod_discount_price")
-    private int  prod_price;
+    private String  prod_price;
 
+    //전체 가격
     @Column
     private String total_price;
 }

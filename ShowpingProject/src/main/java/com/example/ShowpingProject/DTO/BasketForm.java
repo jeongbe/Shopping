@@ -25,7 +25,7 @@ public class BasketForm {
 
     String prodcnt; //상품 개수
 
-    int prodprice;  //상품 총 가격
+    String prodprice;  //상품 총 가격
 
     String totalPrice;
 
