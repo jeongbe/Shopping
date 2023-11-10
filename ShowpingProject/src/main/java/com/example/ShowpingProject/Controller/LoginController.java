@@ -23,13 +23,22 @@ public class LoginController {
 
 
     @PostMapping("/logincheck")
-    public String logincheck(Loginform form, HttpServletRequest request, RedirectAttributes rttr){
-        HttpSession session = request.getSession();
+    public String logincheck(Loginform form, HttpServletRequest request, RedirectAttributes rttr, Model model){
+
         Users users = usersRepository.login(form.getLogin_ID(), form.getLogin_password());
+
         String fail = "아이디 혹은 비밀번호가 잘못 되었습니다";
+
         if(users != null){
-            session.setAttribute("loginUser", users);
+            HttpSession session = request.getSession();
+           session.setAttribute("loginUser", users);
+           session.getAttribute("loginUser");
+
+            Users loginUser = (Users) session.getAttribute("loginUser");
+            model.addAttribute("loginUser", loginUser);
+
             log.info("User {} logged in successfully.", users.getUser_code());
+            log.info(session.toString());
 
             return "redirect:shopping/mainlogin";
         }

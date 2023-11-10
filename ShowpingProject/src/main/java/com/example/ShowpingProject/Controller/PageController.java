@@ -1,6 +1,9 @@
 package com.example.ShowpingProject.Controller;
 
+import com.example.ShowpingProject.entity.Users;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
@@ -15,7 +18,9 @@ public class PageController {
 
     //로그인 완료후 이동하는 페이지
     @GetMapping("/shopping/mainlogin")
-    public String shoppingmainlogin(){
+    public String shoppingmainlogin(HttpSession session, Model model){
+        Users loginUser = (Users) session.getAttribute("loginUser");
+        model.addAttribute("loginUser", loginUser);
         return "mainlogin";
     }
 
