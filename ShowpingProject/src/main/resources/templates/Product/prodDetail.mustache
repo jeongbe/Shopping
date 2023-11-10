@@ -5,7 +5,11 @@
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
 </head>
 <body>
+{{#loginUser}}
+    <p class="UserCode">{{user_code}}</p>
+{{/loginUser}}
 {{#product}}
+    <p style="display:none;" class="prodCode">{{prod_code}}</p>
 <header>
     <div class="cate-info">
         {{prod_cate}} >> {{prod_decate}}
@@ -54,7 +58,7 @@
         <div class="prod-name">
             <h3>상품명</h3>
             <div class="prod-name-text">
-                <p>{{prod_name}}</p>
+                <p class="prodName">{{prod_name}}</p>
             </div>
         </div>
         <div class="prod-price">
@@ -66,7 +70,7 @@
         <div class="prod-discount-price">
             <h3>할인가</h3>
             <div class="prod-discount-text">
-                <p>{{prod_discount_price}}</p>
+                <p class="prodPrice">{{prod_discount_price}}</p>
             </div>
         </div>
         <div class="prod-diliver-price">
@@ -78,16 +82,18 @@
         <div class="prod-size">
             <h3>사이즈</h3>
             <div class="prod-size-text">
-                <select class="size-option">
-                    <option>{{prod_XS}}</option>
-                    <option>{{prod_S}}</option>
-                    <option>{{prod_M}}</option>
-                    <option>{{prod_L}}</option>
-                    <option>{{prod_XL}}</option>
+                <select id="prodSize" class="size-option">
+                    <option name="prodSize" value="XS">{{prod_XS}}</option>
+                    <option name="prodSize" value="S">{{prod_S}}</option>
+                    <option name="prodSize" value="M">{{prod_M}}</option>
+                    <option name="prodSize" value="L">{{prod_L}}</option>
+                    <option name="prodSize" value="XL">{{prod_XL}}</option>
                 </select>
             </div>
         </div>
         <div class="prod-buy-button">
+
+<!--            <p class="UserCode">2sss</p>-->
             <button type="submit" class="basket-button">장바구니</button>
             <button type="submit" class="buy-button">바로결제</button>
         </div>
@@ -157,5 +163,18 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
 </script>
+<script src="/static/js/Product/prodDetail.js"></script>
+<!--<script>-->
+<!--    let UserCodeE = document.querySelector('.UserCode');-->
+<!--    console.log(UserCodeE);-->
+
+<!--    if (UserCodeE) {-->
+<!--        let UserCode = UserCodeE.textContent;-->
+<!--        console.log(UserCode);-->
+<!--    } else {-->
+<!--//        console.log('.UserCode 요소를 찾을 수 없습니다.');-->
+<!--    }-->
+<!--</script>-->
 </body>
+{{>layouts/footer}}
 </html>
