@@ -54,15 +54,32 @@ document.addEventListener('DOMContentLoaded', function() {
                 alert("에러")
             }
         })
+
+
     }
 
     let payBtn = document.querySelector('.buy-button');
 
     payBtn.onclick = () => {
         console.log("바로결제");
-        console.log(UserCode);
+//        console.log(UserCode);
+//        console.log(prodSize);
+//
+//        let prodData = `Prsize=${prodSize}&Prname=${ProdName}&Prprice=${prodPrice}&userCode=${UserCode}&totalPrice=${prodPrice}`
+//
+//        $.ajax({
+//            url: "/order/auickly/" + UserCode + "/" + prodCode + "/" + prodSize +"/data",
+//            data: prodData,
+//            type: "POST",
+//            success : function(data){
+//                    alert("성공")
+//                },
+//                error : function(){
+//                    alert("에러")
+//                }
+//        })
 
-        location.href = "/order/auickly/payment/" + UserCode + "/" + prodCode;
+        location.href = "/order/auickly/payment/" + UserCode + "/" + prodCode + "/" + prodSize;
     }
 
 });

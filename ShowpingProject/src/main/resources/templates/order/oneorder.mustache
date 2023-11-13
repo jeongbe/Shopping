@@ -6,7 +6,9 @@
 <header>
     {{>layouts/header}}
 </header>
-
+{{#prodsize}}
+    <p style="display:none;" class="prodsize">{{prodsize}}</p>
+{{/prodsize}}
 <form method="get" action="/order/auickly/payment/{{user_code}}/{{prod_code}}">
     <div onclick="find(this); return false;">
         <p style="display:none;" class="userCode">{{user_code}}</p>
@@ -72,10 +74,12 @@
                 </div>
                 <div class="border_ pord_infos">
                     <p>상품정보</p>
+                    <p class="pri">사이즈</p>
                     <p class="count">수량</p>
-                    <p class="pri"></p>
+                    <p class="pri">가격</p>
                 </div>
                 {{#oneProduct}}
+                    <p style="display:none;" class="ProdCode">{{prod_code}}</p>
                 <div class="border2_">
                     <div>
                         <img
@@ -85,7 +89,10 @@
                         />
                     </div>
                     <div class="prod_info2">
-                        <p></p>
+                        {{#prodsize}}
+                            <p class="prodsize">{{prodsize}}</p>
+                        {{/prodsize}}
+                        <p class="prodName">{{prod_name}}</p>
                         <p style="display:none;"></p>
                     </div>
                     <div class="dis prod_info3">
@@ -122,6 +129,6 @@
     </div>
 </form>
 <!--<script src="/Pro1/order.js"></script>-->
-<script src="/static/js/Basket/order.js"></script>
+<script src="/static/js/Basket/orderQ.js"></script>
 </body>
 {{>layouts/footer}}

@@ -3,6 +3,8 @@ package com.example.ShowpingProject.Controller;
 import com.example.ShowpingProject.DTO.BasketForm;
 import com.example.ShowpingProject.DTO.OrderDetailForm;
 import com.example.ShowpingProject.DTO.OrderHeaderForm;
+import com.example.ShowpingProject.DTO.ProdSizeForm;
+import com.example.ShowpingProject.DTO.product.productform;
 import com.example.ShowpingProject.entity.*;
 import com.example.ShowpingProject.entity.product.product;
 import com.example.ShowpingProject.repository.BasketRepository;
@@ -49,6 +51,9 @@ public class OrderpageController  {
     @Autowired
     ProductRepository productRepository;
 
+    @Autowired
+    OrderDetailRepository orderDetailRepository;
+
     //이거를 결제하기 눌렀을때 헤어 테이블에 저장해야함
     //장바구니에서 가져온 정보를 주문 헤더 테이블에 저장한다.
     @PostMapping("/order/{user_code}")
@@ -73,7 +78,61 @@ public class OrderpageController  {
 
         paymentService.insertPayment(userCode,orderID,totalPrice);
 
-        return "main";
+        return "";
+    }
+
+    //바로 상품디테일에서 주문헤더와 디테일에 정보 저장하기
+    @PostMapping("/order/auickly/{user_code}/{prod_code}/{prod_size}")
+    public String auicklyOrder(@PathVariable("user_code")  int userCode,@PathVariable("prod_size") String prodsize, @PathVariable("prod_code")  String prodCode, @ModelAttribute OrderHeaderForm HForm, ProdSizeForm prsizeF){
+
+
+        log.info(prsizeF.toString());
+
+        //주분 헤더 DTO를 엔티티로 바꿈
+        OrderHeader HOrder = HForm.toEntity();
+        log.info(HOrder.toString());
+
+        //주문 헤더에 정보를 저장하기 위해 유저 name이 필요해서  db에서 usercode 기준으로 이름을 가져와서 넣어준다.
+        Optional<Users> user = usersRepository.findById(Long.valueOf((userCode)));
+        String username = user.get().getUser_name();
+        log.info(username);
+
+        HOrder.setUser_name(username);
+        //주문 헤더 엔티티를 DB에 저장
+        OrderHeader saved = orderHeaderRepository.save(HOrder);
+        log.info("주ㅡ묺헤더 ㅇㄴㄴㄴㄴㄴㄴㅌㅊxxxxxxxxx" + saved.toString());
+
+
+        log.info(prsizeF.toString());
+
+        //상품 디테일에 정보 저장하기
+        OrderDetail orderDetail = new OrderDetail();
+        orderDetail.setProd_code(Long.valueOf(prodCode));
+        orderDetail.setUser_code(saved.getUserCode());
+        orderDetail.setOrder_id(saved.getOrder_id());
+        orderDetail.setProd_cnt(String.valueOf(1));
+        orderDetail.setProd_name(prsizeF.getPrname());
+        orderDetail.setProd_price(prsizeF.getPrprice());
+        orderDetail.setProd_size(prsizeF.getPrsize());
+
+        orderDetailRepository.save(orderDetail);
+
+
+        //결제테이블에 저장
+        paymentService.insertPayment(userCode,saved.getOrder_id(),prsizeF.getPrprice());
+
+        return "";
+    }
+
+    @PostMapping("/order/auickly/{user_code}/{prod_code}/{prod_size}/data")
+    public String data(Model model,@PathVariable("prod_size")  String prodsize,@PathVariable("user_code")  int userCode, @PathVariable("prod_code")  String prodCode, @ModelAttribute OrderHeaderForm HForm, ProdSizeForm prsizeF){
+
+        log.info(prsizeF.toString());
+
+        model.addAttribute("prodINFO", prsizeF);
+        log.info(prsizeF.toString());
+
+        return "";
     }
 
 
@@ -111,11 +170,13 @@ public class OrderpageController  {
     }
 
     //상품 디테일페이지에서 바로 상품 주문하기 클릭했을때
-    @GetMapping("/order/auickly/payment/{user_code}/{prod_code}")
-    public String AucklyPayment(Model model, @PathVariable("user_code")  int userCode,@PathVariable("prod_code")  String prodcode){
+    @GetMapping("/order/auickly/payment/{user_code}/{prod_code}/{prod_size}")
+    public String AucklyPayment(Model model, @PathVariable("user_code")  int userCode,@PathVariable("prod_size")  String prodsize,@PathVariable("prod_code")  String prodcode,ProdSizeForm form){
+
+        log.info(prodsize);
 
         Users oneuserInfo = usersRepository.oneUserInfo(userCode);
-        log.info(oneuserInfo.toString());
+//        log.info(oneuserInfo.toString());
 
         if (oneuserInfo != null){
             model.addAttribute("oneUserInfo",oneuserInfo);
@@ -123,11 +184,14 @@ public class OrderpageController  {
         }
 
         product oneProduct = productRepository.oneproduct(prodcode);
-        log.info(oneProduct.toString());
+//        log.info(oneProduct.toString());
 
         if(oneProduct != null){
             model.addAttribute("oneProduct", oneProduct);
         }
+
+        model.addAttribute("prodsize",prodsize);
+
 
         return "order/oneorder";
     }

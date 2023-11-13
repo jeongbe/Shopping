@@ -31,6 +31,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
         //배달비까지 더한 최종 가격
         LastAllPrice.textContent = parseInt(totalPrice) + 3000 + "원";
+
+//        var prodSize = "";
+//        let ProdSizeE = document.getElementById('prodSize');
+//            ProdSizeE.addEventListener('change', function() {
+//            prodSize = ProdSizeE.value;
+//            console.log(prodSize);
+//        });
     }
 
     // 페이지 로드 시 자동으로 find 함수 호출
@@ -47,16 +54,28 @@ console.log(userCode);
 var userName = document.querySelector(".userName").textContent;
 console.log(userName);
 
+//상품 코드
+var ProdCode = document.querySelector(".ProdCode").textContent;
+console.log(ProdCode);
+
+//상품 사이즈 선택한 값
+var ProdSize = document.querySelector(".prodsize").textContent;
+console.log(ProdSize);
+
+//상품 이름
+var ProdName = document.querySelector(".prodName").textContent;
+console.log(ProdName);
+
 let PayMentBtn = document.querySelector(".paymentBtn");
 
 PayMentBtn.onclick = () => {
     alert("주문완료");
     //데이터를 총가격,유저코드,유저이름을 보내준다.
-    let dataToSend2 = `totalPrice=${totalPrice}&userCode=${userCode}&userName=${userName}`;
+    let dataToSend2 = `totalPrice=${totalPrice}&userCode=${userCode}&userName=${userName}&ProdCode=${ProdCode}&Prsize=${ProdSize}&Prname=${ProdName}&Prprice=${totalPrice}`;
     console.log(userCode);
     //보낼데이터는 상품 총 가격 , user_code
     $.ajax({
-        url: "/order/" + userCode,
+        url: "/order/auickly/" + userCode + "/" + ProdCode + "/" + ProdSize,
         data: dataToSend2,
         type: "POST",
         success: function (data) {
@@ -66,8 +85,9 @@ PayMentBtn.onclick = () => {
         error: function () {
             alert("에러");
         }
+
     });
-    location.href = "/shopping/mainlogin";
+        location.href = "/shopping/mainlogin";
 }
 
 
