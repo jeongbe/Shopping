@@ -16,7 +16,7 @@ public interface BasketRepository extends CrudRepository<Baskets, Long> {
 
 
     @Query(value = "SELECT b.id, b.prod_cnt, b.prod_code, b.prod_size, u.user_code, p.prod_name, p.prod_cate, p.prod_decate, p.prod_price, p.prod_discount_ratio, b.prod_discount_price, p.diliver_price, u.user_ID, u.user_name, u.user_email, u.user_phone,u.user_addr,u.user_addr2,u.user_addr3,u.user_detail_addr,\n" +
-            "u.user_detail_addr2,u.user_detail_addr3, b.total_price \n" +
+            "u.user_detail_addr2,u.user_detail_addr3, b.total_price, u.userbirthday \n" +
             "FROM basket b\n" +
             "JOIN product p\n" +
             "ON b.prod_code = p.prod_code\n" +
@@ -28,7 +28,8 @@ public interface BasketRepository extends CrudRepository<Baskets, Long> {
 //
 
 
-
+    
+    //장바구니 수정 쿼리
     //update문 delete문 할때 써줘야함 @Modifying @Transactional
     @Modifying
     @Transactional
@@ -40,6 +41,10 @@ public interface BasketRepository extends CrudRepository<Baskets, Long> {
 
     ArrayList<Baskets> findAllById(int userCode);
 
+    @Modifying
+    @Transactional
+    @Query(value = "delete from basket where user_code = :userCode", nativeQuery = true)
+    void DeleteCartbox(int userCode);
 
 //    Object findAllById(int userCode);
 }

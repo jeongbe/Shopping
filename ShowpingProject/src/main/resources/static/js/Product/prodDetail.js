@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+    //유저코드 가져옴
     let UserCodeE = document.querySelector('.UserCode');
     console.log(UserCodeE);
 
@@ -11,18 +12,22 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('.UserCode 요소를 찾을 수 없습니다.');
     }
 
+    //상품 코드
     let ProdCodeE = document.querySelector(".prodCode");
     let prodCode = ProdCodeE.textContent;
     console.log(prodCode);
 
+    //상품 이름
     let prodNameE = document.querySelector(".prodName");
     let ProdName = prodNameE.textContent;
     console.log(ProdName)
 
+    //상품 가격
     let prodPriceE = document.querySelector(".prodPrice");
     let prodPrice = prodPriceE.textContent;
     console.log(prodPrice);
 
+    //상품 사이즈
     var prodSize = "";
     let ProdSizeE = document.getElementById('prodSize');
         ProdSizeE.addEventListener('change', function() {
@@ -30,17 +35,18 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log(prodSize);
         });
 
-
+    //상품 수량
     let ProdCnt = "1";
     console.log(ProdCnt);
 
     let basketBtn = document.querySelector(".basket-button");
 
+    //장바구니 버튼 클릭했을때
     basketBtn.onclick = () => {
         console.log("장바구니버튼 클릭");
         console.log(UserCode);
 
-
+        //보내줄 정보들
         let PostData = `usercode=${UserCode}&prodcode=${prodCode}&prodname=${ProdName}&prodsize=${prodSize}&prodcnt=${ProdCnt}&prodprice=${prodPrice}&totalPrice${prodPrice}`
 
         $.ajax({
@@ -55,29 +61,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         })
 
-
     }
 
     let payBtn = document.querySelector('.buy-button');
 
     payBtn.onclick = () => {
         console.log("바로결제");
-//        console.log(UserCode);
-//        console.log(prodSize);
-//
-//        let prodData = `Prsize=${prodSize}&Prname=${ProdName}&Prprice=${prodPrice}&userCode=${UserCode}&totalPrice=${prodPrice}`
-//
-//        $.ajax({
-//            url: "/order/auickly/" + UserCode + "/" + prodCode + "/" + prodSize +"/data",
-//            data: prodData,
-//            type: "POST",
-//            success : function(data){
-//                    alert("성공")
-//                },
-//                error : function(){
-//                    alert("에러")
-//                }
-//        })
 
         location.href = "/order/auickly/payment/" + UserCode + "/" + prodCode + "/" + prodSize;
     }

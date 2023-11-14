@@ -61,7 +61,6 @@ public class OrderpageController  {
 
         //결제하기 눌렀을때 결제페이블에도 값들을 저장해줄꺼임
 
-
         //주분 헤더 DTO를 엔티티로 바꿈
         OrderHeader HOrder = HForm.toEntity();
 
@@ -73,15 +72,20 @@ public class OrderpageController  {
 
         // 매개변수로 유저 코드랑 주문 번호를 넘겨줘서 최종 주문디테일 테이블에 저장하게 한다.
         orderService.saveOrderDetail(userCode,orderID);
-
+        
+        //결제테이블에 넣을 총 가격 가져오기
         String totalPrice = saved.getTotal_price();
-
+        
+        //결제 테이블에 값넣어주기
         paymentService.insertPayment(userCode,orderID,totalPrice);
+
+        //다 넣고 장바구니 비워줘야함
+        basketRepository.DeleteCartbox(userCode);
 
         return "";
     }
 
-    //바로 상품디테일에서 주문헤더와 디테일에 정보 저장하기
+    //바로 상품디테일에서 주문했을때 주문헤더와 디테일에 정보 저장하기
     @PostMapping("/order/auickly/{user_code}/{prod_code}/{prod_size}")
     public String auicklyOrder(@PathVariable("user_code")  int userCode,@PathVariable("prod_size") String prodsize, @PathVariable("prod_code")  String prodCode, @ModelAttribute OrderHeaderForm HForm, ProdSizeForm prsizeF){
 
@@ -114,29 +118,31 @@ public class OrderpageController  {
         orderDetail.setProd_name(prsizeF.getPrname());
         orderDetail.setProd_price(prsizeF.getPrprice());
         orderDetail.setProd_size(prsizeF.getPrsize());
-
+        //저장
         orderDetailRepository.save(orderDetail);
-
 
         //결제테이블에 저장
         paymentService.insertPayment(userCode,saved.getOrder_id(),prsizeF.getPrprice());
 
-        return "";
-    }
-
-    @PostMapping("/order/auickly/{user_code}/{prod_code}/{prod_size}/data")
-    public String data(Model model,@PathVariable("prod_size")  String prodsize,@PathVariable("user_code")  int userCode, @PathVariable("prod_code")  String prodCode, @ModelAttribute OrderHeaderForm HForm, ProdSizeForm prsizeF){
-
-        log.info(prsizeF.toString());
-
-        model.addAttribute("prodINFO", prsizeF);
-        log.info(prsizeF.toString());
+//        //다 넣고 장바구니 비워줘야함
+//        basketRepository.deleteById((long) userCode);
 
         return "";
     }
 
+//    @PostMapping("/order/auickly/{user_code}/{prod_code}/{prod_size}/data")
+//    public String data(Model model,@PathVariable("prod_size")  String prodsize,@PathVariable("user_code")  int userCode, @PathVariable("prod_code")  String prodCode, @ModelAttribute OrderHeaderForm HForm, ProdSizeForm prsizeF){
+//
+//        log.info(prsizeF.toString());
+//
+//        model.addAttribute("prodINFO", prsizeF);
+//        log.info(prsizeF.toString());
+//
+//        return "";
+//    }
 
-    //    일단 주문 번호 기준으로 가져온다. 주문한 상품 목록과 구매한 유저 정보
+
+    //  장바구니에서 주문페이지로 넘어갈때! 일단 주문 번호 기준으로 가져온다. 주문한 상품 목록과 구매한 유저 정보
     @GetMapping("/order/Payment/{user_code}")
     public String payment(@PathVariable("user_code")  int userCode, Model model){
 
@@ -162,19 +168,21 @@ public class OrderpageController  {
 
         return "order/order";
     }
-
+    
+    //아직 사용안함
     @GetMapping("/order/success/{user_code}")
     public String OrderSuccess(@PathVariable("user_code")  int userCode){
 
         return "order/orderComp";
     }
 
-    //상품 디테일페이지에서 바로 상품 주문하기 클릭했을때
+    //상품 디테일페이지에서 바로 상품 주문하기 클릭했을때 뿌려줄 정보들
     @GetMapping("/order/auickly/payment/{user_code}/{prod_code}/{prod_size}")
     public String AucklyPayment(Model model, @PathVariable("user_code")  int userCode,@PathVariable("prod_size")  String prodsize,@PathVariable("prod_code")  String prodcode,ProdSizeForm form){
 
         log.info(prodsize);
-
+        
+        //유저 정보
         Users oneuserInfo = usersRepository.oneUserInfo(userCode);
 //        log.info(oneuserInfo.toString());
 
@@ -182,14 +190,16 @@ public class OrderpageController  {
             model.addAttribute("oneUserInfo",oneuserInfo);
             log.info(String.valueOf(oneuserInfo));
         }
-
+        
+        //상품 정보
         product oneProduct = productRepository.oneproduct(prodcode);
 //        log.info(oneProduct.toString());
 
         if(oneProduct != null){
             model.addAttribute("oneProduct", oneProduct);
         }
-
+        
+        //선택한 상품 사이즈
         model.addAttribute("prodsize",prodsize);
 
 

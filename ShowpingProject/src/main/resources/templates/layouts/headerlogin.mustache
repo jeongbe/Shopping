@@ -16,7 +16,7 @@
     <title>Main</title>
 </head>
 <body>
-
+{{#loginUser}}
 <div class="section-header">
     <div id="wrap" class="">
         <div class="header fixed">
@@ -27,7 +27,10 @@
                             <a href="/" class="top_link">마이페이지</a>
                         </li>
                         <li class="top_item item1">
-                            <a href="/" class="top_link">장바구니</a>
+
+                                <p style="display:none;">{{user_code}}</p>
+                                <a href="/shopping/cartbox/{{user_code}}" class="top_link">장바구니</a>
+
                         </li>
                         <li class="top_item item1">
                             <a href="/logout" class="top_link">로그아웃</a>
@@ -35,7 +38,7 @@
                     </ul>
                 </div>
             </div>
-
+{{/loginUser}}
             <div class="header_main">
                 <div class="main_inner">
                     <a href="/shopping/mainlogin">
@@ -70,15 +73,19 @@
                                     </li>
                                 </ul>
                             </nav>
+                            <form method="post" action="/shopping/search">
                             <div class="search_btn_box">
-                                <input type="text" placeholder="검색">
+                                <input type="text" id="search_text" name="SearchText" placeholder="검색">
                                 <a href="#" class="btn_search">
                                     <img
                                             src="/static/images/baseline_search_black_24dp.png"
                                             alt=""
+
                                     />
+                                    <button type="submit">검색</button>
                                 </a>
                             </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -114,5 +121,5 @@
         </div>
     </div>
 </div>
-
+<script src="/static/js/headerlogin/headerlongin.js"></script>
 </body>

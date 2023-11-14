@@ -79,7 +79,7 @@ public class SellController {
         return "adminpage/adminmain";
 
     }
-   //카테고리별로 조회하기
+    //카테고리별로 조회하기
     @GetMapping("/sell/decateinfo")
     public String selldecate(Model model){
         //긴팔 가져오기

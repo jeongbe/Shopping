@@ -119,7 +119,8 @@ public class BasketController {
         Baskets basketEntity = form.toEntity();
 
         log.info(basketEntity.toString());
-
+        
+        //장바구니안 상품 수량과 가격 수정해주기
         basketRepository.updateprod(basketEntity.getId(),basketEntity.getProd_cnt(), Integer.parseInt((basketEntity.getTotal_price())));
 
 //        String price = productRepository.fristPrice(prodCode);

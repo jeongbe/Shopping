@@ -175,4 +175,10 @@ public class PageController {
     //마이페이지 1:1문의 답변확인
     @GetMapping("/mypage/inquiry/anser")
     public String mypageInquiryAnser() { return "mypage/mypageInquiryAnswer";}
+
+    //검색 페이지
+    @GetMapping("/shopping/searchPage")
+    public String serch(){
+        return "/search/search";
+    }
 }
