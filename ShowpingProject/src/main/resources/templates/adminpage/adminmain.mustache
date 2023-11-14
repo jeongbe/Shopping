@@ -21,56 +21,91 @@
     </div>
 </nav>
 <main>
-
-        <div class="seller-info">
+    <div class="seller-info">
         <h3><b>매출 정보</b></h3>
         <hr>
         <div class="seller-date-form">
-            <button class="seller-date-button">최근 1년</button>
-            <button class="seller-date-button">3개월</button>
-            <button class="seller-date-button">1개월</button>
-            <button class="seller-date-button">1주일</button>
+            <form action="/sell/1Years">
+                <button class="seller-date-button" type="submit">최근 1년</button>
+            </form>
+            <form action="/sell/3Month">
+                <button class="seller-date-button" type="submit">3개월</button>
+            </form>
+            <form action="/sell/1Month">
+            <button class="seller-date-button" type="submit">1개월</button>
+            </form>
+            <form action="/sell/7day">
+            <button class="seller-date-button" type="submit">1주일</button>
+            </form>
             <form action="/sellinfo" method="get">
             <input type="date" class="seller-start" name="DateStart"> ~ <input type="date" class="seller-end" name="DateEnd">
             <button class="in-button" type="submit">조회하기</button>
             </form>
         </div>
     </div>
-        {{#sellinfo}}
     <div class="seller-result">
-        매출 : <input type="text" class="seller-result-text" placeholder="{{sellinfo}}" readonly>
-    </div>
+        {{#sellinfo}}
+            매출 : <input type="text" class="seller-result-text" placeholder="{{sellinfo}}원" readonly>
         {{/sellinfo}}
-
-
+        {{#sellinfo7}}
+            매출 : <input type="text" class="seller-result-text" placeholder="{{sellinfo7}}원" readonly>
+        {{/sellinfo7}}
+        {{#sellinfo1}}
+            매출 : <input type="text" class="seller-result-text" placeholder="{{sellinfo1}}원" readonly>
+        {{/sellinfo1}}
+        {{#sellinfo3}}
+            매출 : <input type="text" class="seller-result-text" placeholder="{{sellinfo3}}원" readonly>
+        {{/sellinfo3}}
+        {{#sellinfo1Y}}
+            매출 : <input type="text" class="seller-result-text" placeholder="{{sellinfo1Y}}원" readonly>
+        {{/sellinfo1Y}}
+    </div>
     <hr>
     <div class="cate-info">
-        <button class="cate-button">카터고리별 매출 정보보기</button>
+        <form action="/sell/decateinfo">
+            <button class="cate-button" type="submit">카터고리별 매출 정보보기</button>
+        </form>
+        <p style="color: gray;">최근 1년동안의 매출정보만 보여집니다.</p>
     </div>
+    {{#longsleeve}}
+        {{#sleeve}}
+            {{#hoodie}}
+                {{#manto}}
+                    {{#knit}}
+                        {{#denim}}
+                            {{#clothes}}
+                                {{#cago}}
+                                    {{#jogger}}
+                                        {{#slex}}
+                                            {{#hoodiejip}}
+                                                {{#cardigan}}
+                                                    {{#mustang}}
+                                                        {{#padding}}
+                                                            {{#coat}}
     <div class="cate-info-form">
         <div class="cate-info-text">
             <h3>상의</h3>
-            긴팔 : <input type="text" readonly><br>
-            반팔 : <input type="text" readonly><br>
-            후드 : <input type="text" readonly><br>
-            맨투 : <input type="text" readonly><br>
-            니트 : <input type="text" readonly>
+            긴팔 : <input type="text" readonly placeholder="{{longsleeve}}원"><br>
+            반팔 : <input type="text" readonly placeholder="{{sleeve}}원"><br>
+            후드 : <input type="text" readonly placeholder="{{hoodie}}원"><br>
+            맨투 : <input type="text" readonly placeholder="{{manto}}원"><br>
+            니트 : <input type="text" readonly placeholder="{{knit}}원">
         </div>
         <div class="cate-info-text">
             <h3>하의</h3>
-            데님팬 : <input type="text" readonly><br>
-            코튼팬 : <input type="text" readonly><br>
-            카고팬 : <input type="text" readonly><br>
-            조거팬 : <input type="text" readonly><br>
-            슬렉스 : <input type="text" readonly>
+            데님팬 : <input type="text" readonly placeholder="{{denim}}원"><br>
+            코튼팬 : <input type="text" readonly placeholder="{{clothes}}원"><br>
+            카고팬 : <input type="text" readonly placeholder="{{cago}}원"><br>
+            조거팬 : <input type="text" readonly placeholder="{{jogger}}원"><br>
+            슬렉스 : <input type="text" readonly placeholder="{{slex}}원">
         </div>
         <div class="cate-info-text">
             <h3>아우터</h3>
-            후드 : <input type="text" readonly><br>
-            가디 : <input type="text" readonly><br>
-            무스 : <input type="text" readonly><br>
-            패딩 : <input type="text" readonly><br>
-            코트 : <input type="text" readonly>
+            후드 : <input type="text" readonly placeholder="{{hoodiejip}}원"><br>
+            가디 : <input type="text" readonly placeholder="{{cardigan}}원"><br>
+            무스 : <input type="text" readonly placeholder="{{mustang}}원"><br>
+            패딩 : <input type="text" readonly placeholder="{{padding}}원"><br>
+            코트 : <input type="text" readonly placeholder="{{coat}}원">
         </div>
         <div class="cate-info-text">
             <h3>신발</h3>
@@ -83,8 +118,22 @@
     </div>
     <div class="seller-result">
     </div>
+                                                           {{/coat}}
+                                                       {{/padding}}
+                                                   {{/mustang}}
+                                               {{/cardigan}}
+                                           {{/hoodiejip}}
+                                       {{/slex}}
+                                   {{/jogger}}
+                               {{/cago}}
+                           {{/clothes}}
+                       {{/denim}}
+                   {{/knit}}
+               {{/manto}}
+           {{/hoodie}}
+       {{/sleeve}}
+   {{/longsleeve}}
 </main>
-
 <script src="/static/js/admin/adminmain.js"></script>
 </body>
 </html>

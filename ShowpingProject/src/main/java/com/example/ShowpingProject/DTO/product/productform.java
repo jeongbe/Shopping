@@ -7,7 +7,6 @@ import lombok.Data;
 //상품 정보를 가져오는 dto
 public class productform {
 
-
     //상품 이름
     String prod_name;
     //상품 카테고리
@@ -72,19 +71,19 @@ public class productform {
 
     public product toEntity(){
         if(prod_XS == null){
-            prod_XS ="품절";
+            prod_XS ="XS(품절)";
         }
         if(prod_S == null){
-            prod_S = "품절";
+            prod_S = "S(품절)";
         }
         if (prod_M == null){
-            prod_M = "품절";
+            prod_M = "M(품절)";
         }
         if (prod_L == null){
-            prod_L = "품절";
+            prod_L = "L(품절)";
         }
         if (prod_XL == null){
-            prod_XL = "품절";
+            prod_XL = "XL(품절)";
         }
 
         switch (prod_cate){
@@ -96,8 +95,6 @@ public class productform {
 
         return new product(null,prod_name,prod_cate,prod_decate,prod_price,prod_discount_ratio,prod_discount_price, diliver_price,prod_XS,prod_S,prod_M,prod_L,prod_XL);
     }
-
-
 
 }
 

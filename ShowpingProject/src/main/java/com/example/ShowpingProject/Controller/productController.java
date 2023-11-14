@@ -77,7 +77,7 @@ public class productController {
         //해당 상품에대한 리뷰정보를 뿌려줌
         ArrayList<Review> review = reviewRepository.review(id);
         model.addAttribute("productreview", review);
-
+        //유저 세션을 유지하기위한 코드
         Users loginUser = (Users) session.getAttribute("loginUser");
         model.addAttribute("loginUser", loginUser);
 

@@ -3,6 +3,7 @@ package com.example.ShowpingProject.repository.order;
 import com.example.ShowpingProject.entity.OrderHeader;
 import com.example.ShowpingProject.entity.Users;
 import lombok.Data;
+import lombok.Value;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
@@ -34,6 +35,35 @@ public interface OrderHeaderRepository extends CrudRepository<OrderHeader, Long>
             "FROM orderheader\n" +
             "WHERE order_date >= :DateStart\n" +
             "AND order_date <= :DateEnd\n", nativeQuery = true)
-    int sellinfo(Date DateStart, Date DateEnd);
+    String sellinfo(Date DateStart, Date DateEnd);
+
+    @Query(value = "SELECT sum(total_price) as total_price\n" +
+            "FROM orderheader\n" +
+            "WHERE order_date\n" +
+            "BETWEEN date_add(now(),INTERVAL -1 WEEK) AND NOW();", nativeQuery = true)
+
+    int sellinfo7();
+
+    @Query(value = "SELECT sum(total_price) as total_price\n" +
+            "FROM orderheader\n" +
+            "WHERE order_date\n" +
+            "BETWEEN date_add(now(),INTERVAL -1 Month) AND NOW();\n",nativeQuery = true)
+
+    int sellinfo1();
+
+    @Query(value = "SELECT sum(total_price) as total_price\n" +
+            "FROM orderheader\n" +
+            "WHERE order_date\n" +
+            "BETWEEN date_add(now(),INTERVAL -3 Month) AND NOW();" , nativeQuery = true)
+
+    int sellinfo3();
+
+    @Query(value = "SELECT sum(total_price) as total_price\n" +
+            "FROM orderheader\n" +
+            "WHERE order_date\n" +
+            "BETWEEN date_add(now(),INTERVAL -1 Year) AND NOW();", nativeQuery = true)
+
+    int sellinfo1Y();
+
 
 }
