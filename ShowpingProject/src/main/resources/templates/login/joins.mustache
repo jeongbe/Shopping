@@ -1,6 +1,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="/static/css/layouts/style.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/login/join.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/login/joins.css">
+    <!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
 </head>
 
 <header>
@@ -12,7 +13,7 @@
         <div class="logo">
             <img src="/Pro1/image/KakaoTalk_.jpg" alt="" />
         </div>
-        <form action="" method="" class="form_container">
+        <form action="/joins/create" method="post" class="form_container">
             <p>환영합니다</p>
             <div class="line"></div>
             <div class="join_container">
@@ -20,38 +21,44 @@
                     <p class="title">로그인 정보</p>
                     <div class="box">
                         <div>
-                            <input type="text" id="id" placeholder="아이디" />
-                            <button class="chk_btn">중복 확인</button>
+                            <input type="text" name="userid" id="userid" placeholder="아이디" class="userid"  required/>
+                            <button type="button" class="chk_btn">중복 확인</button>
                         </div>
-                        <p class="warning " id="Wid" hidden>
+                        <p class="warning_id">
                             아이디를 입력해주세요
                         </p>
+                        <p class="usernameMessage"></p>
+
                     </div>
                     <div class="pasw_container box">
                         <div>
                             <input
                                     type="password"
-                                    name=""
+                                    name="userpassword"
                                     id=""
                                     placeholder="비빌번호"
                                     class="pasw"
+                                    required
+                                    oninput="checkPasswordLength()"
                             />
                         </div>
-                        <p class="warning Wpasw" hidden>
-                            비밀번호를 입력해주세요
+                        <p class="warning_password">
+                            비밀번호를 입력해주세요 (길이:8~16)
                         </p>
                     </div>
                     <div class="box">
                         <div>
                             <input
                                     type="password"
-                                    name=""
+                                    name="userpasswordcheck"
                                     id=""
                                     placeholder="비밀번호 확인"
                                     class="chk_pasw"
+
+                                    required
                             />
                         </div>
-                        <p class="warning ChWpasw" hidden>
+                        <p class="warning_passwordcheck">
                             비밀번호가 틀렸습니다.
                         </p>
                     </div>
@@ -64,12 +71,14 @@
                         <div>
                             <input
                                     type="text"
-                                    name=""
+                                    name="username"
                                     id=""
                                     placeholder="이름"
+                                    class="username"
+                                    required
                             />
                         </div>
-                        <p class="warning" hidden>
+                        <p class="warning_name">
                             이름을 입력해주세요
                         </p>
                     </div>
@@ -77,12 +86,15 @@
                         <div>
                             <input
                                     type="text"
-                                    name=""
+                                    name="userbirthday"
                                     id=""
                                     placeholder="생년월일 8자리"
+                                    class="userbirthday"
+                                    oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 8);"
+                                    required
                             />
                         </div>
-                        <p class="warning" hidden>
+                        <p class="warning_birthday">
                             생년월일을 입력해주세요
                         </p>
                     </div>
@@ -90,19 +102,22 @@
                         <div>
                             <input
                                     type="text"
-                                    name=""
+                                    name="userphone"
                                     id=""
                                     placeholder="휴대전화 번호"
+                                    class="userphone"
+                                    oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 11);"
+                                    required
                             />
                         </div>
-                        <p class="warning" hidden>
+                        <p class="warning_phone">
                             휴대전화번호를 입력해주세요
                         </p>
                     </div>
                     <div class="box">
                         <input
                                 type="text"
-                                name=""
+                                name="useremail"
                                 id=""
                                 placeholder="이메일(선택)"
                         />
@@ -116,28 +131,38 @@
                         <div>
                             <input
                                     type="text"
-                                    name=""
+                                    name="useraddr"
                                     id=""
                                     placeholder="도/시/군"
+                                    class="useraddr"
+                                    required
                             />
                         </div>
+                        <p class="warning_address">
+                            주소를 입력해주세요
+                        </p>
                     </div>
                     <p class="title">상세 주소</p>
                     <div class="box">
                         <div>
                             <input
                                     type="text"
-                                    name=""
+                                    name="userdetailaddr"
                                     id=""
                                     placeholder="상세주소를 입력해주세요"
+                                    class="userdetailaddr"
+                                    required
                             />
                         </div>
+                        <p class="warning_detailaddress">
+                            상세주소를 입력해주세요
+                        </p>
                     </div>
                 </div>
             </div>
             <div class="sub_btn">
                 <div>
-                    <button type="button" class="btn btn-info sub_btn">
+                    <button type="submit" class="joinbutton">
                         가입하기
                     </button>
                 </div>
@@ -145,5 +170,5 @@
         </form>
     </div>
 </div>
-<script src=""></script>
+<script src="/static/js/login/joins1.js"></script>
 </body>

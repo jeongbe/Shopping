@@ -1,0 +1,109 @@
+<head>
+    <link href="/static/css/mypage/mypageReviewList.css" rel="stylesheet" type="text/css" />
+</head>
+{{>layouts/header}}
+
+<body>
+<!-- 마이페이지 상단 -->
+<div class="header1">
+    <div class="mpusername">
+        <!-- My Page 텍스트 -->
+        <div class="mp">
+            <p>My Page</p>
+        </div>
+
+        <!-- 사용자 닉네임 -->
+        <div class="username">
+            <span id="username-display1"></span>
+        </div>
+
+        <!-- 인사말 -->
+        <div class="hi">
+            <span id="username-display2"></span>
+        </div>
+    </div>
+
+    <!-- 내 정보 수정 -->
+    <div class="myinfo">
+        <a href="Info_Check_MyPage.html" style="color: black;">내 정보 수정</a>
+    </div>
+</div>
+<div class="horizontal-line"></div>
+<!-- 마이페이지 컨테이너 -->
+<div class="container10">
+
+    <!-- 마이페이지 카테고리 -->
+    <div class="category10">
+
+        <!-- 나의 쇼핑 정보 -->
+        <div class="category_contents_1">
+            <p class="category_title_p ">나의 쇼핑 정보</p>
+            <div class="horizontal-line"></div>
+            <p class="category_content_p">주문 내역 조회</p>
+            <p class="category_content_p">구매후기 관리</p>
+            <p class="category_content_p">좋아요</p>
+        </div>
+
+        <!-- 고객지원 -->
+        <div class="category_contents_2">
+            <p class="category_title_p ">고객 지원</p>
+            <div class="horizontal-line"></div>
+            <p class="category_content_p">문의 목록</p>
+        </div>
+    </div>
+
+    <!-- 마이페이지 내용 -->
+    <div class="mypage_content">
+        <div class="mypage_review_container">
+            <!-- 구매후기 관리 텍스트 -->
+            <div class="mypage_review_text_box">
+                <p>구매후기 관리</p>
+                <div class="horizontal-line"></div>
+
+            </div>
+
+            <!-- 주문 날짜 및 주문번호 -->
+            <div class="mypage_review_order_box">
+                <p>구매 날짜  2023.09.14 | 주문 번호  20230914013129000</p>
+                <div class="horizontal-line"></div>
+            </div>
+
+            <!-- 구매후기 상품 컨테이너 -->
+            <div class="mp_review_product_container">
+                <div class="mypage_review_text_1">
+                    <p>제품</p>
+                </div>
+                <div class="mp_review_product_img_box">
+                    <img class="review_product_img_1" src="img/product1.png" alt="상품 이미지">
+                </div>
+                <div class="mypage_review_product_info">
+                    <p>후기 작성 날짜 2023.09.17 <br>
+                        홀랜드 반팔 티셔츠 <br>
+                        블랙/L/1개 17,900원 <br>
+                        작성한 구매후기 내용: 핏이 좋고 디자인과 프린팅이...
+                    </p>
+                </div>
+                <div class="mypage_review_button_box">
+                    <div class="mp_review_button_1">
+                        <button id="mp_review_product_move">상품으로 이동</button>
+                    </div>
+                    <div class="mp_review_button_2">
+                        <button id="mp_review_modify">수정</button>
+                        <button id="mp_review_delete">삭제</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="mypage_review_product_2">
+
+                <div class="horizontal-line"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <script src="/static/js/mypage/mypageReviewList.js"></script>
+</body>
+
+{{>layouts/footer}}

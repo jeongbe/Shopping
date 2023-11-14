@@ -1,18 +1,17 @@
 <head>
-    <link rel="stylesheet" type="text/css" href="/static/css/layouts/style.css">
     <link rel="stylesheet" type="text/css" href="/static/css/login/joinAgree.css">
 </head>
-
-<body>
 <header>
     {{>layouts/header}}
 </header>
-<div class="container">
+
+<body>
+<div class="joinAgree_cont">
     <div>
-        <div class="logo">
-            <img src="/Pro1/image/KakaoTalk_.jpg" alt="" />
+        <div class="joinAgree_box">
+            <img src="/Pro1/image/KakaoTalk_.jpg" alt="" class="joinAgree_logo_img"/>
         </div>
-        <div class="header">
+        <div class="joinAgree_box_2">
             <form id="join-form" class="join-f" action="">
                 <div class="form-content">
                     <div class="form-section">
@@ -34,7 +33,7 @@
                         <ul class="desc-list">
                             <li class="desc-item">
                                 <div class="check-desc">
-                                    <div class="check-wap">
+                                    <div class="check-wap check-wap1" id="check_1">
                                         <input
                                                 type="checkbox"
                                                 name=""
@@ -43,7 +42,7 @@
                                         />
                                         <label
                                                 for="item-1"
-                                                class="item1"
+                                                class="item_1"
                                         >
                                             <p class="option point">
                                                 [필수]
@@ -60,7 +59,7 @@
                             </li>
                             <li class="desc-item">
                                 <div class="check-desc">
-                                    <div class="check-wap check-wap2">
+                                    <div class="check-wap check-wap2" id="check_2">
                                         <input
                                                 type="checkbox"
                                                 name=""
@@ -69,7 +68,7 @@
                                         />
                                         <label
                                                 for="u-privacy"
-                                                class="item2"
+                                                class="item_2"
                                         >
                                             <p class="option point">
                                                 [필수]
@@ -98,7 +97,7 @@
                             </li>
                             <li class="desc-item">
                                 <div class="check-desc">
-                                    <div class="check-wap check-wap3">
+                                    <div class="check-wap check-wap3" id="check_3">
                                         <input
                                                 type="checkbox"
                                                 name=""
@@ -107,7 +106,7 @@
                                         />
                                         <label
                                                 for="checkRealname"
-                                                class="item3"
+                                                class="item_3"
                                         >
                                             <p class="option point">
                                                 [필수]
@@ -137,7 +136,7 @@
                             </li>
                             <li class="desc-item">
                                 <div class="check-desc">
-                                    <div class="check-wap check-wap4">
+                                    <div class="check-wap check-wap4" id="check_4">
                                         <input
                                                 type="checkbox"
                                                 name=""
@@ -146,7 +145,7 @@
                                         />
                                         <label
                                                 for="Location"
-                                                class="item4"
+                                                class="item_4"
                                         >
                                             <p class="option">[선택]</p>
                                             <div class="desc-text">
@@ -163,8 +162,8 @@
                         </ul>
                     </div>
                 </div>
-                <div class="Btn">
-                    <button type="button" class="btn-submit" disabled>
+                <div class="Btn_joinAgree">
+                    <button type="button" class="Btn_joinAgree-submit" disabled>
                         다음
                     </button>
                 </div>
@@ -178,3 +177,4 @@
         crossorigin="anonymous"
 ></script>
 </body>
+{{>layouts/footer}}

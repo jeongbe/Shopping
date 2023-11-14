@@ -1,0 +1,128 @@
+<head>
+    <link href="/static/css/mypage/mypageMain.css" rel="stylesheet" type="text/css" />
+</head>
+{{>layouts/header}}
+
+<body>
+
+
+<!-- 마이페이지 상단 -->
+<div class="header1">
+
+
+    <div class="mpusername">
+        <!-- My Page 텍스트 -->
+        <div class="mp">
+            <p>My Page</p>
+        </div>
+
+        <!-- 사용자 닉네임 -->
+        <div class="username">
+            <span id="username-display1"></span>
+
+        </div>
+
+        <!-- 인사말 -->
+        <div class="hi">
+            <span id="username-display2"></span>
+        </div>
+
+    </div>
+
+    <!-- 내 정보 수정 -->
+    <div class="myinfo">
+        <a href="Info_Check_MyPage.html" style="color: black;">내 정보 수정</a>
+    </div>
+
+</div>
+
+<div class="horizontal-line"></div>
+
+<!-- 마이페이지 컨테이너 -->
+<div class="container10">
+
+    <!-- 마이페이지 카테고리 -->
+    <div class="category10">
+
+        <!-- 나의 쇼핑 정보 -->
+        <div class="category_contents_1">
+            <p class="category_title_p ">나의 쇼핑 정보</p>
+            <div class="horizontal-line"></div>
+            <p class="category_content_p">주문 내역 조회</p>
+            <p class="category_content_p">구매후기 관리</p>
+            <p class="category_content_p">좋아요</p>
+        </div>
+
+        <!-- 고객지원 -->
+        <div class="category_contents_2">
+            <p class="category_title_p ">고객 지원</p>
+            <div class="horizontal-line"></div>
+            <p class="category_content_p">문의 목록</p>
+        </div>
+    </div>
+
+    <!-- 마이페이지 내용 -->
+    <div class="mypage_content">
+
+        <!-- 주문 내역 조회 텍스트 -->
+        <div class="content_1">
+            <p class="category_title_p">주문 내역 조회</p>
+            <div class="horizontal-line"></div>
+        </div>
+
+
+        <!-- ****************************************기간 컨테이너****************************************-->
+        <div class="period">
+
+            <div class="calendar">
+                <!-- 날짜 선택 달력 -->
+                <input type="date" id="start-date" placeholder="시작 날짜">
+                -
+                <input type="date" id="end-date" placeholder="종료 날짜">
+
+
+                <!-- 기간 선택 드롭다운 -->
+                <select id="period-filter">
+                    <option value="all">전체</option>
+                    <option value="1-week">최근 1주일</option>
+                    <option value="1-month">최근 1개월</option>
+                    <option value="3-month">최근 3개월</option>
+                    <option value="1-year">최근 1년</option>
+                </select>
+
+                <button id="filter-button">조회하기</button>
+
+
+            </div>
+            <div class="horizontal-line"></div>
+
+
+            <div class="dummy_data_order_info">
+
+                <div class="order_box1">
+                    <img src="img/img3.png" alt="상품 이미지">
+
+                </div>
+
+                <div class="order_box2">
+                    <p>2023.09.14 | 주문 번호 20230914013129000 <br>
+                        <strong>17,900원</strong></p>
+                    5000*20   100,000
+                </div>
+
+                <div class="order_box3">
+                    <div class="button_review_box">
+                        <button id="button_review">구매후기 작성</button>
+                        <button id="button_inquiry">문의하기</button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="horizontal-line"></div>
+
+        </div>
+    </div>
+</div>
+<script src="/static/js/mypage/mypageMain.js"></script>
+</body>
+{{>layouts/footer}}

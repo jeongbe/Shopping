@@ -1,0 +1,126 @@
+<head>
+    <link href="/static/css/mypage/mypageLike.css" rel="stylesheet" type="text/css" />
+</head>
+{{>layouts/header}}
+
+
+<body>
+<!-- 마이페이지 상단 -->
+<div class="header1">
+    <div class="mpusername">
+        <!-- My Page 텍스트 -->
+        <div class="mp">
+            <p>My Page</p>
+        </div>
+
+        <!-- 사용자 닉네임 -->
+        <div class="username">
+            <span id="username-display1"></span>
+        </div>
+
+        <!-- 인사말 -->
+        <div class="hi">
+            <span id="username-display2"></span>
+        </div>
+    </div>
+
+    <!-- 내 정보 수정 -->
+    <div class="myinfo">
+        <a href="Info_Check_MyPage.html" style="color: black;">내 정보 수정</a>
+    </div>
+</div>
+<div class="horizontal-line"></div>
+<!-- 마이페이지 컨테이너 -->
+<div class="container10">
+
+    <!-- 마이페이지 카테고리 -->
+    <div class="category10">
+
+        <!-- 나의 쇼핑 정보 -->
+        <div class="category_contents_1">
+            <p class="category_title_p ">나의 쇼핑 정보</p>
+            <div class="horizontal-line"></div>
+            <p class="category_content_p">주문 내역 조회</p>
+            <p class="category_content_p">구매후기 관리</p>
+            <p class="category_content_p">좋아요</p>
+        </div>
+
+        <!-- 고객지원 -->
+        <div class="category_contents_2">
+            <p class="category_title_p ">고객 지원</p>
+            <div class="horizontal-line"></div>
+            <p class="category_content_p">문의 목록</p>
+        </div>
+    </div>
+
+    <!-- 마이페이지 내용 -->
+    <div class="mypage_content">
+        <!-- 좋아요 텍스트 -->
+        <div class="like_text">
+            좋아요
+        </div>
+        <div class="horizontal-line"></div>
+
+        <!-- 전체 선택 텍스트 및 체크박스 -->
+        <div class="like_select_all">
+            <input type="checkbox" id="select-all"> <label for="select-all">전체 선택</label>
+        </div>
+
+        <!-- 상품 및 체크박스 -->
+        <div class="like_product_1">
+            <div class="like_product_checkbox_1">
+                <input type="checkbox" class="item-checkbox" id="like_product1">
+            </div>
+
+            <div class="like_product_img_1">
+                <img src="img/likeimg1.png" alt="상품 1">
+            </div>
+
+            <div class="like_product_text_1">
+                <label for="product1">오버핏 맨투맨 티셔츠<br>화이트/S/1개<br>20,600원</label>
+            </div>
+        </div>
+
+        <div class="like_product_2">
+            <div class="like_product_checkbox_2">
+                <input type="checkbox" class="item-checkbox" id="like_product2">
+            </div>
+
+            <div class="like_product_img_2">
+                <img src="img/likeimg2.png" alt="상품 2">
+            </div>
+
+            <div class="like_product_text_2">
+                <label for="product2">나일론 시카고 로고 프린트 티셔츠<br>화이트/L/1개<br>35,000원</label>
+            </div>
+        </div>
+
+        <div class="like_product_3">
+            <div class="like_product_checkbox_3">
+                <input type="checkbox" class="item-checkbox" id="like_product3">
+            </div>
+
+            <div class="like_product_img_3">
+                <img src="img/likeimg3.png" alt="상품 3">
+            </div>
+
+            <div class="like_product_text_3">
+                <label for="product3">홀랜드 반팔 티셔츠<br>블랙/M/1개<br>17,900원</label>
+            </div>
+
+        </div>
+
+
+        <!-- 버튼 박스 -->
+        <div class="like_button">
+            <button type="button" id="like_order">바로주문</button>
+            <button type="button" id="like_shopping">장바구니 추가</button>
+            <button type="button" id="like_delete">삭제</button>
+        </div>
+
+    </div>
+</div>
+    <script src="Like_MyPage.js"></script>
+</body>
+
+{{>layouts/footer}}

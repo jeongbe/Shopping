@@ -7,6 +7,7 @@ body {
     margin-top: 100px;
     margin-bottom: 40px;
     text-align: center;
+
 }
 
 .logo > img {
@@ -57,13 +58,75 @@ input[type='password'] {
     border-radius: 5px;
 }
 
-.warning {
+.warning_id{
     margin-bottom: 10px;
     margin-top: 5px;
     font-size: 13px;
     color: red;
-
+    display: none;
 }
+
+.warning_password{
+    margin-bottom: 10px;
+    margin-top: 5px;
+    font-size: 13px;
+    color: red;
+    display: none;
+}
+
+.warning_passwordcheck{
+    margin-bottom: 10px;
+    margin-top: 5px;
+    font-size: 13px;
+    color: red;
+    display: none;
+}
+
+.warning_name{
+    margin-bottom: 10px;
+    margin-top: 5px;
+    font-size: 13px;
+    color: red;
+    display: none;
+}
+
+.warning_birthday{
+    margin-bottom: 10px;
+    margin-top: 5px;
+    font-size: 13px;
+    color: red;
+    display: none;
+}
+
+.warning_phone{
+    margin-bottom: 10px;
+    margin-top: 5px;
+    font-size: 13px;
+    color: red;
+    display: none;
+}
+
+.warning_address{
+    margin-bottom: 10px;
+    margin-top: 5px;
+    font-size: 13px;
+    color: red;
+    display: none;
+}
+
+.warning_detailaddress{
+    margin-bottom: 10px;
+    margin-top: 5px;
+    font-size: 13px;
+    color: red;
+    display: none;
+}
+
+
+
+
+
+
 
 .pasw_container {
     display: block;
@@ -71,7 +134,9 @@ input[type='password'] {
 
 .box {
     margin-bottom: 30px;
+
 }
+
 
 .Privacy {
     display: flex;
@@ -95,4 +160,12 @@ input[type='password'] {
 
 .btn-info {
     width: 300px;
+}
+
+.joinbutton{
+     width: 90px;
+     height: 30px;
+     background-color: #b1e2f5;
+     border: none;
+     border-radius: 5px;
 }

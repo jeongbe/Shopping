@@ -28,10 +28,13 @@ public class Users {
     String user_name;
 
     @Column
-    String user_email;
+    String userbirthday;
 
     @Column
     String user_phone;
+
+    @Column
+    String user_email;
 
     @Column
     String user_addr;

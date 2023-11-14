@@ -91,7 +91,7 @@ public class PageController {
     //회원가입 페이지
     @GetMapping("/shopping/joinAgree/join")
     public String join(){
-        return "/login/join";
+        return "/login/joins";
     }
 
     //아이디 찾기(결과)
@@ -123,4 +123,56 @@ public class PageController {
     public String orderComp(){
         return "/order/orderComp";
     }
+
+    //마이페이지 메인 (주문내역조회)
+    @GetMapping("/mypage/main")
+    public String mypageMain() {return "/mypage/mypageMain";}
+
+    //마이페이지 내정보수정 비밀번호 체크
+    @GetMapping("/mypage/info/check")
+    public String mypageInfoCheck() { return "/mypage/mypageInfoCheck";}
+
+    //마이페이지 내정보수정
+    @GetMapping("/mypage/info")
+    public String mypageInfo() { return "/mypage/mypageInfo";}
+
+    //마이페이지 구매후기 목록
+    @GetMapping("/mypage/review/list")
+    public String mypageReviewList() { return "/mypage/mypageReviewList";}
+
+    //마이페이지 구매후기 작성
+    @GetMapping("/mypage/review/write")
+    public String mypageReviewWrite() { return "/mypage/mypageReviewWrite";}
+
+    //마이페이지 구매후기 수정
+    @GetMapping("/mypage/review/modify")
+    public String mypageReviewModify() { return "/mypage/mypageReviewModify";}
+
+    //마이페이지 구매후기 확인
+    @GetMapping("/mypage/review/check")
+    public String mypageReviewCheck() { return "mypage/mypageReviewCheck";}
+
+    //마이페이지 좋아요
+    @GetMapping("/mypage/like")
+    public String mypageLike() { return "mypage/mypageLike";}
+
+    //마이페이지 1:1문의 목록
+    @GetMapping("/mypage/inquiry/list")
+    public String mypageInquiryList() { return "mypage/mypageInquiryList";}
+
+    //마이페이지 1:1문의 작성
+    @GetMapping("/mypage/inquiry/write")
+    public String mypageInquiryWrite() { return "mypage/mypageInquiryWrite";}
+
+    //마이페이지 1:1문의 수정
+    @GetMapping("/mypage/inquiry/modify")
+    public String mypageInquiryModify() { return "mypage/mypageInquiryModify";}
+
+    //마이페이지 1:1문의 확인
+    @GetMapping("/mypage/inquiry/check")
+    public String mypageInquiryCheck() { return "mypage/mypageInquiryCheck";}
+
+    //마이페이지 1:1문의 답변확인
+    @GetMapping("/mypage/inquiry/anser")
+    public String mypageInquiryAnser() { return "mypage/mypageInquiryAnswer";}
 }

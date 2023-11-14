@@ -1,0 +1,323 @@
+/* 마이페이지 상단 */
+.header1 {
+    display: grid;
+    height: 300px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1000px;
+
+
+    /* background-color: thistle; */
+    justify-items: end;
+
+}
+
+/*My Page 텍스트와 사용자 이름의 컨테이너  */
+.mpusername{
+    position: relative;
+    top: 50px;
+    left: 50px;
+    width: 500px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    /* background-color: greenyellow; */
+    margin-top: 50px;
+    margin-left: 10px;
+}
+
+/* My Page 텍스트 */
+.mp{
+    width: 150px;
+    height: 60px;
+
+    font-size: 24px;
+    font-weight: bold;
+    /* background-color: rebeccapurple; */
+}
+
+/* 사용자 닉네임 */
+.username{
+    /* position: relative;
+    top: 40px;
+    left: 60px;  */
+
+    width: 200px;
+    height: 60px;
+    color: #398ABE;
+    font-size: 50px;
+    /* background-color: yellow; */
+
+}
+
+/* 인사말 */
+.hi{
+    width: 500px;
+    height: 60px;
+    color: #398ABE;
+    font-size: 20px;
+    /* background-color: firebrick; */
+}
+
+
+/*내 정보 수정 */
+.myinfo{
+    width: 200px;
+    height: 60px;
+
+    position: relative;
+    top: 270px;
+    /* justify-items: end; */
+
+    /* margin-top: 240px; */
+    font-weight: bold;
+    /* background-color: yellow; */
+}
+
+
+/* 가로선 */
+.horizontal-line {
+    border: 1px solid #CFCFCF;
+    width: 100%;
+    margin: 0px ;
+}
+
+
+
+
+
+/* 마이페이지 컨테이너 */
+.container10 {
+
+    /* background-color: #111; */
+    height: 1200px;
+    display: flex;
+
+}
+
+
+
+/* 카테고리 컨테이너 */
+.category10 {
+    width: 300px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* background-color: #ac2222; */
+}
+
+/* 나의 쇼핑 정보 카테고리 */
+.category_contents_1{
+    position: relative;
+    width: 300px;
+    height: 250px;
+    top: 10px;
+    /* background-color: #398ABE; */
+}
+
+/* 나의 쇼핑 정보 카테고리 */
+.category_contents_2{
+    position: relative;
+    width: 300px;
+    height: 200px;
+    top: 50px;
+
+    /* background-color: yellow; */
+}
+
+/* 카테고리 제목 텍스트 */
+.category_title_p {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* 카테고리 제목 텍스트 */
+.category_content_p {
+    font-size: 18px;
+}
+
+
+/* 마이페이지 내용 컨테이너*/
+.mypage_content {
+    display:flex;
+    flex-direction: column;
+    width: 1200px;
+    height: 100%;
+    /* background-color: #555; */
+    margin-left: 50px;
+}
+
+            /* ------------ */
+
+
+/* 내 정보 관리 텍스트 */
+.mypage_myinfo_txt{
+    position: relative;
+    left: 380px;
+    font-size: 22px;
+    width: 500px;
+    height: 50px;
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    /* background-color:   #16A085; */
+}
+
+
+/* 수정할 유저 정보  */
+.user_info_input {
+    display: flex;
+    position: relative;
+    top:70px;
+    left: 380px;
+    width: 500px;
+    height: 800px;
+
+    font-size: 18px;
+    font-weight: bold;
+    /* background-color: mediumorchid; */
+
+}
+
+/* 이메일, 전화번호, 비번 스타일 */
+#mypage_email, #mypage_number,#mypage_password, #mypage_password_check{
+    padding: 5px;
+    font-size: 12px;
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 200px;
+}
+
+.email_input_box{
+    margin-bottom: 10px;
+}
+
+.email_margin{
+    margin-right:100px;
+}
+
+.number_input_box{
+    margin-bottom: 10px;
+}
+
+.number_margin{
+    margin-right: 82px;
+}
+
+.password_input_box{
+    margin-bottom: 10px;
+}
+
+.password_magin{
+    margin-right: 40px;
+}
+
+.password_input_check_box{
+    margin-bottom: 10px;
+}
+
+.password_check_magin{
+    margin-right: 5px;
+}
+
+/* 주소 컨테이너 */
+.address_container{
+    width: 500px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+
+    /* background-color: #398ABE; */
+}
+
+.address_box{
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.address_box_detail_box{
+    margin-bottom: 10px;
+}
+
+.mymage_modify_box{
+    margin-bottom: 10px;
+}
+
+
+/* 주소입력 스타일 */
+#mypage_address, #mypage_address_detail{
+    padding: 10px;
+    font-size: 12px;
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 400px;
+}
+
+#add-address-button{
+    width: 80px;
+    height: 30px;
+
+    color: #fff;
+    font-weight: bold;
+    font-size: 12px;
+    background-color: #A6A6A6;
+
+
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.myinfo_modify_text{
+    font-size: 16px;
+    text-align: center;
+}
+
+
+
+
+/* 수정하기버튼 및 취소버튼 박스 */
+.mypage_modify_box{
+    width: 500px;
+    height: 50px;
+
+    display: flex;
+    text-align: center;
+    /* background-color: aqua; */
+}
+
+.button_myinfo_modify{
+    width: 80px;
+    height: 30px;
+
+    color: #fff;
+    font-weight: bold;
+    font-size: 12px;
+    /* background-color: #E0E0E0;  */
+    background-color: #3498DB;
+
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+    /* position: relative; */
+    /* left: 90px; */
+    margin-left: 130px;
+}
+
+.button_myinfo_cancell{
+    width: 80px;
+    height: 30px;
+
+    color: #fff;
+    font-weight: bold;
+    font-size: 12px;
+    background-color: #A6A6A6;
+
+    margin-left: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
