@@ -177,7 +177,7 @@ let cartItems = Array.from(document.querySelectorAll(".products")).map(item => {
         let prod_price = prod.querySelector('.product_pirce');
         let price_text = parseInt(prod_price.textContent);
 
-
+        //고정 가격 값
         let prod_total = prod.querySelector('.prod_total');
         let prod_total2 = parseInt(prod_total.textContent);
 
@@ -188,7 +188,7 @@ let cartItems = Array.from(document.querySelectorAll(".products")).map(item => {
         let TP = prod.querySelector('.TOTALPRICE');
 
         let TPtext = parseInt(TP.textContent);
-<!--        console.log(TPtext);-->
+        console.log(TPtext);
 
 
         //플러스 버튼 클릭했을때
@@ -198,14 +198,8 @@ let cartItems = Array.from(document.querySelectorAll(".products")).map(item => {
                 targetElement.textContent = targetText; // .prodCount 값을 업데이트
 
                 //토탈에 값을 다 더해줘서 마지막에 가격(보이는)에 넣어준다.
-                prod_price.textContent= prod_total2 * targetText;
+                TP.textContent = prod_total2 * targetText;
 
-                totalPrice += price_text;
-
-                console.log("총 토탈 가격"+totalPrice);
-                console.log(TPtext);
-                TP.textContent = totalPrice
-                console.log(TPtext);
             }
         }
 
@@ -214,24 +208,8 @@ let cartItems = Array.from(document.querySelectorAll(".products")).map(item => {
                 targetText--;
                 targetElement.textContent = targetText; // .prodCount 값을 업데이트
 
-                console.log("마이너스 총 토탈 가격1  "+totalPrice);
+                TP.textContent = prod_total2 * targetText;
 
-<!--                prod_price.textContent = price_text - prod_total2;-->
-<!--                console.log(" prod_total.textContent: " + prod_total.textContent);-->
-<!--                console.log( "prod_price.textContent: "+ prod_price.textContent);-->
-
-                    console.log("TP.textContent " + TP.textContent);
-                    console.log("price_text " + price_text);
-
-                    TPtext -= price_text;
-                    console.log(TPtext);
-
-                    TP.textContent = TPtext;
-
-<!--                prodPriceInput.value = prod_price.textContent;-->
-
-<!--                totalPrice = totalPrice - prod_total2;-->
-<!--                console.log("마이너스 총 토탈 가격2  "+ totalPrice);-->
             }
         }
 
