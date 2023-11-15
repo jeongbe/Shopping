@@ -41,7 +41,6 @@ public class productController {
     ProddeimageRepository proddeimageRepository;
     @Autowired
     ReviewRepository reviewRepository;
-
     @Autowired
     UsersRepository usersRepository;
 
@@ -53,9 +52,11 @@ public class productController {
         //상품 정보에대한 내용을 디비에 저장하는 매서드
         product product = form.toEntity();
         product saved = productRepository.save(product);
+
         //상품의 이미지를 저장하는 매서드
         productimage productimage = imageform.toEntity(product);
         productimage imagesaved = prodimageRepository.save(productimage);
+
         //상품의 상세이미지를 저장하는 메서드
         productdeimage productdeimage = deimageform.toEntity(product);
         productdeimage deimagesaved = proddeimageRepository.save(productdeimage);
@@ -65,18 +66,23 @@ public class productController {
     //등록된 상품을 db에서 가져와 상품상세페이지에 뿌려줌
     @GetMapping("/shopping/read/product/{id}")
     public String readproduct(@PathVariable long id, Model model, Loginform form,HttpSession session){
+
         //상품 정보를 가져와서 상품코드에 맞는 정보를 뿌려줌
         product productentity = productRepository.findById(id).orElse(null);
         model.addAttribute("product",productentity);
+
         //해당 상품코드에 해당하는 이미지 정보를 뿌려줌
         productimage productimageentity = prodimageRepository.findById(id).orElse(null);
         model.addAttribute("productimage", productimageentity);
+
         //해당 상품코드에 해당하는 상세이미지 정보를 뿌려줌
         productdeimage productdeimageentity = proddeimageRepository.findById(id).orElse(null);
         model.addAttribute("productdeimage",productdeimageentity);
+
         //해당 상품에대한 리뷰정보를 뿌려줌
         ArrayList<Review> review = reviewRepository.review(id);
         model.addAttribute("productreview", review);
+
         //유저 세션을 유지하기위한 코드
         Users loginUser = (Users) session.getAttribute("loginUser");
         model.addAttribute("loginUser", loginUser);
@@ -93,15 +99,15 @@ public class productController {
         return "Product/productList";
     }
 
+
     //상품리스트에 리스트로 등록 로그인버전
     @GetMapping("/shopping/productlist/login")
-    public String productlistlogin(Model model){
+    public String productlistlogin(HttpSession session, Model model){
+        Users loginUser = (Users) session.getAttribute("loginUser");
+        model.addAttribute("loginUser", loginUser);
         List<product> productEntitylist  =  productRepository.findAll();
         model.addAttribute("productlist", productEntitylist);
         return "Product/productListlogin";
     }
-
-
-
 
 }

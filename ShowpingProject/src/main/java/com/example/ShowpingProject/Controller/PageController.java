@@ -5,6 +5,7 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class PageController {
@@ -126,7 +127,9 @@ public class PageController {
 
     //마이페이지 메인 (주문내역조회)
     @GetMapping("/mypage/main")
-    public String mypageMain() {return "/mypage/mypageMain";}
+    public String mypageMain(){
+        return "/mypage/mypageMain";
+    }
 
     //마이페이지 내정보수정 비밀번호 체크
     @GetMapping("/mypage/info/check")

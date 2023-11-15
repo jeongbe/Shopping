@@ -30,20 +30,22 @@ public interface OrderHeaderRepository extends CrudRepository<OrderHeader, Long>
             "where a.order_id = :orderID ", nativeQuery = true)
     OrderHeader OrderHeaer(int orderID);
 
-
+    //시작 날짜와 종료날짜를 직접선택하였을 경우 매출을 조회하는 쿼리문
     @Query(value = "SELECT Sum(total_price) As total_price \n" +
             "FROM orderheader\n" +
             "WHERE order_date >= :DateStart\n" +
             "AND order_date <= :DateEnd\n", nativeQuery = true)
     String sellinfo(Date DateStart, Date DateEnd);
-
+    
+    //1주일간의 매출을 조회하는 쿼리문
     @Query(value = "SELECT sum(total_price) as total_price\n" +
             "FROM orderheader\n" +
             "WHERE order_date\n" +
             "BETWEEN date_add(now(),INTERVAL -1 WEEK) AND NOW();", nativeQuery = true)
 
     int sellinfo7();
-
+    
+    //1개월간의 매출을 조회하는 쿼리문
     @Query(value = "SELECT sum(total_price) as total_price\n" +
             "FROM orderheader\n" +
             "WHERE order_date\n" +
@@ -51,13 +53,15 @@ public interface OrderHeaderRepository extends CrudRepository<OrderHeader, Long>
 
     int sellinfo1();
 
+    //3개월간의 매출을 조회하는 쿼리문
     @Query(value = "SELECT sum(total_price) as total_price\n" +
             "FROM orderheader\n" +
             "WHERE order_date\n" +
             "BETWEEN date_add(now(),INTERVAL -3 Month) AND NOW();" , nativeQuery = true)
 
     int sellinfo3();
-
+    
+   //1년간의 매출을 조회하는 쿼리문
     @Query(value = "SELECT sum(total_price) as total_price\n" +
             "FROM orderheader\n" +
             "WHERE order_date\n" +

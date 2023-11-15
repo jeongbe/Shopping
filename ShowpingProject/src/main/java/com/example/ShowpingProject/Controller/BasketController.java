@@ -3,9 +3,11 @@ package com.example.ShowpingProject.Controller;
 
 import com.example.ShowpingProject.DTO.BasketForm;
 import com.example.ShowpingProject.entity.Baskets;
+import com.example.ShowpingProject.entity.Users;
 import com.example.ShowpingProject.entity.product.product;
 import com.example.ShowpingProject.repository.BasketRepository;
 import com.example.ShowpingProject.repository.productRepository.ProductRepository;
+import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -51,7 +53,9 @@ public class BasketController {
 
     //장바구니 안에 있는 상품 불러오기 , 유저 코드 기준으로 해당 유저 장바구니 불러옴
     @GetMapping("/shopping/cartbox/{user_code}")
-    public String showcart(@PathVariable("user_code")  int userCode, BasketForm form , Model model,Baskets baskets) {
+    public String showcart(@PathVariable("user_code")  int userCode, BasketForm form , Model model, Baskets baskets, HttpSession session) {
+        Users loginUser = (Users) session.getAttribute("loginUser");
+        model.addAttribute("loginUser", loginUser);
         log.info(form.toString());
 
         form.setTotalPrice(String.valueOf(0));

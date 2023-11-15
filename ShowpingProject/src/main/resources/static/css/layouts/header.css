@@ -131,11 +131,6 @@ nav {
     height: 80px;
 }
 
-.nav_area {
-    align-items: center;
-    display: flex;
-    margin-left: auto;
-}
 
 .nav_list {
     align-items: center;

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface ReviewRepository extends CrudRepository<Review, Integer> {
-
+    //상품코드와 작성한 리뷰의 상품코드가 일치할때 반환되는 쿼리
     @Query(value = "SELECT a.review_num, a.order_num, a.review_content, a.review_date ,a.reviewimage_link, a.user_code, a.prod_code,a.prod_size\n" +
             "FROM review a\n" +
             "INNER JOIN product b\n" +

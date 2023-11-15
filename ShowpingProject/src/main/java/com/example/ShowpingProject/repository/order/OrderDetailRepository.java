@@ -17,7 +17,7 @@ public interface OrderDetailRepository extends CrudRepository<OrderDetail, Long>
     List<OrderDetail> orderDetailcartboxList(int order_id);
 
 
-
+    //각 카테고리별로 최근 1년간의 매출을 조회하는 쿼리문
     @Query(value = "SELECT sum(a.prod_price) as total_price\n" +
             "FROM orderdetail a\n" +
             "INNER JOIN product b\n" +

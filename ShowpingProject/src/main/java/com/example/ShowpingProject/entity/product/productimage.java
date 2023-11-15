@@ -16,10 +16,13 @@ public class productimage {
 
     @Column
     String image_link;
+
     @Column
     String image_link2;
+
     @Column
     String image_link3;
+
     @Column
     String image_link4;
 

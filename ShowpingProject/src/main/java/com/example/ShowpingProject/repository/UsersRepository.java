@@ -14,7 +14,7 @@ public interface UsersRepository extends CrudRepository<Users , Long> {
             "WHERE users.user_code = :userCode", nativeQuery = true)
     Users userInfo(int userCode);
 
-
+    //로그인 시도 할때 아이디와 패스워드를 체크하기위한 쿼리문
     @Query(value = "SELECT * " +
             "FROM users " +
             "WHERE user_ID = :login_ID " +

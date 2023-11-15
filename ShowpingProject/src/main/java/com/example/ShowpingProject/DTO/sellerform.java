@@ -7,7 +7,7 @@ import java.util.Date;
 
 
 public class sellerform {
-
+    //폼데이터에 날짜형식으로 데이터 넣어주기
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     Date DateStart;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
