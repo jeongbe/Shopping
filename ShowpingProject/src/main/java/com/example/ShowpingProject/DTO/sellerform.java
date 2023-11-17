@@ -1,11 +1,12 @@
 package com.example.ShowpingProject.DTO;
 
+import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.util.Date;
 
-
+@ToString
 public class sellerform {
     //폼데이터에 날짜형식으로 데이터 넣어주기
     @DateTimeFormat(pattern = "yyyy-MM-dd")

@@ -1,5 +1,6 @@
 package com.example.ShowpingProject.repository.order;
 
+import com.example.ShowpingProject.entity.OrderDetail;
 import com.example.ShowpingProject.entity.OrderHeader;
 import com.example.ShowpingProject.entity.Users;
 import lombok.Data;
@@ -9,6 +10,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 
 public interface OrderHeaderRepository extends CrudRepository<OrderHeader, Long> {
@@ -30,44 +32,80 @@ public interface OrderHeaderRepository extends CrudRepository<OrderHeader, Long>
             "where a.order_id = :orderID ", nativeQuery = true)
     OrderHeader OrderHeaer(int orderID);
 
-    //½ÃÀÛ ³¯Â¥¿Í Á¾·á³¯Â¥¸¦ Á÷Á¢¼±ÅÃÇÏ¿´À» °æ¿ì ¸ÅÃâÀ» Á¶È¸ÇÏ´Â Äõ¸®¹®
+    //ì‹œì‘ ë‚ ì§œì™€ ì¢…ë£Œë‚ ì§œë¥¼ ì§ì ‘ì„ íƒí•˜ì˜€ì„ ê²½ìš° ë§¤ì¶œì„ ì¡°íšŒí•˜ëŠ” ì¿¼ë¦¬ë¬¸
     @Query(value = "SELECT Sum(total_price) As total_price \n" +
             "FROM orderheader\n" +
             "WHERE order_date >= :DateStart\n" +
             "AND order_date <= :DateEnd\n", nativeQuery = true)
     String sellinfo(Date DateStart, Date DateEnd);
-    
-    //1ÁÖÀÏ°£ÀÇ ¸ÅÃâÀ» Á¶È¸ÇÏ´Â Äõ¸®¹®
+
+    //1ì£¼ì¼ê°„ì˜ ë§¤ì¶œì„ ì¡°íšŒí•˜ëŠ” ì¿¼ë¦¬ë¬¸
     @Query(value = "SELECT sum(total_price) as total_price\n" +
             "FROM orderheader\n" +
             "WHERE order_date\n" +
             "BETWEEN date_add(now(),INTERVAL -1 WEEK) AND NOW();", nativeQuery = true)
-
     int sellinfo7();
-    
-    //1°³¿ù°£ÀÇ ¸ÅÃâÀ» Á¶È¸ÇÏ´Â Äõ¸®¹®
+
+    //1ê°œì›”ê°„ì˜ ë§¤ì¶œì„ ì¡°íšŒí•˜ëŠ” ì¿¼ë¦¬ë¬¸
     @Query(value = "SELECT sum(total_price) as total_price\n" +
             "FROM orderheader\n" +
             "WHERE order_date\n" +
             "BETWEEN date_add(now(),INTERVAL -1 Month) AND NOW();\n",nativeQuery = true)
-
     int sellinfo1();
 
-    //3°³¿ù°£ÀÇ ¸ÅÃâÀ» Á¶È¸ÇÏ´Â Äõ¸®¹®
+    //3ê°œì›”ê°„ì˜ ë§¤ì¶œì„ ì¡°íšŒí•˜ëŠ” ì¿¼ë¦¬ë¬¸
     @Query(value = "SELECT sum(total_price) as total_price\n" +
             "FROM orderheader\n" +
             "WHERE order_date\n" +
             "BETWEEN date_add(now(),INTERVAL -3 Month) AND NOW();" , nativeQuery = true)
-
     int sellinfo3();
-    
-   //1³â°£ÀÇ ¸ÅÃâÀ» Á¶È¸ÇÏ´Â Äõ¸®¹®
+
+    //1ë…„ê°„ì˜ ë§¤ì¶œì„ ì¡°íšŒí•˜ëŠ” ì¿¼ë¦¬ë¬¸
     @Query(value = "SELECT sum(total_price) as total_price\n" +
             "FROM orderheader\n" +
             "WHERE order_date\n" +
             "BETWEEN date_add(now(),INTERVAL -1 Year) AND NOW();", nativeQuery = true)
-
     int sellinfo1Y();
 
 
+    //ë§ˆì´í˜ì´ì§€ ì£¼ë¬¸(í—¤ë”)ë‚´ì—­ ì „ì²´ ì¡°íšŒ
+    @Query(value = "select a.order_id, a.order_date, a.order_date_time, a.total_price, b.user_code, b.user_name, b.user_addr,b.user_addr2,b.user_addr3,b.user_detail_addr,b.user_detail_addr2,b.user_detail_addr3\n" +
+            "from orderheader a\n" +
+            "join users b\n" +
+            "on a.user_code = b.user_code\n" +
+            "where b.user_code = :userCode\n" +
+            "AND a.total_price > 0;", nativeQuery = true)
+    List<OrderHeader> OrderHeaderCheck(int userCode);
+
+    //ë§ˆì´í˜ì´ì§€ ì£¼ë¬¸(í—¤ë”) ì§ì ‘ ê¸°ê°„ ì¡°íšŒ
+    @Query(value = "SELECT *\n" +
+            "FROM orderheader\n" +
+            "where order_date >= :DateStart \n" +
+            "AND order_date <= :DateEnd ", nativeQuery = true)
+    List<OrderHeader> SellOrderHeader(Date DateStart, Date DateEnd);
+
+    //ë§ˆì´í˜ì´ì§€ ì£¼ë¬¸ë‚´ì—­ ìµœê·¼ ì¼ì£¼ì¼ ì¡°íšŒ
+    @Query(value = "select *\n" +
+            "from orderheader\n" +
+            "where order_date between date_add(now(),interval -1 week) and now();", nativeQuery = true)
+    List<OrderHeader> OneWeek();
+
+    //ë§ˆì´í˜ì´ì§€ ì£¼ë¬¸ë‚´ì—­ ìµœê·¼ í•œë‹¬ ì¡°íšŒ
+    @Query(value = "select *\n" +
+            "from orderheader\n" +
+            "where order_date between date_add(now(),interval -1 month) and now();", nativeQuery = true)
+    List<OrderHeader> OneMonth();
+
+    //ë§ˆì´í˜ì´ì§€ ì£¼ë¬¸ë‚´ì—­ ìµœê·¼ 3ë‹¬ì „ ì¡°íšŒ
+    @Query(value = "select *\n" +
+            "from orderheader\n" +
+            "where order_date between date_add(now(),interval -3 month) and now();",nativeQuery = true)
+    List<OrderHeader> ThreeMonth();
+
+
+    //ë§ˆì´í˜ì´ì§€ ì£¼ë¬¸ë‚´ì—­ 1ë…„ì „ ì¡°íšŒ
+    @Query(value = "select *\n" +
+            "from orderheader\n" +
+            "where order_date between date_add(now(),interval -1 Year) and now();", nativeQuery = true)
+    List<OrderHeader> OneYear();
 }

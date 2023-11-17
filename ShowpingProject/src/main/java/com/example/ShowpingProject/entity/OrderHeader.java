@@ -29,6 +29,8 @@ public class OrderHeader {
     private Long order_id;
 //    , generator = "ORDER_HEADER"
 
+    //나중에 이미지들 추가해야함
+
     //유저 코드 조인
     @JoinColumn(name = "user_code")
     @Column

@@ -5,6 +5,7 @@ import com.example.ShowpingProject.entity.OrderDetail;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
+import java.util.Date;
 import java.util.List;
 
 public interface OrderDetailRepository extends CrudRepository<OrderDetail, Long> {
@@ -198,4 +199,11 @@ public interface OrderDetailRepository extends CrudRepository<OrderDetail, Long>
 
     String coat();
 
+    //주문 디테일 조회
+    @Query(value = "select d.*\n" +
+            "from orderdetail d\n" +
+            "join orderheader h\n" +
+            "on d.order_id = h.order_id\n" +
+            "where d.order_id = :orderId",nativeQuery = true)
+    List<OrderDetail> ShowOrderDetail(String orderId);
 }

@@ -74,28 +74,32 @@
         <div class="period">
 
             <div class="calendar">
-                <!-- 날짜 선택 달력 -->
-                <input type="date" id="start-date" placeholder="시작 날짜">
-                -
-                <input type="date" id="end-date" placeholder="종료 날짜">
+                <form action="/mypage/main/{{user_code}}" method="get">
+                    <!-- 날짜 선택 달력 -->
+                    <input type="date" name="DateStart" id="start-date" placeholder="시작 날짜">
+                    -
+                    <input type="date" name="DateEnd" id="end-date" placeholder="종료 날짜">
 
 
-                <!-- 기간 선택 드롭다운 -->
-                <select id="period-filter">
-                    <option value="all">전체</option>
-                    <option value="1-week">최근 1주일</option>
-                    <option value="1-month">최근 1개월</option>
-                    <option value="3-month">최근 3개월</option>
-                    <option value="1-year">최근 1년</option>
-                </select>
 
-                <button id="filter-button">조회하기</button>
+                    <!-- 기간 선택 드롭다운 -->
+                    <select name="Dayfilter" id="period-filter">
+                        <option value="all" selected >전체</option>
+                        <option value="1week">최근 1주일</option>
+                        <option value="1month">최근 1개월</option>
+                        <option value="3month">최근 3개월</option>
+                        <option value="1year">최근 1년</option>
+                    </select>
+                    <button id="filter-button" type="submit">조회하기</button>
+                </form>
+
+
 
 
             </div>
             <div class="horizontal-line"></div>
 
-
+            {{#UserOrderChekcHeader}}
             <div class="dummy_data_order_info">
 
                 <div class="order_box1">
@@ -104,9 +108,8 @@
                 </div>
 
                 <div class="order_box2">
-                    <p>2023.09.14 | 주문 번호 20230914013129000 <br>
-                        <strong>17,900원</strong></p>
-                    5000*20   100,000
+                    <p onclick="location.href='/mypage/orderdetail/{{order_id}}'">{{order_date}} | {{order_id}}</p>
+                    <p>{{total_price}}</p>
                 </div>
 
                 <div class="order_box3">
@@ -115,8 +118,9 @@
                         <button id="button_inquiry">문의하기</button>
                     </div>
                 </div>
-
             </div>
+            {{/UserOrderChekcHeader}}
+
             <div class="horizontal-line"></div>
 
         </div>
