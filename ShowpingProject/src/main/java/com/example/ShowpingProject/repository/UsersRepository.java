@@ -5,6 +5,8 @@ import com.example.ShowpingProject.entity.Users;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
+import java.util.Optional;
+
 public interface UsersRepository extends CrudRepository<Users , Long> {
 
     @Query(value = "SELECT user_id, users.user_code, user_addr, user_addr2, user_addr3, user_detail_addr, user_detail_addr2, user_detail_addr3, user_name, user_phone, user_email, user_password, user_birthday, user_password_check, userbirthday \n" +
@@ -26,6 +28,23 @@ public interface UsersRepository extends CrudRepository<Users , Long> {
             "from users u\n" +
             "where u.user_code = :userCode" , nativeQuery = true)
     Users oneUserInfo(int userCode);
+
+
+    //아이디 찾기할때 유저의 이름과 휴대전화번호가 일치하는지 확인하기
+
+    @Query(value = "SELECT user_id\n" +
+            "FROM users\n" +
+            "WHERE user_name = :findname " +
+            "AND user_phone = :findphone ", nativeQuery = true)
+    String finduserID(String findname, String findphone);
+
+    //중복체크
+    @Query(value = "SELECT * FROM users WHERE user_id = ?1", nativeQuery = true)
+    Optional<Users> findByUserId(String userid);
+
+
+
+
 
 }
 

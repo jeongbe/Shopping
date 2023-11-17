@@ -49,15 +49,18 @@ public class productController {
     //이미지 링크에 관한 정보는 다른 dto,entity를통해 별도의db에 저장됨
     @PostMapping("/shopping/create/product")
     public String createproduct(productform form, productimageform imageform, productdeimageform deimageform){
+
         //상품 정보에대한 내용을 디비에 저장하는 매서드
         product product = form.toEntity();
         product saved = productRepository.save(product);
 
         //상품의 이미지를 저장하는 매서드
+        //product를 매개변수로 데이터를 전달하여 어떤 상품에대한 이미지인지 확인이 가능함
         productimage productimage = imageform.toEntity(product);
         productimage imagesaved = prodimageRepository.save(productimage);
 
         //상품의 상세이미지를 저장하는 메서드
+        //product를 매개변수로 데이터를 전달하여 어떤 상품에대한 이미지인지 확인이 가능함
         productdeimage productdeimage = deimageform.toEntity(product);
         productdeimage deimagesaved = proddeimageRepository.save(productdeimage);
         return "adminpage/adminmain";

@@ -8,12 +8,14 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface ProddeimageRepository extends CrudRepository<productdeimage, Long> {
-    //»óÇ° ÄÚµå¿Í ÀÏÄ¡ÇÏ´Â ÀÌ¹ÌÁö¸¦ °¡Á®¿À±â À§ÇÑ Äõ¸®
+    //ìƒí’ˆ ì½”ë“œì™€ ì¼ì¹˜í•˜ëŠ” ì´ë¯¸ì§€ë¥¼ ê°€ì ¸ì˜¤ê¸° ìœ„í•œ ì¿¼ë¦¬
     @Query(value = "SELECT deimage_link " +
             "FROM productdeimage " +
             "INNER JOIN product" +
             "ON productdeimage.prod_code = product.prod_code" +
-            "WHERE  productdeimage.prod_code = :prod_code",nativeQuery = true)
-     List<productdeimage> findbyprodcode(long prod_code);
-
+            "WHERE  productdeimage.prod_code = :prod_code", nativeQuery = true)
+    List<productdeimage> findbyprodcode(long prod_code);
 }
+
+
+

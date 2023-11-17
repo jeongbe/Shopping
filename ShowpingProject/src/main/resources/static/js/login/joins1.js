@@ -1,18 +1,14 @@
-let id_count =0;
-let password_count =0;
-let password_check_count =0;
-let name_count =0;
-let birthday_count =0;
-let phone_count =0;
-let address_count =0;
-let address_detail_count =0;
-let sum_count =0;
+
+
 
 //아이디
 const userid_warning = document.querySelector('.userid');   //사용자가 입력한 아이디
 const text_userid_warning = document.querySelector('.warning_id');  // 오류문구
 const chk_id_btn = document.querySelector('.chk_btn');      //중복확인 버튼
 const UsernameMessage = document.querySelector('.usernameMessage'); //텍스트
+let btn = document.querySelector('.join-button');
+let btn1 = document.querySelector('.join-button1');
+
 
 userid_warning.addEventListener('blur', function() {
 
@@ -50,12 +46,16 @@ document.addEventListener('DOMContentLoaded', function() {
             return response.json();
         })
         .then(data => {
-            if (data.isAvailable) {
+            if (data.isAvailable === null) {
                 usernameMessage.textContent = '사용 가능한 아이디입니다.';
-//                id_count=1;
+                btn.style.display = "none";
+                btn1.style.display = "block";
+
             } else {
                 usernameMessage.textContent = '이미 존재하는 아이디입니다.';
-//                id_count=0;
+                btn.style.display = "block";
+                btn1.style.display = "none";
+
             }
         })
         .catch(error => {
@@ -63,12 +63,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         if(usernameMessage.textContent == '사용 가능한 아이디입니다.'){
-        id_count=1;
+
         }
         else {
-        id_count=0;
+
         }
     });
+
+
+
 });
 
 
@@ -83,12 +86,12 @@ password_warning.addEventListener('blur', function() {
           if(password.length >= 8 && password.length <= 16){
           password_warning.style.borderColor = "black";
           text_password_warning.style.display = "none";
-          password_count =1;
+
           }
           else{
            password_warning.style.borderColor = "red";
            text_password_warning.style.display = "block";
-           password_count =0;
+
           }
 });
 
@@ -99,12 +102,12 @@ passwordcheck_warning.addEventListener('blur', function() {
         if(password_warning.value === passwordcheck_warning.value){
             passwordcheck_warning.style.borderColor = "black";
             text_passwordcheck_warning.style.display = "none";
-            password_check_count =1;
+
         }
         else{
             passwordcheck_warning.style.borderColor = "red";
             text_passwordcheck_warning.style.display = "block";
-            password_check_count =0;
+
         }
 });
 
@@ -115,12 +118,12 @@ username_warning.addEventListener('blur', function() {
           if(username_warning.value !=""){
           username_warning.style.borderColor = "black";
           text_username_warning.style.display = "none";
-          name_count =1;
+
           }
           else{
            username_warning.style.borderColor = "red";
            text_username_warning.style.display = "block";
-           name_count =0;
+
           }
 });
 
@@ -131,12 +134,12 @@ userbirthday_warning.addEventListener('blur', function() {
           if(userbirthday_warning.value !=""){
           userbirthday_warning.style.borderColor = "black";
           text_userbirthday_warning.style.display = "none";
-          birthday_count =1;
+
           }
           else{
            userbirthday_warning.style.borderColor = "red";
            text_userbirthday_warning.style.display = "block";
-           birthday_count =0;
+
           }
 });
 
@@ -147,12 +150,12 @@ userphone_warning.addEventListener('blur', function() {
           if(userphone_warning.value !=""){
           userphone_warning.style.borderColor = "black";
           text_userphone_warning.style.display = "none";
-          phone_count =1;
+
           }
           else{
            userphone_warning.style.borderColor = "red";
            text_userphone_warning.style.display = "block";
-           phone_count =0;
+
           }
 });
 
@@ -163,12 +166,12 @@ useraddr_warning.addEventListener('blur', function() {
        if(useraddr_warning.value !=""){
        useraddr_warning.style.borderColor = "black";
        text_useraddr_warning.style.display = "none";
-       address_count =1;
+
        }
        else{
         useraddr_warning.style.borderColor = "red";
         text_useraddr_warning.style.display = "block";
-        address_count =0;
+
        }
 });
 
@@ -179,30 +182,21 @@ userdetailaddr_warning.addEventListener('blur', function() {
         if(userdetailaddr_warning.value !=""){
         userdetailaddr_warning.style.borderColor = "black";
         text_userdetailaddr.style.display = "none";
-        address_detail_count =1;
+
         }
         else{
          userdetailaddr_warning.style.borderColor = "red";
          text_userdetailaddr.style.display = "block";
-         address_detail_count =0;
+
         }
 });
 
+     //아이디 중복이 아니어야만 가입하기  활성화 됨
 
 
-//가입하기 버튼 클릭시
-document.addEventListener('DOMContentLoaded', function() {
-    const joinForm = document.querySelector('.form_container');
-    joinForm.addEventListener('submit', function(event) {
-        let sum_count = id_count + password_count + password_check_count + name_count +
-                        birthday_count + phone_count + address_count + address_detail_count;
 
-        if(sum_count != 8) {
-            event.preventDefault(); // sum_count = 8 이 아닐때 폼 제출을 막음
-            alert('모든 필드를 올바르게 입력해주세요.');
-        } else {
-            // 유효성 검사에 성공했을 때는 추가적인 작업을 수행하지 않고 폼이 자동으로 제출
 
-        }
-    });
-});
+
+
+
+

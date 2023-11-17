@@ -8,5 +8,5 @@ import java.util.Optional;
 
 public  interface JoinsRepository extends CrudRepository<Users, Long> {
     @Query(value = "SELECT * FROM users WHERE user_id = ?1", nativeQuery = true)
-    Optional<Users> findByUserId(String userid);
+    Users findByUserId(String userid);
 }

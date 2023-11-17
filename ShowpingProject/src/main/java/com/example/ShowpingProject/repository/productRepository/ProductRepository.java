@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface ProductRepository extends CrudRepository<product, Long> {
     @Override
-ArrayList<product> findAll();
+    ArrayList<product> findAll();
 
     //상품 코드로 해당 상품 정보 다 가져올때
     @Query(value = "select *\n" +

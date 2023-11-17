@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface ReviewRepository extends CrudRepository<Review, Integer> {
-    //»óÇ°ÄÚµå¿Í ÀÛ¼ºÇÑ ¸®ºäÀÇ »óÇ°ÄÚµå°¡ ÀÏÄ¡ÇÒ¶§ ¹İÈ¯µÇ´Â Äõ¸®
+    //ìƒí’ˆì½”ë“œì™€ ì‘ì„±í•œ ë¦¬ë·°ì˜ ìƒí’ˆì½”ë“œê°€ ì¼ì¹˜í• ë•Œ ë°˜í™˜ë˜ëŠ” ì¿¼ë¦¬
     @Query(value = "SELECT a.review_num, a.order_num, a.review_content, a.review_date ,a.reviewimage_link, a.user_code, a.prod_code,a.prod_size\n" +
             "FROM review a\n" +
             "INNER JOIN product b\n" +

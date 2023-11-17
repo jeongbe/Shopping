@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface ProdimageRepository extends CrudRepository<productimage,Long> {
-    //»óÇ° ÄÚµå¿Í ÀÏÄ¡ÇÏ´Â ÀÌ¹ÌÁö¸¦ °¡Á®¿À±â À§ÇÑ Äõ¸®
+    //ìƒí’ˆ ì½”ë“œì™€ ì¼ì¹˜í•˜ëŠ” ì´ë¯¸ì§€ë¥¼ ê°€ì ¸ì˜¤ê¸° ìœ„í•œ ì¿¼ë¦¬
     @Query(value = "SELECT image_link, image_link2, image_link3, image_link4" +
             "FROM productimage " +
             "INNER JOIN product" +

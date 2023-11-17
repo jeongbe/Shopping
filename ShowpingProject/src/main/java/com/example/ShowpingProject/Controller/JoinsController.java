@@ -31,7 +31,7 @@ public class JoinsController {
         //2. 리파지터리로 엔티티를 DB에 저장
         Users saved = joinsRepository.save(users_save);
         System.out.println(saved.toString());
-        return "shopping/login";
+        return "login/login";
     }
 
 
@@ -40,8 +40,8 @@ public class JoinsController {
     @ResponseBody  // 이 애노테이션을 추가하여 HTTP 응답 본문이 JSON이 될 것임을 명시합니다.
     public ResponseEntity<?> validateUserId(@RequestParam String userid) {
         log.info(userid);
-        boolean isAvailable = !joinsRepository.findByUserId(userid).isPresent();
-        Map<String, Boolean> response = new HashMap<>();
+        Users isAvailable = joinsRepository.findByUserId(userid);
+        Map<String, Users> response = new HashMap<>();
         response.put("isAvailable", isAvailable);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
