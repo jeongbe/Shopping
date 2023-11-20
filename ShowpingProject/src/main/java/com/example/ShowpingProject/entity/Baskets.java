@@ -12,7 +12,6 @@ import java.util.ArrayList;
 @NoArgsConstructor
 @Table(name = "basket")
 @Entity
-
 public class Baskets {
 
     @Id

@@ -1,0 +1,110 @@
+<head>
+    <link href="/static/css/mypage/mypageProductDetail.css" rel="stylesheet" type="text/css" />
+</head>
+{{>layouts/headerlogin}}
+<body>
+
+{{#orderID}}
+    <p style="display: none;">{{orderID}}</p>
+{{/orderID}}
+
+{{#loginUser}}
+<!-- 마이페이지 상단 -->
+<div class="header1">
+
+
+    <div class="mpusername">
+        <!-- My Page 텍스트 -->
+        <div class="mp">
+            <p>My Page</p>
+        </div>
+
+        <!-- 사용자 닉네임 -->
+        <div class="username">
+            <span id="username-display1"></span>
+
+        </div>
+
+        <!-- 인사말 -->
+        <div class="hi">
+            <span id="username-display2"></span>
+        </div>
+
+    </div>
+
+    <!-- 내 정보 수정 -->
+    <div class="myinfo">
+        <a href="Info_Check_MyPage.html" style="color: black;">내 정보 수정</a>
+    </div>
+
+</div>
+
+<div class="horizontal-line"></div>
+
+<!-- 마이페이지 컨테이너 -->
+<div class="container10">
+
+    <!-- 마이페이지 카테고리 -->
+    <div class="category10">
+
+        <!-- 나의 쇼핑 정보 -->
+        <div class="category_contents_1">
+            <p class="category_title_p ">나의 쇼핑 정보</p>
+            <div class="horizontal-line"></div>
+            <a href="/mypage/main/{{user_code}}"><p class="category_content_p">주문 내역 조회</p></a>
+            <a href="/mypage/review/list/{{user_code}}"><p class="category_content_p">구매후기 관리</p></a>
+            <a href="/mypage/like/{{user_code}}"><p class="category_content_p">좋아요</p></a>
+        </div>
+
+        <!-- 고객지원 -->
+        <div class="category_contents_2">
+            <p class="category_title_p ">고객 지원</p>
+            <div class="horizontal-line"></div>
+            <a href="/mypage/inquirylist/{{user_code}}"><p class="category_content_p">문의 목록</p></a>
+        </div>
+    </div>
+
+    <!-- 마이페이지 내용 -->
+    <div class="mypage_content">
+
+        <!-- 주문 내역 조회 텍스트 -->
+        <div class="content_1">
+            <p class="category_title_p">주문 상품</p>
+            <div class="horizontal-line"></div>
+        </div>
+{{#showOrderDetail}}
+        <div class="product_content">
+            <div class="product_img">
+                <p>이미지 첨부</p>
+            </div>
+
+            <div class="product_box">
+                <div class="product_name">
+                    <p>{{prod_name}}</p>
+                </div>
+
+                <div class="product_size">
+                    <p>{{prod_size}} / {{prod_cnt}} </p>
+                </div>
+
+                <div class="product_price">
+                    <p>{{prod_price}}</p>
+                </div>
+
+            </div>
+
+            <div class="product_button_box">
+                <button id="button_review">구매후기 작성</button>
+                <button id="button_inquiry" onclick="location.href='/mypage/inquiry/write/{{orderID}}/{{prod_code}}'">문의하기</button>
+            </div>
+        </div>
+
+
+        <div class="horizontal-line"></div>
+{{/showOrderDetail}}
+    </div>
+
+</div>
+</body>
+{{/loginUser}}
+{{>layouts/footer}}

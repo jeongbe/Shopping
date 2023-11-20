@@ -12,13 +12,13 @@ public interface ProductRepository extends CrudRepository<product, Long> {
     @Override
     ArrayList<product> findAll();
 
-    //»óÇ° ÄÚµå·Î ÇØ´ç »óÇ° Á¤º¸ ´Ù °¡Á®¿Ã¶§
+    //ìƒí’ˆ ì½”ë“œë¡œ í•´ë‹¹ ìƒí’ˆ ì •ë³´ ë‹¤ ê°€ì ¸ì˜¬ë•Œ
     @Query(value = "select *\n" +
             "from product\n" +
             "where product.prod_code = :prodCode", nativeQuery = true)
     product oneproduct(String prodCode);
 
-    //»óÇ° ÀÌ¸§ °â»öÇÒ¶§
+    //ìƒí’ˆ ì´ë¦„ ê²¸ìƒ‰í• ë•Œ
     @Query(value = "select *\n" +
             "from product\n" +
             "where prod_name like %:prodname%", nativeQuery = true)

@@ -53,11 +53,14 @@ public class PageController {
         return "adminpage/adminprod";
     }
 
-    //1:1문의 리스트 페이지
-    @GetMapping("/shopping/questionlist")
-    public String questionlist(){
-        return "adminpage/questionlist";
-    }
+//    //1:1문의 리스트 페이지
+//    @GetMapping("/shopping/questionlist")
+//    public String questionlist(){
+//
+//
+//
+//        return "adminpage/questionlist";
+//    }
 
 
     //문의 답변하는 페이지
@@ -178,6 +181,10 @@ public class PageController {
     //마이페이지 1:1문의 답변확인
     @GetMapping("/mypage/inquiry/anser")
     public String mypageInquiryAnser() { return "mypage/mypageInquiryAnswer";}
+
+    //마이페이지 상품 디테일
+    @GetMapping("/mypage/product/detail")
+    public String mypageProductDetail(){ return "mypage/mypageProductDetail";}
 
     //검색 페이지
     @GetMapping("/shopping/searchPage")

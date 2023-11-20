@@ -60,33 +60,35 @@
             <div class="question-collum">답변STATE</div>
         </div>
         <hr>
+        {{#AllQuestion}}
         <div class="question-list-form">
-            <div class="question-list-collum1">1212251</div>
-            <div class="question-list-collum2">SSW0921</div>
-            <div class="question-list-collum3">반팔니트</div>
-            <div class="question-list-collum4">사이즈가 잘못왔어요</div>
-            <div class="question-list-collum5">상품</div>
-            <div class="question-list-collum6">2023-10-26</div>
-            <div class="question-list-collum7">완료</div>
+            <div class="question-list-collum1">{{order_id}}</div>
+            <div class="question-list-collum2">{{user_id}}</div>
+            <div class="question-list-collum3">{{prod_name}}</div>
+            <div class="question-list-collum4">{{qu_title}}</div>
+            <div class="question-list-collum5">{{qu_type}}</div>
+            <div class="question-list-collum6">{{qu_date}}</div>
+            <div class="question-list-collum7">{{qu_answer}}</div>
         </div>
-        <div class="question-list-form">
-            <div class="question-list-collum1">1212351</div>
-            <div class="question-list-collum2">JJB0921</div>
-            <div class="question-list-collum3">가디건</div>
-            <div class="question-list-collum4">배송이 안와요</div>
-            <div class="question-list-collum5">배송</div>
-            <div class="question-list-collum6">2023-01-26</div>
-            <div class="question-list-collum7">미완료</div>
-        </div>
-        <div class="question-list-form">
-            <div class="question-list-collum1">1212451</div>
-            <div class="question-list-collum2">MSW0921</div>
-            <div class="question-list-collum3">후드집업</div>
-            <div class="question-list-collum4">실밥이 터져서 왔어요</div>
-            <div class="question-list-collum5">상품</div>
-            <div class="question-list-collum6">2023-5-20</div>
-            <div class="question-list-collum7">미완료</div>
-        </div>
+        {{/AllQuestion}}
+<!--        <div class="question-list-form">-->
+<!--            <div class="question-list-collum1">1212351</div>-->
+<!--            <div class="question-list-collum2">JJB0921</div>-->
+<!--            <div class="question-list-collum3">가디건</div>-->
+<!--            <div class="question-list-collum4">배송이 안와요</div>-->
+<!--            <div class="question-list-collum5">배송</div>-->
+<!--            <div class="question-list-collum6">2023-01-26</div>-->
+<!--            <div class="question-list-collum7">미완료</div>-->
+<!--        </div>-->
+<!--        <div class="question-list-form">-->
+<!--            <div class="question-list-collum1">1212451</div>-->
+<!--            <div class="question-list-collum2">MSW0921</div>-->
+<!--            <div class="question-list-collum3">후드집업</div>-->
+<!--            <div class="question-list-collum4">실밥이 터져서 왔어요</div>-->
+<!--            <div class="question-list-collum5">상품</div>-->
+<!--            <div class="question-list-collum6">2023-5-20</div>-->
+<!--            <div class="question-list-collum7">미완료</div>-->
+<!--        </div>-->
     </div>
 </main>
 <script src="/static/js/admin/questionlist.js"></script>

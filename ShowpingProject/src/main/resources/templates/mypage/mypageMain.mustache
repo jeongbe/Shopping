@@ -14,16 +14,16 @@
         <div class="mp">
             <p>My Page</p>
         </div>
-
+        {{#userinfo}}
         <!-- 사용자 닉네임 -->
         <div class="username">
-            <span id="username-display1"></span>
-
+            <span id="username-display1">{{user_name}}</span>
         </div>
+        {{/userinfo}}
 
         <!-- 인사말 -->
         <div class="hi">
-            <span id="username-display2"></span>
+            <span id="username-display2">님 반갑습니다.</span>
         </div>
 
     </div>
@@ -56,7 +56,7 @@
         <div class="category_contents_2">
             <p class="category_title_p ">고객 지원</p>
             <div class="horizontal-line"></div>
-            <a href="/mypage/inquirylist/{{user_code}}"><p class="category_content_p">문의 목록</p></a>
+            <a href="/mypage/inquiry/list/{{user_code}}"><p class="category_content_p">문의 목록</p></a>
         </div>
     </div>
 
@@ -111,22 +111,31 @@
                     <p onclick="location.href='/mypage/orderdetail/{{order_id}}'">{{order_date}} | {{order_id}}</p>
                     <p>{{total_price}}</p>
                 </div>
-
-                <div class="order_box3">
-                    <div class="button_review_box">
-                        <button id="button_review">구매후기 작성</button>
-                        <button id="button_inquiry">문의하기</button>
-                    </div>
-                </div>
             </div>
-            {{/UserOrderChekcHeader}}
+
 
             <div class="horizontal-line"></div>
-
+            {{/UserOrderChekcHeader}}
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </div>
 </div>
-<script src="/static/js/mypage/mypageMain.js"></script>
 </body>
 {{/loginUser}}
 {{>layouts/footer}}

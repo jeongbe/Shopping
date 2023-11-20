@@ -47,7 +47,7 @@
             <div class="category_contents_2">
                 <p class="category_title_p ">고객 지원</p>
                 <div class="horizontal-line"></div>
-                <a href="/mypage/inquirylist/{{user_code}}"><p class="category_content_p">문의 목록</p></a>
+                <a href="/mypage/inquiry/list/{{user_code}}"><p class="category_content_p">문의 목록</p></a>
             </div>
     </div>
 
@@ -78,75 +78,42 @@
                 <p>문의 날짜</p>
             </div>
 
-            <div class="inquiry_line_1_7">
-                <p>수정/삭제</p>
-            </div>
 
         </div>
         <div class="horizontal-line"></div>
 
         <!-- 두번째 라인 -->
+        {{#QuestionList}}
         <div class="inquiry_line_2">
             <div class="inquiry_line_2_1">
                 <p>1</p>
             </div>
 
             <div class="inquiry_line_2_2">
-                <p>20230914013129000</p>
+                <p>{{order_id}}</p>
             </div>
 
             <div class="inquiry_line_2_3">
-                <p>배송</p>
+                <p>{{qu_type}}</p>
             </div>
 
             <div class="inquiry_line_2_4">
-                <p>배송이 너무 느려요</p>
+                <p>{{qu_title}}</p>
             </div>
 
             <div class="inquiry_line_2_5">
-                <p>완료</p>
+                <p>{{qu_answer}}</p>
             </div>
 
             <div class="inquiry_line_2_6">
-                <p>2023-10-04</p>
+                <p>{{qu_date}}</p>
             </div>
 
-            <div class="inquiry_line_2_7">
-                <button id="answer_check">답변 확인</button>
-            </div>
+<!--            <div class="inquiry_line_2_7">-->
+<!--                <button id="answer_check">답변 확인</button>-->
+<!--            </div>-->
         </div>
-
-        <!-- 세번째 라인 -->
-        <div class="inquiry_line_3">
-            <div class="inquiry_line_3_1">
-                <p>1</p>
-            </div>
-
-            <div class="inquiry_line_3_2">
-                <p>20230914013129000</p>
-            </div>
-
-            <div class="inquiry_line_3_3">
-                <p>배송</p>
-            </div>
-
-            <div class="inquiry_line_3_4">
-                <p>배송이 너무 느려요</p>
-            </div>
-
-            <div class="inquiry_line_3_5">
-                <p>완료</p>
-            </div>
-
-            <div class="inquiry_line_3_6">
-                <p>2023-10-04</p>
-            </div>
-
-            <div class="inquiry_line_3_7">
-                <button id="inquiry_modify">수정하기</button>
-                <button id="inquiry_delete">삭제하기</button>
-            </div>
-        </div>
+        {{/QuestionList}}
     </div>
 </div>
     <script src="/static/js/mypage/mypageInquiryList.js"></script>

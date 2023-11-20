@@ -48,7 +48,7 @@
         <div class="category_contents_2">
             <p class="category_title_p ">고객 지원</p>
             <div class="horizontal-line"></div>
-            <a href="/mypage/inquirylist/{{user_code}}"><p class="category_content_p">문의 목록</p></a>
+            <a href="/mypage/inquiry/list/{{user_code}}"><p class="category_content_p">문의 목록</p></a>
         </div>
     </div>
 
@@ -61,13 +61,15 @@
                 <div class="horizontal-line"></div>
 
             </div>
-
+            {{#orderInfo}}
             <!-- 주문 날짜 및 주문번호 -->
             <div class="mypage_review_order_box">
-                <p>구매 날짜  2023.09.14 | 주문 번호  20230914013129000</p>
+                <p>구매 날짜  {{order_date}} | 주문 번호  {{order_id}}</p>
                 <div class="horizontal-line"></div>
             </div>
 
+
+            {{#prodInfo}}
             <!-- 상품 컨테이너 -->
             <div class="mp_review_product_container">
                 <div class="mypage_review_text_1">
@@ -78,53 +80,74 @@
                 </div>
                 <div class="mypage_review_product_info">
                     <p style="font-size: 18px;">
-                        홀랜드 반팔 티셔츠 <br><br>
-                        블랙/L/1개 17,900원 <br>
+                        {{prod_name}} <br><br>
+                        {{prod_size}}/{{prod_cnt}}개 {{prod_price}}원 <br>
                     </p>
                 </div>
             </div>
 
 
-            <div class="inquiry_type">
-                <div class="inquiry_type_text">
-                    <p>문의 유형</p>
+            <form method="post" action="/write/{{order_id}}/{{prod_code}}">
+
+                <p style="display:none;" name="orderId">{{order_id}}</p>
+                <p style="display:none;" name="prodCode">{{prod_code}}</p>
+                <div class="inquiry_type">
+                    <div class="inquiry_type_text">
+                        <p>문의 유형</p>
+                    </div>
+
+                    <div class="inquiry_button_box_1">
+                        <div>
+                            <input type="radio" value="배송" name="quType"> 배송
+                        </div>
+                        <div>
+                            <input type="radio" value="주문/결제" name="quType">주문/결제
+                        </div>
+                        <div>
+                            <input type="radio" value="상품" name="quType">상품
+                        </div>
+                        <div>
+                            <input type="radio" value="취소/교환/환불" name="quType">취소/교환/환불
+                        </div>
+    <!--                    <button id="inquiry__button_1">배송</button>-->
+    <!--                    <button id="inquiry__button_2">주문/결제</button>-->
+                    </div>
                 </div>
 
-                <div class="inquiry_button_box_1">
-                    <button id="inquiry__button_1">배송</button>
-                    <button id="inquiry__button_2">주문/결제</button>
+                <div class="Inquiry_img_text">
+                    <p>사진 (최대3개)</p>
+                    <div>
+                        <input type="file" name="quImage">
+                    </div>
+                    <div>
+                        <input type="file" name="quImage2">
+
+                    </div>
+                    <div>
+                        <input type="file" name="quImage3">
+
+                    </div>
                 </div>
 
-                <div class="inquiry_button_box_2">
-                    <button id="inquiry__button_3">상품</button>
-                    <button id="inquiry__button_4">취소/교환/환불</button>
+<!--                <div>-->
+<!--                    <img src="img/reviewimg1.png" alt="사진등록">-->
+<!--                </div>-->
+                <div class="Inquiry_form">
+                        <label for="qutitle">문의 제목</label><br>
+                        <textarea id="qutitle" name="quTitle" rows="4" cols="50"></textarea><br>
+
+                        <label for="quContent">문의 내용</label><br>
+                        <textarea id="quContent" name="quContent" rows="4" cols="50"></textarea><br>
                 </div>
-            </div>
-
-            <div class="Inquiry_img_text">
-                <p>사진 (최대3개)</p>
-            </div>
-
-            <div>
-                <img src="img/reviewimg1.png" alt="사진등록">
-            </div>
-            <div class="Inquiry_form">
-                <form id="reviewForm">
-                    <label for="reviewContent">문의 제목</label><br>
-                    <textarea id="reviewContent_1" name="reviewContent_1" rows="4" cols="50"></textarea><br>
-                </form>
-                <form id="reviewForm">
-                    <label for="reviewContent">문의 내용</label><br>
-                    <textarea id="reviewContent_1" name="reviewContent_1" rows="4" cols="50"></textarea><br>
-                    <button type="button" id="submitReview_1">등록</button>
-                    <button type="button" id="cancelReview_1">취소</button>
-                </form>
-            </div>
+                <button type="submit" class="submitBtn" id="submitReview_1" >등록</button>
+                <button type="button" id="cancelReview_1">취소</button>
+            </form>
         </div>
     </div>
 
 </div>
-    <script src="/static/js/mypage/mypageInquiryWrite.js"></script>
 </body>
+            {{/prodInfo}}
+            {{/orderInfo}}
 {{/loginUser}}
 {{>layouts/footer}}
