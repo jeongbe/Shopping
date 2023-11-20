@@ -1,6 +1,9 @@
 package com.example.ShowpingProject.DTO.Joins;
 
 import com.example.ShowpingProject.entity.Users;
+import lombok.Data;
+
+@Data
 
 public class JoinsForm {
     private String userid;
@@ -37,6 +40,8 @@ public class JoinsForm {
                 ", userdetailaddr='" + userdetailaddr + '\'' +
                 '}';
     }
+
+
 
     public Users toEntity() {
         return new Users(null, userid, userpassword, username, userbirthday, userphone, useremail,

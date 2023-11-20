@@ -8,7 +8,7 @@
 </header>
 <body>
 <div class="form_content">
-    <form action="" method="" class="form">
+    <form action="/find/pw" method="post" class="form">
         <div>
             <div class="title">
                 <p>비밀번호 찾기</p>
@@ -17,17 +17,19 @@
             <div class="input_container">
                 <div class="name_box">
                     <p>아이디</p>
-                    <input class="id" type="text" name="" id="id" />
+                    <input class="id" type="text" name="pwfind_id" id="id" />
                 </div>
                 <div class="number_box">
                     <p>전화번호</p>
-                    <input type="number" name="" id="pasw" />
+                    <input type="number" name="pwfind_phone" id="pasw" />
                 </div>
             </div>
+            {{#error}}<h3>{{error}}</h3>{{/error}}
             <div class="btn_div">
                 <button class="btn" type="submit">확인</button>
             </div>
         </div>
     </form>
 </div>
+
 </body>

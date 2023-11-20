@@ -42,6 +42,13 @@ public interface UsersRepository extends CrudRepository<Users , Long> {
     @Query(value = "SELECT * FROM users WHERE user_id = ?1", nativeQuery = true)
     Optional<Users> findByUserId(String userid);
 
+    //비밀번호찾는 매서드
+    @Query(value = "SELECT user_code\n" +
+            "FROM users\n" +
+            "WHERE user_id = :pwfindid \n" +
+            "AND user_phone = :pwfindphone", nativeQuery = true)
+    Long finduserpw(String pwfindid, String pwfindphone);
+
 
 
 

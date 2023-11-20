@@ -13,7 +13,7 @@
 <div class="form_content">
     <form action="/logincheck" method="post" class="form">
         {{#loginfail}}
-            <h1 style="color: red;"><b>아이디 또는 비밀번호를 확인하세요</b></h1>
+            <h1 style="color: red;"><b>{{loginfail}}</b></h1>
         {{/loginfail}}
         <div>
             <div class="title">
@@ -36,7 +36,7 @@
     </form>
     <div class="list">
         <a href="/shopping/login/searchID"><p>아이디 찾기</p></a>
-        <p>비밀번호 찾기</p>
+        <a href="/shopping/login/searchpasw"><p>비밀번호 찾기</p></a>
         <a href="/shopping/joinAgree"><p>회원가입</p></a>
     </div>
 </div>

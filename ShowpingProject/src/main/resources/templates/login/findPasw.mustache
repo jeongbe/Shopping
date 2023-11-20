@@ -8,7 +8,8 @@
 </header>
 <body>
 <div class="form_content">
-    <form action="" method="" class="form">
+    <form action="/change/pw/{{findpw}}" method="post" class="form">
+        <div style="display:none;">{{#findpw}}<p name="user_code">{{findpw}}</p>{{/findpw}}</div>
         <div>
             <div class="title">
                 <p>비밀번호 찾기</p>
@@ -18,11 +19,11 @@
                 <p>새로운 비밀번호를 입력해주세요.</p>
                 <div class="change_pasw">
                     <p>비밀번호 변경</p>
-                    <input class="id" type="text" name="" id="id" />
+                    <input class="id" type="password" name="userpassword" id="id" />
                 </div>
                 <div class="check_pasw">
                     <p>비밀번호 변경 확인</p>
-                    <input type="text" name="" id="pasw" />
+                    <input type="password" name="chage_pwcheck" id="pasw" />
                 </div>
             </div>
             <div class="btn_div">

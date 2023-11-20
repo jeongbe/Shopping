@@ -39,8 +39,14 @@ public class LoginController {
             //세션 처리가 잘 되어있느지 확인하기 위한 로그
             log.info("User {} logged in successfully.", users.getUser_code());
             log.info(session.toString());
-
-            return "redirect:shopping/mainlogin";
+            //관리자용 로그인 구현
+            if(users.getUser_code() == 38){
+                return "adminpage/adminmain";
+            }
+            //유저용 로그인 구현
+            else {
+                return "redirect:shopping/mainlogin";
+            }
         }
         //null값일 경우 해당 아이디봐 비밀번호가 없는것이기 때문에 아이또는 비밀번호를 확인하라는 문구가 뜸
         else {
