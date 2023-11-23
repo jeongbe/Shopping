@@ -41,7 +41,7 @@
             <p class="category_title_p ">나의 쇼핑 정보</p>
             <div class="horizontal-line"></div>
             <a href="/mypage/main/{{user_code}}"><p class="category_content_p">주문 내역 조회</p></a>
-            <a href="/mypage/review/list/{{user_code}}"><p class="category_content_p">구매후기 관리</p></a>
+            <a href="/mypage/reviewlist/{{user_code}}"><p class="category_content_p">구매후기 관리</p></a>
             <a href="/mypage/like/{{user_code}}"><p class="category_content_p">좋아요</p></a>
         </div>
 
@@ -49,11 +49,15 @@
         <div class="category_contents_2">
             <p class="category_title_p ">고객 지원</p>
             <div class="horizontal-line"></div>
-            <a href="/mypage/inquirylist/{{user_code}}"><p class="category_content_p">문의 목록</p></a>
+            <a href="/mypage/inquiry/list/{{user_code}}"><p class="category_content_p">문의 목록</p></a>
         </div>
     </div>
 
+{{#review}}
+    {{#orderdate}}
+
     <!-- 마이페이지 내용 -->
+        <form action="/review/write/{{order_id}}/{{prod_code}}/{{user_code}}" method="get">
     <div class="mypage_content">
         <div class="mypage_review_container">
             <!-- 구매후기 관리 텍스트 -->
@@ -64,8 +68,9 @@
             </div>
 
             <!-- 주문 날짜 및 주문번호 -->
+
             <div class="mypage_review_order_box">
-                <p>구매 날짜  2023.09.14 | 주문 번호  20230914013129000</p>
+                <p>구매 날짜  {{order_date}} | 주문 번호  {{order_id}}</p>
                 <div class="horizontal-line"></div>
             </div>
 
@@ -79,8 +84,8 @@
                 </div>
                 <div class="mypage_review_product_info">
                     <p style="font-size: 18px;">
-                        홀랜드 반팔 티셔츠 <br><br>
-                        블랙/L/1개 17,900원 <br>
+                        {{prod_name}} <br><br>
+                        {{prod_size}} {{prod_price}} <br>
                     </p>
                 </div>
             </div>
@@ -101,26 +106,21 @@
                 </div>
 
                 <div>
-                    <img src="img/reviewimg1.png" alt="사진등록">
+                    <input type="file" name="reviewimage_link">
                 </div>
             </div>
 
             <div class="review_text_1">
-                <p>문의 제목 (30자 이내)</p>
-            </div>
-            <form id="reviewForm">
-                <textarea id="reviewContent_1" name="reviewContent_1" rows="4" cols="50"></textarea>
-            </form>
-            <div class="review_text_1">
                 <p>문의 내용 (300자 이내)</p>
             </div>
-            <form id="reviewForm">
-                <textarea id="reviewContent_1" name="reviewContent_1" rows="4" cols="50"></textarea><br>
-                <button type="button" id="submitReview_1">등록</button>
-                <button type="button" id="cancelReview_1">취소</button>
-            </form>
+                <textarea id="reviewContent_1" name="review_content" rows="4" cols="50"></textarea><br>
+                <button type="submit" id="submitReview_1">등록</button>
+                <a href="/mypage/main/{{user_code}}"><button type="button" id="cancelReview_1">취소</button></a>
         </div>
     </div>
+        </form>
+    {{/orderdate}}
+{{/review}}
 {{/loginUser}}
 </div>
     <script src="/static/js/mypage/mypageReviewWrite.js"></script>

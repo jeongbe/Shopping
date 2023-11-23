@@ -2,6 +2,7 @@ package com.example.ShowpingProject.repository.order;
 
 import com.example.ShowpingProject.entity.Baskets;
 import com.example.ShowpingProject.entity.OrderDetail;
+import com.example.ShowpingProject.entity.OrderHeader;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
@@ -204,4 +205,15 @@ public interface OrderDetailRepository extends CrudRepository<OrderDetail, Long>
             "where o.order_id = :orderId \n" +
             "and p.prod_code = :prodCode", nativeQuery = true)
     OrderDetail InquiryShowProd(String orderId, String prodCode);
+
+
+    //리뷰 쓰기 할때 해당 상품 정보 가져오는 쿼리
+    @Query(value = "SELECT b.*\n" +
+            "FROM orderheader a\n" +
+            "INNER JOIN orderdetail b\n" +
+            "ON a.order_id = b.order_id\n" +
+            "WHERE a.order_id = :orderid \n" +
+            "AND b.prod_code = :prodcode ", nativeQuery = true)
+    OrderDetail review(Long orderid, Long prodcode);
+
 }

@@ -72,3 +72,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
 });
+
+ var soldout = document.querySelectorAll('.size');
+
+ soldout.forEach(function(soldout){
+
+ var soldoutoption = soldout.textContent;
+
+ if(soldoutoption === '품절'){
+ soldout.disabled = true;
+ }
+ });
+
+

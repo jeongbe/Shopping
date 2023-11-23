@@ -5,7 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Generated;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -14,9 +16,10 @@ import java.util.Date;
 @Table(name = "Review")
 @Entity
 public class Review {
+
     @Id
-    @GeneratedValue
-    int review_num;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long review_num;
 
     @JoinColumn(name = "order_num")
     @Column
@@ -34,13 +37,21 @@ public class Review {
     @Column(name = "prod_size")
     String prod_size;
 
+    //리뷰날짜
     @Column
-    Date review_date;
+    LocalDate review_date;
+    @PrePersist
+    public void setOrderdate(){
+        this.review_date = LocalDate.now();
+    }
 
     @Column
     String review_content;
 
     @Column
     String reviewimage_link;
+
+
+
 
 }

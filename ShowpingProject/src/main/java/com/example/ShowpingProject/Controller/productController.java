@@ -5,6 +5,7 @@ import com.example.ShowpingProject.DTO.Login.Loginform;
 import com.example.ShowpingProject.DTO.product.productdeimageform;
 import com.example.ShowpingProject.DTO.product.productform;
 import com.example.ShowpingProject.DTO.product.productimageform;
+import com.example.ShowpingProject.entity.OrderDetail;
 import com.example.ShowpingProject.entity.Users;
 import com.example.ShowpingProject.entity.product.product;
 import com.example.ShowpingProject.entity.product.productdeimage;
@@ -45,6 +46,7 @@ public class productController {
     UsersRepository usersRepository;
 
 
+
     //관리자에서 상품등록하면 db에 상품정보 저장
     //이미지 링크에 관한 정보는 다른 dto,entity를통해 별도의db에 저장됨
     @PostMapping("/shopping/create/product")
@@ -68,7 +70,7 @@ public class productController {
 
     //등록된 상품을 db에서 가져와 상품상세페이지에 뿌려줌
     @GetMapping("/shopping/read/product/{id}")
-    public String readproduct(@PathVariable long id, Model model, Loginform form,HttpSession session){
+    public String readproduct(@PathVariable long id, Model model,HttpSession session){
 
         //상품 정보를 가져와서 상품코드에 맞는 정보를 뿌려줌
         product productentity = productRepository.findById(id).orElse(null);

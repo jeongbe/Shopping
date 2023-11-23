@@ -31,8 +31,8 @@ public class LoginController {
         if(users != null){
             //세션 처리하기
             HttpSession session = request.getSession();
-           session.setAttribute("loginUser", users);
-           session.getAttribute("loginUser");
+            session.setAttribute("loginUser", users);
+            session.getAttribute("loginUser");
 
             Users loginUser = (Users) session.getAttribute("loginUser");
             model.addAttribute("loginUser", loginUser);
@@ -58,8 +58,10 @@ public class LoginController {
     //로그아웃시 세션을 만료시키는 매핑
     @GetMapping("/logout")
     public String logout(HttpServletRequest request){
+
         HttpSession session = request.getSession();
         session.invalidate();
+
         //세션이 만료가 잘 되어있는지 확인하기 위한 로그
         log.info("User logged out successfully.");
         return "redirect:shopping/main";

@@ -71,19 +71,19 @@ public class productform {
 
     public product toEntity(){
         if(prod_XS == null){
-            prod_XS ="XS(품절)";
+            prod_XS ="품절";
         }
         if(prod_S == null){
-            prod_S = "S(품절)";
+            prod_S = "품절";
         }
         if (prod_M == null){
-            prod_M = "M(품절)";
+            prod_M = "품절";
         }
         if (prod_L == null){
-            prod_L = "L(품절)";
+            prod_L = "품절";
         }
         if (prod_XL == null){
-            prod_XL = "XL(품절)";
+            prod_XL = "품절";
         }
 
         switch (prod_cate){

@@ -41,7 +41,7 @@
             <p class="category_title_p ">나의 쇼핑 정보</p>
             <div class="horizontal-line"></div>
             <a href="/mypage/main/{{user_code}}"><p class="category_content_p">주문 내역 조회</p></a>
-            <a href="/mypage/review/list/{{user_code}}"><p class="category_content_p">구매후기 관리</p></a>
+            <a href="/mypage/reviewlist/{{user_code}}"><p class="category_content_p">구매후기 관리</p></a>
             <a href="/mypage/like/{{user_code}}"><p class="category_content_p">좋아요</p></a>
         </div>
 
@@ -49,7 +49,7 @@
         <div class="category_contents_2">
             <p class="category_title_p ">고객 지원</p>
             <div class="horizontal-line"></div>
-            <a href="/mypage/inquirylist/{{user_code}}"><p class="category_content_p">문의 목록</p></a>
+            <a href="/mypage/inquiry/list/{{user_code}}"><p class="category_content_p">문의 목록</p></a>
         </div>
     </div>
 
@@ -63,9 +63,11 @@
 
             </div>
 
+            {{#reviewlist}}
+            <form action="/review/delete/{{review_num}}/{{user_code}}" method="get">
             <!-- 주문 날짜 및 주문번호 -->
             <div class="mypage_review_order_box">
-                <p>구매 날짜  2023.09.14 | 주문 번호  20230914013129000</p>
+                <p>구매 날짜   | 주문 번호  {{order_num}}</p>
                 <div class="horizontal-line"></div>
             </div>
 
@@ -78,34 +80,34 @@
                     <img class="review_product_img_1" src="img/product1.png" alt="상품 이미지">
                 </div>
                 <div class="mypage_review_product_info">
-                    <p>후기 작성 날짜 2023.09.17 <br>
-                        홀랜드 반팔 티셔츠 <br>
-                        블랙/L/1개 17,900원 <br>
-                        작성한 구매후기 내용: 핏이 좋고 디자인과 프린팅이...
+                    <p>후기 작성 날짜 {{review_date}} <br>
+                         <br>
+                         {{prod_size}}<br>
+                        작성한 구매후기 내용: {{review_content}}
                     </p>
                 </div>
                 <div class="mypage_review_button_box">
                     <div class="mp_review_button_1">
-                        <button id="mp_review_product_move">상품으로 이동</button>
+                        <a href="/shopping/read/product/{{prod_code}}"><button type="button" id="mp_review_product_move">상품으로 이동</button></a>
                     </div>
                     <div class="mp_review_button_2">
-                        <button id="mp_review_modify">수정</button>
-                        <button id="mp_review_delete">삭제</button>
+                        <button type="submit" id="mp_review_delete">삭제</button>
                     </div>
                 </div>
 
             </div>
-
+    {{/reviewlist}}
+            </form>
             <div class="mypage_review_product_2">
 
                 <div class="horizontal-line"></div>
             </div>
-
         </div>
     </div>
 </div>
     <script src="/static/js/mypage/mypageReviewList.js"></script>
 </body>
+
 {{/loginUser}}
 
 {{>layouts/footer}}
