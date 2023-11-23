@@ -60,7 +60,9 @@ public class QuestionForm {
     //회원 id
     private String userID;
 
+    String prodPrice;
+
     public Question toEntity(){
-        return new Question(quCode,prodCode,orderId,userCode,quType,quTitle,quContent,quAnswer,quDateTime,quDate,quImage,quImage2,quImage3,prodName,userID);
+        return new Question(quCode,prodCode,orderId,userCode,quType,quTitle,quContent,quAnswer,quDateTime,quDate,quImage,quImage2,quImage3,prodName,userID,prodPrice);
     }
 }

@@ -21,44 +21,51 @@
     </div>
 </nav>
 <main>
+    {{#getQ}}
     <div class="answer-info">
-        <p>고객아이디 : ssw1234</p>
-        <p>주문번호 : 20172955</p>
+        <p>고객아이디 : {{user_id}}</p>
+        <p>주문번호 : {{order_id}}</p>
     </div>
     <div class="answer-prod">
+<!--        나중에 상품 이미지 추가-->
         <p>문의 상품</p>
         <div class="prod-info">
             <img src="/image/prod-image.webp" class="answer-prod-image">
             <div class="prod-info-text">
-                <p>오버핏 맨투맨 티셔츠</p><br>
-                <h3>29,900원</h3>
+                <p>{{prod_name}}</p><br>
+                <h3>{{prod_discount_price}}원</h3>
             </div>
         </div>
     </div>
     <div class="question-type">
         <h3>문의 유형</h3>
-        <p>환불</p>
+        <p>{{qu_type}}</p>
     </div>
     <div class="question-image">
+<!--        나중에 이미지 넣어줘야함-->
         <h3>사진</h3>
         <img src="/image/question-image.jpg" class="question-prod-image">
     </div>
     <div class="question-title">
         <h3>문의 제목</h3>
-        <input type="text" readonly class="title-text">
+        <input type="text" value="{{qu_title}}" readonly class="title-text">
     </div>
     <div class="question-content">
         <h3>문의 내용</h3>
-        <input type="text" readonly class="content-text">
+        <input type="text" value="{{qu_content}}" readonly class="content-text">
     </div>
-    <div class="answer-content">
-        <h3>답변 하기</h3>
-        <input type="text" class="answer-text">
-    </div>
-    <div class="in-form">
-        <button type="submit" class="answer-in">답변 등록</button>
-        <button type="submit" class="answer-return">취소</button>
-    </div>
+
+    <form action="/shopping/questionlist/answer/{{qu_code}}" method="get">
+        <div class="answer-content">
+            <h3>답변 하기</h3>
+            <input type="text" name="anContent" class="answer-text">
+        </div>
+        <div class="in-form">
+            <button type="submit" class="answer-in">답변 등록</button>
+            <button type="button" class="answer-return" onclick="history.back();">취소</button>
+        </div>
+    </form>
+    {{/getQ}}
 </main>
 
 </body>

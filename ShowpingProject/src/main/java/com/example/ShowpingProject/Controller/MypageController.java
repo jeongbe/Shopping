@@ -3,10 +3,8 @@ package com.example.ShowpingProject.Controller;
 import com.example.ShowpingProject.DTO.MypageSellerform;
 import com.example.ShowpingProject.DTO.QuestionForm;
 import com.example.ShowpingProject.DTO.sellerform;
-import com.example.ShowpingProject.entity.OrderDetail;
-import com.example.ShowpingProject.entity.OrderHeader;
-import com.example.ShowpingProject.entity.Question;
-import com.example.ShowpingProject.entity.Users;
+import com.example.ShowpingProject.entity.*;
+import com.example.ShowpingProject.repository.AnswerRepository;
 import com.example.ShowpingProject.repository.QuestionRepository;
 import com.example.ShowpingProject.repository.UsersRepository;
 import com.example.ShowpingProject.repository.order.OrderDetailRepository;
@@ -42,6 +40,9 @@ public class MypageController {
 
     @Autowired
     QuestionRepository questionRepository;
+
+    @Autowired
+    AnswerRepository answerRepository;
 
     //마이페이지 각 유저 전체 주문 내역(주문헤더)
     @GetMapping("/mypage/main/{user_code}")
@@ -167,35 +168,57 @@ public class MypageController {
 
         model.addAttribute("QuestionList", questionList);
 
-        return "mypage/mypageInquiryList";
-    }
-
-    @GetMapping("/mypage/review/list/{user_code}")
-    public String Mypagereviewlist(HttpSession session, Model model){
-        Users loginUser = (Users) session.getAttribute("loginUser");
-        model.addAttribute("loginUser", loginUser);
-
-
-
-
-        return "mypage/mypageReviewList";
-    }
-
-    @GetMapping("/mypage/like/{user_code}")
-    public String Mypagelike(HttpSession session, Model model){
-        Users loginUser = (Users) session.getAttribute("loginUser");
-        model.addAttribute("loginUser", loginUser);
-
-        return "mypage/mypageLike";
-    }
-
-    @GetMapping("/mypage/inquirylist/{user_code}")
-    public String Mypageinquitylist(HttpSession session, Model model){
-        Users loginUser = (Users) session.getAttribute("loginUser");
-        model.addAttribute("loginUser", loginUser);
 
         return "mypage/mypageInquiryList";
     }
+
+    //1:1 마이페이지에서 문의 답변 받은 내용 확인할때
+    @GetMapping("/mypage/inquiry/check/{qu_code}")
+    public String inquiryCheck(@PathVariable("qu_code")  String QuCode,HttpSession session,Model model){
+        Users loginUser = (Users) session.getAttribute("loginUser");
+        model.addAttribute("loginUser", loginUser);
+
+
+
+        //1개의 문의 내역 가져옴
+        Question getQ = questionRepository.oneQustion(QuCode);
+        log.info(getQ.toString());
+        model.addAttribute("getQ",getQ);
+
+        Answer answer = answerRepository.getAnswer(QuCode);
+//        log.info(answer.toString());
+        if (answer == null) {
+            // answer가 null인 경우에는 /mypage/inquiry/list/{user_code}로 리다이렉트
+            return "redirect:/mypage/inquiry/list/" + loginUser.getUser_code();
+        }
+
+        model.addAttribute("answerText",answer);
+
+
+        return "mypage/mypageInquiryCheck";
+    }
+
+
+
+//    @GetMapping("/mypage/review/list/{user_code}")
+//    public String Mypagereviewlist(HttpSession session, Model model){
+//        Users loginUser = (Users) session.getAttribute("loginUser");
+//        model.addAttribute("loginUser", loginUser);
+//
+//
+//
+//
+//        return "mypage/mypageReviewList";
+//    }
+
+//    @GetMapping("/mypage/like/{user_code}")
+//    public String Mypagelike(HttpSession session, Model model){
+//        Users loginUser = (Users) session.getAttribute("loginUser");
+//        model.addAttribute("loginUser", loginUser);
+//
+//        return "mypage/mypageLike";
+//    }
+
 
 }
 

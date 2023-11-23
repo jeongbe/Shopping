@@ -82,4 +82,7 @@ public class Question {
     @Column(name = "user_id")
     private String user_id;
 
+    @Column
+    private String prod_discount_price;
+
 }

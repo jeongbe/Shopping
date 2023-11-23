@@ -51,6 +51,7 @@
     <hr>
     <div class="questionlist-form">
         <div class="question-collum-form">
+            <div class="question-collum">문의NUM</div>
             <div class="question-collum">주문NUM</div>
             <div class="question-collum">고객ID</div>
             <div class="question-collum">상품NAME</div>
@@ -61,7 +62,8 @@
         </div>
         <hr>
         {{#AllQuestion}}
-        <div class="question-list-form">
+        <div class="question-list-form" onclick="location.href='/shopping/questionlist/answer/{{qu_code}}'">
+            <div class="question-list-collum1">{{qu_code}}</div>
             <div class="question-list-collum1">{{order_id}}</div>
             <div class="question-list-collum2">{{user_id}}</div>
             <div class="question-list-collum3">{{prod_name}}</div>
