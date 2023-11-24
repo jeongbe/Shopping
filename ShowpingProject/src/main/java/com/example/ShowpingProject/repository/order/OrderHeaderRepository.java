@@ -5,6 +5,8 @@ import com.example.ShowpingProject.entity.OrderHeader;
 import com.example.ShowpingProject.entity.Users;
 import lombok.Data;
 import lombok.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
@@ -14,16 +16,6 @@ import java.util.List;
 
 
 public interface OrderHeaderRepository extends CrudRepository<OrderHeader, Long> {
-
-//    @Query(value = "select order_id,order_date,order_date_time, total_price, users.user_code, users.user_detail_addr,users.user_detail_addr2, users.user_detail_addr3, users.user_id, users.user_addr, users.user_addr2, users.user_addr3,users.user_email, users.user_name, users.user_password, users.user_phone\n" +
-//            "from orderheader\n" +
-//            "join users\n" +
-//            "on orderheader.user_code = users.user_code\n" +
-//            "where orderheader.user_code = :userCode", nativeQuery = true)
-//    OrderHeader userAndOrder(int userCode);
-
-//    @Query(value = "", nativeQuery = true)
-//    OrderHeader userAndOrder(int userCode);
 
     @Query(value = "select a.order_id, a.order_date, a.order_date_time, a.total_price, b.user_code, b.user_name, b.user_addr,b.user_addr2,b.user_addr3,b.user_detail_addr,b.user_detail_addr2,b.user_detail_addr3\n" +
             "from orderheader a\n" +
@@ -74,38 +66,48 @@ public interface OrderHeaderRepository extends CrudRepository<OrderHeader, Long>
             "join users b\n" +
             "on a.user_code = b.user_code\n" +
             "where b.user_code = :userCode\n" +
-            "AND a.total_price > 0;", nativeQuery = true)
+            "AND a.total_price > 0\n", nativeQuery = true)
     List<OrderHeader> OrderHeaderCheck(int userCode);
+
+    //마이페이지 주문(헤더)내역 전체 조회 페이징 처리 완료
+    @Query(value = "select a.order_id, a.order_date, a.order_date_time, a.total_price, b.user_code, b.user_name, b.user_addr,b.user_addr2,b.user_addr3,b.user_detail_addr,b.user_detail_addr2,b.user_detail_addr3\n" +
+            "from orderheader a\n" +
+            "join users b\n" +
+            "on a.user_code = b.user_code\n" +
+            "where b.user_code = :userCode\n" +
+            "AND a.total_price > 0\n", nativeQuery = true)
+    Page<OrderHeader> find(Pageable pageable , int userCode);
 
     //마이페이지 주문(헤더) 직접 기간 조회
     @Query(value = "SELECT *\n" +
             "FROM orderheader\n" +
             "where order_date >= :DateStart \n" +
             "AND order_date <= :DateEnd ", nativeQuery = true)
-    List<OrderHeader> SellOrderHeader(Date DateStart, Date DateEnd);
+    Page<OrderHeader> SellOrderHeader(Pageable pageable,Date DateStart, Date DateEnd);
 
     //마이페이지 주문내역 최근 일주일 조회
     @Query(value = "select *\n" +
             "from orderheader\n" +
             "where order_date between date_add(now(),interval -1 week) and now();", nativeQuery = true)
-    List<OrderHeader> OneWeek();
+    Page<OrderHeader> OneWeek(Pageable pageable);
 
     //마이페이지 주문내역 최근 한달 조회
     @Query(value = "select *\n" +
             "from orderheader\n" +
             "where order_date between date_add(now(),interval -1 month) and now();", nativeQuery = true)
-    List<OrderHeader> OneMonth();
+    Page<OrderHeader> OneMonth(Pageable pageable);
 
     //마이페이지 주문내역 최근 3달전 조회
     @Query(value = "select *\n" +
             "from orderheader\n" +
             "where order_date between date_add(now(),interval -3 month) and now();",nativeQuery = true)
-    List<OrderHeader> ThreeMonth();
+    Page<OrderHeader> ThreeMonth(Pageable pageable);
 
 
     //마이페이지 주문내역 1년전 조회
     @Query(value = "select *\n" +
             "from orderheader\n" +
             "where order_date between date_add(now(),interval -1 Year) and now();", nativeQuery = true)
-    List<OrderHeader> OneYear();
+    Page<OrderHeader> OneYear(Pageable pageable);
+
 }

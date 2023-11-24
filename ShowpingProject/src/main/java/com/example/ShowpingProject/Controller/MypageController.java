@@ -9,16 +9,18 @@ import com.example.ShowpingProject.repository.QuestionRepository;
 import com.example.ShowpingProject.repository.UsersRepository;
 import com.example.ShowpingProject.repository.order.OrderDetailRepository;
 import com.example.ShowpingProject.repository.order.OrderHeaderRepository;
+import com.example.ShowpingProject.service.PageService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.Mapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
 import java.util.List;
@@ -44,48 +46,87 @@ public class MypageController {
     @Autowired
     AnswerRepository answerRepository;
 
+    @Autowired
+    PageService pageService;
+
     //마이페이지 각 유저 전체 주문 내역(주문헤더)
     @GetMapping("/mypage/main/{user_code}")
-    public String MypageController(HttpSession session, Model model, @PathVariable("user_code")  int userCode, MypageSellerform Sform){
+    public String MypageController(HttpSession session, Model model, @PathVariable("user_code")  int userCode, MypageSellerform Sform,
+                                        @RequestParam(value="page", defaultValue="0")int page){
         Users loginUser = (Users) session.getAttribute("loginUser");
         model.addAttribute("loginUser", loginUser);
 
-        log.info(Sform.toString());
+
+
 
         //유저 정보 가져오기
         Optional<Users> userInfo = usersRepository.findById(Long.valueOf(userCode));
-        log.info(userInfo.toString());
+//        log.info(userInfo.toString());
 
         model.addAttribute("userinfo",userInfo);
 
-        List<OrderHeader> orderHeader;
+//        List<OrderHeader> orderHeader;
+//
+//        //기간별로 조회할때 사용함
+//        if (Sform.getDateStart() != null && Sform.getDateEnd() != null) {
+//            // 사용자가 설정한 기간 조회
+//            orderHeader = orderHeaderRepository.SellOrderHeader(Sform.getDateStart(), Sform.getDateEnd());
+//        }else if(Objects.equals(Sform.getDayfilter(), ("1week"))){
+//            //일주일전
+//            orderHeader = orderHeaderRepository.OneWeek();
+////                log.info(orderHeader.toString());
+//        }else if(Objects.equals(Sform.getDayfilter(),("1month"))){
+//            //한달전
+//            orderHeader = orderHeaderRepository.OneMonth();
+//
+//        }else if(Objects.equals(Sform.getDayfilter(),("3month"))){
+//            //3달전
+//            orderHeader = orderHeaderRepository.ThreeMonth();
+//
+//        }else if(Objects.equals(Sform.getDayfilter(),("1year"))){
+//            //1년전
+//            orderHeader = orderHeaderRepository.OneYear();
+//        }else {
+//            // 기본 전체 주문 내역 조회
+//            orderHeader = orderHeaderRepository.OrderHeaderCheck(userCode);
+////            orderHeader = orderHeaderRepository.OrderHeaderCheck(userCode,startPage,endPage);
+//        }
+//        List<OrderHeader> orderHeader;
+        //페이징 처리를 위한 코드
+        Page<OrderHeader> pagin = null;
+//        Page<OrderHeader> pagin2;
+        //중요 정보 모델로
+//        model.addAttribute("pagins",pagin.getContent());
+        
 
+        //기간별로 조회할때 사용함
         if (Sform.getDateStart() != null && Sform.getDateEnd() != null) {
             // 사용자가 설정한 기간 조회
-            orderHeader = orderHeaderRepository.SellOrderHeader(Sform.getDateStart(), Sform.getDateEnd());
+            pagin = this.pageService.getSellList(page,Sform.getDateStart(),Sform.getDateEnd());
         }else if(Objects.equals(Sform.getDayfilter(), ("1week"))){
             //일주일전
-            orderHeader = orderHeaderRepository.OneWeek();
-//                log.info(orderHeader.toString());
+            pagin = this.pageService.getOneWeek(page);
         }else if(Objects.equals(Sform.getDayfilter(),("1month"))){
             //한달전
-            orderHeader = orderHeaderRepository.OneMonth();
-
+            pagin = this.pageService.getOneMonth(page);
         }else if(Objects.equals(Sform.getDayfilter(),("3month"))){
             //3달전
-            orderHeader = orderHeaderRepository.ThreeMonth();
-
+            pagin = this.pageService.getThreeMonth(page);
         }else if(Objects.equals(Sform.getDayfilter(),("1year"))){
             //1년전
-            orderHeader = orderHeaderRepository.OneYear();
+            pagin = this.pageService.getOneYear(page);
+        }else if((Objects.equals(Sform.getDayfilter(),("all")))){
+            pagin = this.pageService.getList(page,userCode);
         }else {
             // 기본 전체 주문 내역 조회
-            orderHeader = orderHeaderRepository.OrderHeaderCheck(userCode);
+            pagin = this.pageService.getList(page,userCode);
+//            orderHeader = orderHeaderRepository.OrderHeaderCheck(userCode,startPage,endPage);
         }
 
         //최종 저장
-        model.addAttribute("UserOrderChekcHeader", orderHeader);
-
+        model.addAttribute("pagins",pagin.getContent());
+        model.addAttribute("totalElements" ,pagin.getTotalElements());
+        model.addAttribute("totalPage" ,pagin.getTotalPages()); //2
 
         return "mypage/mypageMain";
     }
@@ -186,7 +227,7 @@ public class MypageController {
         model.addAttribute("getQ",getQ);
 
         Answer answer = answerRepository.getAnswer(QuCode);
-//        log.info(answer.toString());
+
         if (answer == null) {
             // answer가 null인 경우에는 /mypage/inquiry/list/{user_code}로 리다이렉트
             return "redirect:/mypage/inquiry/list/" + loginUser.getUser_code();

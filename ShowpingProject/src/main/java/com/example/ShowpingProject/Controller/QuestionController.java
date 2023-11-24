@@ -63,6 +63,7 @@ public class QuestionController {
             questionRepository.save(getQ);
             Answer SaveAnswer = answerRepository.save(answer);
             log.info(SaveAnswer.toString());
+            return "redirect:/shopping/questionlist";
         }else {
             log.info("문의 답변 비어있음");
         }

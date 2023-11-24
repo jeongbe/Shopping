@@ -1,18 +1,7 @@
-// 사용자 이름을 가져와 웹 페이지에 표시하는 함수
-function displayUsername() {
-    // 여기에서 사용자 이름을 하드코딩 또는 사용자 입력으로 설정
-    const username1 = "홍길동";
-    const username2 = "홍길동님 반갑습니다~!";
+let QCount = document.querySelectorAll('.QCount');
 
-    // 사용자 이름을 웹 페이지에 표시
-    const usernameDisplay1 = document.getElementById('username-display1');
-    usernameDisplay1.textContent = username1;
+console.log(QCount);
 
-    const usernameDisplay2 = document.getElementById('username-display2');
-    usernameDisplay2.textContent = username2;
+for(var i = 0; i < QCount.length; i++){
+    QCount[i].textContent = i+1;
 }
-
-// 페이지 로드 시 사용자 이름 표시
-displayUsername();
-
-//--------------------------------------------------

@@ -75,6 +75,7 @@
 
             <div class="calendar">
                 <form action="/mypage/main/{{user_code}}" method="get">
+                    <p style="display:none" class="u">{{user_code}}</p>
                     <!-- 날짜 선택 달력 -->
                     <input type="date" name="DateStart" id="start-date" placeholder="시작 날짜">
                     -
@@ -99,43 +100,37 @@
             </div>
             <div class="horizontal-line"></div>
 
-            {{#UserOrderChekcHeader}}
-            <div class="dummy_data_order_info">
+            {{#pagins}}
+                <div class="dummy_data_order_info">
+                    <div class="order_box1">
+                        <img src="img/img3.png" alt="상품 이미지">
+                    </div>
 
-                <div class="order_box1">
-                    <img src="img/img3.png" alt="상품 이미지">
-
+                    <div class="order_box2">
+                        <p onclick="location.href='/mypage/orderdetail/{{order_id}}'">{{order_date}} | {{order_id}}</p>
+                        <p>{{total_price}}</p>
+                    </div>
                 </div>
+                <div class="horizontal-line"></div>
 
-                <div class="order_box2">
-                    <p onclick="location.href='/mypage/orderdetail/{{order_id}}'">{{order_date}} | {{order_id}}</p>
-                    <p>{{total_price}}</p>
-                </div>
-            </div>
+            {{/pagins}}
+            {{#totalElements}}
+                <p style="display:none;">{{totalElements}}</p>
+            {{/totalElements}}
 
-
-            <div class="horizontal-line"></div>
-            {{/UserOrderChekcHeader}}
+            {{#totalPage}}
+                <p style="display:none;" class="totalPage">{{totalPage}}</p>
+            {{/totalPage}}
             <nav aria-label="Page navigation example">
+<!--                onclick="page(this); return false;"-->
                 <ul class="pagination">
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
+
                 </ul>
             </nav>
         </div>
     </div>
 </div>
+<script src="/static/js/mypage/mypageMain.js"></script>
 </body>
 {{/loginUser}}
 {{>layouts/footer}}

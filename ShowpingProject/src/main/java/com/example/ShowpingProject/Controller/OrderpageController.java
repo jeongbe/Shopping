@@ -131,16 +131,6 @@ public class OrderpageController  {
         return "";
     }
 
-//    @PostMapping("/order/auickly/{user_code}/{prod_code}/{prod_size}/data")
-//    public String data(Model model,@PathVariable("prod_size")  String prodsize,@PathVariable("user_code")  int userCode, @PathVariable("prod_code")  String prodCode, @ModelAttribute OrderHeaderForm HForm, ProdSizeForm prsizeF){
-//
-//        log.info(prsizeF.toString());
-//
-//        model.addAttribute("prodINFO", prsizeF);
-//        log.info(prsizeF.toString());
-//
-//        return "";
-//    }
 
 
     //  장바구니에서 주문페이지로 넘어갈때! 일단 주문 번호 기준으로 가져온다. 주문한 상품 목록과 구매한 유저 정보
