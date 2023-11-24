@@ -37,15 +37,5 @@ public class productimage {
         this.image_link4 = image_link4;
     }
 
-    @Override
-    public String toString() {
-        return "productimage{" +
-                "image_code=" + image_code +
-                ", product=" + product +
-                ", image_link='" + image_link + '\'' +
-                ", image_link2='" + image_link2 + '\'' +
-                ", image_link3='" + image_link3 + '\'' +
-                ", image_link4='" + image_link4 + '\'' +
-                '}';
-    }
+
 }
