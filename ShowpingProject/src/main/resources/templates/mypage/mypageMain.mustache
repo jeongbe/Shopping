@@ -46,8 +46,8 @@
         <!-- 나의 쇼핑 정보 -->
         <div class="category_contents_1">
             <p class="category_title_p ">나의 쇼핑 정보</p>
-            <div class="horizontal-line"></div>
-            <a href="/mypage/main/{{user_code}}"><p class="category_content_p">주문 내역 조회</p></a>
+            <div class="line1"></div>
+            <a href="/mypage/main/{{user_code}}"><p class="category_content_p orderList">주문 내역 조회</p></a>
             <a href="/mypage/reviewlist/{{user_code}}"><p class="category_content_p">구매후기 관리</p></a>
             <a href="/mypage/like/{{user_code}}"><p class="category_content_p">좋아요</p></a>
         </div>
@@ -55,7 +55,7 @@
         <!-- 고객지원 -->
         <div class="category_contents_2">
             <p class="category_title_p ">고객 지원</p>
-            <div class="horizontal-line"></div>
+            <div class="line1"></div>
             <a href="/mypage/inquiry/list/{{user_code}}"><p class="category_content_p">문의 목록</p></a>
         </div>
     </div>
@@ -64,15 +64,19 @@
     <div class="mypage_content">
 
         <!-- 주문 내역 조회 텍스트 -->
-        <div class="content_1">
-            <p class="category_title_p">주문 내역 조회</p>
-            <div class="horizontal-line"></div>
-        </div>
+<!--        <div class="content_1">-->
+<!--            <p class="category_title_p">주문 내역 조회</p>-->
+<!--&lt;!&ndash;            <div class="horizontal-line"></div>&ndash;&gt;-->
+<!--        </div>-->
 
 
         <!-- ****************************************기간 컨테이너****************************************-->
         <div class="period">
-
+            <div class="title_header">
+            <div class="con_title_box">
+                <p class="con_title">주문 내역 조회</p>
+                <!--            <div class="horizontal-line"></div>-->
+            </div>
             <div class="calendar">
                 <form action="/mypage/main/{{user_code}}" method="get">
                     <p style="display:none" class="u">{{user_code}}</p>
@@ -98,35 +102,38 @@
 
 
             </div>
+            </div>
             <div class="horizontal-line"></div>
+                <div class="prod_content">
+                    {{#pagins}}
+                        <div class="dummy_data_order_info">
+                            <div class="order_box1">
+                                <img src="img/img3.png" alt="상품 이미지">
+                            </div>
 
-            {{#pagins}}
-                <div class="dummy_data_order_info">
-                    <div class="order_box1">
-                        <img src="img/img3.png" alt="상품 이미지">
-                    </div>
+                            <div class="order_box2">
+                                <p onclick="location.href='/mypage/orderdetail/{{order_id}}'">{{order_date}} | {{order_id}}</p>
+                                <p>{{total_price}}</p>
+                            </div>
+                        </div>
+                        <div class="horizontal-line"></div>
 
-                    <div class="order_box2">
-                        <p onclick="location.href='/mypage/orderdetail/{{order_id}}'">{{order_date}} | {{order_id}}</p>
-                        <p>{{total_price}}</p>
-                    </div>
+                    {{/pagins}}
+                    {{#totalElements}}
+                        <p style="display:none;">{{totalElements}}</p>
+                    {{/totalElements}}
+
+                    {{#totalPage}}
+                        <p style="display:none;" class="totalPage">{{totalPage}}</p>
+                    {{/totalPage}}
                 </div>
-                <div class="horizontal-line"></div>
+                <nav aria-label="Page navigation example">
+    <!--                onclick="page(this); return false;"-->
+                    <ul class="pagination">
 
-            {{/pagins}}
-            {{#totalElements}}
-                <p style="display:none;">{{totalElements}}</p>
-            {{/totalElements}}
+                    </ul>
+                </nav>
 
-            {{#totalPage}}
-                <p style="display:none;" class="totalPage">{{totalPage}}</p>
-            {{/totalPage}}
-            <nav aria-label="Page navigation example">
-<!--                onclick="page(this); return false;"-->
-                <ul class="pagination">
-
-                </ul>
-            </nav>
         </div>
     </div>
 </div>
