@@ -174,24 +174,19 @@
 .dummy_data_order_info{
     display: flex;
     width: 1000px;
-    height: 150px;
-
-
-    margin-top: 30px;
     /* background-color: blue; */
 }
 
 /* 주문 박스1 */
 .order_box1{
     width: 15%;
-    height: 150px;
+    height: 120px;
     /* background-color: red;   */
 }
 
 /* 주문 박스2 */
 .order_box2{
     width: 30%;
-    height: 150px;
     /* background-color: darkgreen;  */
 }
 
@@ -222,7 +217,7 @@
     flex-direction: column;
 
     width: 1200px;
-    height: 500px;
+    height: 800px;
     /* background-color: #398ABE; */
 }
 
@@ -263,4 +258,16 @@
 
 .prod_content{
     height: 500px;
+}
+
+.pagination{
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    justify-content: center;
+    margin-top: 300px;
+}
+
+.order_box2 > p{
+    margin-bottom: 5px;
 }

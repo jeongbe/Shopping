@@ -1,6 +1,8 @@
 package com.example.ShowpingProject.DTO;
 
 import com.example.ShowpingProject.entity.Baskets;
+import com.example.ShowpingProject.entity.product.product;
+import com.example.ShowpingProject.entity.product.productimage;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
@@ -9,6 +11,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
 
 @NoArgsConstructor
 @Data
@@ -29,16 +32,10 @@ public class BasketForm {
 
     String totalPrice;
 
-//    public BasketForm(Long id, Long usercode, Long prodcode, String prodname, String prodsize, String prodcnt, int prodprice) {
-//
-//        this.id = id;
-//        this.usercode = usercode;
-//        this.prodcode = prodcode;
-//        this.prodname = prodname;
-//        this.prodsize = prodsize;
-//        this.prodcnt = prodcnt;
-//        this.prodprice = prodprice;
-//    }
+
+
+
+
 
     public Baskets toEntity(){
         return new Baskets(id,usercode,prodcode,prodname,prodsize,prodcnt,prodprice,totalPrice);

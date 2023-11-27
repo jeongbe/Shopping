@@ -29,7 +29,7 @@
     </div>
 {{/Errormsg}}
 <div class="main_title">
-    <img src="/static/images/chevron-left-solid.svg" class="backIcon" alt=""/>
+<!--    <img src="/static/images/chevron-left-solid.svg" class="backIcon" alt=""/>-->
     <h1 class="title">장바구니</h1>
 </div>
 <div class="body_content">
@@ -39,24 +39,30 @@
 <!--    <form id="deleteForm" method="get">-->
 <!--        <button class="clickdelete">선택삭제/</button>-->
 <!--    </form>-->
-    <form id="deleteAllForm" method="get">
+    <form id="deleteAllForm" method="get" class="d_Form">
         <p style="display: none" class="userCode">{{user_code}}</p>
         <button type="submit" class="Alldelete">전체삭제</button>
     </form>
 </div>
 <div class="line2"></div>
+<div class="p_box">
+<div class="prod_img">
+    {{#basketIMG}}
+        <img src="/static/images/Product/{{image_link}}" class="img-thumbnails produces_image" alt="상품 이미지"/>
+    {{/basketIMG}}
+</div>
 <!--아이템 들어오는 부분-->
+
 {{#basketList}}
-    <form action="/shopping/cartbox/{{id}}" method="get">
+    <form action="/shopping/cartbox/{{id}}" method="get" class="baskForm">
         <!--        style="display:none;"-->
         <div class="products">
             <div class="product">
                 <!--                상품 체크 박스-->
 <!--                <input type="checkbox" class="chk" id="chekcBox" name="prodbox"/>-->
-                <img src="" class="img-thumbnail produces_image" alt="상품 이미지"/>
-                <div class="product_info" onclick="find(this); return false;">
-                    <p class="prodfindID" >{{id}}</p>
 
+                <div class="product_info" onclick="find(this); return false;">
+                    <p class="prodfindID" style="display:none;" >{{id}}</p>
 
                     <p id="cart_code" hidden>{{prod_code}}</p>
                     <p class="product_name">{{prod_name}}</p>
@@ -87,14 +93,14 @@
                         <input type="hidden" name="prodcode" value="{{prod_code}}">
                         <input type="hidden" name="prodsize" value="{{prod_size}}">
                         <input type="hidden" name="usercode" value="{{user_code}}">
-                        <button type="submit" class="change_Btn">변경확인</button>
+                        <button type="submit" class="change_Btn btnPush btnLightBlue">변경확인</button>
                         <!--                    onclick="location.href='/shopping/cartbox/produpdate/'"-->
                     </form>
                     <!--                        "-->
                 </div>
                 <!--                삭제 이미지-->
 
-                <a href="/shopping/cartbox/{{user_code}}/delete/{{id}}">
+                <a href="/shopping/cartbox/{{user_code}}/delete/{{id}}" class="de_btn">
                     <p style="display: none" class="prodID">{{id}}</p>
                     <p style="display: none" class="userCode">{{user_code}}</p>
                     <img src="/static/images/xmark-solid.svg" class="Ximg" alt="" srcset=""/>
@@ -108,6 +114,7 @@
         <button type="submit" class="btn_ btn-info payBtn">주문하기</button>
     </div>
 </form>
+</div>
 <script>
 
 

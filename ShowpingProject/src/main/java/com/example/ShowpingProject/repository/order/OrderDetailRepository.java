@@ -3,6 +3,7 @@ package com.example.ShowpingProject.repository.order;
 import com.example.ShowpingProject.entity.Baskets;
 import com.example.ShowpingProject.entity.OrderDetail;
 import com.example.ShowpingProject.entity.OrderHeader;
+import com.example.ShowpingProject.entity.product.productimage;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
@@ -194,6 +195,14 @@ public interface OrderDetailRepository extends CrudRepository<OrderDetail, Long>
             "on d.order_id = h.order_id\n" +
             "where d.order_id = :orderId",nativeQuery = true)
     List<OrderDetail> ShowOrderDetail(String orderId);
+    
+    //상품 헤더에서 디테일 개수 가져옴
+    @Query(value = "select count(*)\n" +
+            "from orderdetail d\n" +
+            "join orderheader h\n" +
+            "on d.order_id = h.order_id\n" +
+            "where d.order_id = :orderId",nativeQuery = true)
+    String OrderDetailCount(String orderId);
 
     //1:1 문의 쓰기 할때 해당 상품 정보 가져오는 쿼리
     @Query(value = "select o.* , h.order_date \n" +
@@ -215,5 +224,6 @@ public interface OrderDetailRepository extends CrudRepository<OrderDetail, Long>
             "WHERE a.order_id = :orderid \n" +
             "AND b.prod_code = :prodcode ", nativeQuery = true)
     OrderDetail review(Long orderid, Long prodcode);
+    
 
 }

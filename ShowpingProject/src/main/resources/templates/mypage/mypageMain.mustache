@@ -113,12 +113,17 @@
 
                             <div class="order_box2">
                                 <p onclick="location.href='/mypage/orderdetail/{{order_id}}'">{{order_date}} | {{order_id}}</p>
+                                {{#detailCounts}}
+                                    <P class="countValue" style="display:none;">{{.}}</P>
+                                {{/detailCounts}}
+                                <P class="orderDetailCount"></P>
                                 <p>{{total_price}}</p>
                             </div>
                         </div>
                         <div class="horizontal-line"></div>
 
                     {{/pagins}}
+
                     {{#totalElements}}
                         <p style="display:none;">{{totalElements}}</p>
                     {{/totalElements}}
@@ -127,14 +132,14 @@
                         <p style="display:none;" class="totalPage">{{totalPage}}</p>
                     {{/totalPage}}
                 </div>
+
+        </div>
                 <nav aria-label="Page navigation example">
     <!--                onclick="page(this); return false;"-->
                     <ul class="pagination">
 
                     </ul>
                 </nav>
-
-        </div>
     </div>
 </div>
 <script src="/static/js/mypage/mypageMain.js"></script>

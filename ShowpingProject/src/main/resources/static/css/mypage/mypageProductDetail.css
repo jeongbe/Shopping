@@ -151,16 +151,21 @@
 /* 주문상품 컨테이너 */
 .content_1 {
     width: 300px;
-    height: 100px;
+    height: 80px;
     /* background-color: red; */
 }
 
 .product_content{
-    display: flex;
-    /* flex-direction: column; */
-    /* margin-top: 30px; */
-    height: 200px;
-    /* background-color: #398ABE;   */
+        display: flex;
+        border: 1px solid block;
+        border-radius: 16px;
+        box-shadow: 0 15px 30px rgba(0,0,0,.09);
+        /* margin-top: 30px; */
+        height: 200px;
+        background-color: #d6ecf9;
+        flex-direction: column;
+        justify-content: flex-start;
+        margin-top: 50px;
 }
 
 .product_img{
@@ -171,12 +176,13 @@
 }
 
 .product_box{
-    display: flex;
-    flex-direction: column;
-    width: 500px;
-    height: 150px;
-    margin-top: 20px;
-    /* background-color: yellow; */
+        display: flex;
+        flex-direction: column;
+        width: 500px;
+        height: 170px;
+        position: relative;
+        bottom: 140px;
+        left: 200px;
 }
 
 .product_name{
@@ -201,8 +207,9 @@
     display: flex;
     width: 300px;
     height: 150px;
-    margin-top: 20px;
-    /* background-color: green; */
+    position: relative;
+    left: 655px;
+    bottom: 110px;
 }
 
 
@@ -241,4 +248,13 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.prodD_img{
+    width: 150px;
+    height: 150px;
+    position: relative;
+    /* bottom: 30px; */
+    border-radius: 20%;
+    margin-left: 20px
 }

@@ -1,11 +1,41 @@
+document.addEventListener('DOMContentLoaded', function () {
+    let countValues = document.querySelectorAll('.countValue');
+
+    // NodeList를 배열로 변환
+    let countValuesArray = Array.from(countValues);
+    console.log(countValuesArray.length);
+    let Alength = countValuesArray.length / 2;
+    countValuesArray.length = Alength;
+//    console.log(countValuesArray.length);
+//    console.log(countValuesArray);
+
+
+    // 배열의 각 요소에 대해 출력
+    countValuesArray.forEach(function (countValue) {
+        console.log(countValue.textContent);
+    });
+
+    let text = document.querySelectorAll('.orderDetailCount');
+    let array2 = Array.from(text);
+    array2.forEach(function (Value) {
+        console.log(Value.textContent);
+    });
+
+    for(let i = 0; i < countValuesArray.length; i++){
+        array2[i].textContent = "총 "+countValuesArray[i].textContent +"건";
+    }
+});
+
+// Rest of your existing code
+
 
 let totalPage = document.querySelector(".totalPage").textContent;
-console.log(totalPage);
+//console.log(totalPage);
 
 let usercode = document.querySelector(".u").textContent;
 
 let userCode = parseInt(usercode);
-console.log(userCode);
+//console.log(userCode);
 
  // 부모 요소
 var paginationContainer = document.querySelector(".pagination");
@@ -31,3 +61,6 @@ if (paginationContainer) {
     nextButton.innerHTML = `<a class="page-link" href="/mypage/main/${userCode}?page=${totalPage-1}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>`;
     paginationContainer.appendChild(nextButton);
 }
+
+
+

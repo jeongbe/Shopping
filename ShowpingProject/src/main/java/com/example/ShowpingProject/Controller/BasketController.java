@@ -5,7 +5,9 @@ import com.example.ShowpingProject.DTO.BasketForm;
 import com.example.ShowpingProject.entity.Baskets;
 import com.example.ShowpingProject.entity.Users;
 import com.example.ShowpingProject.entity.product.product;
+import com.example.ShowpingProject.entity.product.productimage;
 import com.example.ShowpingProject.repository.BasketRepository;
+import com.example.ShowpingProject.repository.productRepository.ProdimageRepository;
 import com.example.ShowpingProject.repository.productRepository.ProductRepository;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
@@ -19,8 +21,10 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Controller
@@ -32,6 +36,9 @@ public class BasketController {
 
     @Autowired
     ProductRepository productRepository;
+
+    @Autowired
+    ProdimageRepository prodimageRepository;
 
     // 상품 디테일 페이지에서 장바구니 클릭시 해당상품이 해당 유저 장바구니에 상품이 담김
     @PostMapping("/shopping/insertcartbox/{user_code}/{prod_code}")
@@ -53,23 +60,25 @@ public class BasketController {
 
     //장바구니 안에 있는 상품 불러오기 , 유저 코드 기준으로 해당 유저 장바구니 불러옴
     @GetMapping("/shopping/cartbox/{user_code}")
-    public String showcart(@PathVariable("user_code")  int userCode, BasketForm form , Model model, Baskets baskets, HttpSession session) {
+    public String showcart(@PathVariable("user_code")  int userCode, BasketForm form, Model model, HttpSession session) {
         Users loginUser = (Users) session.getAttribute("loginUser");
         model.addAttribute("loginUser", loginUser);
-        log.info(form.toString());
-
+//        log.info(form.toString());
+        //null에러 안나게하기위해
         form.setTotalPrice(String.valueOf(0));
 
         //장바구니 테이블 안에 있는 상품들을 불러온다.
         List<Baskets> basketList = basketRepository.findByIDUsercart(userCode);
+        List<productimage> basketImg = prodimageRepository.test(userCode);
+//        log.info(basketImg.toString());
         if (basketList != null) {
             //불러온 상품을 장바구니 페이지에서 보여주기 위해서 model basketList에 값들을 넣어준다.
             model.addAttribute("basketList", basketList);
-        } else {
-        }
-        
-        log.info(basketList.toString());
+            model.addAttribute("basketIMG",basketImg);
 
+        } else {
+            model.addAttribute("basketList", Collections.emptyList());
+        }
 
         return "basket/basket";
     }
@@ -82,7 +91,7 @@ public class BasketController {
 
         //장바구니 안에 있는 상품 불러온다.
         List<Baskets> basketList = basketRepository.findByIDUsercart(userCode);
-        if (basketList != null) {
+        if (basketList.size() > 0) {
             //해당 유저 장바구니 테이블 안 데이터 전부 삭제한다.
             basketRepository.deleteAll(basketList);
             //삭제 잘 되었을때 해당 메세지를 띄어준다.
@@ -91,6 +100,7 @@ public class BasketController {
             //상품이 없는데 삭제하려고 할때 메세지를 띄어준다.
             rttr.addFlashAttribute("Errormsg"," 장바구니 안 상품이 없습니다.");
         }
+
 
         return "redirect:/shopping/cartbox/" + userCode;
     }

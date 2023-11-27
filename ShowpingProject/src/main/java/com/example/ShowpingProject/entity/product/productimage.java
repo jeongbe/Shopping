@@ -1,10 +1,11 @@
 package com.example.ShowpingProject.entity.product;
 
 import jakarta.persistence.*;
+import lombok.ToString;
 
 @Entity
 @Table(name = "productimage")
-
+@ToString
 public class productimage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

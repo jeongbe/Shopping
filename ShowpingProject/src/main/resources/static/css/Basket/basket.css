@@ -5,7 +5,8 @@
 
 .main_title {
     display: flex;
-    width: 100%;
+    width: 1300px;
+    justify-content: center;
 }
 
 .backIcon {
@@ -25,14 +26,18 @@
 
 .body_content {
     display: flex;
+    width: 1200px;
     /* justify-content: center;
     align-items: center; */
     margin-top: 70px;
     font-size: 25px;
+    justify-content: space-between;
+    margin-left: 120px;
 }
 
 .Allclick {
     margin-left: 19%;
+    display: flex;
 }
 
 .clickdelete {
@@ -44,6 +49,8 @@
 .Alldelete {
     margin-top: 5px;
     cursor: pointer;
+    border: 0;
+    background-color: transparent;
 }
 
 input[type='checkbox'] {
@@ -59,16 +66,17 @@ input[type='checkbox'] {
     display: inline-block;
     align-items: center;
     justify-content: center;
-    width: 1300px;
+    width: 1200px;
     border-bottom: 1px solid #000000;
     margin-left: 19%;
     margin-top: 15px;
 }
 
 .produces_image {
-    width: 160px;
-    height: 160px;
+    width: 150px;
+    height: 150px;
     margin-left: 40px;
+    margin-bottom: 90px;
 }
 
 .products {
@@ -83,8 +91,9 @@ input[type='checkbox'] {
 }
 
 .product_info {
-    margin-left: 40px;
-    margin-top: 30px;
+    margin-bottom:20px;
+   position:relative;
+    top:50px;
 }
 
 .product_name {
@@ -109,7 +118,8 @@ input[type='checkbox'] {
 }
 
 .btn__{
-    margin-top : 120px;
+    margin-top: 150px;
+    margin-right: 200px;
 }
 
 .btn_{
@@ -120,4 +130,67 @@ input[type='checkbox'] {
     width: 200px;
     height: 60px;
     font-size: 20px
+}
+
+.checkbox-count{
+    display:flex;
+}
+
+.d_Form{
+    position: relative;
+    left: 130px;
+}
+
+.prod_img{
+    display:block;
+    width: 150px;
+    height: 150px;
+    position:relative;
+    top:200px;
+}
+
+.p_box{
+    width:1300px;
+    position:relative;
+    bottom:140px;
+    margin-left: 350px;
+}
+
+.img-thumbnails{
+    padding: 0.25rem;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+    max-width: 100%;
+}
+
+.de_btn{
+    /* width:30px; */
+    height:30px;
+    margin-left: 700px;
+    margin-top:40px;
+}
+
+.baskForm{
+    height: 200px;
+    margin-bottom: 40px;
+    width: 1100px;
+    border-radius: 20px;
+    box-shadow: inset 0 5px 5px -5px #333,
+    inset -5px 0 5px -5px #333,
+    inset 5px 0 5px -5px #333;
+}
+
+.change_Btn{
+    border: 0;
+    background-color: transparent;
+    margin-top: 10px;
+}
+
+.btnLightBlue.btnPush {
+  box-shadow: 0px 5px 0px 0px #1E8185;
+}
+
+.btnLightBlue.btnPush:hover {
+  box-shadow: 0px 0px 0px 0px #1E8185;
 }

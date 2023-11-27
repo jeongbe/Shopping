@@ -115,7 +115,7 @@ nav {
 
 .logo {
     width: 100px;
-    height: 50px;
+    height: 60px;
     object-fit: cover;
 }
 
@@ -163,4 +163,12 @@ nav {
 .search_btn_box .btn_search {
     height: 28px;
     width: 28px;
+}
+
+.s_btn{
+    width: 20px;
+    height: 20px;
+    background-image: url(/static/images/baseline_search_black_24dp.png);
+    border: 0;
+    background-color: transparent;
 }
