@@ -3,6 +3,7 @@
     <link rel="stylesheet" type="text/css" href="/static/css/layouts/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <script src="https://kit.fontawesome.com/866e721e3e.js" crossorigin="anonymous"></script>
 </head>
 <body>
 {{#loginUser}}
@@ -11,6 +12,7 @@
 {{#product}}
     <p style="display:none;" class="prodCode">{{prod_code}}</p>
 <header>
+    {{>layouts/header}}
     <div class="cate-info">
         {{prod_cate}} >> {{prod_decate}}
     </div>
@@ -19,7 +21,7 @@
 <nav>
 {{#productimage}}
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
+        <div class="carousel-inner" style="width: 550px;">
             <div class="carousel-item active">
                 <img src="/static/images/Product/{{image_link}}" class="prod-image" alt="...">
             </div>
@@ -48,39 +50,32 @@
 </nav>
 <section>
     <div class="prod-info">
-        <div class="prod-score">
-            <h3>평점</h3>
-            <div class="prod-score-text">
-                <p>4</p>
-            </div>
-            <div class="like"><button>좋아요</button></div>
-        </div>
         <div class="prod-name">
-            <h3>상품명</h3>
+            <h3><i class="fa-solid fa-shapes">상품명</i></h3>
             <div class="prod-name-text">
                 <p class="prodName">{{prod_name}}</p>
             </div>
         </div>
         <div class="prod-price">
-            <h3>판매가</h3>
+            <h3><i class="fa-solid fa-won-sign">판매가</i></h3>
             <div class="prod-price-text">
                 <p>{{prod_price}}</p>
             </div>
         </div>
         <div class="prod-discount-price">
-            <h3>할인가</h3>
+            <h3><i class="fa-solid fa-won-sign">할인가</i></h3>
             <div class="prod-discount-text">
                 <p class="prodPrice">{{prod_discount_price}}</p>
             </div>
         </div>
         <div class="prod-diliver-price">
-            <h3>배송비</h3>
+            <h3><i class="fa-solid fa-truck">배송비</i></h3>
             <div class="prod-diliver-text">
                 <p>{{diliver_price}}</p>
             </div>
         </div>
         <div class="prod-size">
-            <h3>사이즈</h3>
+            <h3><i class="fa-solid fa-magnifying-glass">사이즈</i></h3>
             <div class="prod-size-text">
                 <select id="prodSize" class="size-option">
                     <option>옵션을 선택해주세요</option>
@@ -94,8 +89,8 @@
         </div>
         <div class="prod-buy-button">
 <!--            <p class="UserCode">2sss</p>-->
-            <button type="submit" class="basket-button">장바구니</button>
-            <button type="submit" class="buy-button">바로결제</button>
+            <button type="submit" class="basket-button"><i class="fa-solid fa-cart-shopping" style="color: #15bcb1;">장바구니</i></button>
+            <button type="submit" class="buy-button"><i class="fa-solid fa-money-check-dollar" style="color: #15bcb1;">바로결제</i></button>
         </div>
     </div>
 </section>
@@ -172,6 +167,8 @@
 <!--//        console.log('.UserCode 요소를 찾을 수 없습니다.');-->
 <!--    }-->
 <!--</script>-->
+
+
 </body>
 {{>layouts/footer}}
 </html>

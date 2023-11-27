@@ -22,7 +22,7 @@ main{
 
 .prod-image{
     margin-top: 30px;
-    width: 100%;
+    width: 550px;
     height: 500px;
 
 }
@@ -47,50 +47,60 @@ main{
 
 .prod-name{
     display: flex;
-    margin-top: 20px;
+    margin-top: 0px;
+    font-size:large;
 }
 
 .prod-name-text{
     margin-left: 100px;
+    font-size:large;
 }
 
 .prod-price{
     display: flex;
-    margin-top: 20px;
+    margin-top: 30px;
+    font-size:large;
 }
 
 .prod-price-text{
     margin-left: 100px;
+    font-size:large;
 }
 
 .prod-discount-price{
     display: flex;
-    margin-top: 20px;
+    margin-top: 30px;
+    font-size:large;
 
 }
 
 .prod-discount-text{
     margin-left: 100px;
+    font-size:large;
 }
 
 .prod-diliver-price{
     display: flex;
-    margin-top: 20px;
+    margin-top: 30px;
+    font-size:large;
 
 }
 
 .prod-diliver-text{
     margin-left: 100px;
+    font-size:large;
 }
 
 .prod-size{
     display: flex;
-    margin-top: 20px;
+    margin-top: 30px;
+    font-size:large;
 
 }
 
 .prod-size-text{
     margin-left: 100px;
+    font-size:large;
 }
 
 .size-option{

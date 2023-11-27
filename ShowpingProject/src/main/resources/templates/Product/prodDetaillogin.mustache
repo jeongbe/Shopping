@@ -1,0 +1,174 @@
+<head>
+    <link rel="stylesheet" type="text/css" href="/static/css/product/prodDetail.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/layouts/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <script src="https://kit.fontawesome.com/866e721e3e.js" crossorigin="anonymous"></script>
+</head>
+<body>
+{{#loginUser}}
+    <p class="UserCode">{{user_code}}</p>
+{{/loginUser}}
+{{#product}}
+    <p style="display:none;" class="prodCode">{{prod_code}}</p>
+    <header>
+        {{>layouts/headerlogin}}
+        <div class="cate-info">
+            {{prod_cate}} >> {{prod_decate}}
+        </div>
+        <hr>
+    </header>
+    <nav>
+        {{#productimage}}
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner" style="width: 550px;">
+                    <div class="carousel-item active">
+                        <img src="/static/images/Product/{{image_link}}" class="prod-image" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/static/images/Product/{{image_link2}}" class="prod-image" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/static/images/Product/{{image_link3}}" class="prod-image" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/static/images/Product/{{image_link4}}" class="prod-image" alt="...">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                        data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                        data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        {{/productimage}}
+    </nav>
+    <section>
+        <div class="prod-info">
+            <div class="prod-name">
+                <h3><i class="fa-solid fa-shapes">상품명</i></h3>
+                <div class="prod-name-text">
+                    <p class="prodName">{{prod_name}}</p>
+                </div>
+            </div>
+            <div class="prod-price">
+                <h3><i class="fa-solid fa-won-sign">판매가</i></h3>
+                <div class="prod-price-text">
+                    <p>{{prod_price}}</p>
+                </div>
+            </div>
+            <div class="prod-discount-price">
+                <h3><i class="fa-solid fa-won-sign">할인가</i></h3>
+                <div class="prod-discount-text">
+                    <p class="prodPrice">{{prod_discount_price}}</p>
+                </div>
+            </div>
+            <div class="prod-diliver-price">
+                <h3><i class="fa-solid fa-truck">배송비</i></h3>
+                <div class="prod-diliver-text">
+                    <p>{{diliver_price}}</p>
+                </div>
+            </div>
+            <div class="prod-size">
+                <h3><i class="fa-solid fa-magnifying-glass">사이즈</i></h3>
+                <div class="prod-size-text">
+                    <select id="prodSize" class="size-option">
+                        <option>옵션을 선택해주세요</option>
+                        <option name="prodSize" class="size" value="XS">{{prod_XS}}</option>
+                        <option name="prodSize" class="size" value="S">{{prod_S}}</option>
+                        <option name="prodSize" class="size" value="M">{{prod_M}}</option>
+                        <option name="prodSize" class="size" value="L">{{prod_L}}</option>
+                        <option name="prodSize" class="size" value="XL">{{prod_XL}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="prod-buy-button">
+                <!--            <p class="UserCode">2sss</p>-->
+                <button type="submit" class="basket-button"><i class="fa-solid fa-cart-shopping" style="color: #15bcb1;">장바구니</i></button>
+                <button type="submit" class="buy-button"><i class="fa-solid fa-money-check-dollar" style="color: #15bcb1;">바로결제</i></button>
+            </div>
+        </div>
+    </section>
+    <hr>
+    <main>
+        <div class="prod-detail-image-title">
+            <h3 style="color: aqua;">상품 상세이미지</h3>
+        </div>
+        <div class="prod-detail-image-form">
+            {{#productdeimage}}
+                <div class="prod-detail-image">
+                    <img src="/static/images/Product/{{deimage_link}}" class="detail-image">
+                </div>
+                <div class="prod-detail-image">
+                    <img src="/static/images/Product/{{deimage_link2}}" class="detail-image">
+                </div>
+                <div class="prod-detail-image">
+                    <img src="/static/images/Product/{{deimage_link3}}" class="detail-image">
+                </div>
+                <div class="prod-detail-image">
+                    <img src="/static/images/Product/{{deimage_link4}}" class="detail-image">
+                </div>
+                <div class="prod-detail-image">
+                    <img src="/static/images/Product/{{deimage_link5}}" class="detail-image">
+                </div>
+            {{/productdeimage}}
+        </div>
+        <div class="prod-detail-info">
+            <div>상품상태: <input type="text" placeholder="새 재품" readonly></div><br>
+            <div class="prod-info-text">원산지 : <input type="text" placeholder="한국" readonly></div><br>
+            <div class="prod-info-text">출고지 : <input type="text" placeholder="서울" readonly></div><br>
+            <div>판매형태 :<input type="text" placeholder="도매" readonly></div>
+        </div>
+{{/product}}
+    <hr>
+    <div class="review-title">
+        <h2>리뷰</h2>
+        <div>
+            <!--            <h3>리뷰갯수: <b>3</b>개</h3>-->
+        </div>
+    </div>
+{{#productreview}}
+        <div class="review-form">
+            <div class="review-info-form">
+                <h3>평점 : 4</h3>
+                <h3>{{user_code}}</h3>
+                <h3>사이즈 : {{prod_size}}</h3>
+            </div>
+            <div class="review-date">
+                <h3>{{review_date}}</h3>
+            </div>
+            <div class="review-image-form">
+                <img src="/image/image1.jfif" class="review-image">
+            </div>
+            <div class="review-content">
+                <p>{{review_content}}</p>
+            </div>
+        </div>
+{{/productreview}}
+    </div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+</script>
+<script src="/static/js/Product/prodDetail.js"></script>
+<!--<script>-->
+<!--    let UserCodeE = document.querySelector('.UserCode');-->
+<!--    console.log(UserCodeE);-->
+
+<!--    if (UserCodeE) {-->
+<!--        let UserCode = UserCodeE.textContent;-->
+<!--        console.log(UserCode);-->
+<!--    } else {-->
+<!--//        console.log('.UserCode 요소를 찾을 수 없습니다.');-->
+<!--    }-->
+<!--</script>-->
+
+
+</body>
+{{>layouts/footer}}
+</html>

@@ -181,7 +181,18 @@ public class productController {
         Users loginUser = (Users) session.getAttribute("loginUser");
         model.addAttribute("loginUser", loginUser);
 
-        return "Product/prodDetail";
+
+        //로그인 세션 유무 판단후 페이지 반환
+        //로그인,비로그인 각각 반환페이지가 다름
+
+        if (loginUser != null){
+            return "Product/prodDetaillogin";
+        }
+        else {
+            return "Product/prodDetail";
+        }
+
+
     }
 
 
@@ -203,5 +214,7 @@ public class productController {
         model.addAttribute("productlist", productEntitylist);
         return "Product/productListlogin";
     }
+
+
 
 }

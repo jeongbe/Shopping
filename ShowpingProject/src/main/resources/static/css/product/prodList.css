@@ -28,73 +28,148 @@
 .category-form{
     display: flex;
 }
+
 .category1{
-    margin-left: 320px;
-    text-decoration: underline;
+    margin-left: 500px;
+
 }
+.category1:hover{
+   text-decoration: underline;
+   transform: rotate(50deg);
+   transform: scale(1.5);
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+   background-color: #b1e2f5;
+}
+
 .category2{
     margin-left: 100px;
-    text-decoration: underline;
+
+}
+.category2:hover{
+   text-decoration: underline;
+   transform: rotate(10deg);
+   transform: scale(1.5);
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+   background-color: #b1e2f5;
 }
 .category3{
     margin-left: 100px;
-    text-decoration: underline;
+
 
 }
+.category3:hover{
+   text-decoration: underline;
+   transform: rotate(10deg);
+   transform: scale(1.5);
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+   background-color: #b1e2f5;
+}
+
 .category4{
     margin-left: 100px;
-    text-decoration: underline;
 
+
+}
+.category4:hover{
+   text-decoration: underline;
+   transform: rotate(10deg);
+   transform: scale(1.5);
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+   background-color: #b1e2f5;
 }
 
 .head-category{
-    text-decoration: underline;
+    margin-top:10px;
+    text-align:center;
+    font-size: x-large;
 }
 
 .detail-category-form{
-    margin-top: 130px;
-    width: 230px;
+    margin-top: 100px;
+    width: 300px;
+    height: 400px;
+
 }
 
 
 .detail-category1{
-margin-top: 10px;
+margin-top: 30px;
+
+}
+
+.detail-category1:hover{
+
+  transform: scale(1.5);
 
 }
 
 
 .detail-category2{
-margin-top: 10px;
+margin-top: 30px;
+
+}
+
+.detail-category2:hover{
+
+  transform: scale(1.5);
 
 }
 
 .detail-category3{
-margin-top: 10px;
+margin-top: 30px;
 }
 
+.detail-category3:hover{
+
+  transform: scale(1.5);
+
+}
+
+
 .detail-category4{
-margin-top: 10px;
+
+margin-top: 30px;
+
+}
+
+.detail-category4:hover{
+
+  transform: scale(1.5);
+
 }
 
 .detail-category5{
-margin-top: 10px;
+
+margin-top: 30px;
+}
+
+.detail-category5:hover{
+
+  transform: scale(1.5);
+
 }
 
 .prod-list1-form{
     margin-top: 30px;
     display: flex;
+    flex-wrap: wrap; /* 필요에 따라 다음 줄로 넘어갈 수 있도록 설정 */
 }
 
 .prod-list1-text{
     text-align: center;
+    flex-basis: 25%; /* 한 줄에 4개의 요소가 나타날 수 있도록 설정 */
+      box-sizing: border-box; /* 요소의 패딩과 테두리를 포함한 크기 계산 */
+      padding: 5px; /* 각 요소의 간격을 설정 (선택적) */
 
 }
 
 .prod-list1{
-    width: 220px;
-    height: 260px;
+    width: 200px;
+    height: 230px;
     margin-left: 80px;
     display: flex;
+   border-color: aqua;
+
 }
 
 .prod-list2-form{
@@ -121,25 +196,31 @@ margin-top: 10px;
 
 .Mcusor{
     cursor:pointer;
+    font-size: xx-large;
 }
 
 .cusor1{
     cursor:pointer;
+    font-size: large;
 }
 
 .cusor2{
     cursor:pointer;
+    font-size: large;
 }
 
 .cusor3{
     cursor:pointer;
+    font-size: large;
 }
 
 .cusor4{
     cursor:pointer;
+    font-size: large;
 }
 
 .cusor5{
     cursor:pointer;
+    font-size: large;
 }
 
