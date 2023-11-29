@@ -74,7 +74,7 @@ public class productController {
 
 
         //서버 이미지링크 변수
-        String link =  "\\\\192.168.250.12\\images\\a";
+        String link =  "\\\\192.168.2.37\\images\\a";
 
 
         //대표이미지
