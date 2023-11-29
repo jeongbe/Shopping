@@ -70,7 +70,6 @@ public class ReviewController {
         OrderDetail orderDetail = orderDetailRepository.findById(order_id).orElse(null);
 
         //해당 주문건에서 주문한 주문번호 상품코드 유저코드,사이즈 값 넣어주며 엔티티로 전환
-        //뭔가 이거 사이즈관련 버그 뜰거같음 ㅋ
         Review review = form.toEntity(order_id,prod_code,user_code,orderDetail.getProd_size());
 
         //리뷰정보 저장하기

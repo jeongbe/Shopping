@@ -17,7 +17,6 @@
         <div class="detail-category5"><p class="cusor5" onclick="decateclick5()"></p></div>
         <hr>
     </div>
-
 </nav>
 <section>
     <div class="category-form">
@@ -36,7 +35,7 @@
             <p style="display: none;">{{prod_code}}</p>
             <p style="display: none;" class="prod_decate">{{prod_decate}}</p>
             <a href="/shopping/read/product/{{prod_code}}">
-                <img src="/static/images/Product/{{image_link}}" class="prod-list1"><br>
+                <img src="http://192.168.250.12/images/a/{{image_link}}" class="prod-list1"><br>
                 <p class="cusor">
                  {{prod_name}}<br>
                     {{prod_discount_price}}</P>
@@ -48,6 +47,21 @@
     <div class="prod-list2-form">
     </div>
 </main>
+
+<div class="paging">
+    <i class="fa-solid fa-backward" id="first_page"></i>
+    <i class="fa-solid fa-play fa-flip-horizontal" id="prev_page"></i>
+    <div class="pages">
+        <span class="active">1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+        <span>5</span>
+    </div>
+    <i class="fa-solid fa-play" id="next_page"></i>
+    <i class="fa-solid fa-backward fa-flip-horizontal" id="last_page"></i>
+</div>
+
 <script src="/static/js/Product/prodlist.js"></script>
 </body>
 {{>layouts/footer}}

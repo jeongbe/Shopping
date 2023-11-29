@@ -21,7 +21,7 @@
    main{
         margin-left: 230px;
          width: 1230px;
-         height: 800px;
+         height: 650px;
 
     }
 
@@ -223,4 +223,26 @@ margin-top: 30px;
     cursor:pointer;
     font-size: large;
 }
+
+.paging{
+       width: 100%;
+        display: inline-flex;
+        align-items: center;
+        margin-top: 10px;
+        justify-content: center;
+}
+
+.paging>i,.paging>.pages>span{
+
+margin: 0 3px;
+cursor: pointer;
+
+}
+
+.active{
+color: orange;
+font-weight: bold;
+}
+
+
 
