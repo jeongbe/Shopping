@@ -32,12 +32,12 @@ public class BasketForm {
 
     String totalPrice;
 
-
+    String imageLink;
 
 
 
 
     public Baskets toEntity(){
-        return new Baskets(id,usercode,prodcode,prodname,prodsize,prodcnt,prodprice,totalPrice);
+        return new Baskets(id,usercode,prodcode,prodname,prodsize,prodcnt,prodprice,totalPrice,imageLink);
     }
 }

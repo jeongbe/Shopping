@@ -43,4 +43,11 @@ public interface ProdimageRepository extends CrudRepository<productimage,Long> {
             "on b.prod_code = i.prod_code\n" +
             "WHERE b.user_code = :userCode", nativeQuery = true)
     List<productimage> test(int userCode);
+
+    @Query(value = "select i.image_link\n" +
+            "from product p\n" +
+            "join productimage i\n" +
+            "on p.prod_code = i.prod_code\n" +
+            "where p.prod_code = :prodCode", nativeQuery = true)
+    String oneimg(String prodCode);
 }

@@ -7,11 +7,13 @@ import com.example.ShowpingProject.DTO.ProdSizeForm;
 import com.example.ShowpingProject.DTO.product.productform;
 import com.example.ShowpingProject.entity.*;
 import com.example.ShowpingProject.entity.product.product;
+import com.example.ShowpingProject.entity.product.productimage;
 import com.example.ShowpingProject.repository.BasketRepository;
 import com.example.ShowpingProject.repository.PaymentRepository;
 import com.example.ShowpingProject.repository.UsersRepository;
 import com.example.ShowpingProject.repository.order.OrderDetailRepository;
 import com.example.ShowpingProject.repository.order.OrderHeaderRepository;
+import com.example.ShowpingProject.repository.productRepository.ProdimageRepository;
 import com.example.ShowpingProject.repository.productRepository.ProductRepository;
 import com.example.ShowpingProject.service.OrderService;
 import com.example.ShowpingProject.service.PaymentService;
@@ -53,6 +55,9 @@ public class OrderpageController  {
 
     @Autowired
     OrderDetailRepository orderDetailRepository;
+
+    @Autowired
+    ProdimageRepository prodimageRepository;
 
 
     //이거를 결제하기 눌렀을때 헤어 테이블에 저장해야함
@@ -140,12 +145,13 @@ public class OrderpageController  {
         log.info("주문페이지에 상품들 넣어줄꺼임");
 
         //유저 코드 기준으로 장바구니에 담았던 상품을 가져온다.
-        List<Baskets> BasketInfo = basketRepository.findByIDUsercart(userCode);
-//        log.info(BasketInfo.toString());
+//        List<Baskets> BasketInfo = basketRepository.findByIDUsercart(userCode);
+        List<Baskets> BasketInfo2 = basketRepository.findUsercart(userCode);
+//        log.info(BasketInfo2.toString());
 
         //상품이 있을 경우 model로 저장해서 주문페이지화면에 정보들을 뿌려준다.
-        if(BasketInfo != null){
-            model.addAttribute("BasketInfo", BasketInfo);
+        if(BasketInfo2.size() > 0){
+            model.addAttribute("BasketInfo", BasketInfo2);
         }
 
         //주문페이지에 사용자 정보를 뿌려주기 위해 유저코드 기준으로 유저 정보 가져온다.
@@ -181,7 +187,10 @@ public class OrderpageController  {
             model.addAttribute("oneUserInfo",oneuserInfo);
             log.info(String.valueOf(oneuserInfo));
         }
-        
+
+        String productimage = prodimageRepository.oneimg(prodcode);
+        model.addAttribute("prodImg",productimage);
+
         //상품 정보
         product oneProduct = productRepository.oneproduct(prodcode);
 //        log.info(oneProduct.toString());

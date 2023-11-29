@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var AllPriceElement = document.querySelector('.All_price');
     var LastAllPrice = document.querySelector('.last_All_price');
 
-
+    let prodPrice = document.querySelectorAll(".price_");
 
     // find 함수 정의
     function find(prod) {
@@ -23,26 +23,24 @@ document.addEventListener("DOMContentLoaded", function() {
         });
 
         // 총 가격을 콘솔에 출력
-        console.log("총 가격: " + totalPrice + "원");
+        console.log("총 가격: " + totalPrice.toLocaleString() + "원");
 
         // All_price 요소의 텍스트를 변경
-        AllPriceElement.textContent = totalPrice + "원";
+        AllPriceElement.textContent = "₩" + totalPrice.toLocaleString() + "원";
 
-
+        let a = parseInt(totalPrice) + 3000;
         //배달비까지 더한 최종 가격
-        LastAllPrice.textContent = parseInt(totalPrice) + 3000 + "원";
+        LastAllPrice.textContent = "₩" + a.toLocaleString() + "원";
 
-//        var prodSize = "";
-//        let ProdSizeE = document.getElementById('prodSize');
-//            ProdSizeE.addEventListener('change', function() {
-//            prodSize = ProdSizeE.value;
-//            console.log(prodSize);
-//        });
     }
 
     // 페이지 로드 시 자동으로 find 함수 호출
     find(document);
 
+    prodPrice.forEach(function(PElement){
+        let price = parseInt(PElement.textContent.replace(/₩|,/g, ''));
+        PElement.textContent = "₩" + price.toLocaleString() + "원";
+    })
 });
 
 //유저 코드 가져옴

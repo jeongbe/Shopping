@@ -61,16 +61,16 @@ public interface OrderHeaderRepository extends CrudRepository<OrderHeader, Long>
 
 
     //마이페이지 주문(헤더)내역 전체 조회
-    @Query(value = "select a.order_id, a.order_date, a.order_date_time, a.total_price, b.user_code, b.user_name, b.user_addr,b.user_addr2,b.user_addr3,b.user_detail_addr,b.user_detail_addr2,b.user_detail_addr3\n" +
-            "from orderheader a\n" +
-            "join users b\n" +
-            "on a.user_code = b.user_code\n" +
-            "where b.user_code = :userCode\n" +
-            "AND a.total_price > 0\n", nativeQuery = true)
-    List<OrderHeader> OrderHeaderCheck(int userCode);
+//    @Query(value = "select a.order_id, a.order_date, a.order_date_time, a.total_price, b.user_code, b.user_name, b.user_addr,b.user_addr2,b.user_addr3,b.user_detail_addr,b.user_detail_addr2,b.user_detail_addr3\n" +
+//            "from orderheader a\n" +
+//            "join users b\n" +
+//            "on a.user_code = b.user_code\n" +
+//            "where b.user_code = :userCode\n" +
+//            "AND a.total_price > 0\n", nativeQuery = true)
+//    List<OrderHeader> OrderHeaderCheck(int userCode);
 
     //마이페이지 주문(헤더)내역 전체 조회 페이징 처리 완료
-    @Query(value = "select a.order_id, a.order_date, a.order_date_time, a.total_price, b.user_code, b.user_name, b.user_addr,b.user_addr2,b.user_addr3,b.user_detail_addr,b.user_detail_addr2,b.user_detail_addr3\n" +
+    @Query(value = "select a.order_id, a.order_date, a.order_date_time, a.total_price, b.user_code, b.user_name, b.user_addr,b.user_addr2,b.user_addr3,b.user_detail_addr,b.user_detail_addr2,b.user_detail_addr3,a.image_link\n" +
             "from orderheader a\n" +
             "join users b\n" +
             "on a.user_code = b.user_code\n" +

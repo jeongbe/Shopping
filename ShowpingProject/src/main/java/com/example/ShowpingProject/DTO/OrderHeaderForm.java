@@ -35,6 +35,8 @@ public class OrderHeaderForm {
     String userAddr2;
     String userAddr3;
 
+    String imageLink;
+
 //    String userId;
 //
 //    String userEmail;
@@ -44,6 +46,6 @@ public class OrderHeaderForm {
 //    String userPhone;
 
     public OrderHeader toEntity(){
-        return new OrderHeader(null,userCode,null,null, totalPrice,userName,userDetailAddr,userDetailAddr2,userDetailAddr3,userAddr,userAddr2,userAddr3);
+        return new OrderHeader(null,userCode,null,null, totalPrice,userName,userDetailAddr,userDetailAddr2,userDetailAddr3,userAddr,userAddr2,userAddr3,imageLink);
     }
 }

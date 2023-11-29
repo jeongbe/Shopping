@@ -42,4 +42,7 @@ public class Baskets {
     //전체 가격
     @Column
     private String total_price;
+
+    @Column(name = "image_link")
+    private String image_link1;
 }

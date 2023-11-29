@@ -18,6 +18,13 @@ public interface ProductRepository extends CrudRepository<product, Long> {
             "where product.prod_code = :prodCode", nativeQuery = true)
     product oneproduct(String prodCode);
 
+//    @Query(value = "select p.*\n" +
+//            "from product p\n" +
+//            "join productimage i\n" +
+//            "on p.prod_code = i.prod_code\n" +
+//            "where p.prod_code = :prodCode", nativeQuery = true)
+//    product oneproduct(String prodCode);
+
     //상품 이름 겸색할때
     @Query(value = "select *\n" +
             "from product\n" +

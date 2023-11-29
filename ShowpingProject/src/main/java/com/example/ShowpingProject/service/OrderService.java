@@ -32,7 +32,7 @@ public class OrderService {
 
     //장바구니에 담은 상품 주문하기 했을때 장바구니 상품들 디테일 테이블에 담기
     public void saveOrderDetail(int userCode, Long orderID){
-        List<Baskets> basketList = basketRepository.findByIDUsercart(userCode);
+        List<Baskets> basketList = basketRepository.findUsercart(userCode);
         log.info(basketList.toString());
 
         for(Baskets baskets : basketList){

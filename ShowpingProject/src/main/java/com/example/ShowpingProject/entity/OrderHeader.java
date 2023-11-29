@@ -76,6 +76,7 @@ public class OrderHeader {
     @Column(name = "user_addr3", nullable = true)
     String user_addr3;
 
-
+    @Column
+    String image_link;
 
 }

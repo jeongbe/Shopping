@@ -64,18 +64,18 @@ select {
 
 .count {
     position: relative;
-    left: 140px;
+    left: 170px;
     /* margin-right: 400px; */
 }
 
 .pri {
     position: relative;
-    left: 80px;
+    left: 100px;
 }
 
 .border_ p:nth-child(2) {
     width: 200px;
-    text-align: center;
+    /* text-align: center; */
 }
 
 .dis {
@@ -122,7 +122,7 @@ select {
 }
 
 .pord_infos > p {
-    margin-right: 60px;
+    /* margin-right: 60px; */
 }
 
 .prod_info2 {
@@ -147,9 +147,11 @@ select {
     margin-top: 40px;
 }
 
+/*
 .prod_info3 p:first-child {
     margin-left: 55px;
 }
+*/
 
 .border3_ {
     width: 800px;

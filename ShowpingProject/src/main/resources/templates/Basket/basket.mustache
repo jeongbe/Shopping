@@ -34,7 +34,7 @@
 </div>
 <div class="body_content">
     <div class="Allclick">
-        상품<span class="checkbox-count">(0/<p class="prodCartboxCount"></p>)</span>
+        총 상품 <span class="checkbox-count"><p class="prodCartboxCount"></p>개</span>
     </div>
 <!--    <form id="deleteForm" method="get">-->
 <!--        <button class="clickdelete">선택삭제/</button>-->
@@ -93,7 +93,8 @@
                         <input type="hidden" name="prodcode" value="{{prod_code}}">
                         <input type="hidden" name="prodsize" value="{{prod_size}}">
                         <input type="hidden" name="usercode" value="{{user_code}}">
-                        <button type="submit" class="change_Btn btnPush btnLightBlue">변경확인</button>
+<!--                        <button type="submit" class="change_Btn btnPush btnLightBlue">변경확인</button>-->
+                        <button type="submit" class="button button--wapasha button--round-s change_Btn btnPush btnLightBlue">변경확인</button>
                         <!--                    onclick="location.href='/shopping/cartbox/produpdate/'"-->
                     </form>
                     <!--                        "-->
@@ -116,6 +117,15 @@
 </form>
 </div>
 <script>
+    document.addEventListener("DOMContentLoaded", function() {
+    // 페이지가 로드된 후 실행되는 부분
+    let totalPrices = document.querySelectorAll('.TOTALPRICE');
+
+    totalPrices.forEach(function(totalPriceElement) {
+        let price = parseInt(totalPriceElement.textContent.replace(/₩|,/g, ''));
+        totalPriceElement.textContent = "₩" + price.toLocaleString();
+    });
+});
 
 
     // 장바구니에 있는 모든 상품의 ID와 초기 가격을 배열로 저장
@@ -193,7 +203,6 @@ let cartItems = Array.from(document.querySelectorAll(".products")).map(item => {
         let minusBtn = prod.querySelector(".minusBtn");  //현재 상품에서 minusBtn 찾음
 
         let TP = prod.querySelector('.TOTALPRICE');
-
         let TPtext = parseInt(TP.textContent);
         console.log(TPtext);
 
@@ -205,7 +214,7 @@ let cartItems = Array.from(document.querySelectorAll(".products")).map(item => {
                 targetElement.textContent = targetText; // .prodCount 값을 업데이트
 
                 //토탈에 값을 다 더해줘서 마지막에 가격(보이는)에 넣어준다.
-                TP.textContent = prod_total2 * targetText;
+                TP.textContent = "₩" + (prod_total2 * targetText).toLocaleString();
 
             }
         }
@@ -215,7 +224,7 @@ let cartItems = Array.from(document.querySelectorAll(".products")).map(item => {
                 targetText--;
                 targetElement.textContent = targetText; // .prodCount 값을 업데이트
 
-                TP.textContent = prod_total2 * targetText;
+                TP.textContent = "₩" + (prod_total2 * targetText).toLocaleString();
 
             }
         }
@@ -231,7 +240,7 @@ let cartItems = Array.from(document.querySelectorAll(".products")).map(item => {
             TPtext = totalPrice;
             console.log(TPtext);
 
-            prod_price.textContent = TPtext
+            prod_price.textContent = TPtext.toLocaleString();
 
 
 
@@ -239,12 +248,10 @@ let cartItems = Array.from(document.querySelectorAll(".products")).map(item => {
             console.log(" prod_price.textContent " + prod_price.textContent)
 
 
-<!--            console.log("상" + prod_price.textContent);-->
-<!--            console.log("상" +idElement.textContent );-->
-            var ajaxUrl = "/shopping/cartbox/"+ id + "/test/ajax";
-<!--            console.log("dsfsd" + id);-->
 
-            var StringTP = TP.textContent;
+            var ajaxUrl = "/shopping/cartbox/"+ id + "/test/ajax";
+
+            var StringTP = TP.textContent.replace(/,|₩/g, '');;
             console.log("StringTP " + StringTP);
 
 

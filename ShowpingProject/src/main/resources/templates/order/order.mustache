@@ -67,29 +67,31 @@
         <div class="prod_info">
             <div>
                 <div class="border_ backC">
-                    <p>상품 정보</p>
+                    <p>상품</p>
                 </div>
                 <div class="border_ pord_infos">
                     <p>상품정보</p>
                     <p class="count">수량</p>
-                    <p class="pri"></p>
+                    <p class="pri">가격</p>
                 </div>
                 {{#BasketInfo}}
                 <div class="border2_">
                     <div>
                         <img
                                 class="prod_img"
-                                src="/Pro1/image/willow-warbler-8071472_1280.jpg"
+                                src="/static/images/Product/{{image_link1}}"
                                 alt=""
                         />
                     </div>
+
                     <div class="prod_info2">
-                        <p>{{prod_name}}</p>
+                        <p>상품명 : {{prod_name}}</p>
+                        <p class="prodsize">사이즈 : {{prod_size}}</p>
                         <p style="display:none;">{{prod_code}}</p>
                     </div>
                     <div class="dis prod_info3">
                         <p>{{prod_cnt}}개</p>
-                        <p class="price_">{{prod_price}}원</p>
+                        <p class="price_">{{prod_price}}</p>
                     </div>
                 </div>
                 {{/BasketInfo}}
@@ -102,11 +104,11 @@
                 </div>
                 <div class="border3_">
                     <p>상품 금액:</p>
-                    <p class="mar_3 All_price">d</p>
+                    <p class="mar_3 All_price"></p>
                 </div>
                 <div class="border3_">
                     <p>배송비:</p>
-                    <p class="mar_3">3000원</p>
+                    <p class="mar_3">₩3,000원</p>
                 </div>
                 <div class="border3_">
                     <p>최종 결제 금액:</p>

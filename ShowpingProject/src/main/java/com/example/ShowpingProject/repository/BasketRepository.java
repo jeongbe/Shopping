@@ -25,18 +25,17 @@ public interface BasketRepository extends CrudRepository<Baskets, Long> {
             "WHERE b.user_code = :userCode", nativeQuery = true)
     List<Baskets> findByIDUsercart(int userCode);
 
-//
-//    @Query(value = "SELECT b.id, b.prod_cnt, b.prod_code, b.prod_size, u.user_code, p.prod_name, p.prod_cate, p.prod_decate, p.prod_price, p.prod_discount_ratio, p.prod_discount_price, p.diliver_price, u.user_ID, u.user_name, u.user_email, u.user_phone,u.user_addr,u.user_addr2,u.user_addr3,u.user_detail_addr,\n" +
-//            "u.user_detail_addr2,u.user_detail_addr3, b.total_price, i.image_link\n" +
-//            "FROM basket b\n" +
-//            "JOIN product p\n" +
-//            "ON b.prod_code = p.prod_code\n" +
-//            "join users u\n" +
-//            "on b.user_code = u.user_code\n" +
-//            "join productimage i\n" +
-//            "on b.prod_code = i.prod_code\n" +
-//            "WHERE b.user_code = :userCode", nativeQuery = true)
-//    List<Baskets> test(int userCode);
+    @Query(value = "SELECT b.id, b.prod_cnt, b.prod_code, b.prod_size, u.user_code, p.prod_name, p.prod_cate, p.prod_decate, p.prod_price, p.prod_discount_ratio, b.prod_discount_price, p.diliver_price, u.user_ID, u.user_name, u.user_email, u.user_phone,u.user_addr,u.user_addr2,u.user_addr3,u.user_detail_addr,\n" +
+            "u.user_detail_addr2,u.user_detail_addr3, b.total_price, u.userbirthday, i.image_link\n" +
+            "FROM basket b\n" +
+            "JOIN product p\n" +
+            "ON b.prod_code = p.prod_code\n" +
+            "join users u\n" +
+            "on b.user_code = u.user_code\n" +
+            "join productimage i\n" +
+            "on b.prod_code = i.prod_code\n" +
+            "WHERE b.user_code = :usercode", nativeQuery = true)
+    List<Baskets> findUsercart(int usercode);
 
     
     //장바구니 수정 쿼리

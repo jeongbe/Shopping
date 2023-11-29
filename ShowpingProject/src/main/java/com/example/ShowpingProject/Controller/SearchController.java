@@ -18,7 +18,7 @@ public class SearchController {
     @Autowired
     ProductRepository productRepository;
 
-    //    @ResponseBody
+//    @ResponseBody
     //상품 검색
     @PostMapping("/shopping/search")
     public String SearchProdName(Model model, SearchForm searchForm){

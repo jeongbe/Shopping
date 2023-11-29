@@ -33,21 +33,13 @@
                     </p>
 
                     <div></div>
-<!--                    <div class="mar_2">-->
-<!--                        <input type="radio" name="address" id="" />직접 입력-->
-<!--                        <input type="text" placeholder="주소" />-->
-<!--                        <input type="text" placeholder="상세주소" />-->
-<!--                    </div>-->
+
                 </div>
                 <div class="border_ dis">
                     <p class="v1">이름 / 연락처 :</p>
                     <p class="v1 userName" >{{user_name}}</p>
                     <p>{{user_phone}}</p>
                 </div>
-        <!--        <div class="border_ dis">-->
-        <!--            <p class="v2">주소:</p>-->
-        <!--            <p class="">서울시</p>-->
-        <!--        </div>-->
                 <div class="border_ dis">
                     <p class="v3">배송요청사항</p>
                     <div class="mar_2">
@@ -70,29 +62,30 @@
         <div class="prod_info">
             <div>
                 <div class="border_ backC">
-                    <p>상품 정보</p>
+                    <p>상품</p>
                 </div>
                 <div class="border_ pord_infos">
                     <p>상품정보</p>
-                    <p class="pri">사이즈</p>
                     <p class="count">수량</p>
                     <p class="pri">가격</p>
                 </div>
                 {{#oneProduct}}
                     <p style="display:none;" class="ProdCode">{{prod_code}}</p>
                 <div class="border2_">
+                    {{#prodImg}}
                     <div>
                         <img
                                 class="prod_img"
-                                src="/Pro1/image/willow-warbler-8071472_1280.jpg"
+                                src="/static/images/Product/{{prodImg}}"
                                 alt=""
                         />
                     </div>
+                    {{/prodImg}}
                     <div class="prod_info2">
                         {{#prodsize}}
-                            <p class="prodsize">{{prodsize}}</p>
+                            <p class="prodsize">사이즈 : {{prodsize}}</p>
                         {{/prodsize}}
-                        <p class="prodName">{{prod_name}}</p>
+                        <p class="prodName">상품명 : {{prod_name}}</p>
                         <p style="display:none;"></p>
                     </div>
                     <div class="dis prod_info3">
@@ -114,11 +107,11 @@
                 </div>
                 <div class="border3_">
                     <p>배송비:</p>
-                    <p class="mar_3">3000원</p>
+                    <p class="mar_3">₩3,000원</p>
                 </div>
                 <div class="border3_">
                     <p>최종 결제 금액:</p>
-                    <p class="mar_3 last_All_price">10,000원</p>
+                    <p class="mar_3 last_All_price"></p>
                 </div>
             </div>
         </div>

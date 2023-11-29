@@ -68,7 +68,7 @@ public class BasketController {
         form.setTotalPrice(String.valueOf(0));
 
         //장바구니 테이블 안에 있는 상품들을 불러온다.
-        List<Baskets> basketList = basketRepository.findByIDUsercart(userCode);
+        List<Baskets> basketList = basketRepository.findUsercart(userCode);
         List<productimage> basketImg = prodimageRepository.test(userCode);
 //        log.info(basketImg.toString());
         if (basketList != null) {
