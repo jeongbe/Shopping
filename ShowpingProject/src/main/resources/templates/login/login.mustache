@@ -10,34 +10,38 @@
 </header>
 
 </div>
-<div class="form_content">
-    <form action="/logincheck" method="post" class="form">
-        {{#loginfail}}
-            <h1 style="color: red;"><b>{{loginfail}}</b></h1>
-        {{/loginfail}}
-        <div>
-            <div class="title">
-                <p>로그인</p>
+<div class="form_body">
+    <div class="form_content">
+        <form action="/logincheck" method="post" class="form">
+            <div class="ErrorMsg">
+                {{#loginfail}}
+                    <h1 style="color: red;"><b>{{loginfail}}</b></h1>
+                {{/loginfail}}
             </div>
-            <div class="id">
-                <input class="id" type="text" name="login_ID" id="id" placeholder="아이디">
-                <p hidden class="warning" id="Wid">아이디를 입력해주세요</p>
+            <div>
+                <div class="title">
+                    <p>로그인</p>
+                </div>
+                <div class="id">
+                    <input class="id" type="text" name="login_ID" id="id" placeholder="아이디">
+                    <p hidden class="warning" id="Wid">아이디를 입력해주세요</p>
+                </div>
+                <div class="pasw">
+                    <input type="password" name="login_password" id="pasw" placeholder="비밀번호">
+<!--                    <img src="/Pro1/image/eye-solid.svg" alt="">-->
+                    <p hidden class="warning" id="Wpasw">비밀번호를 입력해주세요</p>
+                    <p hidden class="warning" id="WidPasw">아이디 또는 비빌번호를 확인하세요</p>
+                </div>
+                <div class="btn_div">
+                    <button class="btn_" type="submit">로그인</button>
+                </div>
             </div>
-            <div class="pasw">
-                <input type="password" name="login_password" id="pasw" placeholder="비밀번호">
-                <img src="/Pro1/image/eye-solid.svg" alt="">
-                <p hidden class="warning" id="Wpasw">비밀번호를 입력해주세요</p>
-                <p hidden class="warning" id="WidPasw">아이디 또는 비빌번호를 확인하세요</p>
-            </div>
-            <div class="btn_div">
-                <button class="btn_" type="submit">로그인</button>
-            </div>
+        </form>
+        <div class="list_">
+            <a href="/shopping/login/searchID"><p>아이디 찾기</p></a>
+            <a href="/shopping/login/searchpasw"><p>비밀번호 찾기</p></a>
+            <a href="/shopping/joinAgree"><p>회원가입</p></a>
         </div>
-    </form>
-    <div class="list">
-        <a href="/shopping/login/searchID"><p>아이디 찾기</p></a>
-        <a href="/shopping/login/searchpasw"><p>비밀번호 찾기</p></a>
-        <a href="/shopping/joinAgree"><p>회원가입</p></a>
     </div>
 </div>
 <script src="/static/js/login/login.js"></script>

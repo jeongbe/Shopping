@@ -169,3 +169,15 @@ body{
     align-items: center;
     margin-left: 47%; /* 적절한 간격 설정 */
 }
+
+.img2{
+    width: 600px;
+    height: 400px;
+
+}
+
+.img3{
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}

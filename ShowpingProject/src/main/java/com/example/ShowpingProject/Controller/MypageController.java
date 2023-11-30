@@ -71,18 +71,6 @@ public class MypageController {
         // 기본 전체 주문 내역 조회
         pagin = this.pageService.getList(page, userCode);
 
-        // 각 OrderHeader에 대한 디테일 상품 개수 가져오기
-        List<String> detailCounts = new ArrayList<>();
-        for (OrderHeader orderHeader : pagin.getContent()) {
-            String orderId = String.valueOf(orderHeader.getOrder_id()); // 이 부분은 실제 getOrderId() 메서드 사용에 맞게 수정
-            String detailCount = orderDetailRepository.OrderDetailCount(orderId);
-            detailCounts.add(detailCount);
-        }
-
-        log.info(detailCounts.toString());
-        // 상품 헤더 안 디테일 개수를 모델에 추가
-        model.addAttribute("detailCounts", detailCounts);
-
         //디폴트로 최근 일주일을 고정으로 수정하기
         //기간별로 조회할때 사용함
         if (Sform.getDateStart() != null && Sform.getDateEnd() != null) {
@@ -105,18 +93,37 @@ public class MypageController {
         }else {
             // 기본 전체 주문 내역 조회
             pagin = this.pageService.getList(page,userCode);
-//            orderHeader = orderHeaderRepository.OrderHeaderCheck(userCode,startPage,endPage);
         }
 
 
-        log.info(pagin.toString());
+        log.info("pagin"+pagin.toString());
         //최종 저장
         model.addAttribute("pagins",pagin.getContent());
-
-
-
         model.addAttribute("totalElements" ,pagin.getTotalElements());
         model.addAttribute("totalPage" ,pagin.getTotalPages()); //2
+
+        // 이미지 리스트의 리스트
+        List<List<productimage>> allImages = new ArrayList<>();
+
+        for (OrderHeader orderHeader : pagin.getContent()) {
+            List<productimage> orderImages = prodimageRepository.mypageMainImg(String.valueOf(orderHeader.getOrder_id()));
+            allImages.addAll(Collections.singleton(orderImages));
+//            log.info(orderImages.toString());
+        }
+
+        model.addAttribute("mypageOneImg",allImages);
+
+        // 각 OrderHeader에 대한 디테일 상품 개수 가져오기
+        List<String> detailCounts = new ArrayList<>();
+        for (OrderHeader orderHeader : pagin.getContent()) {
+            String orderId = String.valueOf(orderHeader.getOrder_id());
+            String detailCount = orderDetailRepository.OrderDetailCount(orderId);
+            detailCounts.add(detailCount);
+        }
+
+        log.info(detailCounts.toString());
+        // 상품 헤더 안 디테일 개수를 모델에 추가
+        model.addAttribute("detailCounts", detailCounts);
 
         return "mypage/mypageMain";
     }
@@ -127,21 +134,22 @@ public class MypageController {
     public String ShowOrderDetail( @PathVariable("order_id")  String orderid,Model model,HttpSession session){
         Users loginUser = (Users) session.getAttribute("loginUser");
         model.addAttribute("loginUser", loginUser);
+        log.info(loginUser.toString());
 
         //주문 코드 모텔로 만듬
-        log.info(String.valueOf(orderid));
+//        log.info(String.valueOf(orderid));
         model.addAttribute("orderID", orderid);
 
         //주문번호 기준으로 해당 주문 상세히 보여줌
         List<OrderDetail> showDetail = orderDetailRepository.ShowOrderDetail(orderid);
-        log.info(showDetail.toString());
+//        log.info(showDetail.toString());
 
         //모델로 만들어서 뷰에 뿌려줌
         model.addAttribute("showOrderDetail",showDetail);
 
         //디테일 이미지
         List<productimage> Detailimgs = prodimageRepository.DetailImg(orderid);
-        log.info(Detailimgs.toString());
+//        log.info(Detailimgs.toString());
 
         model.addAttribute("detailImg",Detailimgs);
 
@@ -234,27 +242,6 @@ public class MypageController {
 
         return "mypage/mypageInquiryCheck";
     }
-
-
-
-//    @GetMapping("/mypage/review/list/{user_code}")
-//    public String Mypagereviewlist(HttpSession session, Model model){
-//        Users loginUser = (Users) session.getAttribute("loginUser");
-//        model.addAttribute("loginUser", loginUser);
-//
-//
-//
-//
-//        return "mypage/mypageReviewList";
-//    }
-
-//    @GetMapping("/mypage/like/{user_code}")
-//    public String Mypagelike(HttpSession session, Model model){
-//        Users loginUser = (Users) session.getAttribute("loginUser");
-//        model.addAttribute("loginUser", loginUser);
-//
-//        return "mypage/mypageLike";
-//    }
 
 
 }

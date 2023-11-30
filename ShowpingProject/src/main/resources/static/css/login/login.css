@@ -7,9 +7,12 @@ img {
 }
 
 .form_content {
-    margin-top: 10%;
-    width: 1745px;
+    /* display: flex; */
+    margin-top: 120px;
+    /* width: 1745px; */
     /* height: 00px; */
+    justify-content: center;
+    align-items: center;
 }
 
 .form {
@@ -18,7 +21,7 @@ img {
     height: 350px;
 }
 
-input[type="text"] {
+.id > input[type="text"] {
     width: 280px;
     height: 40px;
 }
@@ -29,20 +32,20 @@ input[type="password"] {
     height: 40px;
 }
 
-.list {
+.list_ {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-left: 40px;
 }
 
-.list > p {
+.list_ > a {
     font-size: 13px;
     margin-right: 10px;
     cursor: pointer;
 }
 
-.list > p:hover{
+.list_ > a:hover{
     background-color: #b1e2f5;
 }
 
@@ -53,7 +56,7 @@ input[type="password"] {
 }
 
 .id{
-    margin-left: 30px;
+    margin-left: 20px;
     /* background-color: aqua; */
     margin-bottom: 10px;
 }
@@ -65,8 +68,8 @@ input[type="password"] {
 }
 
 .pasw{
-    margin-left: 60px;
-    margin-bottom: 50px;
+    margin-left: 40px;
+    margin-bottom: 30px;
 }
 
 .btn_div{
@@ -81,10 +84,21 @@ input[type="password"] {
 }
 
 .btn_{
-    width: 220px;
+    width: 280px;
     height: 40px;
     border-radius: 10px;
     background-color: #b1e2f5;
     border: none;
     cursor: pointer;
+    margin-left: 12px;
+}
+
+.form_body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ErrorMsg{
+    margin-left:35px;
 }

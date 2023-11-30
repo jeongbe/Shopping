@@ -1,13 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
     let countValues = document.querySelectorAll('.countValue');
-
+    console.log()
     // NodeList를 배열로 변환
     let countValuesArray = Array.from(countValues);
     console.log(countValuesArray.length);
-    let Alength = countValuesArray.length / 2;
-    countValuesArray.length = Alength;
-//    console.log(countValuesArray.length);
-//    console.log(countValuesArray);
+
 
 
     // 배열의 각 요소에 대해 출력
@@ -24,6 +21,13 @@ document.addEventListener('DOMContentLoaded', function () {
     for(let i = 0; i < countValuesArray.length; i++){
         array2[i].textContent = "총 "+countValuesArray[i].textContent +"건";
     }
+
+    let TotalPriceEL = document.querySelectorAll('.totalPrice_');
+
+    TotalPriceEL.forEach(function(TPElement){
+            let price = parseInt(TPElement.textContent.replace(/₩|,/g, ''));
+            TPElement.textContent = "₩" + price.toLocaleString() + "원";
+        })
 });
 
 // Rest of your existing code

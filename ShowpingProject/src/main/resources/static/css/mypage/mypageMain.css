@@ -76,11 +76,10 @@
 
 /* 가로선 */
 .horizontal-line {
-    border: 1px solid #CFCFCF;
-    width: 100%;
-    margin: 0px ;
+    border-bottom: 1px solid #CFCFCF;
+    width: 500p;
+    margin: 0px;
     margin-bottom: 20px;
-
 }
 
 .line1{
@@ -147,7 +146,7 @@
     margin-bottom: 15px;
 }
 
-.orderList{
+.tt{
 
     border-bottom: 3px solid #398ABE;
     width: 120px;
@@ -172,22 +171,27 @@
              /* 주문내역 조회 css */
 /* 주문 컨테이너 */
 .dummy_data_order_info{
-    display: flex;
+    /* display: flex; */
     width: 1000px;
+    height: 120px;
+    margin-left: 120px;
     /* background-color: blue; */
 }
 
 /* 주문 박스1 */
 .order_box1{
-    width: 15%;
-    height: 120px;
-    /* background-color: red;   */
+    width: 100px;
+    height: 0px;
+    /* margin-bottom: 1; */
+    background-color: darkblue;
 }
 
 /* 주문 박스2 */
 .order_box2{
+    margin-top: 20px;
     width: 30%;
     /* background-color: darkgreen;  */
+    /* margin-bottom: 40px; */
 }
 
 /* 주문 박스3 */
@@ -258,6 +262,7 @@
 
 .prod_content{
     height: 500px;
+    /* display: flex; */
 }
 
 .pagination{
@@ -270,4 +275,16 @@
 
 .order_box2 > p{
     margin-bottom: 5px;
+}
+
+.prodImg_{
+    width:100px;
+    height: 100px;
+    margin-bottom: 40px;
+    margin-top: 5px;
+}
+
+
+.prodLine{
+  border-bottom:1px solid gray;
 }
