@@ -48,14 +48,14 @@ public class QuestionController {
 
         //1개의 문의 내역 가져옴
         Question getQ = questionRepository.oneQustion(QuCode);
-        log.info(getQ.toString());
+//        log.info(getQ.toString());
 
         //모델로 만들어서 뷰에 뿌려줌
         model.addAttribute("getQ",getQ);
         
         //answer 폼에 있는 Qucode에 해당 Question의 Qucode를 넣어줌
         AForm.setQuCode(Long.valueOf(QuCode));
-        log.info(AForm.toString());
+//        log.info(AForm.toString());
 
         if(AForm.getAnContent() != null){
             Answer answer = AForm.toEntity();

@@ -59,6 +59,9 @@ public class Question {
 
     @Column
     LocalDate qu_date;
+
+
+
     @PrePersist
     public void setOrderdate(){
         this.qu_date = LocalDate.now();
@@ -84,5 +87,8 @@ public class Question {
 
     @Column
     private String prod_discount_price;
+
+    public Question(Long quCode, Long prodCode, Long orderId, Long userCode, String quType, String quTitle, String quContent, String quAnswer, LocalDateTime quDateTime, LocalDate quDate, String prodName, String userID, String prodPrice, String s, String s1, String s2, Long orderId1, Long prodCode1, Long quCode1) {
+    }
 
 }

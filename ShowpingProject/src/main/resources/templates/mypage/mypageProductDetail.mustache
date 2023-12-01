@@ -76,13 +76,11 @@
             <div class="horizontal-line"></div>
         </div>
         <div class="disp">
-    {{#detailImg}}
+    {{#showDetailProd}}
             <div class="product_content">
                 <div class="product_img">
                     <img class=prodD_img src="/static/images/Product/{{image_link}}"></img>
                 </div>
-    {{/detailImg}}
-{{#showOrderDetail}}
 
                 <div class="product_box">
                     <div class="product_name">
@@ -90,11 +88,11 @@
                     </div>
 
                     <div class="product_size">
-                        <p>{{prod_size}} / {{prod_cnt}} </p>
+                        <p>사이즈 : {{prod_size}} / {{prod_cnt}}개 </p>
                     </div>
 
                     <div class="product_price">
-                        <p>{{prod_price}}</p>
+                        <p class="hiddenPrice">{{prod_price}}</p>
                     </div>
 
                     <div class="product_button_box">
@@ -107,10 +105,21 @@
 </div>
         </div>
 <!--        <div class="horizontal-line"></div>-->
-{{/showOrderDetail}}
+{{/showDetailProd}}
     </div>
 
 </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        let hiPrice = document.querySelectorAll('.hiddenPrice');
+
+        hiPrice.forEach(function(e){
+        let price = parseInt(e.textContent.replace(/₩|,/g, ''));
+        e.textContent = "₩" + price.toLocaleString() + "원";
+    })
+
+    });
+</script>
 </body>
 {{/loginUser}}
 {{>layouts/footer}}

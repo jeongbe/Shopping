@@ -20,6 +20,7 @@ public class OrderDetailForm {
     String prod_cnt;
 
     String prod_price;
+
     public OrderDetail toEntity(){
         return new OrderDetail(null,prod_code,user_code,order_id,prod_name,prod_size,prod_cnt,prod_price);
     }

@@ -60,6 +60,7 @@ public class product {
     String prod_XL;
 
 
+
     public product() {
     }
 

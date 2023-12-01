@@ -33,15 +33,7 @@ public interface ProdimageRepository extends CrudRepository<productimage,Long> {
             "limit 1", nativeQuery = true)
     List<productimage> mypageMainImg(String orderId);
 
-    //장바구니에서 상품 이미지 불러올때
-    @Query(value = "select *\n" +
-            "from basket b\n" +
-            "join productimage p\n" +
-            "on b.prod_code = p.prod_code\n" +
-            "where b.user_code = :userCode\n" +
-            "and b.prod_code= :prodCode", nativeQuery = true)
-    List<productimage> basketImgs(String userCode,String prodCode);
-
+    //장바구니에서 상품 이미지 불러올때?
     @Query(value = "SELECT i.*\n" +
             "FROM basket b\n" +
             "JOIN product p\n" +

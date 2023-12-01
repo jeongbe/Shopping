@@ -8,21 +8,21 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "orderdetail")
+@Table(name = "orderdetailtest")
 @Entity
-public class OrderDetail {
+public class Test2 {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JoinColumn(name = "prod_code")
+    @Column
     private Long prod_code;
 
-    @JoinColumn(name = "user_code")
+    @Column
     private Long user_code;
 
-    @JoinColumn(name = "order_id")
+    @Column
     private Long order_id;
 
     @Column
@@ -37,4 +37,6 @@ public class OrderDetail {
     @Column
     private String prod_price;
 
+    @Column
+    private String image_link;
 }

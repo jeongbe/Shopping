@@ -65,23 +65,34 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let payBtn = document.querySelector('.buy-button');
 
+
+
     payBtn.onclick = () => {
         console.log("바로결제");
 
-        location.href = "/order/auickly/payment/" + UserCode + "/" + prodCode + "/" + prodSize;
+        if(prodSize === ""){
+            alert("상품 사이즈를 선택해주세요");
+        }else{
+            location.href = "/order/auickly/payment/" + UserCode + "/" + prodCode + "/" + prodSize;
+        }
+
+
     }
 
 });
 
- var soldout = document.querySelectorAll('.size');
+var soldout = document.querySelectorAll('.size');
 
- soldout.forEach(function(soldout){
+soldout.forEach(function(soldout){
 
- var soldoutoption = soldout.textContent;
+    var soldoutoption = soldout.textContent;
 
- if(soldoutoption === '품절'){
- soldout.disabled = true;
- }
- });
+    if(soldoutoption === '품절'){
+        soldout.disabled = true;
+    }else if(soldoutoption === '옵션을 선택해주세요'){
+        soldout.disabled = true;
+    }
+});
+
 
 

@@ -1,4 +1,5 @@
 <head>
+    <link href="/static/css/mypage/mypageMain.css" rel="stylesheet" type="text/css" />
     <link href="/static/css/mypage/mypageInquiryList.css" rel="stylesheet" type="text/css" />
 </head>
 {{>layouts/headerlogin}}
@@ -34,21 +35,22 @@
 
     <!-- 마이페이지 카테고리 -->
     <div class="category10">
-            <!-- 나의 쇼핑 정보 -->
-            <div class="category_contents_1">
-                <p class="category_title_p ">나의 쇼핑 정보</p>
-                <div class="horizontal-line"></div>
-                <a href="/mypage/main/{{user_code}}"><p class="category_content_p">주문 내역 조회</p></a>
-                <a href="/mypage/reviewlist/{{user_code}}"><p class="category_content_p">구매후기 관리</p></a>
-                <a href="/mypage/like/{{user_code}}"><p class="category_content_p">좋아요</p></a>
-            </div>
 
-            <!-- 고객지원 -->
-            <div class="category_contents_2">
-                <p class="category_title_p ">고객 지원</p>
-                <div class="horizontal-line"></div>
-                <a href="/mypage/inquiry/list/{{user_code}}"><p class="category_content_p">문의 목록</p></a>
-            </div>
+        <!-- 나의 쇼핑 정보 -->
+        <div class="category_contents_1">
+            <p class="category_title_p ">나의 쇼핑 정보</p>
+            <div class="line1"></div>
+            <a href="/mypage/main/{{user_code}}"><p class="category_content_p ">주문 내역 조회</p></a>
+            <a href="/mypage/reviewlist/{{user_code}}"><p class="category_content_p">구매후기 관리</p></a>
+            <a href="/mypage/like/{{user_code}}"><p class="category_content_p">좋아요</p></a>
+        </div>
+
+        <!-- 고객지원 -->
+        <div class="category_contents_2">
+            <p class="category_title_p ">고객 지원</p>
+            <div class="line1"></div>
+            <a href="/mypage/inquiry/list/{{user_code}}"><p class="category_content_p tt">문의 목록</p></a>
+        </div>
     </div>
 
     <!-- 마이페이지 내용 -->
@@ -114,9 +116,16 @@
 <!--            </div>-->
         </div>
         {{/QuestionList}}
+        {{#NoAnswer}}
+            <p style="display:none;" class="ErrorMsg">{{NoAnswer}}</p>
+        {{/NoAnswer}}
     </div>
 </div>
     <script src="/static/js/mypage/mypageInquiryList.js"></script>
+    <script>
+        let ErrorMsg = document.querySelector('.ErrorMsg').textContent;
+        alert(ErrorMsg);
+    </script>
 </body>
 {{/loginUser}}
 {{>layouts/footer}}

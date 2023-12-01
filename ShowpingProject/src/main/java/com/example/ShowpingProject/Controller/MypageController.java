@@ -1,6 +1,7 @@
 package com.example.ShowpingProject.Controller;
 
 import com.example.ShowpingProject.DTO.MypageSellerform;
+import com.example.ShowpingProject.DTO.OrderDetailForm;
 import com.example.ShowpingProject.DTO.QuestionForm;
 import com.example.ShowpingProject.DTO.sellerform;
 import com.example.ShowpingProject.entity.*;
@@ -8,10 +9,12 @@ import com.example.ShowpingProject.entity.product.product;
 import com.example.ShowpingProject.entity.product.productimage;
 import com.example.ShowpingProject.repository.AnswerRepository;
 import com.example.ShowpingProject.repository.QuestionRepository;
+import com.example.ShowpingProject.repository.Test2R;
 import com.example.ShowpingProject.repository.UsersRepository;
 import com.example.ShowpingProject.repository.order.OrderDetailRepository;
 import com.example.ShowpingProject.repository.order.OrderHeaderRepository;
 import com.example.ShowpingProject.repository.productRepository.ProdimageRepository;
+import com.example.ShowpingProject.repository.productRepository.ProductRepository;
 import com.example.ShowpingProject.service.PageService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -24,7 +27,15 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.*;
 
 @Slf4j
@@ -51,6 +62,12 @@ public class MypageController {
 
     @Autowired
     ProdimageRepository prodimageRepository;
+
+    @Autowired
+    ProductRepository productRepository;
+
+    @Autowired
+    Test2R test2R;
 
     //마이페이지 각 유저 전체 주문 내역(주문헤더)
     @GetMapping("/mypage/main/{user_code}")
@@ -134,28 +151,20 @@ public class MypageController {
     public String ShowOrderDetail( @PathVariable("order_id")  String orderid,Model model,HttpSession session){
         Users loginUser = (Users) session.getAttribute("loginUser");
         model.addAttribute("loginUser", loginUser);
-        log.info(loginUser.toString());
-
+//        log.info(loginUser.toString());
         //주문 코드 모텔로 만듬
-//        log.info(String.valueOf(orderid));
+        //        log.info(String.valueOf(orderid));
         model.addAttribute("orderID", orderid);
 
         //주문번호 기준으로 해당 주문 상세히 보여줌
-        List<OrderDetail> showDetail = orderDetailRepository.ShowOrderDetail(orderid);
-//        log.info(showDetail.toString());
-
-        //모델로 만들어서 뷰에 뿌려줌
-        model.addAttribute("showOrderDetail",showDetail);
-
-        //디테일 이미지
-        List<productimage> Detailimgs = prodimageRepository.DetailImg(orderid);
-//        log.info(Detailimgs.toString());
-
-        model.addAttribute("detailImg",Detailimgs);
+        List<Test2> showDetail2 = test2R.ShowOrderDetail2(orderid);
+        model.addAttribute("showDetailProd",showDetail2);
+//        log.info("sdfffffffffffffffffff" + showDetail2);
 
         return "mypage/mypageProductDetail";
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////// --- 문의 ---
     //주문 디테일에서 문의하기 버튼 클릭했을때
     @GetMapping("/mypage/inquiry/write/{order_id}/{prod_code}")
     public String MypageReviewWrite(QuestionForm Qform, @PathVariable("order_id")  String orderId,@PathVariable("prod_code")  String ProdCode,HttpSession session,Model model,OrderHeader OH){
@@ -165,6 +174,9 @@ public class MypageController {
 
         //각 해당 상품 문의를 하기위해 상품코드, 주문번호를 사용해서 상품 1개당 1개 문의할 수 있게 일단 상품 정보 가져오는 부분
         OrderDetail OD = orderDetailRepository.InquiryShowProd(orderId,ProdCode);
+        String inquiryOneImg = prodimageRepository.oneimg(ProdCode);
+//        log.info(inquiryOneImg);
+        model.addAttribute("prodImg",inquiryOneImg);
 //        log.info(OD.toString());
         //상품 정보
         model.addAttribute("prodInfo",OD);
@@ -181,26 +193,97 @@ public class MypageController {
         return "/mypage/mypageInquiryWrite";
     }
 
+//    //문의 제목,내용,문의 타입 보낼때
+//    @PostMapping("/write/{order_id}/{prod_code}")
+//    public String writeQ(QuestionForm Qform, @PathVariable("order_id")  String orderId,@PathVariable("prod_code")  String ProdCode,HttpSession session,Model model,
+//                         @RequestParam("quImage")MultipartFile file1,
+//                         @RequestParam("quImage2")MultipartFile file2,
+//                         @RequestParam("quImage3")MultipartFile file3){
+//
+//        Users loginUser = (Users) session.getAttribute("loginUser");
+//        model.addAttribute("loginUser", loginUser);
+//
+//        log.info("dfsdf");
+//        log.info(file1.toString());
+//        log.info(file2.toString());
+//        log.info(file3.toString());
+//
+//        //서버 이미지링크 변수
+//        String link =  "\\\\192.168.2.37\\images\\a";
+//
+//
+//
+//        //작성한 제목,내용,문의유형
+////        log.info(Qform.toString());
+////        Question question = Qform.toEntity();
+////        question.setOrder_id(Long.valueOf(orderId));
+////        question.setProd_code(Long.valueOf(ProdCode));
+////        question.setQu_answer("미완료");
+////        question.setUser_code(loginUser.getUser_code());
+////        log.info(question.toString());
+////        Question question1 = questionRepository.save(question);
+////        log.info(question1.toString());
+//
+////        return "redirect:/mypage/inquiry/list/" + loginUser.getUser_code();
+//        return "";
+//    }
+
+
     //문의 제목,내용,문의 타입 보낼때
     @PostMapping("/write/{order_id}/{prod_code}")
-    public String writeQ(QuestionForm Qform, @PathVariable("order_id")  String orderId,@PathVariable("prod_code")  String ProdCode,HttpSession session,Model model){
+    public String writeQ(QuestionForm Qform, @PathVariable("order_id")  String orderId,@PathVariable("prod_code")  String ProdCode,HttpSession session,Model model,
+                        @RequestParam(value = "quImage",required = false)MultipartFile file1,
+                        @RequestParam(value = "quImage2",required = false)MultipartFile file2,
+                        @RequestParam(value = "quImage3",required = false)MultipartFile file3){
 
         Users loginUser = (Users) session.getAttribute("loginUser");
         model.addAttribute("loginUser", loginUser);
 
+        //서버 이미지링크 변수
+        String link =  "\\\\192.168.2.37\\images\\a";
+
+
+        try {
+            if (file1 != null && !file1.isEmpty()) {
+                String image1 = link + File.separator + file1.getOriginalFilename();
+                Path filePath = Paths.get(image1);
+                Files.copy(file1.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
+            }
+
+            if (file2 != null && !file2.isEmpty()) {
+                String image2 = link + File.separator + file2.getOriginalFilename();
+                Path filePath2 = Paths.get(image2);
+                Files.copy(file2.getInputStream(), filePath2, StandardCopyOption.REPLACE_EXISTING);
+            }
+
+            if (file3 != null && !file3.isEmpty()) {
+                String image3 = link + File.separator + file3.getOriginalFilename();
+                Path filePath3 = Paths.get(image3);
+                Files.copy(file3.getInputStream(), filePath3, StandardCopyOption.REPLACE_EXISTING);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "";
+        }
+
+        log.info(Qform.toString());
+
         //작성한 제목,내용,문의유형
-//        log.info(Qform.toString());
         Question question = Qform.toEntity();
+        log.info("엔티티로 바꿀때" + question.toString());
+
+
         question.setOrder_id(Long.valueOf(orderId));
         question.setProd_code(Long.valueOf(ProdCode));
         question.setQu_answer("미완료");
         question.setUser_code(loginUser.getUser_code());
-//        log.info(question.toString());
         Question question1 = questionRepository.save(question);
-//        log.info(question1.toString());
 
         return "redirect:/mypage/inquiry/list/" + loginUser.getUser_code();
     }
+
+
 
     //문의 내역 리스트 가져올때
     @GetMapping("/mypage/inquiry/list/{user_code}")
@@ -219,28 +302,29 @@ public class MypageController {
 
     //1:1 마이페이지에서 문의 답변 받은 내용 확인할때
     @GetMapping("/mypage/inquiry/check/{qu_code}")
-    public String inquiryCheck(@PathVariable("qu_code")  String QuCode,HttpSession session,Model model){
+    public String inquiryCheck(@PathVariable("qu_code")  String QuCode,HttpSession session,Model model,
+                                RedirectAttributes redirectAttributes){
         Users loginUser = (Users) session.getAttribute("loginUser");
         model.addAttribute("loginUser", loginUser);
 
-
-
         //1개의 문의 내역 가져옴
         Question getQ = questionRepository.oneQustion(QuCode);
-        log.info(getQ.toString());
+//        log.info(getQ.toString());
         model.addAttribute("getQ",getQ);
 
         Answer answer = answerRepository.getAnswer(QuCode);
 
         if (answer == null) {
             // answer가 null인 경우에는 /mypage/inquiry/list/{user_code}로 리다이렉트
+//            model.addAttribute("NoAnswer","아직 답변이 미완료된 상태입니다.");
+            redirectAttributes.addFlashAttribute("NoAnswer", "아직 답변이 미완료된 상태입니다.");
             return "redirect:/mypage/inquiry/list/" + loginUser.getUser_code();
+        }else {
+            model.addAttribute("answerText",answer);
+            return "mypage/mypageInquiryCheck";
+
         }
 
-        model.addAttribute("answerText",answer);
-
-
-        return "mypage/mypageInquiryCheck";
     }
 
 

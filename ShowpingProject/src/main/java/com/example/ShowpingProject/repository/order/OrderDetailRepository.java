@@ -1,5 +1,6 @@
 package com.example.ShowpingProject.repository.order;
 
+import com.example.ShowpingProject.DTO.OrderDetailForm;
 import com.example.ShowpingProject.entity.Baskets;
 import com.example.ShowpingProject.entity.OrderDetail;
 import com.example.ShowpingProject.entity.OrderHeader;
@@ -195,7 +196,14 @@ public interface OrderDetailRepository extends CrudRepository<OrderDetail, Long>
             "on d.order_id = h.order_id\n" +
             "where d.order_id = :orderId",nativeQuery = true)
     List<OrderDetail> ShowOrderDetail(String orderId);
-    
+
+//    @Query(value = "select o.id, o.prod_code, o.user_code, o.order_id, o.prod_name, o.prod_size, o.prod_cnt, o.prod_price, p.image_link as image_link \n" +
+//            "from orderdetail o\n" +
+//            "join productimage p\n" +
+//            "on o.prod_code = p.prod_code\n" +
+//            "where o.order_id = :orderId", nativeQuery = true)
+//    List<OrderDetail> ShowOrderDetail2(String orderId);
+
     //상품 헤더에서 디테일 개수 가져옴
     @Query(value = "select count(*)\n" +
             "from orderdetail d\n" +

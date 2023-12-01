@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -46,13 +47,13 @@ public class QuestionForm {
     LocalDate quDate;
 
     //문의 이미지1
-    private String quImage;
+    private MultipartFile quImage;
 
     //문의 이미지2
-    private String quImage2;
+    private MultipartFile quImage2;
 
     //문의 이미지3
-    private String quImage3;
+    private MultipartFile quImage3;
 
     //상품 이름
     private String prodName;
@@ -63,6 +64,10 @@ public class QuestionForm {
     String prodPrice;
 
     public Question toEntity(){
-        return new Question(quCode,prodCode,orderId,userCode,quType,quTitle,quContent,quAnswer,quDateTime,quDate,quImage,quImage2,quImage3,prodName,userID,prodPrice);
+        return new Question(quCode,prodCode,orderId,userCode,quType,quTitle,quContent,quAnswer,quDateTime,quDate,
+                quImage != null ? quImage.getOriginalFilename() : null,
+                quImage2 != null ? quImage2.getOriginalFilename() : null,
+                quImage3 != null ? quImage3.getOriginalFilename() : null,
+                prodName,userID,prodPrice);
     }
 }
