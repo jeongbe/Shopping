@@ -17,12 +17,12 @@ public interface ProdimageRepository extends CrudRepository<productimage,Long> {
     List<productimage> findbyprodcode(long prod_code);
 
     //디테일에서 이미지 가져오기
-    @Query(value = "select p.*\n" +
-            "from orderdetail o\n" +
-            "join productimage p\n" +
-            "on o.prod_code = p.prod_code\n" +
-            "where o.order_id = :orderId" , nativeQuery = true)
-    List<productimage> DetailImg(String orderId);
+//    @Query(value = "select p.*\n" +
+//            "from orderdetail o\n" +
+//            "join productimage p\n" +
+//            "on o.prod_code = p.prod_code\n" +
+//            "where o.order_id = :orderId" , nativeQuery = true)
+//    List<productimage> DetailImg(String orderId);
 
     //주문 메인 페이지에서 이미지
     @Query(value = "select p.*\n" +
@@ -52,4 +52,5 @@ public interface ProdimageRepository extends CrudRepository<productimage,Long> {
             "on p.prod_code = i.prod_code\n" +
             "where p.prod_code = :prodCode", nativeQuery = true)
     String oneimg(String prodCode);
+
 }

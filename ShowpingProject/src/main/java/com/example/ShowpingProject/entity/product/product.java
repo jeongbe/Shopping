@@ -1,10 +1,11 @@
 package com.example.ShowpingProject.entity.product;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 @Entity
 @Table(name = "product")
-
+@Data
 //@SequenceGenerator(
 //        name = "prod_code",
 //        initialValue = 0

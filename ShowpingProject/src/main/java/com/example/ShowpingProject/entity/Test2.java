@@ -39,4 +39,5 @@ public class Test2 {
 
     @Column
     private String image_link;
+
 }

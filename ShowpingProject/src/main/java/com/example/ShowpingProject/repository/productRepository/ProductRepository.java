@@ -18,9 +18,4 @@ public interface ProductRepository extends CrudRepository<product, Long> {
             "where product.prod_code = :prodCode", nativeQuery = true)
     product oneproduct(String prodCode);
 
-    //상품 이름 겸색할때
-    @Query(value = "select *\n" +
-            "from product\n" +
-            "where prod_name like %:prodname%", nativeQuery = true)
-    List<product> findProduct(@Param("prodname") String prodname);
 }

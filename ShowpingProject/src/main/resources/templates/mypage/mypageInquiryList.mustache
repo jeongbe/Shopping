@@ -104,16 +104,13 @@
             </div>
 
             <div class="inquiry_line_2_5">
-                <p>{{qu_answer}}</p>
+                <p class="QuAnswer">{{qu_answer}}</p>
             </div>
 
             <div class="inquiry_line_2_6">
                 <p>{{qu_date}}</p>
             </div>
 
-<!--            <div class="inquiry_line_2_7">-->
-<!--                <button id="answer_check">답변 확인</button>-->
-<!--            </div>-->
         </div>
         {{/QuestionList}}
         {{#NoAnswer}}
@@ -123,8 +120,26 @@
 </div>
     <script src="/static/js/mypage/mypageInquiryList.js"></script>
     <script>
+
+
+
+
+        let QuAnswerText = document.querySelectorAll('.QuAnswer');
+
+        QuAnswerText.forEach(function(target){
+            console.log(target);
+            if(target.innerText === '미완료'){
+                target.style.color = "red";
+            }else{
+                target.style.color = "blue";
+            }
+        });
+
+
         let ErrorMsg = document.querySelector('.ErrorMsg').textContent;
         alert(ErrorMsg);
+
+
     </script>
 </body>
 {{/loginUser}}

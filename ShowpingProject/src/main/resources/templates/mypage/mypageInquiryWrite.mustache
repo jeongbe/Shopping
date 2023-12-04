@@ -78,7 +78,7 @@
                 </div>
                 <div class="prod_info_">
                     <div class="mp_review_product_img_box">
-                        <img class="review_product_img_1" src="/static/images/Product/{{prodImg}}" alt="상품 이미지">
+                        <img class="review_product_img_1" src="http://192.168.2.37/images/a/{{prodImg}}" alt="상품 이미지">
                     </div>
                     <div class="mypage_review_product_info">
                         <div class="re_prod_info1">
@@ -88,8 +88,7 @@
                             </p>
                         </div>
                         <div class="re_prod_info2">
-                            <p style="display:none;">{{prod_price}}</p> <br/>
-                            <p>가격</p>
+                            <p class="prodPrice_" >{{prod_price}}</p> <br/>
                         </div>
                     </div>
                 </div>
@@ -140,18 +139,29 @@
 
                 <div class="Inquiry_form">
                         <label for="qutitle">문의 제목</label><br>
-                        <textarea class="inquriy_form_title" id="qutitle" name="quTitle" rows="4" cols="50" placeholder="제목을 입력해주세요"></textarea><br>
+                        <input class="inquriy_form_title" id="qutitle" name="quTitle" rows="4" cols="50" placeholder="제목을 입력해주세요"></input><br>
 
                         <label for="quContent">문의 내용</label><br>
                         <textarea class="inquriy_form_content" id="quContent" name="quContent" rows="4" cols="50" placeholder="내용을 입력해주세요"></textarea><br>
                 </div>
-                <button type="submit" class="submitBtn" id="submitReview_1" >등록</button>
-                <button type="button" id="cancelReview_1" onclick="history.back();">취소</button>
+                <div class="btn_box">
+                    <button type="submit" class="submitBtn" id="submitReview_1" >등록</button>
+                    <button type="button" id="cancelReview_1" onclick="history.back();">취소</button>
+
+                </div>
             </form>
         </div>
     </div>
 
 </div>
+    <script>
+        let ProdPrice = document.querySelectorAll(".prodPrice_");
+
+        ProdPrice.forEach(function(PElement){
+        let price = parseInt(PElement.textContent.replace(/₩|,/g, ''));
+        PElement.textContent = "₩" + price.toLocaleString() + "원";
+        });
+    </script>
 </body>
             {{/prodInfo}}
             {{/orderInfo}}

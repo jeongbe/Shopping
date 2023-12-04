@@ -46,20 +46,26 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log("장바구니버튼 클릭");
         console.log(UserCode);
 
-        //보내줄 정보들
-        let PostData = `usercode=${UserCode}&prodcode=${prodCode}&prodname=${ProdName}&prodsize=${prodSize}&prodcnt=${ProdCnt}&prodprice=${prodPrice}&totalPrice${prodPrice}`
+        if(prodSize === ""){
+            alert("상품 사이즈를 선택해주세요");
+        }else{
+            //보내줄 정보들
+                    let PostData = `usercode=${UserCode}&prodcode=${prodCode}&prodname=${ProdName}&prodsize=${prodSize}&prodcnt=${ProdCnt}&prodprice=${prodPrice}&totalPrice${prodPrice}`
 
-        $.ajax({
-            url: "/shopping/insertcartbox/" + UserCode +"/"+ prodCode,
-            data: PostData,
-            type: "POST",
-            success : function(data){
-                alert("상품이 장바구니에 담겼습니다.")
-            },
-            error : function(){
-                alert("에러")
-            }
-        })
+                    $.ajax({
+                        url: "/shopping/insertcartbox/" + UserCode +"/"+ prodCode,
+                        data: PostData,
+                        type: "POST",
+                        success : function(data){
+                            alert("상품이 장바구니에 담겼습니다.")
+                        },
+                        error : function(){
+                            alert("에러")
+                        }
+                    })
+        }
+
+
 
     }
 

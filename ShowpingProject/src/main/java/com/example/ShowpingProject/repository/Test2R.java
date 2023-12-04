@@ -3,6 +3,7 @@ package com.example.ShowpingProject.repository;
 import com.example.ShowpingProject.entity.Test2;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -14,5 +15,7 @@ public interface Test2R extends CrudRepository<Test2,Long> {
             "on o.prod_code = p.prod_code\n" +
             "where o.order_id = :orderId", nativeQuery = true)
     List<Test2> ShowOrderDetail2(String orderId);
+
+
 
 }

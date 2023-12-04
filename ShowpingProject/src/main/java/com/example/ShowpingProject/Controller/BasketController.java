@@ -71,13 +71,14 @@ public class BasketController {
         List<Baskets> basketList = basketRepository.findUsercart(userCode);
         List<productimage> basketImg = prodimageRepository.test(userCode);
 //        log.info(basketImg.toString());
-        if (basketList != null) {
+        if (basketList.size() > 0 && basketList != null) {
             //불러온 상품을 장바구니 페이지에서 보여주기 위해서 model basketList에 값들을 넣어준다.
             model.addAttribute("basketList", basketList);
             model.addAttribute("basketIMG",basketImg);
 
         } else {
             model.addAttribute("basketList", Collections.emptyList());
+            model.addAttribute("emptyBasket","장바구니안 상품이 비었습니다.");
         }
 
         return "basket/basket";

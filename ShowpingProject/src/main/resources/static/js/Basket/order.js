@@ -57,6 +57,7 @@ let PayMentBtn = document.querySelector(".paymentBtn");
 
 PayMentBtn.onclick = () => {
     alert("주문완료");
+    totalPrice = totalPrice + 3000;
     //데이터를 총가격,유저코드,유저이름을 보내준다.
     let dataToSend2 = `totalPrice=${totalPrice}&userCode=${userCode}&userName=${userName}`;
     console.log(userCode);

@@ -8,24 +8,36 @@
     {{>layouts/headerlogin}}
 </header>
 
+<div class="title_content">Í≤ÄÏÉâ</div>
 {{#products}}
-<div class="card mb-3" style="max-width: 540px;" onclick="location.href='/shopping/read/product/{{prod_code}}'">
-    <div class="row g-0">
-        <div class="col-md-4">
-            <img src="..." class="img-fluid rounded-start" alt="...">
+<div class="card mb-3 card_box" style="max-width: 540px;" onclick="location.href='/shopping/read/product/{{prod_code}}'">
+    <div class="row g-0 box1">
+        <div class="col-md-4 img_box">
+            <img src="http://192.168.2.37/images/a/{{image_link}}" class="img-fluid rounded-start" alt="...">
         </div>
-        <div class="col-md-8">
-            <div class="card-body">
-                <h5 class="card-title">{{prod_name}}</h5>
+        <div class="col-md-8 box2 text_content">
+            <div class="card-body text_body">
+                <p class="card-title">{{prod_name}}</p>
                 <p class="card-text">{{prod_discount_price}}</p>
-                <p class="card-text"><small class="text-muted">«‡ªÁ¡ﬂ</small></p>
             </div>
         </div>
     </div>
 </div>
 
 {{/products}}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        let prodprice = document.querySelectorAll('.card-text');
 
+        prodprice.forEach(function(target){
+            let price = parseInt(target.textContent.replace(/‚Ç©|,/g, ''));
+            target.textContent = "‚Ç©" + price.toLocaleString() + "Ïõê";
+        });
+    });
+
+
+
+</script>
 </body>
 
 {{>layouts/footer}}

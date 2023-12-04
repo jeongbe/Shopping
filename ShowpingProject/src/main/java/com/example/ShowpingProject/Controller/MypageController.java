@@ -64,9 +64,6 @@ public class MypageController {
     ProdimageRepository prodimageRepository;
 
     @Autowired
-    ProductRepository productRepository;
-
-    @Autowired
     Test2R test2R;
 
     //마이페이지 각 유저 전체 주문 내역(주문헤더)
@@ -193,40 +190,6 @@ public class MypageController {
         return "/mypage/mypageInquiryWrite";
     }
 
-//    //문의 제목,내용,문의 타입 보낼때
-//    @PostMapping("/write/{order_id}/{prod_code}")
-//    public String writeQ(QuestionForm Qform, @PathVariable("order_id")  String orderId,@PathVariable("prod_code")  String ProdCode,HttpSession session,Model model,
-//                         @RequestParam("quImage")MultipartFile file1,
-//                         @RequestParam("quImage2")MultipartFile file2,
-//                         @RequestParam("quImage3")MultipartFile file3){
-//
-//        Users loginUser = (Users) session.getAttribute("loginUser");
-//        model.addAttribute("loginUser", loginUser);
-//
-//        log.info("dfsdf");
-//        log.info(file1.toString());
-//        log.info(file2.toString());
-//        log.info(file3.toString());
-//
-//        //서버 이미지링크 변수
-//        String link =  "\\\\192.168.2.37\\images\\a";
-//
-//
-//
-//        //작성한 제목,내용,문의유형
-////        log.info(Qform.toString());
-////        Question question = Qform.toEntity();
-////        question.setOrder_id(Long.valueOf(orderId));
-////        question.setProd_code(Long.valueOf(ProdCode));
-////        question.setQu_answer("미완료");
-////        question.setUser_code(loginUser.getUser_code());
-////        log.info(question.toString());
-////        Question question1 = questionRepository.save(question);
-////        log.info(question1.toString());
-//
-////        return "redirect:/mypage/inquiry/list/" + loginUser.getUser_code();
-//        return "";
-//    }
 
 
     //문의 제목,내용,문의 타입 보낼때

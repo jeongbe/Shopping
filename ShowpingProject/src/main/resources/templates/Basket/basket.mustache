@@ -46,16 +46,24 @@
 </div>
 <div class="line2"></div>
 <div class="p_box">
+<!--    장바구니 비었을때-->
+{{#emptyBasket}}
+    <div class="imgContainer">
+        <p>{{emptyBasket}}</p>
+    </div>
+{{/emptyBasket}}
+
 <div class="prod_img">
     {{#basketIMG}}
         <img src="/static/images/Product/{{image_link}}" class="img-thumbnails produces_image" alt="상품 이미지"/>
     {{/basketIMG}}
 </div>
+
 <!--아이템 들어오는 부분-->
 
 {{#basketList}}
     <form action="/shopping/cartbox/{{id}}" method="get" class="baskForm">
-        <!--        style="display:none;"-->
+
         <div class="products">
             <div class="product">
                 <!--                상품 체크 박스-->
@@ -82,8 +90,8 @@
                             </li>
                         </ul>
                     </nav>
-                    <p class="product_pirce" style="display:none;" name="prod_price">{{prod_price}}원</p>
-                    <p class="prod_total" style="display: none;">{{prod_price}}원</p>
+                    <p class="product_pirce" style="display:none;" name="prod_price">{{prod_price}}</p>
+                    <p class="prod_total" style="display: none;">{{prod_price}}</p>
                     <p class="TOTALPRICE" >{{total_price}}</p>
 
                     <form id="changeValueForm" action="/shopping/cartbox/produpdate" method="post">
@@ -117,6 +125,8 @@
 </form>
 </div>
 <script>
+
+
     document.addEventListener("DOMContentLoaded", function() {
     // 페이지가 로드된 후 실행되는 부분
     let totalPrices = document.querySelectorAll('.TOTALPRICE');
@@ -218,7 +228,7 @@ let cartItems = Array.from(document.querySelectorAll(".products")).map(item => {
 
             }
         }
-
+        //마이너스 버튼
         minusBtn.onclick = () => {
             if (targetText != 1) {
                 targetText--;
@@ -231,7 +241,7 @@ let cartItems = Array.from(document.querySelectorAll(".products")).map(item => {
 
 
 
-
+        //수량변경 확인 버튼 눌렀을때
         change_Btn.onclick = () => {
             var idElement = prod.querySelector('.prodfindID');
             var id = parseInt(idElement.textContent);;
@@ -263,13 +273,6 @@ let cartItems = Array.from(document.querySelectorAll(".products")).map(item => {
                 data: dataToSend,
                 type: "POST",
                 success: function (data) {
-<!--                    alert("성공");-->
-<!--                    // 서버에서 업데이트된 가격을 응답으로 받은 것으로 가정-->
-<!--                    var updatedPrice = data.updatedPrice;-->
-<!--                    console.log(updatedPrice);-->
-<!--                    // DOM에서 업데이트된 가격을 표시합니다-->
-<!--                    prod_price.textContent = updatedPrice;-->
-<!--                    console.log(prod_price.textContent);-->
 
                     alert("수량변경완료");
                 },
@@ -281,20 +284,34 @@ let cartItems = Array.from(document.querySelectorAll(".products")).map(item => {
             }
         }
 
+        //주문하기 버튼
         var orderBtn = document.querySelector(".payBtn");
+
+        //장바구니 안 상품 수량 구함
+        let prodCartboxCountE = document.querySelector(".prodCartboxCount");
+        let prodCartboxCount = prodCartboxCountE.textContent;
+        console.log(prodCartboxCount);
+        prodCartboxCountE.textContent = cartItems.length;
+
+        if(cartItems.length === 0){
+            //장바구니 비었을때 이미지 불러오기
+            let imgbox = document.querySelector('.imgContainer');
+            let img = new Image();
+
+            img.src = `/static/images/cartIcon.png`;
+            imgbox.appendChild(img);
+            orderBtn.style.display = 'none';
+        }
+
+
+
+
 
 
         //주문하기버튼을 클릭하면 주문페이지로 넘어간다.
         orderBtn.onclick = () => {
                 location.href = "/order/Payment/" + userCode;
         }
-
-        let prodCartboxCountE = document.querySelector(".prodCartboxCount");
-        let prodCartboxCount = prodCartboxCountE.textContent;
-        console.log(prodCartboxCount);
-        prodCartboxCountE.textContent = cartItems.length;
-
-
 </script>
 {{>layouts/footer}}
 </body>

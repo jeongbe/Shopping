@@ -215,17 +215,19 @@
 /* 두번째 라인 */
 .inquiry_line_2{
     width: 1200px;
-    height: 70px;
+    height: 40px;
     margin-top: 30px;
     display: flex;
-
     /* background-color: #E0E0E0; */
+    border: 1px solid gray;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 .inquiry_line_2_1{
     width: 50px;
-    height: 70px;
-
+    height: 20px;
+    padding: 10px;
     /* background-color: #3498DB; */
 }
 
@@ -383,4 +385,13 @@
     border-radius: 5px;
     cursor: pointer;
 
+}
+
+.inquiry_line_2 > div {
+  padding: 10px;
+}
+
+.inquiry_line_1 > div{
+	padding:10px;
+	font-weight: bold;
 }

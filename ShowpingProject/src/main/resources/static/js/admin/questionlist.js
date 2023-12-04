@@ -62,7 +62,17 @@
         });
         });
 
+//답변 완료, 미완료 여부
+let Q = document.querySelectorAll('.question-list-collum7');
 
-
+Q.forEach(function(target){
+    if(target.innerText === '답변완료'){
+        target.style.color = "blue";
+        target.style.fontWeight  = "bold";
+    }else{
+        target.style.color = "red";
+        target.style.fontWeight = "bold";
+    }
+});
 
 

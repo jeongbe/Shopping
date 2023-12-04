@@ -57,10 +57,23 @@ public class QuestionController {
         AForm.setQuCode(Long.valueOf(QuCode));
 //        log.info(AForm.toString());
 
+        try {
+            //문의 답변한 글이 있을때
+            Answer test = answerRepository.getAnswer2(QuCode);
+            log.info("test " + test);
+            if(test.getAn_content() != null){
+                model.addAttribute("testModel" ,test);
+            }
+        }catch (Exception e){
+            e.getMessage();
+        }
+
+        //문의 답변 비어있을때
         if(AForm.getAnContent() != null){
             Answer answer = AForm.toEntity();
+            log.info("수정한 " + answer);
             getQ.setQu_answer("답변완료");
-            questionRepository.save(getQ);
+
             Answer SaveAnswer = answerRepository.save(answer);
             log.info(SaveAnswer.toString());
             return "redirect:/shopping/questionlist";
