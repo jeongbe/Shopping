@@ -1,6 +1,8 @@
 package com.example.ShowpingProject.service;
 
 import com.example.ShowpingProject.entity.OrderHeader;
+import com.example.ShowpingProject.entity.Question;
+import com.example.ShowpingProject.repository.QuestionRepository;
 import com.example.ShowpingProject.repository.order.OrderHeaderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -15,6 +17,9 @@ public class PageService {
 
     @Autowired
     OrderHeaderRepository orderHeaderRepository;
+
+    @Autowired
+    QuestionRepository questionRepository;
 
     //기본 전체 주문 내역 가져올때
     public Page<OrderHeader> getList(int page,int userCode){
@@ -60,4 +65,10 @@ public class PageService {
         return this.orderHeaderRepository.OneYear(pageable);
     }
 
+    //mypage 문의 목록
+    public Page<Question> getQuestion(int page,String userCode){
+
+        Pageable pageable = PageRequest.of(page,5);
+        return this.questionRepository.QuestionList(pageable, userCode);
+    }
 }

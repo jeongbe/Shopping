@@ -250,14 +250,24 @@ public class MypageController {
 
     //문의 내역 리스트 가져올때
     @GetMapping("/mypage/inquiry/list/{user_code}")
-    public String InquiryList(@PathVariable("user_code")  String UserCode,HttpSession session,Model model){
+    public String InquiryList(@PathVariable("user_code")  String UserCode,HttpSession session,Model model,
+                                @RequestParam(value = "page",defaultValue = "0")int page){
         Users loginUser = (Users) session.getAttribute("loginUser");
         model.addAttribute("loginUser", loginUser);
 
-        List<Question> questionList = questionRepository.QuestionList(UserCode);
+        Page<Question> pagin = null;
+
+        pagin = this.pageService.getQuestion(page,UserCode);
+        log.info(pagin.toString());
+//        log.info(pagin.getContent().toString());
+
+        model.addAttribute("QuestionList",pagin);
+        model.addAttribute("TotalPages",pagin.getTotalPages());
+
+//        List<Question> questionList = questionRepository.QuestionList(UserCode);
 //        log.info(questionList.toString());
 
-        model.addAttribute("QuestionList", questionList);
+//        model.addAttribute("QuestionList", questionList);
 
 
         return "mypage/mypageInquiryList";

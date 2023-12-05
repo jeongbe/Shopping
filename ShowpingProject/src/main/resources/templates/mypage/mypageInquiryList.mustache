@@ -35,6 +35,7 @@
 
     <!-- 마이페이지 카테고리 -->
     <div class="category10">
+        <p style="display:none;" class="UserCode">{{user_code}}</p>
 
         <!-- 나의 쇼핑 정보 -->
         <div class="category_contents_1">
@@ -112,22 +113,78 @@
             </div>
 
         </div>
+
         {{/QuestionList}}
+
+        <nav aria-label="Page navigation example" class="pageBtn">
+            <!--                onclick="page(this); return false;"-->
+            <ul class="pagination">
+
+            </ul>
+        </nav>
+
+<!--        총 페이지 값-->
+        {{#TotalPages}}
+            <p style="display:none;" class="TotalPage">{{TotalPages}}</p>
+        {{/TotalPages}}
+
         {{#NoAnswer}}
             <p style="display:none;" class="ErrorMsg">{{NoAnswer}}</p>
         {{/NoAnswer}}
     </div>
 </div>
-    <script src="/static/js/mypage/mypageInquiryList.js"></script>
     <script>
 
+        let UserCode = document.querySelector(".UserCode").textContent;
+        console.log(UserCode);
+        let UC = parseInt(UserCode);
 
+        let Totalpage = document.querySelector(".TotalPage").textContent;
+        console.log(Totalpage);
 
+        //URL의 search 부분을 다루는 객체. window.location.search는 현재 URL에서 물음표(?) 이후의 부분을 나타냄
+        const urlParams = new URLSearchParams(window.location.search);
+        console.log(urlParams);
+        const currentPage = parseInt(urlParams.get('page')) || 0; // 현재 페이지가 없으면 0으로 설정
+
+        // no번호 처리 부분
+        let QCount = document.querySelectorAll('.QCount');
+
+        console.log(QCount);
+
+        for (var i = 0; i < QCount.length; i++) {
+            QCount[i].textContent = currentPage * 5 + i + 1;
+        }
+
+         // 부모 요소
+        var paginationContainer = document.querySelector(".pagination");
+
+        if (paginationContainer) {
+         // 이전 버튼
+            var prevButton = document.createElement("li");
+            prevButton.classList.add("page-item");
+            prevButton.innerHTML = `<a class="page-link"  href="/mypage/inquiry/list/${UC}?page=0" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>`;
+            paginationContainer.appendChild(prevButton);
+
+         // 페이지 번호 생성
+            for (var i = 1; i <= Totalpage; i++) {
+                var pageItem = document.createElement("li");
+                pageItem.classList.add("page-item");
+                pageItem.innerHTML = `<a class="page-link" href="/mypage/inquiry/list/${UC}?page=${i-1}">${i}</a>`;
+                paginationContainer.appendChild(pageItem);
+            }
+
+            // 다음 버튼
+            var nextButton = document.createElement("li");
+            nextButton.classList.add("page-item");
+            nextButton.innerHTML = `<a class="page-link" href="/mypage/inquiry/list/${UC}?page=${Totalpage-1}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>`;
+            paginationContainer.appendChild(nextButton);
+        }
 
         let QuAnswerText = document.querySelectorAll('.QuAnswer');
 
         QuAnswerText.forEach(function(target){
-            console.log(target);
+        <!--            console.log(target);-->
             if(target.innerText === '미완료'){
                 target.style.color = "red";
             }else{
@@ -138,6 +195,7 @@
 
         let ErrorMsg = document.querySelector('.ErrorMsg').textContent;
         alert(ErrorMsg);
+
 
 
     </script>
