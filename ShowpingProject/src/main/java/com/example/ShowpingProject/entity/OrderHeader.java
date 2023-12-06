@@ -15,6 +15,7 @@ import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Data
 @AllArgsConstructor
@@ -37,19 +38,22 @@ public class OrderHeader {
     @Column
     private Long userCode;
 
+    @PrePersist
+    public void prePersist() {
+        this.order_date = LocalDate.now();
+        this.order_date_time = LocalDateTime.now().withNano(0);
+    }
+
     //주문 날짜
     @Column(name = "order_date")
     LocalDate order_date;
-    @PrePersist
-    public void setOrderdate(){
-        this.order_date = LocalDate.now();
-    }
 
-    //주문 시간
     @Column
-    @CreationTimestamp
     LocalDateTime order_date_time;
 
+    public String getFormattedOrderDateTime() {
+        return order_date_time.format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm"));
+    }
 
     //구매 총 가격
     @Column

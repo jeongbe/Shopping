@@ -110,7 +110,7 @@ public class MypageController {
         }
 
 
-        log.info("pagin"+pagin.toString());
+//        log.info("pagin"+pagin.toString());
         //최종 저장
         model.addAttribute("pagins",pagin.getContent());
         model.addAttribute("totalElements" ,pagin.getTotalElements());

@@ -6,6 +6,7 @@
 <header>
     {{>layouts/headerlogin}}
 </header>
+{{#loginUser}}
 <form method="get" action="/order/Payment/{{user_code}}">
     <div onclick="find(this); return false;">
         <p style="display:none;" class="userCode">{{user_code}}</p>
@@ -19,15 +20,16 @@
                 </div>
                 {{#userInfo}}
                 <div class="border_ dis">
-                    <p>배송지</p>
+                    <p class="addr_title">배송지: </p>
                     <p class="mar">
+                    <p class="addr">{{user_addr}} / {{user_detail_addr}}</p>
 <!--                        <input type="radio" name="address" id="" />-->
-                        <select name="" id="">
-                            <option value="">{{user_addr}} / {{user_detail_addr}} </option>
-                            <option value=""></option>
-                            <option value=""></option>
-                        </select>
-                    </p>
+<!--                        <select name="" id="">-->
+<!--                            <option value="">{{user_addr}} / {{user_detail_addr}} </option>-->
+<!--                            <option value=""></option>-->
+<!--                            <option value=""></option>-->
+<!--                        </select>-->
+
 
                     <div></div>
 <!--                    <div class="mar_2">-->
@@ -125,4 +127,5 @@
 <!--<script src="/Pro1/order.js"></script>-->
 <script src="/static/js/Basket/order.js"></script>
 </body>
+{{/loginUser}}
 {{>layouts/footer}}

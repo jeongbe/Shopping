@@ -17,6 +17,7 @@ import com.example.ShowpingProject.repository.productRepository.ProdimageReposit
 import com.example.ShowpingProject.repository.productRepository.ProductRepository;
 import com.example.ShowpingProject.service.OrderService;
 import com.example.ShowpingProject.service.PaymentService;
+import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -140,7 +141,10 @@ public class OrderpageController  {
 
     //  장바구니에서 주문페이지로 넘어갈때! 일단 주문 번호 기준으로 가져온다. 주문한 상품 목록과 구매한 유저 정보
     @GetMapping("/order/Payment/{user_code}")
-    public String payment(@PathVariable("user_code")  int userCode, Model model){
+    public String payment(@PathVariable("user_code")  int userCode, Model model, HttpSession session){
+        Users loginUser = (Users) session.getAttribute("loginUser");
+        model.addAttribute("loginUser", loginUser);
+        log.info(loginUser.toString());
 
         log.info("주문페이지에 상품들 넣어줄꺼임");
 

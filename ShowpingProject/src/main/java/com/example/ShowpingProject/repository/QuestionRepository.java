@@ -13,7 +13,7 @@ public interface QuestionRepository extends CrudRepository<Question, Long> {
 
     @Query(value = "select  q.qu_code, q.order_id, q.user_code, q.prod_code, q.qu_type, q.qu_title, q.qu_content,q.prod_name, q.qu_answer, q.qu_date_time, q.qu_date, q.qu_image, q.qu_image2, q.qu_image3,q.user_id, q.prod_discount_price,q.an_content\n" +
             "from question q\n" +
-            "where q.user_code = :userCode" +
+            "where q.user_code = :userCode\n" +
             "order by qu_date_time DESC", nativeQuery = true)
     Page<Question> QuestionList(Pageable pageable, String userCode);
 

@@ -67,7 +67,8 @@ public interface OrderHeaderRepository extends CrudRepository<OrderHeader, Long>
             "join users b\n" +
             "on a.user_code = b.user_code\n" +
             "where b.user_code = :userCode\n" +
-            "AND a.total_price > 0\n", nativeQuery = true)
+            "AND a.total_price > 0\n" +
+            "order by order_date_time DESC", nativeQuery = true)
     Page<OrderHeader> find(Pageable pageable , int userCode);
 
     //test용
