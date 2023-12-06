@@ -1,4 +1,5 @@
 <head>
+    <link href="/static/css/mypage/mypageMain.css" rel="stylesheet" type="text/css">
     <link href="/static/css/mypage/mypageReviewWrite.css" rel="stylesheet" type="text/css" />
 </head>
 {{>layouts/headerlogin}}
@@ -23,10 +24,10 @@
             <span id="username-display2"></span>
         </div>
     </div>
-
+{{#loginUser}}
     <!-- 내 정보 수정 -->
     <div class="myinfo">
-        <a href="Info_Check_MyPage.html" style="color: black;">내 정보 수정</a>
+        <a href="/mypage/info/{{user_code}}" style="color: black;">내 정보 수정</a>
     </div>
 </div>
 <div class="horizontal-line"></div>
@@ -35,29 +36,28 @@
 
     <!-- 마이페이지 카테고리 -->
     <div class="category10">
-{{#loginUser}}
-        <!-- 나의 쇼핑 정보 -->
-        <div class="category_contents_1">
-            <p class="category_title_p ">나의 쇼핑 정보</p>
-            <div class="horizontal-line"></div>
-            <a href="/mypage/main/{{user_code}}"><p class="category_content_p">주문 내역 조회</p></a>
-            <a href="/mypage/reviewlist/{{user_code}}"><p class="category_content_p">구매후기 관리</p></a>
-            <a href="/mypage/like/{{user_code}}"><p class="category_content_p">좋아요</p></a>
-        </div>
 
-        <!-- 고객지원 -->
-        <div class="category_contents_2">
-            <p class="category_title_p ">고객 지원</p>
-            <div class="horizontal-line"></div>
-            <a href="/mypage/inquiry/list/{{user_code}}"><p class="category_content_p">문의 목록</p></a>
-        </div>
+        <!-- 나의 쇼핑 정보 -->
+    <div class="category_contents_1">
+        <p class="category_title_p ">나의 쇼핑 정보</p>
+        <div class="line1"></div>
+        <a href="/mypage/main/{{user_code}}"><p class="category_content_p tt">주문 내역 조회</p></a>
+        <a href="/mypage/reviewlist/{{user_code}}"><p class="category_content_p">구매후기 관리</p></a>
+        <a href="/mypage/like/{{user_code}}"><p class="category_content_p">좋아요</p></a>
     </div>
+
+    <!-- 고객지원 -->
+    <div class="category_contents_2">
+        <p class="category_title_p ">고객 지원</p>
+        <div class="line1"></div>
+        <a href="/mypage/inquiry/list/{{user_code}}"><p class="category_content_p">문의 목록</p></a>
+    </div>
+</div>
 
 {{#review}}
     {{#orderdate}}
-
     <!-- 마이페이지 내용 -->
-        <form action="/review/write/{{order_id}}/{{prod_code}}/{{user_code}}" method="get">
+        <form action="/review/write/{{order_id}}/{{prod_code}}/{{user_code}}" method="post" enctype="multipart/form-data">
     <div class="mypage_content">
         <div class="mypage_review_container">
             <!-- 구매후기 관리 텍스트 -->
@@ -79,9 +79,11 @@
                 <div class="mypage_review_text_1">
                     <p style="font-weight: bold;">제품</p>
                 </div>
+                {{#reimage}}
                 <div class="mp_review_product_img_box">
-                    <img class="review_product_img_1" src="img/product1.png" alt="상품 이미지">
+                    <img class="review_product_img_1" src="http://192.168.250.43/images/a/{{reimage}}" alt="상품 이미지">
                 </div>
+                {{/reimage}}
                 <div class="mypage_review_product_info">
                     <p style="font-size: 18px;">
                         {{prod_name}} <br><br>
@@ -111,6 +113,7 @@
         </div>
     </div>
         </form>
+
     {{/orderdate}}
 {{/review}}
 {{/loginUser}}

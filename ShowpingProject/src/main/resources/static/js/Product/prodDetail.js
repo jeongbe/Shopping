@@ -100,5 +100,43 @@ soldout.forEach(function(soldout){
     }
 });
 
+//판매가 , 표시
+
+var prod_price = document.querySelector('.prod-price-text').textContent;
+
+var price1 = parseInt(prod_price);
+
+var price2 = price1.toLocaleString();
+
+document.querySelector('.prod-price-text').textContent = price2 + "원";
+
+
+//할인가 , 표시
+
+var disprod_price = document.querySelector('.prod-discount-text').textContent;
+
+var disprice1 = parseInt(disprod_price);
+
+var disprice2 = disprice1.toLocaleString();
+
+document.querySelector('.prod-discount-text').textContent = disprice2 + "원";
+
+//배송비
+
+var dilprod_price = document.querySelector('.prod-diliver-text').textContent;
+
+var dilprice1 = parseInt(dilprod_price);
+
+var dilprice2 = dilprice1.toLocaleString();
+
+document.querySelector('.prod-diliver-text').textContent = dilprice2 + "원";
+
+
+
+
+
+
+
+
 
 

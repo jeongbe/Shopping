@@ -1,4 +1,5 @@
 <head>
+    <link href="/static/css/mypage/mypageMain.css" rel="stylesheet" type="text/css">
     <link href="/static/css/mypage/mypageReviewList.css" rel="stylesheet" type="text/css" />
 </head>
 {{>layouts/headerlogin}}
@@ -26,7 +27,7 @@
 
     <!-- 내 정보 수정 -->
     <div class="myinfo">
-        <a href="Info_Check_MyPage.html" style="color: black;">내 정보 수정</a>
+        <a href="/mypage/info/{{user_code}}" style="color: black;">내 정보 수정</a>
     </div>
 </div>
 <div class="horizontal-line"></div>
@@ -39,16 +40,16 @@
         <!-- 나의 쇼핑 정보 -->
         <div class="category_contents_1">
             <p class="category_title_p ">나의 쇼핑 정보</p>
-            <div class="horizontal-line"></div>
+            <div class="line1"></div>
             <a href="/mypage/main/{{user_code}}"><p class="category_content_p">주문 내역 조회</p></a>
-            <a href="/mypage/reviewlist/{{user_code}}"><p class="category_content_p">구매후기 관리</p></a>
+            <a href="/mypage/reviewlist/{{user_code}}"><p class="category_content_p tt">구매후기 관리</p></a>
             <a href="/mypage/like/{{user_code}}"><p class="category_content_p">좋아요</p></a>
         </div>
 
         <!-- 고객지원 -->
         <div class="category_contents_2">
             <p class="category_title_p ">고객 지원</p>
-            <div class="horizontal-line"></div>
+            <div class="line1"></div>
             <a href="/mypage/inquiry/list/{{user_code}}"><p class="category_content_p">문의 목록</p></a>
         </div>
     </div>
@@ -74,11 +75,8 @@
             <!-- 구매후기 상품 컨테이너 -->
             <div class="mp_review_product_container">
                 <div class="mypage_review_text_1">
-                    <p>제품</p>
                 </div>
-                <div class="mp_review_product_img_box">
-                    <img class="review_product_img_1" src="img/product1.png" alt="상품 이미지">
-                </div>
+
                 <div class="mypage_review_product_info">
                     <p>후기 작성 날짜 {{review_date}} <br>
                          <br>

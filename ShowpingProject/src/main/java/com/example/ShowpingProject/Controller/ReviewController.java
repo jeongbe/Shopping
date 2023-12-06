@@ -9,6 +9,7 @@ import com.example.ShowpingProject.entity.review.Review;
 import com.example.ShowpingProject.repository.ReviewRepository;
 import com.example.ShowpingProject.repository.order.OrderDetailRepository;
 import com.example.ShowpingProject.repository.order.OrderHeaderRepository;
+import com.example.ShowpingProject.repository.productRepository.ProdimageRepository;
 import com.example.ShowpingProject.repository.productRepository.ProductRepository;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +18,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 
 @Controller
@@ -30,6 +38,8 @@ public class ReviewController {
     OrderHeaderRepository orderHeaderRepository;
     @Autowired
     ReviewRepository reviewRepository;
+    @Autowired
+    ProdimageRepository prodimageRepository;
 
 
     //리뷰하기 눌렀을때 해당하는 상품에 리뷰를 남기기위한 매핑
@@ -54,13 +64,38 @@ public class ReviewController {
         //날짜 정보 뿌려주기
         model.addAttribute("orderdate", orderHeader);
 
+        //이미지 가져 오기
+        String image = prodimageRepository.reimage(prod_code);
+
+        //이미지 뿌려주기
+
+        model.addAttribute("reimage", image);
+
+
 
         return "mypage/mypageReviewWrite";
     }
 
     //실제 작성후 리뷰 인설트
-    @GetMapping("/review/write/{order_id}/{prod_code}/{user_code}")
-    public String reviewinsert(ReviewForm form,@PathVariable Long order_id, @PathVariable Long prod_code, @PathVariable Long user_code ,HttpSession session, Model model){
+    @PostMapping("/review/write/{order_id}/{prod_code}/{user_code}")
+    public String reviewinsert(ReviewForm form,@PathVariable Long order_id, @PathVariable Long prod_code, @PathVariable Long user_code ,HttpSession session, Model model,
+                               @RequestParam("reviewimage_link") MultipartFile file){
+
+        //서버 이미지링크 변수
+        String link =  "\\\\192.168.250.43\\images\\a";
+        String image = (link);
+
+       //리뷰 이미지 저장
+        try{
+        Path filePath = Path.of(image, file.getOriginalFilename());
+        Files.copy(file.getInputStream(),filePath,StandardCopyOption.REPLACE_EXISTING);
+        }
+        catch (IOException e){
+
+            e.printStackTrace();
+
+            return "";
+        }
 
         //유저세션 유지
         Users loginUser = (Users) session.getAttribute("loginUser");

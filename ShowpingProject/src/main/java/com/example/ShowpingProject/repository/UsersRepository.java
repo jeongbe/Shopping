@@ -16,7 +16,7 @@ public interface UsersRepository extends CrudRepository<Users , Long> {
             "WHERE users.user_code = :userCode", nativeQuery = true)
     Users userInfo(int userCode);
 
-    //·Î±×ÀÎ ½Ãµµ ÇÒ¶§ ¾ÆÀÌµğ¿Í ÆĞ½º¿öµå¸¦ Ã¼Å©ÇÏ±âÀ§ÇÑ Äõ¸®¹®
+    //ë¡œê·¸ì¸ ì‹œë„ í• ë•Œ ì•„ì´ë””ì™€ íŒ¨ìŠ¤ì›Œë“œë¥¼ ì²´í¬í•˜ê¸°ìœ„í•œ ì¿¼ë¦¬ë¬¸
     @Query(value = "SELECT * " +
             "FROM users " +
             "WHERE user_ID = :login_ID " +
@@ -30,7 +30,7 @@ public interface UsersRepository extends CrudRepository<Users , Long> {
     Users oneUserInfo(int userCode);
 
 
-    //¾ÆÀÌµğ Ã£±âÇÒ¶§ À¯ÀúÀÇ ÀÌ¸§°ú ÈŞ´ëÀüÈ­¹øÈ£°¡ ÀÏÄ¡ÇÏ´ÂÁö È®ÀÎÇÏ±â
+    //ì•„ì´ë”” ì°¾ê¸°í• ë•Œ ìœ ì €ì˜ ì´ë¦„ê³¼ íœ´ëŒ€ì „í™”ë²ˆí˜¸ê°€ ì¼ì¹˜í•˜ëŠ”ì§€ í™•ì¸í•˜ê¸°
 
     @Query(value = "SELECT user_id\n" +
             "FROM users\n" +
@@ -38,16 +38,24 @@ public interface UsersRepository extends CrudRepository<Users , Long> {
             "AND user_phone = :findphone ", nativeQuery = true)
     String finduserID(String findname, String findphone);
 
-    //Áßº¹Ã¼Å©
+    //ì¤‘ë³µì²´í¬
     @Query(value = "SELECT * FROM users WHERE user_id = ?1", nativeQuery = true)
     Optional<Users> findByUserId(String userid);
 
-    //ºñ¹Ğ¹øÈ£Ã£´Â ¸Å¼­µå
+    //ë¹„ë°€ë²ˆí˜¸ì°¾ëŠ” ë§¤ì„œë“œ
     @Query(value = "SELECT user_code\n" +
             "FROM users\n" +
             "WHERE user_id = :pwfindid \n" +
             "AND user_phone = :pwfindphone", nativeQuery = true)
     Long finduserpw(String pwfindid, String pwfindphone);
+
+    //ìœ ì €ì •ë³´ ë³€ê²½ì„ ìœ„í•´ ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜í•˜ëŠ”ì§€ ìœ„í•œ ì¿¼ë¦¬
+
+    @Query(value = "SELECT user_code " +
+            "FROM users " +
+            "WHERE user_code = :usercode " +
+            "AND user_password = :password ", nativeQuery = true)
+    Long userinfocheck(Long usercode,String password);
 
 
 

@@ -151,7 +151,12 @@ main{
 
 .review-form{
     display: flex;
+    margin-top: 20px;
+    margin-left: 0px;
     border: 1px solid black;
+    border-radius: 25px;
+    background-color: #e9e9e9;
+
 }
 
 .review-date{
@@ -159,15 +164,18 @@ main{
 }
 
 .review-image-form{
-    border-right: 1px solid black;
+margin-left: 20px;
+
 
 }
 
 
 .review-image{
     width: 120px;
-    height: 120px;
+    height: 130px;
+    margin-left: 120px
 }
+
 
 .review-content{
     margin-left: 20px;
@@ -175,23 +183,26 @@ main{
 
 }
 
-.paging{
-       width: 100%;
-        display: inline-flex;
-        align-items: center;
-        margin-top: 10px;
-        justify-content: center;
-}
+.textarea11{
 
-.paging>i,.paging>.pages>span{
-
-margin: 0 3px;
-cursor: pointer;
+width: 900px;
+height: 130px;
+resize: none;
+background-color: #e9e9e9;
 
 }
 
-.active{
-color: orange;
-font-weight: bold;
+.text{
+
+margin-top:  30px;
+margin-left: 20px;
+
 }
+
+.resize{
+margin-top: 10px;
+}
+
+
+
 

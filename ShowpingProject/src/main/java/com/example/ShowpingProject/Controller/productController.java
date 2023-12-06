@@ -74,7 +74,7 @@ public class productController {
 
 
         //서버 이미지링크 변수
-        String link =  "\\\\192.168.2.37\\images\\a";
+        String link =  "\\\\192.168.250.43\\images\\a";
 
 
         //대표이미지
@@ -96,40 +96,58 @@ public class productController {
         try{
 
             //대표 이미지 저장
+            if (file != null && !file.isEmpty()){
             Path filePath = Path.of(image, file.getOriginalFilename());
             Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
+            }
 
             //대표 이미지 저장 2
+            if (file2 != null && !file3.isEmpty()){
             Path filePath2 = Path.of(image2, file2.getOriginalFilename());
             Files.copy(file2.getInputStream(), filePath2, StandardCopyOption.REPLACE_EXISTING);
+            }
 
             //대표 이미지 저장 3
+            if (file3 != null && !file3.isEmpty()){
             Path filePath3 = Path.of(image3, file3.getOriginalFilename());
             Files.copy(file3.getInputStream(), filePath3, StandardCopyOption.REPLACE_EXISTING);
+            }
 
             // 대표 이미지 저장 4
+            if (file4 != null && !file4.isEmpty()){
             Path filePath4 = Path.of(image4, file4.getOriginalFilename());
             Files.copy(file4.getInputStream(), filePath4, StandardCopyOption.REPLACE_EXISTING);
+            }
 
             //상세 이미지 저장
+            if (defile != null && !defile.isEmpty()){
             Path defilePath = Path.of(deimage, defile.getOriginalFilename());
             Files.copy(defile.getInputStream(), defilePath, StandardCopyOption.REPLACE_EXISTING);
+            }
 
             //상세이미지 저장 2
+            if (defile2 != null && !defile2.isEmpty()){
             Path defilePath2 = Path.of(deimage2, defile3.getOriginalFilename());
             Files.copy(defile2.getInputStream(), defilePath2, StandardCopyOption.REPLACE_EXISTING);
+            }
 
             // 상세 이미지 저장 3
+            if (defile3 != null && !defile3.isEmpty()){
             Path defilePath3 = Path.of(deimage3, defile3.getOriginalFilename());
             Files.copy(defile3.getInputStream(), defilePath3, StandardCopyOption.REPLACE_EXISTING);
+            }
 
             //상세 이미지 저장 4
+            if (defile4 != null && !defile4.isEmpty()){
             Path defilePath4 = Path.of(deimage4, defile4.getOriginalFilename());
             Files.copy(defile4.getInputStream(), defilePath4, StandardCopyOption.REPLACE_EXISTING);
+            }
 
             //상세 이미지 저장 5
+            if (defile5 != null && !defile5.isEmpty()){
             Path defilePath5 = Path.of(deimage5, defile5.getOriginalFilename());
             Files.copy(defile5.getInputStream(), defilePath5, StandardCopyOption.REPLACE_EXISTING);
+            }
 
 
         }

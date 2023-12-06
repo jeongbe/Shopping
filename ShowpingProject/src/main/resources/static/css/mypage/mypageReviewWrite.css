@@ -194,6 +194,8 @@
 .review_product_img_1{
     position: relative;
     top: 10px;
+    width: 150px;
+    height: 100px;
 }
 
 .mypage_review_product_info{

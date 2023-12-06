@@ -1,4 +1,5 @@
 <head>
+    <link href="/static/css/mypage/mypageMain.css" rel="stylesheet" type="text/css">
     <link href="/static/css/mypage/mypageInfoCheck.css" rel="stylesheet" type="text/css" />
 </head>
 {{>layouts/headerlogin}}
@@ -31,7 +32,7 @@
 
     <!-- 내 정보 수정 -->
     <div class="myinfo">
-        <a href="Info_Check_MyPage.html" style="color: black;">내 정보 수정</a>
+        <a href="/mypage/info/{{user_code}}" style="color: black;">내 정보 수정</a>
     </div>
 
 </div>
@@ -47,8 +48,8 @@
         <!-- 나의 쇼핑 정보 -->
         <div class="category_contents_1">
             <p class="category_title_p ">나의 쇼핑 정보</p>
-            <div class="horizontal-line"></div>
-            <a href="/mypage/main/{{user_code}}"><p class="category_content_p">주문 내역 조회</p></a>
+            <div class="line1"></div>
+            <a href="/mypage/main/{{user_code}}"><p class="category_content_p tt">주문 내역 조회</p></a>
             <a href="/mypage/reviewlist/{{user_code}}"><p class="category_content_p">구매후기 관리</p></a>
             <a href="/mypage/like/{{user_code}}"><p class="category_content_p">좋아요</p></a>
         </div>
@@ -56,7 +57,7 @@
         <!-- 고객지원 -->
         <div class="category_contents_2">
             <p class="category_title_p ">고객 지원</p>
-            <div class="horizontal-line"></div>
+            <div class="line1"></div>
             <a href="/mypage/inquiry/list/{{user_code}}"><p class="category_content_p">문의 목록</p></a>
         </div>
     </div>
@@ -70,13 +71,17 @@
 
         <div class="myinfo_text_2 ">
             <p>*정보를 수정하려면 비밀번호를 입력하세요*</p>
+        {{#error}}
+            <p>{{error}}</p>
+        {{/error}}
         </div>
+
 
         <!-- 비밀번호 입력 -->
         <div class="password_input">
-            <form action="" method="post">
+            <form action="/userinfoCheck/{{user_code}}" method="post">
                 <label for="password">비밀번호:</label>
-                <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요" required>
+                <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요">
                 <br>
 
                 <div class="submit_password">
@@ -85,9 +90,6 @@
                 </div>
             </form>
         </div>
-
-
-
     </div>
 
 </div>

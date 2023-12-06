@@ -53,4 +53,10 @@ public interface ProdimageRepository extends CrudRepository<productimage,Long> {
             "where p.prod_code = :prodCode", nativeQuery = true)
     String oneimg(String prodCode);
 
+    //리뷰로 이미지 뿌릴때
+    @Query(value = "SELECT image_link\n" +
+            "FROM productimage\n" +
+            "WHERE prod_code = :prodCode" , nativeQuery = true)
+    String reimage(Long prodCode);
+
 }

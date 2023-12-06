@@ -1,4 +1,5 @@
 <head>
+    <link href="/static/css/mypage/mypageMain.css" rel="stylesheet" type="text/css">
     <link href="/static/css/mypage/mypageInfo.css" rel="stylesheet" type="text/css" />
 </head>
 {{>layouts/headerlogin}}
@@ -34,7 +35,7 @@
 
     <!-- 내 정보 수정 -->
     <div class="myinfo">
-        <a href="Info_Check_MyPage.html" style="color: black;">내 정보 수정</a>
+        <a href="/mypage/info/{{user_code}}" style="color: black;">내 정보 수정</a>
     </div>
 
 </div>
@@ -50,8 +51,8 @@
         <!-- 나의 쇼핑 정보 -->
         <div class="category_contents_1">
             <p class="category_title_p ">나의 쇼핑 정보</p>
-            <div class="horizontal-line"></div>
-            <a href="/mypage/main/{{user_code}}"><p class="category_content_p">주문 내역 조회</p></a>
+            <div class="line1"></div>
+            <a href="/mypage/main/{{user_code}}"><p class="category_content_p tt">주문 내역 조회</p></a>
             <a href="/mypage/reviewlist/{{user_code}}"><p class="category_content_p">구매후기 관리</p></a>
             <a href="/mypage/like/{{user_code}}"><p class="category_content_p">좋아요</p></a>
         </div>
@@ -59,7 +60,7 @@
         <!-- 고객지원 -->
         <div class="category_contents_2">
             <p class="category_title_p ">고객 지원</p>
-            <div class="horizontal-line"></div>
+            <div class="line1"></div>
             <a href="/mypage/inquiry/list/{{user_code}}"><p class="category_content_p">문의 목록</p></a>
         </div>
     </div>
@@ -71,39 +72,39 @@
         <!-- 수정할 정보 입력 -->
         <div class="user_info_input">
             <!--현재 action은 미지정  -->
-            <form action="" method="post">
+            <form action="/userinfo/update/{{user_code}}" method="post">
                 <div class="email_input_box">
                     <label for="mypage_email" class="email_margin">이메일</label>
-                    <input type="text" id="mypage_email" name="mypage_email" placeholder="기존 유저 이메일">
+                    <input type="text" id="mypage_email" name="mypage_email">
                 </div>
 
                 <div class="number_input_box">
                     <label for="mypage_number" class="number_margin">휴대전화</label>
-                    <input type="text" id="mypage_number" name="mypage_number" placeholder="기존 유저 전화번호">
+                    <input type="text" id="mypage_number" name="mypage_number">
                 </div>
 
                 <div class="password_input_box">
                     <label for="mypage_password" class="password_magin">비밀번호 수정</label>
-                    <input type="password" id="mypage_password" name="mypage_password" placeholder="비밀번호 수정시에만 입력">
+                    <input type="password" id="mypage_password" name="mypage_password">
                 </div>
 
                 <div class="password_input_check_box">
                     <label for="mypage_password_check" class="password_check_magin">비밀번호 수정확인</label>
-                    <input type="password" id="mypage_password_check" name="mypage_password_check" placeholder="수정된 비밀번호 확인">
+                    <input type="password" id="mypage_password_check" name="mypage_password_check">
                     <br>
                 </div>
 
                 <div class="address_container">
                     <div class="address_box">
                         <label for="mypage_address">배송주소</label> <br>
-                        <input type="text" id="mypage_address" name="mypage_address" placeholder="기존 유저 배송주소">
+                        <input type="text" id="mypage_address" name="mypage_address">
                     </div>
 
                     <div class="address_box_detail_box">
                         <label for="mypage_address_detail">상세주소</label> <br>
-                        <input type="text" id="mypage_address_detail" name="mypage_address_detail" placeholder="기존 유저 상세정보">
+                        <input type="text" id="mypage_address_detail" name="mypage_address_detail">
                     </div>
-                    <button id="add-address-button">배송지 추가</button>
+                    <button type="button" id="add-address-button">배송지 추가</button>
                 </div>
 
                 <p class="myinfo_modify_text">*내 정보의 수정할 항목만 수정 후 수정하기를 누르세요*</p>

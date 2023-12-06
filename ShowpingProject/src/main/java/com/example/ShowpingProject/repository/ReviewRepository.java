@@ -27,4 +27,7 @@ public interface ReviewRepository extends CrudRepository<Review, Long> {
     ArrayList<Review> reviewlist(Long usercode);
 
 
+
+
+
 }

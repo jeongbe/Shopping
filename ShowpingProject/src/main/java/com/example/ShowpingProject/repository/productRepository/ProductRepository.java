@@ -18,4 +18,6 @@ public interface ProductRepository extends CrudRepository<product, Long> {
             "where product.prod_code = :prodCode", nativeQuery = true)
     product oneproduct(String prodCode);
 
+
+
 }

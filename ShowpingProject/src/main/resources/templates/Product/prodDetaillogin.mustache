@@ -7,7 +7,7 @@
 </head>
 <body>
 {{#loginUser}}
-    <p class="UserCode">{{user_code}}</p>
+    <p style="display:none;" class="UserCode">{{user_code}}</p>
 {{/loginUser}}
 {{#product}}
     <p style="display:none;" class="prodCode">{{prod_code}}</p>
@@ -135,32 +135,23 @@
 {{#productreview}}
         <div class="review-form">
             <div class="review-info-form">
-                <h3>평점 : 4</h3>
-                <h3>{{user_code}}</h3>
-                <h3>사이즈 : {{prod_size}}</h3>
-            </div>
-            <div class="review-date">
-                <h3>{{review_date}}</h3>
+                <div class="text">
+                    <h3>리뷰날짜<br>
+                        {{review_date}}</h3>
+                    <hr>
+                    <div class="resize">
+                        <h3>사이즈 : {{prod_size}}</h3>
+                    </div>
+                </div>
             </div>
             <div class="review-image-form">
-                <img src="/image/image1.jfif" class="review-image">
+                <img src="http://192.168.250.43/images/a/{{reviewimage_link}}" class="review-image">
             </div>
             <div class="review-content">
-                <p>{{review_content}}</p>
+                <div class="content-text">
+                    <textarea readonly id="myTextarea" class="textarea11">{{review_content}}</textarea>
+                </div>
             </div>
-        </div>
-        <div class="paging">
-            <i class="fa-solid fa-backward" id="first_page"></i>
-            <i class="fa-solid fa-play fa-flip-horizontal" id="prev_page"></i>
-            <div class="pages">
-                <span class="active">1</span>
-                <span>2</span>
-                <span>3</span>
-                <span>4</span>
-                <span>5</span>
-            </div>
-            <i class="fa-solid fa-play" id="next_page"></i>
-            <i class="fa-solid fa-backward fa-flip-horizontal" id="last_page"></i>
         </div>
 {{/productreview}}
 </main>
@@ -169,18 +160,6 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
 </script>
 <script src="/static/js/Product/prodDetail.js"></script>
-<!--<script>-->
-<!--    let UserCodeE = document.querySelector('.UserCode');-->
-<!--    console.log(UserCodeE);-->
-
-<!--    if (UserCodeE) {-->
-<!--        let UserCode = UserCodeE.textContent;-->
-<!--        console.log(UserCode);-->
-<!--    } else {-->
-<!--//        console.log('.UserCode 요소를 찾을 수 없습니다.');-->
-<!--    }-->
-<!--</script>-->
-
 </body>
 {{>layouts/footer}}
 </html>
