@@ -50,6 +50,13 @@ main{
 .prod-price-text{
     margin-left: 100px;
     font-size:large;
+    display:none;
+}
+
+.prod-price-text1{
+    margin-left: 100px;
+    font-size:large;
+
 }
 
 .prod-discount-price{
@@ -63,6 +70,13 @@ main{
 .prod-discount-text{
     margin-left: 100px;
     font-size:large;
+     display:none;
+}
+
+.prod-discount-text1{
+    margin-left: 100px;
+    font-size:large;
+
 }
 
 .prod-diliver-price{
@@ -74,6 +88,12 @@ main{
 }
 
 .prod-diliver-text{
+    margin-left: 100px;
+    font-size:large;
+    display:none;
+}
+
+.prod-diliver-text1{
     margin-left: 100px;
     font-size:large;
 }
@@ -201,6 +221,23 @@ margin-left: 20px;
 
 .resize{
 margin-top: 10px;
+}
+
+.fa-shapes:before, .fa-triangle-circle-square:before{
+ margin-right: 10px;
+}
+
+.fa-krw:before, .fa-won-sign:before, .fa-won:before{
+margin-right: 10px;
+}
+
+.fa-truck:before{
+margin-right: 10px;
+}
+
+.fa-magnifying-glass:before, .fa-search:before{
+margin-right: 10px;
+
 }
 
 
