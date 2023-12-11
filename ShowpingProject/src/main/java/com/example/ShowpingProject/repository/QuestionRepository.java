@@ -23,7 +23,8 @@ public interface QuestionRepository extends CrudRepository<Question, Long> {
             "join users u\n" +
             "on q.user_code = u.user_code\n" +
             "join product p\n" +
-            "on q.prod_code = p.prod_code", nativeQuery = true)
+            "on q.prod_code = p.prod_code\n" +
+            "order by qu_date_time DESC", nativeQuery = true)
     List<Question> AllQuestion();
 
     //하나의 문의만 가져올때

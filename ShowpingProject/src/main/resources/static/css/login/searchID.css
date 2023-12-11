@@ -44,7 +44,7 @@ input[type='number']::-webkit-inner-spin-button {
     margin-bottom: 30px;
 }
 
-.input_container {
+.input_container_ {
     margin-right: 50px;
     height: 150px;
     justify-content: center;
@@ -77,11 +77,10 @@ input[type='number']::-webkit-inner-spin-button {
     margin-left: 10px;
 }
 
-.btn {
+.btn_ {
     width: 220px;
     height: 40px;
     border-radius: 10px;
     background-color: #b1e2f5;
-    border: none;
     cursor: pointer;
 }
